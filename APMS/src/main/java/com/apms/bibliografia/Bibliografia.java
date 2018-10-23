@@ -4,9 +4,9 @@ public class Bibliografia {
 	private Integer id;
 	private String ISBN;
 	private String titulo;
-	private String anioPublicacion;
+	private Integer anioPublicacion;
 	private String editorial;
-	private String edicion;
+	private Integer edicion;
 	private String pais;
 
 	public String getISBN() {
@@ -25,11 +25,11 @@ public class Bibliografia {
 		this.titulo = titulo;
 	}
 
-	public String getAnioPublicacion() {
+	public Integer getAnioPublicacion() {
 		return anioPublicacion;
 	}
 
-	public void setAnioPublicacion(String anioPublicacion) {
+	public void setAnioPublicacion(Integer anioPublicacion) {
 		this.anioPublicacion = anioPublicacion;
 	}
 
@@ -41,11 +41,11 @@ public class Bibliografia {
 		this.editorial = editorial;
 	}
 
-	public String getEdicion() {
+	public Integer getEdicion() {
 		return edicion;
 	}
 
-	public void setEdicion(String edicion) {
+	public void setEdicion(Integer edicion) {
 		this.edicion = edicion;
 	}
 
