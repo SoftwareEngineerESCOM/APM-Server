@@ -4,10 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.apms.unidadtematica.UnidadTematica;
+
 
 @Entity
 @Table(name="Tema")
@@ -23,8 +29,12 @@ public class Tema implements Serializable {
     @Column(name="numero")
     private int numero;
     
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_UnidadTematica", nullable = false)
+    UnidadTematica unidadTematica;
+    
     public Tema() {
-
+    	super();
 	}
 	
     public Tema(String nombre, int numero) {
@@ -49,6 +59,14 @@ public class Tema implements Serializable {
 		this.numero = numero;
 	}
 	
+	public UnidadTematica getUnidadTematica() {
+		return unidadTematica;
+	}
+
+	public void setUnidadTematica(UnidadTematica unidadTematica) {
+		this.unidadTematica = unidadTematica;
+	}
+
 	@Override
 	public String toString() {
 		return "{ nombre:"+nombre+", numero:"+numero+"}";
