@@ -38,7 +38,7 @@ public class Subtema implements Serializable {
     Tema tema;
     
     public Subtema() {
-
+    	super();
 	}
 	
     public Subtema(String nombre, int numero, Tema tema) {
