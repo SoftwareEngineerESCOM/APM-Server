@@ -28,37 +28,42 @@ import com.apms.tema.Tema;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="UnidadTematica")
+@Table(name = "UnidadTematica")
 public class UnidadTematica implements Serializable {
 
 	private static final long serialVersionUID = -3009157732242241606L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(name="nombre")
+
+	@Column(name = "nombre")
 	private String nombre;
-	@Column(name="numero")
+	@Column(name = "numero")
 	private int numero;
-	@Column(name="unidadDeCompetencia")
+	@Column(name = "unidadDeCompetencia")
 	private int unidadDeCompetencia;
-	@Column(name="estrategiasDeAprendizaje")
+	@Column(name = "estrategiasDeAprendizaje")
 	private String estrategiasDeAprendizaje;
-	
+
 	/*
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_evaluacion", nullable = false)
-    EvaluacionUnidadTematica evaluacion;
-	*/
-    
-    @ManyToMany(cascade = CascadeType.ALL)
+	 * @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	 * 
+	 * @JoinColumn(name = "id_evaluacion", nullable = false)
+	 * EvaluacionUnidadTematica evaluacion;
+	 */
+
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "unidadTematica_practica", joinColumns = @JoinColumn(name = "unidaTematicaId"), inverseJoinColumns = @JoinColumn(name = "practicaId"))
 	private Set<ProgramaAcademico> practicas = new HashSet<ProgramaAcademico>();
-    
-	/*@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "unidadTematica_bibliografia", joinColumns = @JoinColumn(name = "unidadTematicaId"), inverseJoinColumns = @JoinColumn(name = "bibliografiaId"))
-	private Set<Bibliografia> bibliografias = new HashSet<Bibliografia>();
-    */
+
+	/*
+	 * @ManyToMany(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinTable(name = "unidadTematica_bibliografia", joinColumns
+	 * = @JoinColumn(name = "unidadTematicaId"), inverseJoinColumns
+	 * = @JoinColumn(name = "bibliografiaId")) private Set<Bibliografia>
+	 * bibliografias = new HashSet<Bibliografia>();
+	 */
 	public UnidadTematica(String nombre, int numero, int unidadDeCompetencia, String estrategiasDeAprendizaje,
 			EvaluacionUnidadTematica evaluacion, Set<ProgramaAcademico> practicas, Set<Bibliografia> bibliografias) {
 		super();
@@ -66,11 +71,11 @@ public class UnidadTematica implements Serializable {
 		this.numero = numero;
 		this.unidadDeCompetencia = unidadDeCompetencia;
 		this.estrategiasDeAprendizaje = estrategiasDeAprendizaje;
-		//this.evaluacion = evaluacion;
+		// this.evaluacion = evaluacion;
 		this.practicas = practicas;
-		//this.bibliografias = bibliografias;
+		// this.bibliografias = bibliografias;
 	}
-	
+
 	public UnidadTematica() {
 		super();
 	}
@@ -107,13 +112,11 @@ public class UnidadTematica implements Serializable {
 		this.estrategiasDeAprendizaje = estrategiasDeAprendizaje;
 	}
 	/*
-	public EvaluacionUnidadTematica getEvaluacion() {
-		return evaluacion;
-	}
-
-	public void setEvaluacion(EvaluacionUnidadTematica evaluacion) {
-		this.evaluacion = evaluacion;
-	}*/
+	 * public EvaluacionUnidadTematica getEvaluacion() { return evaluacion; }
+	 * 
+	 * public void setEvaluacion(EvaluacionUnidadTematica evaluacion) {
+	 * this.evaluacion = evaluacion; }
+	 */
 
 	public Set<ProgramaAcademico> getPracticas() {
 		return practicas;
@@ -122,19 +125,18 @@ public class UnidadTematica implements Serializable {
 	public void setPracticas(Set<ProgramaAcademico> practicas) {
 		this.practicas = practicas;
 	}
-	/*
-	public Set<Bibliografia> getBibliografias() {
-		return bibliografias;
-	}
 
-	public void setBibliografias(Set<Bibliografia> bibliografias) {
-		this.bibliografias = bibliografias;
-	}
+	/*
+	 * public Set<Bibliografia> getBibliografias() { return bibliografias; }
+	 * 
+	 * public void setBibliografias(Set<Bibliografia> bibliografias) {
+	 * this.bibliografias = bibliografias; }
 	 */
 	@Override
 	public String toString() {
 		return "{UnidadTematica : [id=" + id + ", nombre=" + nombre + ", numero=" + numero + ", unidadDeCompetencia="
-				+ unidadDeCompetencia + ", estrategiasDeAprendizaje=" + estrategiasDeAprendizaje + ", practicas=" + practicas + "]}";
+				+ unidadDeCompetencia + ", estrategiasDeAprendizaje=" + estrategiasDeAprendizaje + ", practicas="
+				+ practicas + "]}";
 	}
-		
+
 }
