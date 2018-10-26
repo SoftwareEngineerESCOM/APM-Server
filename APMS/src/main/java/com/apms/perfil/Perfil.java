@@ -26,8 +26,10 @@ public class Perfil implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	/*
 	@ManyToMany(mappedBy = "perfiles")
     private Set<Cargo> cargos = new HashSet<Cargo>();
+	*/
 	
 	@Column(name="Nombre")
 	private String nombre;
@@ -42,7 +44,7 @@ public class Perfil implements Serializable {
 	
 	public Perfil(Set<Cargo> cargos, String nombre) {
 		super();
-		this.cargos = cargos;
+		//this.cargos = cargos;
 		this.nombre = nombre;
 	}
 
@@ -54,13 +56,14 @@ public class Perfil implements Serializable {
 		this.nombre = nombre;
 	}
 
+	/*
 	public Set<Cargo> getCargos() {
 		return cargos;
 	}
 
 	public void setCargos(Set<Cargo> cargos) {
 		this.cargos = cargos;
-	}
+	}*/
 
 	@Override
 	public String toString() {

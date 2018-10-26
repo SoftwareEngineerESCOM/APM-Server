@@ -37,11 +37,11 @@ public class UnidadAcademica implements Serializable {
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "unidadAcademica_programaAcademico", joinColumns = @JoinColumn(name = "unidadAcademicaId"), inverseJoinColumns = @JoinColumn(name = "programaAcademicoId"))
-	private Set<ProgramaAcademico> programaAcademico = new HashSet<ProgramaAcademico>();
+	private Set<ProgramaAcademico> programasAcademicos = new HashSet<ProgramaAcademico>();
     
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "unidadAcademica_recursoHumano", joinColumns = @JoinColumn(name = "unidadAcademicaId"), inverseJoinColumns = @JoinColumn(name = "recursoHumanoId"))
-	private Set<RecursoHumano> recursoHumano = new HashSet<RecursoHumano>();
+	private Set<RecursoHumano> recursosHumanos = new HashSet<RecursoHumano>();
     
     
     public UnidadAcademica(){
@@ -67,19 +67,19 @@ public class UnidadAcademica implements Serializable {
 		this.clave = clave;
 	}
 	public Set<ProgramaAcademico> getProgramaAcademico() {
-        return programaAcademico;
+        return programasAcademicos;
     }
 
     public void setProgramaAcademico(ProgramaAcademico programaAcademico) {
-        this.programaAcademico.add(programaAcademico);
+        this.programasAcademicos.add(programaAcademico);
     }
     
 	public Set<RecursoHumano> getRecursoHumano() {
-        return recursoHumano;
+        return recursosHumanos;
     }
 
     public void setRecursoHumano(RecursoHumano recursoHumano) {
-        this.recursoHumano.add(recursoHumano);
+        this.recursosHumanos.add(recursoHumano);
     }
     
     

@@ -28,9 +28,9 @@ public class PlanDeEstudios implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToMany(mappedBy = "planesDeEstudio")
+	/*@ManyToMany(mappedBy = "planesDeEstudio")
     private Set<UnidadesDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadesDeAprendizaje>();
-	
+	*/
 	@Column(name="Año")
 	private int año;	
 	@Column(name="Modalidad")
@@ -54,7 +54,7 @@ public class PlanDeEstudios implements Serializable {
 	public PlanDeEstudios(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje, int año, String modalidad,
 			double sumatoriaCreditosTEPIC, double sumatoriaCreditosSATCA) {
 		super();
-		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;
 		this.año = año;
 		this.modalidad = modalidad;
 		this.sumatoriaCreditosTEPIC = sumatoriaCreditosTEPIC;
@@ -92,14 +92,14 @@ public class PlanDeEstudios implements Serializable {
 	public void setSumatoriaCreditosSATCA(double sumatoriaCreditosSATCA) {
 		this.sumatoriaCreditosSATCA = sumatoriaCreditosSATCA;
 	}
-
+	/*
 	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
 
 	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
 		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
-	}
+	}*/
 
 	@Override
 	public String toString() {

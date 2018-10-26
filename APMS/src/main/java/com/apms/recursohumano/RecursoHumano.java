@@ -36,7 +36,7 @@ public class RecursoHumano implements Serializable {
     @Column(name="segundoApellido")
 	private String segundoApellido;
     
-    @ManyToMany(mappedBy = "unidad_academica")
+    @ManyToMany(mappedBy = "recursosHumanos")
     private Set<UnidadAcademica> unidadAcademica = new HashSet<UnidadAcademica>();
 
     public RecursoHumano() {

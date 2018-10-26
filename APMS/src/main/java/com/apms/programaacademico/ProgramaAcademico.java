@@ -32,7 +32,7 @@ public class ProgramaAcademico implements Serializable {
     @Column(name="clave")
     private int clave;
 
-	@ManyToMany(mappedBy = "unidad_academica")
+	@ManyToMany(mappedBy = "programasAcademicos")
     private Set<UnidadAcademica> unidadAcademica = new HashSet<UnidadAcademica>();
     
     
