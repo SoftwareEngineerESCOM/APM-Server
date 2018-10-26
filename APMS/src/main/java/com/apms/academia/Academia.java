@@ -22,7 +22,6 @@ public class Academia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 	@Column(name = "nombre")
 	private String nombre;
 
