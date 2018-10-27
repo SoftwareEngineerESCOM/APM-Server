@@ -47,4 +47,95 @@ public class Bibliografia {
 	@JoinTable(name = "bibliografia_autor", joinColumns = @JoinColumn(name = "id_bibliografia"), inverseJoinColumns = @JoinColumn(name = "id_autor"))
 	private Set<Autor> autores = new HashSet<Autor>();
 
+	public Bibliografia() {
+		super();
+	}
+
+	public Bibliografia(String isbn, String titulo, Integer anioPublicacion, String editorial, Integer edicion,
+			String pais, Set<UnidadTematica> unidadesTematicas, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje,
+			Set<Autor> autores) {
+		super();
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.anioPublicacion = anioPublicacion;
+		this.editorial = editorial;
+		this.edicion = edicion;
+		this.pais = pais;
+		this.unidadesTematicas = unidadesTematicas;
+		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+		this.autores = autores;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public Integer getAnioPublicacion() {
+		return anioPublicacion;
+	}
+
+	public void setAnioPublicacion(Integer anioPublicacion) {
+		this.anioPublicacion = anioPublicacion;
+	}
+
+	public String getEditorial() {
+		return editorial;
+	}
+
+	public void setEditorial(String editorial) {
+		this.editorial = editorial;
+	}
+
+	public Integer getEdicion() {
+		return edicion;
+	}
+
+	public void setEdicion(Integer edicion) {
+		this.edicion = edicion;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public Set<UnidadTematica> getUnidadesTematicas() {
+		return unidadesTematicas;
+	}
+
+	public void setUnidadesTematicas(Set<UnidadTematica> unidadesTematicas) {
+		this.unidadesTematicas = unidadesTematicas;
+	}
+
+	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
+		return unidadesDeAprendizaje;
+	}
+
+	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+	}
+
+	public Set<Autor> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(Set<Autor> autores) {
+		this.autores = autores;
+	}
+
 }

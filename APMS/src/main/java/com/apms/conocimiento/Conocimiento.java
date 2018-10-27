@@ -25,4 +25,30 @@ public class Conocimiento {
 	@ManyToMany(mappedBy = "conocimientos")
 	private Set<PerfilDocente> perfilesDocentes = new HashSet<PerfilDocente>();
 
+	public Conocimiento() {
+		super();
+	}
+
+	public Conocimiento(String nombre, Set<PerfilDocente> perfilesDocentes) {
+		super();
+		this.nombre = nombre;
+		this.perfilesDocentes = perfilesDocentes;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Set<PerfilDocente> getPerfilesDocentes() {
+		return perfilesDocentes;
+	}
+
+	public void setPerfilesDocentes(Set<PerfilDocente> perfilesDocentes) {
+		this.perfilesDocentes = perfilesDocentes;
+	}
+
 }

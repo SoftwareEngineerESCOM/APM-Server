@@ -27,4 +27,49 @@ public class EvaluacionUnidadTematica {
 	@ManyToOne
 	@JoinColumn(name = "id_unidadTematica")
 	private UnidadTematica unidadTematica;
+
+	public EvaluacionUnidadTematica() {
+		super();
+	}
+
+	public EvaluacionUnidadTematica(String nombre, Double porcentaje, String tipo, UnidadTematica unidadTematica) {
+		super();
+		this.nombre = nombre;
+		this.porcentaje = porcentaje;
+		this.tipo = tipo;
+		this.unidadTematica = unidadTematica;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public void setPorcentaje(Double porcentaje) {
+		this.porcentaje = porcentaje;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public UnidadTematica getUnidadTematica() {
+		return unidadTematica;
+	}
+
+	public void setUnidadTematica(UnidadTematica unidadTematica) {
+		this.unidadTematica = unidadTematica;
+	}
+
 }

@@ -22,7 +22,33 @@ public class Ensenansa {
 	@Column(name = "nombre")
 	private String nombre;
 
-	@ManyToMany(mappedBy="ensenansas")
+	@ManyToMany(mappedBy = "ensenansas")
 	private Set<UnidadesDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadesDeAprendizaje>();
-	
+
+	public Ensenansa() {
+		super();
+	}
+
+	public Ensenansa(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+		super();
+		this.nombre = nombre;
+		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
+		return unidadesDeAprendizaje;
+	}
+
+	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+	}
+
 }

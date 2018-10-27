@@ -32,4 +32,39 @@ public class Academia {
 	@JoinTable(name = "id_unidadAcademica")
 	private UnidadAcademica unidadAcademica;
 
+	public Academia() {
+		super();
+	}
+
+	public Academia(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje, UnidadAcademica unidadAcademica) {
+		super();
+		this.nombre = nombre;
+		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+		this.unidadAcademica = unidadAcademica;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
+		return unidadesDeAprendizaje;
+	}
+
+	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+	}
+
+	public UnidadAcademica getUnidadAcademica() {
+		return unidadAcademica;
+	}
+
+	public void setUnidadAcademica(UnidadAcademica unidadAcademica) {
+		this.unidadAcademica = unidadAcademica;
+	}
+
 }

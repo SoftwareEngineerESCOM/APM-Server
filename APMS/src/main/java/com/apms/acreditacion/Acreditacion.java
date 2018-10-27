@@ -26,4 +26,39 @@ public class Acreditacion {
 	@JoinColumn(name = "id_unidadDeAprendizaje")
 	private UnidadesDeAprendizaje unidadDeAprendizaje;
 
+	public Acreditacion() {
+		super();
+	}
+
+	public Acreditacion(String nombre, String descripcion, UnidadesDeAprendizaje unidadDeAprendizaje) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.unidadDeAprendizaje = unidadDeAprendizaje;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public UnidadesDeAprendizaje getUnidadDeAprendizaje() {
+		return unidadDeAprendizaje;
+	}
+
+	public void setUnidadDeAprendizaje(UnidadesDeAprendizaje unidadDeAprendizaje) {
+		this.unidadDeAprendizaje = unidadDeAprendizaje;
+	}
+
 }

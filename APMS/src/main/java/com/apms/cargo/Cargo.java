@@ -33,4 +33,39 @@ public class Cargo {
 	@JoinTable(name = "cargo_perfil", joinColumns = @JoinColumn(name = "cargoId"), inverseJoinColumns = @JoinColumn(name = "perfilId"))
 	private Set<Perfil> perfiles = new HashSet<Perfil>();
 
+	public Cargo() {
+		super();
+	}
+
+	public Cargo(String nombre, Set<RecursoHumano> recursosHumanos, Set<Perfil> perfiles) {
+		super();
+		this.nombre = nombre;
+		this.recursosHumanos = recursosHumanos;
+		this.perfiles = perfiles;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Set<RecursoHumano> getRecursosHumanos() {
+		return recursosHumanos;
+	}
+
+	public void setRecursosHumanos(Set<RecursoHumano> recursosHumanos) {
+		this.recursosHumanos = recursosHumanos;
+	}
+
+	public Set<Perfil> getPerfiles() {
+		return perfiles;
+	}
+
+	public void setPerfiles(Set<Perfil> perfiles) {
+		this.perfiles = perfiles;
+	}
+
 }

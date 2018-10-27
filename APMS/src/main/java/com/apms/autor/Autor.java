@@ -27,4 +27,39 @@ public class Autor {
 	@ManyToMany(mappedBy = "autores")
 	private Set<Bibliografia> bibliografias = new HashSet<Bibliografia>();
 
+	public Autor() {
+		super();
+	}
+
+	public Autor(String nombre, String primerApellido, Set<Bibliografia> bibliografias) {
+		super();
+		this.nombre = nombre;
+		this.primerApellido = primerApellido;
+		this.bibliografias = bibliografias;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getPrimerApellido() {
+		return primerApellido;
+	}
+
+	public void setPrimerApellido(String primerApellido) {
+		this.primerApellido = primerApellido;
+	}
+
+	public Set<Bibliografia> getBibliografias() {
+		return bibliografias;
+	}
+
+	public void setBibliografias(Set<Bibliografia> bibliografias) {
+		this.bibliografias = bibliografias;
+	}
+
 }
