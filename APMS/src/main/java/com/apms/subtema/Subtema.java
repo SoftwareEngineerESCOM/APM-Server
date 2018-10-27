@@ -18,30 +18,30 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Subtema")
+@Table(name = "Subtema")
 public class Subtema implements Serializable {
 
 	private static final long serialVersionUID = -3009157732242241606L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-    @Column(name="nombre")
+
+	@Column(name = "nombre")
 	private String nombre;
-    @Column(name="numero")
-    private int numero;
- 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_tema", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    Tema tema;
-    
-    public Subtema() {
-    	super();
+	@Column(name = "numero")
+	private int numero;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "id_tema", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	Tema tema;
+
+	public Subtema() {
+		super();
 	}
-	
-    public Subtema(String nombre, int numero, Tema tema) {
+
+	public Subtema(String nombre, int numero, Tema tema) {
 		super();
 		this.nombre = nombre;
 		this.numero = numero;
@@ -51,19 +51,19 @@ public class Subtema implements Serializable {
 	public String getNombre() {
 		return nombre;
 	}
-	
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	public int getNumero() {
 		return numero;
 	}
-	
+
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	
+
 	public Tema getTema() {
 		return tema;
 	}
@@ -74,8 +74,7 @@ public class Subtema implements Serializable {
 
 	@Override
 	public String toString() {
-		return "{ nombre:"+nombre+", numero:"+numero+",tema: "+tema+"}";
+		return "{ nombre:" + nombre + ", numero:" + numero + ",tema: " + tema + "}";
 	}
-      
 
 }

@@ -38,9 +38,8 @@ public class ExperienciaProfesional implements Serializable {
 	
 	}
 
-	public ExperienciaProfesional(Long id, String nombre) {
+	public ExperienciaProfesional(String nombre) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 	}
 

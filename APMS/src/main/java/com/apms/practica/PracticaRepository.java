@@ -1,5 +1,9 @@
 package com.apms.practica;
 
-public interface PracticaRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PracticaRepository extends CrudRepository<Practica, Integer>{
 
 }

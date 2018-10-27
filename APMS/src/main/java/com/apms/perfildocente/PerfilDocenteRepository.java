@@ -1,5 +1,9 @@
 package com.apms.perfildocente;
 
-public interface PerfilDocenteRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
+public interface PerfilDocenteRepository extends CrudRepository<PerfilDocente, Integer>{
+	
 }
