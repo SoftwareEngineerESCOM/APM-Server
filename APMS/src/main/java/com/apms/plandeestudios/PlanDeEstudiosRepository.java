@@ -1,5 +1,9 @@
 package com.apms.plandeestudios;
 
-public interface PlanDeEstudiosRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PlanDeEstudiosRepository extends CrudRepository<PlanDeEstudios, Integer>{
 
 }
