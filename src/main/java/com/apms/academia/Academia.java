@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.apms.unidadacademica.UnidadAcademica;
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 @Entity
 @Table(name = "Academia")
@@ -38,7 +38,7 @@ public class Academia {
 		super();
 	}
 
-	public Academia(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje, UnidadAcademica unidadAcademica) {
+	public Academia(String nombre, Set<UnidadDeAprendizaje> unidadesDeAprendizaje, UnidadAcademica unidadAcademica) {
 		super();
 		this.nombre = nombre;
 		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;

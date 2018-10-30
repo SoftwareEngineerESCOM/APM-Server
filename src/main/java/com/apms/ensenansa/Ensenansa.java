@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 @Entity
 @Table(name = "Ensenansa")
@@ -29,7 +29,7 @@ public class Ensenansa {
 		super();
 	}
 
-	public Ensenansa(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+	public Ensenansa(String nombre, Set<UnidadDeAprendizaje> unidadesDeAprendizaje) {
 		super();
 		this.nombre = nombre;
 		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;

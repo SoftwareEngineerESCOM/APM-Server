@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 @Entity
 @Table(name = "EvaluacionUnidadDeAprendizaje")

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TipoDeUnidad")
-public class UnidadesDeAprendizajeDescripcion implements Serializable {
+public class UnidadDeAprendizajeDescripcion implements Serializable {
 
 	private static final long serialVersionUID = -3009157732242241606L;
 	@Id
@@ -28,11 +28,11 @@ public class UnidadesDeAprendizajeDescripcion implements Serializable {
 	@Column(name="intencionEducativa")
 	private String intencionEducativa;
 	
-	public UnidadesDeAprendizajeDescripcion() {
+	public UnidadDeAprendizajeDescripcion() {
 		super();
 	}
 	
-	public UnidadesDeAprendizajeDescripcion(String proposito, String orientacionDidactica,
+	public UnidadDeAprendizajeDescripcion(String proposito, String orientacionDidactica,
 			String evaluacionYAcreditacion, String intencionEducativa) {
 		super();
 		this.proposito = proposito;

@@ -1,5 +1,5 @@
 package com.apms.unidaddeaprendizajedescripcion;
 
-public interface UnidadesDeAprendizajeDescripcionRepository {
+public interface UnidadDeAprendizajeDescripcionRepository {
 
 }

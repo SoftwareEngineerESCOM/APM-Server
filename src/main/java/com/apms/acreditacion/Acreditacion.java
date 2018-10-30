@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 @Entity
 @Table(name = "Acreditacion")
@@ -30,7 +30,7 @@ public class Acreditacion {
 		super();
 	}
 
-	public Acreditacion(String nombre, String descripcion, UnidadesDeAprendizaje unidadDeAprendizaje) {
+	public Acreditacion(String nombre, String descripcion, UnidadDeAprendizaje unidadDeAprendizaje) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;

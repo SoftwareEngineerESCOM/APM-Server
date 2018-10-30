@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 
 
@@ -51,7 +51,7 @@ public class PlanDeEstudios implements Serializable {
 		this.sumatoriaCreditosSATCA = sumatoriaCreditosSATCA;
 	}
 
-	public PlanDeEstudios(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje, int año, String modalidad,
+	public PlanDeEstudios(Set<UnidadDeAprendizaje> unidadesDeAprendizaje, int año, String modalidad,
 			double sumatoriaCreditosTEPIC, double sumatoriaCreditosSATCA) {
 		super();
 		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;

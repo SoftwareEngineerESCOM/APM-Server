@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.apms.autor.Autor;
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 import com.apms.unidadtematica.UnidadTematica;
 
 @Entity
@@ -53,7 +53,7 @@ public class Bibliografia {
 	}
 
 	public Bibliografia(String isbn, String titulo, Integer anioPublicacion, String editorial, Integer edicion,
-			String pais, Set<UnidadTematica> unidadesTematicas, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje,
+			String pais, Set<UnidadTematica> unidadesTematicas, Set<UnidadDeAprendizaje> unidadesDeAprendizaje,
 			Set<Autor> autores) {
 		super();
 		this.isbn = isbn;
@@ -123,11 +123,11 @@ public class Bibliografia {
 		this.unidadesTematicas.add(unidadesTematicas);
 	}
 	/*
-	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
+	public Set<UnidadesDeAprendizaje> getUnidadDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
 
-	public void setUnidadesDeAprendizaje(UnidadesDeAprendizaje unidadesDeAprendizaje) {
+	public void setUnidadDeAprendizaje(UnidadDeAprendizaje unidadDeAprendizaje) {
 		this.unidadesDeAprendizaje.add(unidadesDeAprendizaje);
 	}
 	*/
