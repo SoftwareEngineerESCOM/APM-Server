@@ -45,33 +45,29 @@ public class UnidadTematica implements Serializable {
 	@Column(name = "estrategiasDeAprendizaje")
 	private String estrategiasDeAprendizaje;
 
-	/*
-	 * @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	 * 
-	 * @JoinColumn(name = "id_evaluacion", nullable = false)
-	 * EvaluacionUnidadTematica evaluacion;
-	 */
-
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)  
+	@JoinColumn(name = "id_evaluacion", nullable = false)
+	EvaluacionUnidadTematica evaluacion;
+	 
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "unidadTematica_practica", joinColumns = @JoinColumn(name = "unidaTematicaId"), inverseJoinColumns = @JoinColumn(name = "practicaId"))
 	private Set<ProgramaAcademico> practicas = new HashSet<ProgramaAcademico>();
-
-	/*
-	 * @ManyToMany(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinTable(name = "unidadTematica_bibliografia", joinColumns
-	 * = @JoinColumn(name = "unidadTematicaId"), inverseJoinColumns
-	 * = @JoinColumn(name = "bibliografiaId")) private Set<Bibliografia>
-	 * bibliografias = new HashSet<Bibliografia>();
-	 */
+	
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "unidadTematica_bibliografia", joinColumns= @JoinColumn(name = "unidadTematicaId"), inverseJoinColumns= @JoinColumn(name = "bibliografiaId")) 
+	private Set<Bibliografia> bibliografias = new HashSet<Bibliografia>();
+ 
+	
 	public UnidadTematica(String nombre, int numero, int unidadDeCompetencia, String estrategiasDeAprendizaje,
-			EvaluacionUnidadTematica evaluacion, Set<ProgramaAcademico> practicas, Set<Bibliografia> bibliografias) {
+			EvaluacionUnidadTematica evaluacion, Set<ProgramaAcademico> practicas) {
 		super();
 		this.nombre = nombre;
 		this.numero = numero;
 		this.unidadDeCompetencia = unidadDeCompetencia;
 		this.estrategiasDeAprendizaje = estrategiasDeAprendizaje;
-		// this.evaluacion = evaluacion;
+		this.evaluacion = evaluacion;
 		this.practicas = practicas;
 		// this.bibliografias = bibliografias;
 	}
@@ -111,12 +107,14 @@ public class UnidadTematica implements Serializable {
 	public void setEstrategiasDeAprendizaje(String estrategiasDeAprendizaje) {
 		this.estrategiasDeAprendizaje = estrategiasDeAprendizaje;
 	}
-	/*
-	 * public EvaluacionUnidadTematica getEvaluacion() { return evaluacion; }
-	 * 
-	 * public void setEvaluacion(EvaluacionUnidadTematica evaluacion) {
-	 * this.evaluacion = evaluacion; }
-	 */
+	
+	public EvaluacionUnidadTematica getEvaluacion() { 
+	   return evaluacion; 
+	}
+	
+	public void setEvaluacion(EvaluacionUnidadTematica evaluacion) {
+	   this.evaluacion = evaluacion; 
+	}
 
 	public Set<ProgramaAcademico> getPracticas() {
 		return practicas;
@@ -126,12 +124,16 @@ public class UnidadTematica implements Serializable {
 		this.practicas = practicas;
 	}
 
-	/*
-	 * public Set<Bibliografia> getBibliografias() { return bibliografias; }
-	 * 
-	 * public void setBibliografias(Set<Bibliografia> bibliografias) {
-	 * this.bibliografias = bibliografias; }
-	 */
+	
+	public Set<Bibliografia> getBibliografias() { 
+		return bibliografias; 
+	}
+  
+	public void setBibliografias(Bibliografia bibliografias) {
+		this.bibliografias.add(bibliografias); 
+	}
+	 
+	
 	@Override
 	public String toString() {
 		return "{UnidadTematica : [id=" + id + ", nombre=" + nombre + ", numero=" + numero + ", unidadDeCompetencia="

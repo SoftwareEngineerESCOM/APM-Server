@@ -21,11 +21,11 @@ public class Acreditacion {
 	private String nombre;
 	@Column(name = "descripcion")
 	private String descripcion;
-
+	/*
 	@ManyToOne
 	@JoinColumn(name = "id_unidadDeAprendizaje")
 	private UnidadesDeAprendizaje unidadDeAprendizaje;
-
+	 */
 	public Acreditacion() {
 		super();
 	}
@@ -34,7 +34,7 @@ public class Acreditacion {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.unidadDeAprendizaje = unidadDeAprendizaje;
+		//this.unidadDeAprendizaje = unidadDeAprendizaje;
 	}
 
 	public String getNombre() {
@@ -52,7 +52,7 @@ public class Acreditacion {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
+	/*
 	public UnidadesDeAprendizaje getUnidadDeAprendizaje() {
 		return unidadDeAprendizaje;
 	}
@@ -60,5 +60,6 @@ public class Acreditacion {
 	public void setUnidadDeAprendizaje(UnidadesDeAprendizaje unidadDeAprendizaje) {
 		this.unidadDeAprendizaje = unidadDeAprendizaje;
 	}
+	*/
 
 }

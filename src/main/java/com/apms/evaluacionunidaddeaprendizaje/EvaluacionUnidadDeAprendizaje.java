@@ -23,9 +23,8 @@ public class EvaluacionUnidadDeAprendizaje {
 	private Double porcentaje;
 	@Column(name = "periodo")
 	private Integer periodo;
-
+	/*
 	@ManyToOne
 	@JoinColumn(name = "id_unidadDeAprendizaje")
-	private UnidadesDeAprendizaje unidadDeAprendizaje;
-
+	private UnidadesDeAprendizaje unidadDeAprendizaje;*/
 }

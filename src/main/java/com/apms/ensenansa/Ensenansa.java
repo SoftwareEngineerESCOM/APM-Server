@@ -21,10 +21,10 @@ public class Ensenansa {
 	private Long id;
 	@Column(name = "nombre")
 	private String nombre;
-
+	/*
 	@ManyToMany(mappedBy = "ensenansas")
 	private Set<UnidadesDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadesDeAprendizaje>();
-
+	*/
 	public Ensenansa() {
 		super();
 	}
@@ -32,7 +32,7 @@ public class Ensenansa {
 	public Ensenansa(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
 		super();
 		this.nombre = nombre;
-		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;
 	}
 
 	public String getNombre() {
@@ -42,13 +42,13 @@ public class Ensenansa {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/*
 	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
 
-	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
-		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+	public void setUnidadesDeAprendizaje(UnidadesDeAprendizaje unidadesDeAprendizaje) {
+		this.unidadesDeAprendizaje.add(unidadesDeAprendizaje);
 	}
-
+	 */
 }

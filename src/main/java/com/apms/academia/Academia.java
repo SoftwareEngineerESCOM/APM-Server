@@ -25,13 +25,15 @@ public class Academia {
 	@Column(name = "nombre")
 	private String nombre;
 
+	/*
 	@OneToMany(mappedBy = "academia")
 	private Set<UnidadesDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadesDeAprendizaje>();
-
+	
 	@ManyToOne
 	@JoinTable(name = "id_unidadAcademica")
 	private UnidadAcademica unidadAcademica;
-
+	 */
+	
 	public Academia() {
 		super();
 	}
@@ -39,8 +41,8 @@ public class Academia {
 	public Academia(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje, UnidadAcademica unidadAcademica) {
 		super();
 		this.nombre = nombre;
-		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
-		this.unidadAcademica = unidadAcademica;
+		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+		//this.unidadAcademica = unidadAcademica;
 	}
 
 	public String getNombre() {
@@ -50,7 +52,7 @@ public class Academia {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/*
 	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
@@ -65,6 +67,6 @@ public class Academia {
 
 	public void setUnidadAcademica(UnidadAcademica unidadAcademica) {
 		this.unidadAcademica = unidadAcademica;
-	}
+	}*/
 
 }

@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.apms.actitud.Actitud;
+import com.apms.conocimiento.Conocimiento;
 import com.apms.experienciaprofesional.ExperienciaProfesional;
 import com.apms.gradodeestudio.GradoDeEstudio;
 import com.apms.habilidad.Habilidad;
@@ -35,11 +37,10 @@ public class PerfilDocente implements Serializable {
 	@JoinTable(name = "gradosDeEstudio_perfilDocente", joinColumns = @JoinColumn(name = "perfilDocenteId"), inverseJoinColumns = @JoinColumn(name = "gradosDeEstudiosId"))
 	private Set<GradoDeEstudio> gradosDeEstudio = new HashSet<GradoDeEstudio>();
 
-	/*
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "conociminetos_perfilDocente", joinColumns = @JoinColumn(name = "perfilDocenteId"), inverseJoinColumns = @JoinColumn(name = "conocimientosdId"))
-	private Set<RecursoHumano> conocimientos = new HashSet<RecursoHumano>();
-	*/
+	private Set<Conocimiento> conocimientos = new HashSet<Conocimiento>();
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "experienciasProfesionales_perfilDocente", joinColumns = @JoinColumn(name = "perfilDocenteId"), inverseJoinColumns = @JoinColumn(name = "experienciasProfesionalesId"))
 	private Set<ExperienciaProfesional> experienciasProfesionales = new HashSet<ExperienciaProfesional>();
@@ -48,12 +49,10 @@ public class PerfilDocente implements Serializable {
 	@JoinTable(name = "habilidades_perfilDocentes", joinColumns = @JoinColumn(name = "perfilDocenteId"), inverseJoinColumns = @JoinColumn(name = "hablidadesId"))
 	private Set<Habilidad> habilidades = new HashSet<Habilidad>();
 	
-	/*
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "actitudes_perfilDocente", joinColumns = @JoinColumn(name = "perfilDocenteId"), inverseJoinColumns = @JoinColumn(name = "actitudesId"))
-	private Set<RecursoHumano> actitudes = new HashSet<RecursoHumano>();
-    */
-	
+	private Set<Actitud> actitudes = new HashSet<Actitud>();
+    
 	public PerfilDocente() {
 		
 	}
@@ -92,6 +91,30 @@ public class PerfilDocente implements Serializable {
 
 	public void setHabilidades(Habilidad habilidades) {
 		this.habilidades.add(habilidades);
+	}
+	
+	
+
+	public Set<Conocimiento> getConocimientos() {
+		return conocimientos;
+	}
+
+
+
+	public void setConocimientos(Conocimiento conocimientos) {
+		this.conocimientos.add(conocimientos);
+	}
+
+
+
+	public Set<Actitud> getActitudes() {
+		return actitudes;
+	}
+
+
+
+	public void setActitudes(Actitud actitudes) {
+		this.actitudes.add(actitudes);
 	}
 
 
