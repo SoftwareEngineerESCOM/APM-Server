@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 @Entity
 @Table(name = "Acreditacion")
@@ -24,13 +24,13 @@ public class Acreditacion {
 
 	@ManyToOne
 	@JoinColumn(name = "id_unidadDeAprendizaje")
-	private UnidadesDeAprendizaje unidadDeAprendizaje;
+	private UnidadDeAprendizaje unidadDeAprendizaje;
 
 	public Acreditacion() {
 		super();
 	}
 
-	public Acreditacion(String nombre, String descripcion, UnidadesDeAprendizaje unidadDeAprendizaje) {
+	public Acreditacion(String nombre, String descripcion, UnidadDeAprendizaje unidadDeAprendizaje) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -53,11 +53,11 @@ public class Acreditacion {
 		this.descripcion = descripcion;
 	}
 
-	public UnidadesDeAprendizaje getUnidadDeAprendizaje() {
+	public UnidadDeAprendizaje getUnidadDeAprendizaje() {
 		return unidadDeAprendizaje;
 	}
 
-	public void setUnidadDeAprendizaje(UnidadesDeAprendizaje unidadDeAprendizaje) {
+	public void setUnidadDeAprendizaje(UnidadDeAprendizaje unidadDeAprendizaje) {
 		this.unidadDeAprendizaje = unidadDeAprendizaje;
 	}
 

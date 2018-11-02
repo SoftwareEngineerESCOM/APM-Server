@@ -1,5 +1,5 @@
 package com.apms.unidaddeaprendizajedescripcion;
 
-public class UnidadesDeAprendizajeDescripcionController {
+public class UnidadDeAprendizajeDescripcionController {
 
 }

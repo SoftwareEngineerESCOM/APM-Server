@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.apms.autor.Autor;
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 import com.apms.unidadtematica.UnidadTematica;
 
 @Entity
@@ -41,7 +41,7 @@ public class Bibliografia {
 	private Set<UnidadTematica> unidadesTematicas = new HashSet<UnidadTematica>();
 
 	@ManyToMany(mappedBy = "bibliografias")
-	private Set<UnidadesDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadesDeAprendizaje>();
+	private Set<UnidadDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadDeAprendizaje>();
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "bibliografia_autor", joinColumns = @JoinColumn(name = "id_bibliografia"), inverseJoinColumns = @JoinColumn(name = "id_autor"))
@@ -52,7 +52,7 @@ public class Bibliografia {
 	}
 
 	public Bibliografia(String isbn, String titulo, Integer anioPublicacion, String editorial, Integer edicion,
-			String pais, Set<UnidadTematica> unidadesTematicas, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje,
+			String pais, Set<UnidadTematica> unidadesTematicas, Set<UnidadDeAprendizaje> unidadesDeAprendizaje,
 			Set<Autor> autores) {
 		super();
 		this.isbn = isbn;
@@ -122,11 +122,11 @@ public class Bibliografia {
 		this.unidadesTematicas = unidadesTematicas;
 	}
 
-	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
+	public Set<UnidadDeAprendizaje> getUnidadesDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
 
-	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+	public void setUnidadesDeAprendizaje(Set<UnidadDeAprendizaje> unidadesDeAprendizaje) {
 		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
 	}
 

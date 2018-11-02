@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.apms.unidaddeaprendizaje.UnidadesDeAprendizaje;
+import com.apms.unidaddeaprendizaje.UnidadDeAprendizaje;
 
 @Entity
 @Table(name = "Ensenansa")
@@ -23,13 +23,13 @@ public class Ensenansa {
 	private String nombre;
 
 	@ManyToMany(mappedBy = "ensenansas")
-	private Set<UnidadesDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadesDeAprendizaje>();
+	private Set<UnidadDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadDeAprendizaje>();
 
 	public Ensenansa() {
 		super();
 	}
 
-	public Ensenansa(String nombre, Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+	public Ensenansa(String nombre, Set<UnidadDeAprendizaje> unidadesDeAprendizaje) {
 		super();
 		this.nombre = nombre;
 		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
@@ -43,11 +43,11 @@ public class Ensenansa {
 		this.nombre = nombre;
 	}
 
-	public Set<UnidadesDeAprendizaje> getUnidadesDeAprendizaje() {
+	public Set<UnidadDeAprendizaje> getUnidadesDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
 
-	public void setUnidadesDeAprendizaje(Set<UnidadesDeAprendizaje> unidadesDeAprendizaje) {
+	public void setUnidadesDeAprendizaje(Set<UnidadDeAprendizaje> unidadesDeAprendizaje) {
 		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
 	}
 
