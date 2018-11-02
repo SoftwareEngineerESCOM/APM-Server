@@ -23,9 +23,40 @@ public class EvaluacionUnidadDeAprendizaje {
 	private Double porcentaje;
 	@Column(name = "periodo")
 	private Integer periodo;
-	/*
 	@ManyToOne
 	@JoinColumn(name = "id_unidadDeAprendizaje")
 	private UnidadDeAprendizaje unidadDeAprendizaje;
-	*/
+
+	public Integer getNumeroUnidadTematica() {
+		return numeroUnidadTematica;
+	}
+
+	public void setNumeroUnidadTematica(Integer numeroUnidadTematica) {
+		this.numeroUnidadTematica = numeroUnidadTematica;
+	}
+
+	public Double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public void setPorcentaje(Double porcentaje) {
+		this.porcentaje = porcentaje;
+	}
+
+	public Integer getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(Integer periodo) {
+		this.periodo = periodo;
+	}
+
+	public UnidadDeAprendizaje getUnidadDeAprendizaje() {
+		return unidadDeAprendizaje;
+	}
+
+	public void setUnidadDeAprendizaje(UnidadDeAprendizaje unidadDeAprendizaje) {
+		this.unidadDeAprendizaje = unidadDeAprendizaje;
+	}
+
 }
