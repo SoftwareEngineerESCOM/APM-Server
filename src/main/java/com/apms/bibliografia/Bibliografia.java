@@ -39,10 +39,11 @@ public class Bibliografia {
 
 	@ManyToMany(mappedBy = "bibliografias")
 	private Set<UnidadTematica> unidadesTematicas = new HashSet<UnidadTematica>();
-
+	
+	/*
 	@ManyToMany(mappedBy = "bibliografias")
 	private Set<UnidadDeAprendizaje> unidadesDeAprendizaje = new HashSet<UnidadDeAprendizaje>();
-
+	*/
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "bibliografia_autor", joinColumns = @JoinColumn(name = "id_bibliografia"), inverseJoinColumns = @JoinColumn(name = "id_autor"))
 	private Set<Autor> autores = new HashSet<Autor>();
@@ -61,8 +62,8 @@ public class Bibliografia {
 		this.editorial = editorial;
 		this.edicion = edicion;
 		this.pais = pais;
-		this.unidadesTematicas = unidadesTematicas;
-		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+		//this.unidadesTematicas = unidadesTematicas;
+		//this.unidadesDeAprendizaje = unidadesDeAprendizaje;
 		this.autores = autores;
 	}
 
@@ -118,24 +119,25 @@ public class Bibliografia {
 		return unidadesTematicas;
 	}
 
-	public void setUnidadesTematicas(Set<UnidadTematica> unidadesTematicas) {
-		this.unidadesTematicas = unidadesTematicas;
+	public void setUnidadesTematicas(UnidadTematica unidadesTematicas) {
+		this.unidadesTematicas.add(unidadesTematicas);
 	}
 
+	/*
 	public Set<UnidadDeAprendizaje> getUnidadesDeAprendizaje() {
 		return unidadesDeAprendizaje;
 	}
 
-	public void setUnidadesDeAprendizaje(Set<UnidadDeAprendizaje> unidadesDeAprendizaje) {
-		this.unidadesDeAprendizaje = unidadesDeAprendizaje;
+	public void setUnidadDeAprendizaje(UnidadDeAprendizaje unidadDeAprendizaje) {
+		this.unidadesDeAprendizaje.add(unidadesDeAprendizaje);
 	}
-
+	*/
 	public Set<Autor> getAutores() {
 		return autores;
 	}
 
-	public void setAutores(Set<Autor> autores) {
-		this.autores = autores;
+	public void setAutores(Autor autores) {
+		this.autores.add(autores);
 	}
 
 }

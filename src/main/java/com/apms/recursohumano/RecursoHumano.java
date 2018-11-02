@@ -4,17 +4,22 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToOne;
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.apms.cargo.Cargo;
+import com.apms.perfil.Perfil;
 import com.apms.unidadacademica.UnidadAcademica;
 
 
@@ -38,8 +43,13 @@ public class RecursoHumano implements Serializable {
     
     @ManyToMany(mappedBy = "recursosHumanos")
     private Set<UnidadAcademica> unidadAcademica = new HashSet<UnidadAcademica>();
+    
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "cargo_recursoHumano", joinColumns = @JoinColumn(name = "recursoHumanoId"), inverseJoinColumns = @JoinColumn(name = "cargoId"))
+	private Set<Cargo> cargos = new HashSet<Cargo>();
 
-    public RecursoHumano() {
+    
+	public RecursoHumano() {
 		super();
 	}
     
@@ -90,7 +100,14 @@ public class RecursoHumano implements Serializable {
 	public void setUnidadAcademica(UnidadAcademica unidadAcademica) {
 		this.unidadAcademica.add(unidadAcademica);
 	}
-    
+
+	public Set<Cargo> getCargos() {
+		return cargos;
+	}
+
+	public void setCargos(Cargo cargo) {
+		this.cargos.add(cargo);
+	}
     
     
 
