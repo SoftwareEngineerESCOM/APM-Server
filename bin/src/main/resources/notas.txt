@@ -1,3 +1,0 @@
-- Se comentó la linea de la relación many to many de unidadesDeAprendizaje en plan de estudios
-- Se comentó la linea de EvalucacionUnidadTematica en Unidad temanica debido a la fata de la relación many to many en evaluacion
-- Se comentó la linea de Cargo en perfil debido a la fata de la relación meny to many en crgo

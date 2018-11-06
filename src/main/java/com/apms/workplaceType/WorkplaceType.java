@@ -22,7 +22,7 @@ public class WorkplaceType {
 	@Column(nullable = false)
 	private String abbreviation;
 	@Column(nullable = false)
-	private String description;	
+	private String description;
 
 	public WorkplaceType() {
 

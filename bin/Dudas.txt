@@ -1,3 +1,0 @@
-Dudas:
-Todas las relaciones van a ser bidireccionales?
-Hacemos diferencia con los "Se compone de" y "Se agrega"?
