@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.restResponse.RESTRequest;
+import com.apms.restResponse.RESTResponse;
+
 @RestController
 @RequestMapping("/HumanResource")
 public class HumanResourceRestController {
@@ -31,16 +34,17 @@ public class HumanResourceRestController {
     **Return one resource
     */
     @GetMapping("/{id}")
-    public HumanResource getOne(@PathVariable Long id) {
-        return humanResourceService.getOne(id);
+    public RESTResponse<HumanResource> getOne(@PathVariable Long id) {
+    	RESTResponse<HumanResource> res = new RESTResponse<HumanResource>(1, "a", humanResourceService.getOne(id));
+    	return res;
     }
 
     /*
     **Store a newly created resource in storage.
     */
     @PostMapping
-    public void add(@RequestBody HumanResource humanResource) {
-        humanResourceService.add(humanResource);
+    public void add(@RequestBody RESTRequest<HumanResource> req) {
+        humanResourceService.add(req.getPayload());
     }
 
     /*

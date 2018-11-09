@@ -15,12 +15,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+@Entity(name="user_user")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
+	@Column(nullable = false)
+	private String token;
 	@Column(nullable = false)
 	private String password;
 	@Column(nullable = false)
@@ -33,8 +35,10 @@ public class User {
 
 	}
 
-	public User(Long id, String password, boolean isAccountActive, HumanResource humanResource) {
+	public User(Integer id, String token, String password, boolean isAccountActive, HumanResource humanResource) {
+		super();
 		this.id = id;
+		this.token = token;
 		this.password = password;
 		this.isAccountActive = isAccountActive;
 		this.humanResource = humanResource;

@@ -16,7 +16,7 @@ public class WorkplaceType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
@@ -28,7 +28,7 @@ public class WorkplaceType {
 
 	}
 
-	public WorkplaceType(Long id, String name, String abbreviation, String description) {
+	public WorkplaceType(Integer id, String name, String abbreviation, String description) {
 		this.id = id;
 		this.name = name;
 		this.abbreviation = abbreviation;

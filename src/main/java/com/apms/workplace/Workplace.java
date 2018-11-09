@@ -20,7 +20,7 @@ public class Workplace {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
@@ -32,7 +32,7 @@ public class Workplace {
 	public Workplace() {
 	}
 
-	public Workplace(Long id, String name, String abbreviation, WorkplaceType workplaceType) {
+	public Workplace(Integer id, String name, String abbreviation, WorkplaceType workplaceType) {
 		super();
 		this.id = id;
 		this.name = name;
