@@ -18,7 +18,7 @@ public class WorkplaceTypeService {
         return records;
     }
 
-    public WorkplaceType getOne(Long id) {
+    public WorkplaceType getOne(Integer id) {
         return workplaceTypeRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class WorkplaceTypeService {
         workplaceTypeRepository.save(workplaceType);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         workplaceTypeRepository.deleteById(id);
     }
 }

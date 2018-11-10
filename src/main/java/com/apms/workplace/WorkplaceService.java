@@ -18,7 +18,7 @@ public class WorkplaceService {
         return records;
     }
 
-    public Workplace getOne(Long id) {
+    public Workplace getOne(Integer id) {
         return workplaceRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class WorkplaceService {
         workplaceRepository.save(workplace);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         workplaceRepository.deleteById(id);
     }
 }

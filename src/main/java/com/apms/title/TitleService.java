@@ -18,7 +18,7 @@ public class TitleService {
         return records;
     }
 
-    public Title getOne(Long id) {
+    public Title getOne(Integer id) {
         return titleRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class TitleService {
         titleRepository.save(title);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         titleRepository.deleteById(id);
     }
 }

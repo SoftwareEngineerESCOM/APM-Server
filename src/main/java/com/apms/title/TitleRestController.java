@@ -31,7 +31,7 @@ public class TitleRestController {
     **Return one resource
     */
     @GetMapping("/{id}")
-    public Title getOne(@PathVariable Long id) {
+    public Title getOne(@PathVariable Integer id) {
         return titleService.getOne(id);
     }
 
@@ -55,7 +55,7 @@ public class TitleRestController {
     **Remove the specified resource from storage.
     */
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         titleService.delete(id);
     }
 }

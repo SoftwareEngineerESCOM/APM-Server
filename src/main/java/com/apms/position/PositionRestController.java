@@ -24,7 +24,7 @@ public class PositionRestController {
     **Return one resource
     */
     @GetMapping("/{id}")
-    public Position getOne(@PathVariable Long id) {
+    public Position getOne(@PathVariable Integer id) {
         return positionService.getOne(id);
     }
 
@@ -48,7 +48,7 @@ public class PositionRestController {
     **Remove the specified resource from storage.
     */
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         positionService.delete(id);
     }
 }

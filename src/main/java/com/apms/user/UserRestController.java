@@ -31,7 +31,7 @@ public class UserRestController {
     **Return one resource
     */
     @GetMapping("/{id}")
-    public User getOne(@PathVariable Long id) {
+    public User getOne(@PathVariable Integer id) {
         return userService.getOne(id);
     }
 
@@ -55,7 +55,7 @@ public class UserRestController {
     **Remove the specified resource from storage.
     */
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         userService.delete(id);
     }
 }

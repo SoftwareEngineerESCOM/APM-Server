@@ -31,7 +31,7 @@ public class WorkplaceRestController {
     **Return one resource
     */
     @GetMapping("/{id}")
-    public Workplace getOne(@PathVariable Long id) {
+    public Workplace getOne(@PathVariable Integer id) {
         return workplaceService.getOne(id);
     }
 
@@ -55,7 +55,7 @@ public class WorkplaceRestController {
     **Remove the specified resource from storage.
     */
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         workplaceService.delete(id);
     }
 }

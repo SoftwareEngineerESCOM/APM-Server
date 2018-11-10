@@ -18,7 +18,7 @@ public class PositionService {
         return records;
     }
 
-    public Position getOne(Long id) {
+    public Position getOne(Integer id) {
         return positionRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class PositionService {
         positionRepository.save(position);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         positionRepository.deleteById(id);
     }
 }

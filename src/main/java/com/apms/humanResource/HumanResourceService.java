@@ -18,7 +18,7 @@ public class HumanResourceService {
         return records;
     }
 
-    public HumanResource getOne(Long id) {
+    public HumanResource getOne(Integer id) {
         return humanResourceRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class HumanResourceService {
         humanResourceRepository.save(humanResource);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         humanResourceRepository.deleteById(id);
     }
 }
