@@ -19,7 +19,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "user_user")
+@Entity(name = "user_apms")
 public class User {
 
 	@Id
