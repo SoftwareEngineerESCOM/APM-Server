@@ -34,4 +34,8 @@ public class AcademicProgramService {
     public void delete(Integer id) {
         academicProgramRepository.deleteById(id);
     }
+    
+    public List<AcademicProgram> getAcademicProgramsByWorkPlaceId(Integer id){
+    	return academicProgramRepository.getAcademicProgramsByWorkPlaceId(id);
+    }
 }

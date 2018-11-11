@@ -34,4 +34,8 @@ public class LearningUnitService {
     public void delete(Integer id) {
         learningUnitRepository.deleteById(id);
     }
+    
+    public List<LearningUnit> getLearningUnitsBySemesterId(Integer id){
+    	return learningUnitRepository.getLearningUnitsBySemesterId(id);
+    }
 }

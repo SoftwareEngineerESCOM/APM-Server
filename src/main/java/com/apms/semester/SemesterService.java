@@ -34,4 +34,8 @@ public class SemesterService {
     public void delete(Integer id) {
         semesterRepository.deleteById(id);
     }
+    
+    public List<Semester> getSemestersByStudyPlanId(Integer id){
+    	return semesterRepository.getSemestersByStudyPlanId(id);
+    }
 }

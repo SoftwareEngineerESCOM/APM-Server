@@ -34,4 +34,8 @@ public class StudyPlanService {
     public void delete(Integer id) {
         studyPlanRepository.deleteById(id);
     }
+    
+    public List<StudyPlan> getStudyPlansByAcademicProgramId(Integer id){
+    	return studyPlanRepository.getStudyPlansByAcademicProgramId(id);
+    }
 }
