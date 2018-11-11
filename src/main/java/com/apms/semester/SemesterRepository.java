@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface SemesterRepository extends 
 JpaRepository<Semester, Integer> {
-	@Query(value = "SELECT * FROM semester WHERE study_plan_id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM semester WHERE study_plan_id = :id order by semester_number asc", nativeQuery = true)
 	List<Semester> getSemestersByStudyPlanId(@Param("id") Integer Id);
 }
