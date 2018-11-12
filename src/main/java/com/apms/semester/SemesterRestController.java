@@ -61,4 +61,10 @@ public class SemesterRestController {
     public void delete(@PathVariable Integer id) {
         semesterService.delete(id);
     }
+
+    @GetMapping("SemestersByStudyPlanId/{id}")
+    public RESTResponse<List<Semester>> getSemestersByStudyPlanId(@PathVariable Integer id){
+        return new RESTResponse<List<Semester>>(1, "", semesterService.getSemestersByStudyPlanId(id));
+    }
+    
 }

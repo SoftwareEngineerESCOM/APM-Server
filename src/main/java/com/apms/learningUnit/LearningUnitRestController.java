@@ -61,4 +61,10 @@ public class LearningUnitRestController {
     public void delete(@PathVariable Integer id) {
         learningUnitService.delete(id);
     }
+    
+    @GetMapping("LearningUnitsBySemesterId/{id}")
+    public RESTResponse<List<LearningUnit>> getLearningUnitsBySemesterId(@PathVariable Integer id){
+        return new RESTResponse<List<LearningUnit>>(1, "", learningUnitService.getLearningUnitsBySemesterId(id));
+    }
+    
 }
