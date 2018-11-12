@@ -27,7 +27,7 @@ public class StudyPlanRestController {
     */
     @GetMapping
     public RESTResponse<List<StudyPlan>> getAll() {
-	return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getAll());
+    	return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getAll());
     }
 
     /*
@@ -60,5 +60,10 @@ public class StudyPlanRestController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
         studyPlanService.delete(id);
+    }
+    
+    @GetMapping("StudyPlansByAcademicProgramId/{id}")
+    public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
+    	return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
     }
 }
