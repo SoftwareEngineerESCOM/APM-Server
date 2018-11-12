@@ -26,9 +26,9 @@ public class AcademicProgramRestController {
 	 ** Return a listing of all the resources
 	 */
 	@GetMapping
-    public RESTResponse<List<AcademicProgram>> getAll() {
-	return new RESTResponse<List<AcademicProgram>>(1, "", academicProgramService.getAll());
-    }
+	public RESTResponse<List<AcademicProgram>> getAll() {
+		return new RESTResponse<List<AcademicProgram>>(1, "", academicProgramService.getAll());
+	}
 
 	/*
 	 ** Return one resource
@@ -60,5 +60,11 @@ public class AcademicProgramRestController {
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		academicProgramService.delete(id);
+	}
+
+	@GetMapping("AcademicProgramsByWorkPlaceId/{id}")
+	public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
+		return new RESTResponse<List<AcademicProgram>>(1, "",
+				academicProgramService.getAcademicProgramsByWorkPlaceId(id));
 	}
 }
