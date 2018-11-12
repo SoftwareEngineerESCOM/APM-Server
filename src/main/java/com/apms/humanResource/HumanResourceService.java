@@ -34,4 +34,8 @@ public class HumanResourceService {
     public void delete(Integer id) {
         humanResourceRepository.deleteById(id);
     }
+    
+    public List<HumanResource> getHumanResourcesByWorkplaceIdAndPositionId(Integer workplace_Id, Integer position_Id){
+    	return humanResourceRepository.getHumanResourcesByWorkplaceIdAndPositionId(workplace_Id, position_Id);
+    }
 }
