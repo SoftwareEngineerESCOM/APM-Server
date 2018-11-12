@@ -18,47 +18,47 @@ import com.apms.restResponse.RESTResponse;
 @RestController
 @RequestMapping("/learningUnit")
 public class LearningUnitRestController {
-	
-    @Autowired
-    private LearningUnitService learningUnitService;
 
-    /*
-    **Return a listing of all the resources
-    */
-    @GetMapping
-    public RESTResponse<List<LearningUnit>> getAll() {
-	return new RESTResponse<List<LearningUnit>>(1, "", learningUnitService.getAll());
-    }
+	@Autowired
+	private LearningUnitService learningUnitService;
 
-    /*
-    **Return one resource
-    */
-    @GetMapping("/{id}")
-    public RESTResponse<LearningUnit> getOne(@PathVariable Integer id) {
-        return new RESTResponse<LearningUnit>(1, "", learningUnitService.getOne(id));
-    }
+	/*
+	 ** Return a listing of all the resources
+	 */
+	@GetMapping
+	public RESTResponse<List<LearningUnit>> getAll() {
+		return new RESTResponse<List<LearningUnit>>(1, "", learningUnitService.getAll());
+	}
 
-    /*
-    **Store a newly created resource in storage.
-    */
-    @PostMapping
-    public void add(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-        learningUnitService.add(learningUnit.getPayload());
-    }
+	/*
+	 ** Return one resource
+	 */
+	@GetMapping("/{id}")
+	public RESTResponse<LearningUnit> getOne(@PathVariable Integer id) {
+		return new RESTResponse<LearningUnit>(1, "", learningUnitService.getOne(id));
+	}
 
-    /*
-    **Update the specified resource in storage.
-    */
-    @PatchMapping
-    public void update(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-        learningUnitService.update(learningUnit.getPayload());
-    }
+	/*
+	 ** Store a newly created resource in storage.
+	 */
+	@PostMapping
+	public void add(@RequestBody RESTRequest<LearningUnit> learningUnit) {
+		learningUnitService.add(learningUnit.getPayload());
+	}
 
-    /*
-    **Remove the specified resource from storage.
-    */
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        learningUnitService.delete(id);
-    }
+	/*
+	 ** Update the specified resource in storage.
+	 */
+	@PatchMapping
+	public void update(@RequestBody RESTRequest<LearningUnit> learningUnit) {
+		learningUnitService.update(learningUnit.getPayload());
+	}
+
+	/*
+	 ** Remove the specified resource from storage.
+	 */
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Integer id) {
+		learningUnitService.delete(id);
+	}
 }

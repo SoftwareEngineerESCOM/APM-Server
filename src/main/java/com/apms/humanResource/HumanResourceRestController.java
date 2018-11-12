@@ -18,48 +18,47 @@ import com.apms.restResponse.RESTResponse;
 @RestController
 @RequestMapping("/HumanResource")
 public class HumanResourceRestController {
-	
-    @Autowired
-    private HumanResourceService humanResourceService;
 
-    /*
-    **Return a listing of all the resources
-    */
-    @GetMapping
-    public List<HumanResource> getAll() {
-        return humanResourceService.getAll();
-    }
+	@Autowired
+	private HumanResourceService humanResourceService;
 
-    /*
-    **Return one resource
-    */
-    @GetMapping("/{id}")
-    public RESTResponse<HumanResource> getOne(@PathVariable Integer id) {
-    	RESTResponse<HumanResource> res = new RESTResponse<HumanResource>(1, "a", humanResourceService.getOne(id));
-    	return res;
-    }
+	/*
+	 ** Return a listing of all the resources
+	 */
+	@GetMapping
+	public RESTResponse<List<HumanResource>> getAll() {
+		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getAll());
+	}
 
-    /*
-    **Store a newly created resource in storage.
-    */
-    @PostMapping
-    public void add(@RequestBody RESTRequest<HumanResource> req) {
-        humanResourceService.add(req.getPayload());
-    }
+	/*
+	 ** Return one resource
+	 */
+	@GetMapping("/{id}")
+	public RESTResponse<HumanResource> getOne(@PathVariable Integer id) {
+		return new RESTResponse<HumanResource>(1, "", humanResourceService.getOne(id));
+	}
 
-    /*
-    **Update the specified resource in storage.
-    */
-    @PatchMapping
-    public void update(@RequestBody HumanResource humanResource) {
-        humanResourceService.update(humanResource);
-    }
+	/*
+	 ** Store a newly created resource in storage.
+	 */
+	@PostMapping
+	public void add(@RequestBody RESTRequest<HumanResource> humanResource) {
+		humanResourceService.add(humanResource.getPayload());
+	}
 
-    /*
-    **Remove the specified resource from storage.
-    */
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        humanResourceService.delete(id);
-    }
+	/*
+	 ** Update the specified resource in storage.
+	 */
+	@PatchMapping
+	public void update(@RequestBody RESTRequest<HumanResource> humanResource) {
+		humanResourceService.update(humanResource.getPayload());
+	}
+
+	/*
+	 ** Remove the specified resource from storage.
+	 */
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Integer id) {
+		humanResourceService.delete(id);
+	}
 }

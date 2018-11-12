@@ -12,50 +12,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.restResponse.RESTRequest;
+import com.apms.restResponse.RESTResponse;
+
 @RestController
 @RequestMapping("/Workplace")
 public class WorkplaceRestController {
-	
-    @Autowired
-    private WorkplaceService workplaceService;
 
-    /*
-    **Return a listing of all the resources
-    */
-    @GetMapping
-    public List<Workplace> getAll() {
-        return workplaceService.getAll();
-    }
+	@Autowired
+	private WorkplaceService workplaceService;
 
-    /*
-    **Return one resource
-    */
-    @GetMapping("/{id}")
-    public Workplace getOne(@PathVariable Integer id) {
-        return workplaceService.getOne(id);
-    }
+	/*
+	 ** Return a listing of all the resources
+	 */
+	@GetMapping
+	public RESTResponse<List<Workplace>> getAll() {
+		return new RESTResponse<List<Workplace>>(1, "", workplaceService.getAll());
+	}
 
-    /*
-    **Store a newly created resource in storage.
-    */
-    @PostMapping
-    public void add(@RequestBody Workplace workplace) {
-        workplaceService.add(workplace);
-    }
+	/*
+	 ** Return one resource
+	 */
+	@GetMapping("/{id}")
+	public RESTResponse<Workplace> getOne(@PathVariable Integer id) {
+		return new RESTResponse<Workplace>(1, "", workplaceService.getOne(id));
+	}
 
-    /*
-    **Update the specified resource in storage.
-    */
-    @PatchMapping
-    public void update(@RequestBody Workplace workplace) {
-        workplaceService.update(workplace);
-    }
+	/*
+	 ** Store a newly created resource in storage.
+	 */
+	@PostMapping
+	public void add(@RequestBody RESTRequest<Workplace> workplace) {
+		workplaceService.add(workplace.getPayload());
+	}
 
-    /*
-    **Remove the specified resource from storage.
-    */
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        workplaceService.delete(id);
-    }
+	/*
+	 ** Update the specified resource in storage.
+	 */
+	@PatchMapping
+	public void update(@RequestBody RESTRequest<Workplace> workplace) {
+		workplaceService.update(workplace.getPayload());
+	}
+
+	/*
+	 ** Remove the specified resource from storage.
+	 */
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Integer id) {
+		workplaceService.delete(id);
+	}
 }
