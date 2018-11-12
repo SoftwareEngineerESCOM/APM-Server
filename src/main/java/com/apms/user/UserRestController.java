@@ -42,16 +42,16 @@ public class UserRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<User> user) {
-		userService.add(user.getPayload());
+	public void add(@RequestBody RESTRequest<User> req) {
+		userService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<User> user) {
-		userService.update(user.getPayload());
+	public void update(@RequestBody RESTRequest<User> req) {
+		userService.update(req.getPayload());
 	}
 
 	/*
@@ -61,10 +61,15 @@ public class UserRestController {
 	public void delete(@PathVariable Integer id) {
 		userService.delete(id);
 	}
-	
-	@GetMapping("UsersByWorkplaceIdAndPositionId/{idW}/{idP}")
-	public RESTResponse<List<User>> getUsersByWorkplaceIdAndPositionId(@PathVariable Integer idW,@PathVariable Integer idP) {
-		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceIdAndPositionId(idW,idP));
 
+	@GetMapping("/UsersByWorkplaceIdAndPositionId/{idW}/{idP}")
+	public RESTResponse<List<User>> getUsersByWorkplaceIdAndPositionId(@PathVariable Integer idW,
+			@PathVariable Integer idP) {
+		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceIdAndPositionId(idW, idP));
+	}
+
+	@PostMapping("UserByIdAndPassword")
+	public User getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
+		return userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
 	}
 }

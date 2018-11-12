@@ -8,34 +8,38 @@ import java.util.List;
 
 @Service
 public class UserService {
-	
-    @Autowired
-    private UserRepository userRepository;
 
-    public List<User> getAll() {
-        List<User> records = new ArrayList<>();
-        userRepository.findAll().forEach(records::add);
-        return records;
-    }
+	@Autowired
+	private UserRepository userRepository;
 
-    public User getOne(Integer id) {
-        return userRepository.findById(id).get();
-    }
+	public List<User> getAll() {
+		List<User> records = new ArrayList<>();
+		userRepository.findAll().forEach(records::add);
+		return records;
+	}
 
-    public void add(User user) {
-        userRepository.save(user);
-    }
+	public User getOne(Integer id) {
+		return userRepository.findById(id).get();
+	}
 
-    public void update(User user) {
-        // if exists updates otherwise inserts
-        userRepository.save(user);
-    }
+	public void add(User user) {
+		userRepository.save(user);
+	}
 
-    public void delete(Integer id) {
-        userRepository.deleteById(id);
-    }
-    
-    public List<User> getUsersByWorkplaceIdAndPositionId(Integer workplace_Id, Integer position_Id){
-    	return userRepository.getUsersByWorkplaceIdAndPositionId(workplace_Id, position_Id);
-    }
+	public void update(User user) {
+		// if exists updates otherwise inserts
+		userRepository.save(user);
+	}
+
+	public void delete(Integer id) {
+		userRepository.deleteById(id);
+	}
+
+	public List<User> getUsersByWorkplaceIdAndPositionId(Integer workplace_Id, Integer position_Id) {
+		return userRepository.getUsersByWorkplaceIdAndPositionId(workplace_Id, position_Id);
+	}
+
+	public User getUserByIdAndPassword(Integer user_Id, String user_Password) {
+		return userRepository.getUserByIdAndPassword(user_Id, user_Password);
+	}
 }

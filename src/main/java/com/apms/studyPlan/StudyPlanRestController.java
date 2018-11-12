@@ -16,7 +16,7 @@ import com.apms.restResponse.RESTRequest;
 import com.apms.restResponse.RESTResponse;
 
 @RestController
-@RequestMapping("/studyPlan")
+@RequestMapping("/StudyPlan")
 public class StudyPlanRestController {
 	
     @Autowired
@@ -42,16 +42,16 @@ public class StudyPlanRestController {
     **Store a newly created resource in storage.
     */
     @PostMapping
-    public void add(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-        studyPlanService.add(studyPlan.getPayload());
+    public void add(@RequestBody RESTRequest<StudyPlan> req) {
+        studyPlanService.add(req.getPayload());
     }
 
     /*
     **Update the specified resource in storage.
     */
     @PatchMapping
-    public void update(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-        studyPlanService.update(studyPlan.getPayload());
+    public void update(@RequestBody RESTRequest<StudyPlan> req) {
+        studyPlanService.update(req.getPayload());
     }
 
     /*
@@ -62,7 +62,7 @@ public class StudyPlanRestController {
         studyPlanService.delete(id);
     }
     
-    @GetMapping("StudyPlansByAcademicProgramId/{id}")
+    @GetMapping("/StudyPlansByAcademicProgramId/{id}")
     public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
     	return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
     }

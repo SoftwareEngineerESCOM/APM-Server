@@ -42,16 +42,16 @@ public class WorkplaceTypeRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<WorkplaceType> workplaceType) {
-		workplaceTypeService.add(workplaceType.getPayload());
+	public void add(@RequestBody RESTRequest<WorkplaceType> req) {
+		workplaceTypeService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<WorkplaceType> workplaceType) {
-		workplaceTypeService.update(workplaceType.getPayload());
+	public void update(@RequestBody RESTRequest<WorkplaceType> req) {
+		workplaceTypeService.update(req.getPayload());
 	}
 
 	/*

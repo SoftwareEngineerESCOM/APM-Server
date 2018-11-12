@@ -42,16 +42,16 @@ public class PositionRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<Position> position) {
-		positionService.add(position.getPayload());
+	public void add(@RequestBody RESTRequest<Position> req) {
+		positionService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<Position> position) {
-		positionService.update(position.getPayload());
+	public void update(@RequestBody RESTRequest<Position> req) {
+		positionService.update(req.getPayload());
 	}
 
 	/*

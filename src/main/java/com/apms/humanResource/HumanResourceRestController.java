@@ -42,16 +42,16 @@ public class HumanResourceRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<HumanResource> humanResource) {
-		humanResourceService.add(humanResource.getPayload());
+	public void add(@RequestBody RESTRequest<HumanResource> req) {
+		humanResourceService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<HumanResource> humanResource) {
-		humanResourceService.update(humanResource.getPayload());
+	public void update(@RequestBody RESTRequest<HumanResource> req) {
+		humanResourceService.update(req.getPayload());
 	}
 
 	/*
@@ -62,7 +62,7 @@ public class HumanResourceRestController {
 		humanResourceService.delete(id);
 	}
 	
-	@GetMapping("HumanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
+	@GetMapping("/HumanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceIdAndPositionId(@PathVariable Integer idW,@PathVariable Integer idP) {
 		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceIdAndPositionId(idW,idP));
 	}

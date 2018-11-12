@@ -42,16 +42,16 @@ public class WorkplaceRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<Workplace> workplace) {
-		workplaceService.add(workplace.getPayload());
+	public void add(@RequestBody RESTRequest<Workplace> req) {
+		workplaceService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<Workplace> workplace) {
-		workplaceService.update(workplace.getPayload());
+	public void update(@RequestBody RESTRequest<Workplace> req) {
+		workplaceService.update(req.getPayload());
 	}
 
 	/*

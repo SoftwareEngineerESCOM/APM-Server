@@ -42,16 +42,16 @@ public class TitleRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<Title> title) {
-		titleService.add(title.getPayload());
+	public void add(@RequestBody RESTRequest<Title> req) {
+		titleService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<Title> title) {
-		titleService.update(title.getPayload());
+	public void update(@RequestBody RESTRequest<Title> req) {
+		titleService.update(req.getPayload());
 	}
 
 	/*

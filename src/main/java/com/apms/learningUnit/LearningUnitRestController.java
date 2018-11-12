@@ -16,7 +16,7 @@ import com.apms.restResponse.RESTRequest;
 import com.apms.restResponse.RESTResponse;
 
 @RestController
-@RequestMapping("/learningUnit")
+@RequestMapping("/LearningUnit")
 public class LearningUnitRestController {
 
 	@Autowired
@@ -42,16 +42,16 @@ public class LearningUnitRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-		learningUnitService.add(learningUnit.getPayload());
+	public void add(@RequestBody RESTRequest<LearningUnit> req) {
+		learningUnitService.add(req.getPayload());
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PatchMapping
-	public void update(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-		learningUnitService.update(learningUnit.getPayload());
+	public void update(@RequestBody RESTRequest<LearningUnit> req) {
+		learningUnitService.update(req.getPayload());
 	}
 
 	/*
