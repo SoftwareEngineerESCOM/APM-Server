@@ -43,6 +43,7 @@ public class PositionRestController {
 	 */
 	@PostMapping
 	public void add(@RequestBody RESTRequest<Position> req) {
+		System.out.println("alooossss");
 		positionService.add(req.getPayload());
 	}
 
