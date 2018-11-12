@@ -15,4 +15,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	@Query(value = "SELECT * FROM user_apms WHERE id = :user_id and password = :user_password", nativeQuery = true)
 	User getUserByIdAndPassword(@Param("user_id") Integer user_Id, @Param("user_password") String user_Password);
+	
+	@Query(value = "SELECT * FROM user_apms WHERE human_resource_id = (SELECT id FROM human_resource WHERE workplace_id = :id)", nativeQuery = true)
+	List<User> getUsersByWorkplaceId(@Param("id") Integer Id);
+
 }
