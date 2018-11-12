@@ -61,4 +61,10 @@ public class UserRestController {
 	public void delete(@PathVariable Integer id) {
 		userService.delete(id);
 	}
+	
+	@GetMapping("UsersByWorkplaceIdAndPositionId/{idW}/{idP}")
+	public RESTResponse<List<User>> getUsersByWorkplaceIdAndPositionId(@PathVariable Integer idW,@PathVariable Integer idP) {
+		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceIdAndPositionId(idW,idP));
+
+	}
 }
