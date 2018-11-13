@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.apms.StudyPlanMode.StudyPlanMode;
 import com.apms.academicProgram.AcademicProgram;
 
 import lombok.Getter;
@@ -26,8 +27,9 @@ public class StudyPlan {
 	private AcademicProgram academicProgram;
 	@Column(nullable = false)
 	private Integer year;
-	@Column(nullable = false)
-	private String mode;
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private StudyPlanMode mode;
 	@Column(nullable = false)
 	private Double totalTEPICCredits;
 	@Column(nullable = false)
