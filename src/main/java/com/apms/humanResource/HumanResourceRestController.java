@@ -61,9 +61,16 @@ public class HumanResourceRestController {
 	public void delete(@PathVariable Integer id) {
 		humanResourceService.delete(id);
 	}
-	
+
 	@GetMapping("/HumanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
-	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceIdAndPositionId(@PathVariable Integer idW,@PathVariable Integer idP) {
-		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceIdAndPositionId(idW,idP));
+	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceIdAndPositionId(@PathVariable Integer idW,
+			@PathVariable Integer idP) {
+		return new RESTResponse<List<HumanResource>>(1, "",
+				humanResourceService.getHumanResourcesByWorkplaceIdAndPositionId(idW, idP));
+	}
+
+	@GetMapping("/HumanResourcesByWorkplaceId/{id}")
+	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceId(@PathVariable Integer id) {
+		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
 	}
 }

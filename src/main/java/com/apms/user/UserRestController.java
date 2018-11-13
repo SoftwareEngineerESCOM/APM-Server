@@ -72,4 +72,9 @@ public class UserRestController {
 	public User getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
 		return userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
 	}
+
+	@GetMapping("/UsersByWorkplaceId/{id}")
+	public RESTResponse<List<User>> getUsersByWorkplaceId(@PathVariable Integer id) {
+		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceId(id));
+	}
 }

@@ -38,4 +38,8 @@ public class HumanResourceService {
     public List<HumanResource> getHumanResourcesByWorkplaceIdAndPositionId(Integer workplace_Id, Integer position_Id){
     	return humanResourceRepository.getHumanResourcesByWorkplaceIdAndPositionId(workplace_Id, position_Id);
     }
+    
+    public List<HumanResource> getHumanResourcesByWorkplaceId(Integer id){
+    	return humanResourceRepository.getHumanResourcesByWorkplaceId(id);
+    }
 }
