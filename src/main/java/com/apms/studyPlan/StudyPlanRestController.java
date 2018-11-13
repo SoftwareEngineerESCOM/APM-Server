@@ -27,7 +27,7 @@ public class StudyPlanRestController {
     */
     @GetMapping
     public RESTResponse<List<StudyPlan>> getAll() {
-    	return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getAll());
+    	return new RESTResponse<>(1, "", studyPlanService.getAll());
     }
 
     /*
