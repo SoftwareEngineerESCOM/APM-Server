@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.apms.humanResource.HumanResource;
@@ -33,6 +34,7 @@ public class User {
 	@Column(nullable = false)
 	private boolean isAccountActive;
 
+	@MapsId
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private HumanResource humanResource;
