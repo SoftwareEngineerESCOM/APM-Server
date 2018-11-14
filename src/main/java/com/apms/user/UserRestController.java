@@ -85,7 +85,7 @@ public class UserRestController {
 		if(!res.isEmpty())
 			return new RESTResponse<User>(200, "", res.get(0));
 		else
-			return new RESTResponse<User>(500, "", res.get(0));
+			return new RESTResponse<User>(500, "", null);
 	}
 
 	@GetMapping("/UsersByWorkplaceId/{id}")
