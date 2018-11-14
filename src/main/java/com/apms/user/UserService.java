@@ -19,7 +19,7 @@ public class UserService {
 	}
 
 	public User getOne(String id) {
-		return userRepository.findById(id).get();
+		return userRepository.findById(id).isPresent() ? userRepository.findById(id).get() : null;
 	}
 
 	public void add(User user) {

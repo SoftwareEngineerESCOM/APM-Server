@@ -2,6 +2,7 @@ package com.apms.humanResource;
 
 import java.util.List;
 
+import com.apms.user.UserRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,9 @@ public class HumanResourceRestController {
 	private HumanResourceService humanResourceService;
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private UserRestController userRestController;
 
 	/*
 	 ** Return a listing of all the resources
@@ -57,7 +61,8 @@ public class HumanResourceRestController {
 	 */
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable String id) {
-		userService.delete(id);
+		if (userService.getOne(id) != null)
+			userService.delete(id);
 		humanResourceService.delete(id);
 	}
 
