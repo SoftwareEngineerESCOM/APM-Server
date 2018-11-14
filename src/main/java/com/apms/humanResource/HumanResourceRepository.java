@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 @Repository
-public interface HumanResourceRepository extends JpaRepository<HumanResource, Integer> {
+public interface HumanResourceRepository extends JpaRepository<HumanResource, String> {
 	@Query(value = "SELECT * FROM human_resource WHERE position_id = :position_id and workplace_id = :workplace_id", nativeQuery = true)
 	List<HumanResource> getHumanResourcesByWorkplaceIdAndPositionId(@Param("workplace_id") Integer workplace_Id, @Param("position_id") Integer position_Id);
 	

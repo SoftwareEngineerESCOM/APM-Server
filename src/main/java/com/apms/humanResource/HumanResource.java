@@ -20,7 +20,7 @@ public class HumanResource {
 
 	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private String id;
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
@@ -40,8 +40,8 @@ public class HumanResource {
 	public HumanResource() {
 	}
 
-	public HumanResource(Integer id, String name, String firstSurname, String secondSurname, Title title,
-			Position position, Workplace workplace) {
+	public HumanResource(String id, String name, String firstSurname, String secondSurname, Title title,
+						 Position position, Workplace workplace) {
 		this.id = id;
 		this.name = name;
 		this.firstSurname = firstSurname;

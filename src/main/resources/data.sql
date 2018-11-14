@@ -155,9 +155,9 @@ insert into role (description, name) values ('Encargado de: ', 'Jefe de la Divis
 insert into role (description, name) values ('Encargado de: plan de estudios,unidades de aprendizaje y programa sintético', 'Docente');
 
 -- add human resource
-insert into human_resource values (10000, 'Chávez', 'Oscar', 'Barrera', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource values ('1234567890', 'Chávez', 'Oscar', 'Barrera', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
 insert into human_resource values (10001, 'González', 'Emiliano', 'Hinojosa', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
-insert into human_resource values (10002, 'Frías', 'Erika', 'Covarrubias', (select id from position where abbreviation like '%Sub. Ac.%'), (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource values ('9876543210', 'Frías', 'Erika', 'Covarrubias', (select id from position where abbreviation like '%Sub. Ac.%'), (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
 insert into human_resource values (10003, 'Jiménez', 'Eduardo', 'Hernádez', (select id from position where abbreviation like '%Sub. Ac.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
 insert into human_resource values (10004, 'Rojas', 'Arturo', 'Rivas', (select id from position where abbreviation like '%Sub. Ac.%'), (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'UPIBI'));
 insert into human_resource values (10005, 'González', 'Daniela', 'Hernández', (select id from position where abbreviation like '%Doc.%'), (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
@@ -167,12 +167,12 @@ insert into human_resource values (10008, 'Castillo', 'Alejandra', 'Jiménez', (
 insert into human_resource values (10009, 'Guerra', 'David', 'Vargas', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIBI'));
 
 -- add user
-insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'admin1', '1', (select id from human_resource where name like '%Oscar%'));
+/*insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'admin1', '1', (select id from human_resource where name like '%Oscar%'));
 insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'test1', '2', (select id from human_resource where name like '%Emiliano%'));
 insert into user_apms (is_account_active, password, token, human_resource_id) values (false, 'test2', '3', (select id from human_resource where name like '%Erika%'));
 insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'test3', '4', (select id from human_resource where name like '%Eduardo%'));
 insert into user_apms (is_account_active, password, token, human_resource_id) values (false, 'test4', '5', (select id from human_resource where name like '%Arturo%'));
-
+*/
 -- add message
 insert into message values (0, 'Esta es la descripción', 'Matrícula y/o contraseña no válidas.');
 insert into message values (1, 'Esta es la descripción', '¿Está seguro que desea editar el Programa Académico?');

@@ -18,8 +18,12 @@ import com.apms.user.UserService;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
+	@Override
+	public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+		return null;
+	}
 
-	@Autowired
+	/*@Autowired
 	private UserService userService;
 	
 	@Override
@@ -42,6 +46,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		 UserDetails userDetails = (UserDetails) new org.springframework.security.core.userdetails.User(
 				 Integer.toString(user.getId()),user.getPassword(), grantList);
 		return null;
-	}
+	}*/
 
 }

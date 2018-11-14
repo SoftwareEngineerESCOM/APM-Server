@@ -2,14 +2,7 @@ package com.apms.user;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.apms.humanResource.HumanResource;
 import com.apms.role.Role;
@@ -23,7 +16,7 @@ import lombok.Setter;
 public class User {
 
 	@Id
-	private Integer id;
+	private String id;
 	@Column(nullable = false)
 	private String token;
 	@Column(nullable = false)
@@ -31,7 +24,6 @@ public class User {
 	@Column(nullable = false)
 	private boolean isAccountActive;
 
-	@MapsId
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private HumanResource humanResource;
@@ -43,7 +35,7 @@ public class User {
 
 	}
 
-	public User(Integer id, String token, String password, boolean isAccountActive, HumanResource humanResource) {
+	public User(String id, String token, String password, boolean isAccountActive, HumanResource humanResource) {
 		super();
 		this.id = id;
 		this.token = token;
