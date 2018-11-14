@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.apms.restResponse.RESTRequest;
 import com.apms.restResponse.RESTResponse;
+import com.apms.user.UserService;
 
 @RestController
 @RequestMapping("/HumanResource")
@@ -14,6 +15,8 @@ public class HumanResourceRestController {
 
 	@Autowired
 	private HumanResourceService humanResourceService;
+	@Autowired
+	private UserService userService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -54,6 +57,7 @@ public class HumanResourceRestController {
 	 */
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable String id) {
+		userService.delete(id);
 		humanResourceService.delete(id);
 	}
 
