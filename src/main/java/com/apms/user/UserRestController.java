@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.humanResource.HumanResourceService;
 import com.apms.restResponse.RESTRequest;
 import com.apms.restResponse.RESTResponse;
 
@@ -21,6 +22,8 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private HumanResourceService humanResourceService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -43,6 +46,9 @@ public class UserRestController {
 	 */
 	@PostMapping
 	public void add(@RequestBody RESTRequest<User> req) {
+		User payload = req.getPayload();
+		if(humanResourceService.getOne(payload.getHumanResource().getId()) == null)
+			humanResourceService.add(payload.getHumanResource());
 		userService.add(req.getPayload());
 	}
 
@@ -65,10 +71,15 @@ public class UserRestController {
 	@GetMapping("/UsersByWorkplaceIdAndPositionId/{idW}/{idP}")
 	public RESTResponse<List<User>> getUsersByWorkplaceIdAndPositionId(@PathVariable Integer idW,
 			@PathVariable Integer idP) {
-		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceIdAndPositionId(idW, idP));
+		List<User> res = userService.getUsersByWorkplaceIdAndPositionId(idW, idP);
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<User>>(200, "OK", res);
+		} else {
+			return new RESTResponse<List<User>>(500, "No hay usuarios registrados con ese cargo.", res);
+		}
 	}
 
-	@PostMapping("UserByIdAndPassword")
+	@PostMapping("/UserByIdAndPassword")
 	public User getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
 		return userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
 	}
