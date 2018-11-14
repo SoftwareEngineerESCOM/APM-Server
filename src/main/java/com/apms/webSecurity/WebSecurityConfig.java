@@ -25,11 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.cors().and();
+        http.cors();
         http.csrf().disable();
 
         // The pages does not require login
-        http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
+        http.authorizeRequests().antMatchers("/**", "/login", "/logout").permitAll();
 
         // example of pages that requires login as ROLE_USER and ROLE_ADMIN.
         // If no login, it will redirect to /login page.
