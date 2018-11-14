@@ -80,8 +80,8 @@ public class UserRestController {
     }
 
     @PostMapping("/UserByIdAndPassword")
-    public User getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
-        return userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
+    public RESTResponse<User> getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
+        return new RESTResponse<>(1, "", userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword()));
     }
 
     @GetMapping("/UsersByWorkplaceId/{id}")
