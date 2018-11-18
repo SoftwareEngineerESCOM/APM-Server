@@ -127,7 +127,7 @@ public class AcademicProgramRestController {
 
 	@GetMapping("/academicProgramsByWorkPlaceId/{id}")
 	public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
-		return new RESTResponse<List<AcademicProgram>>(1, "",
+		return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "",
 				academicProgramService.getAcademicProgramsByWorkPlaceId(id));
 	}
 }
