@@ -1,4 +1,4 @@
-package com.apms.StudyPlanMode;
+package com.apms.studyPlanMode;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;

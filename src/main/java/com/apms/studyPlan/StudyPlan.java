@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.apms.StudyPlanMode.StudyPlanMode;
 import com.apms.academicProgram.AcademicProgram;
+import com.apms.studyPlanMode.StudyPlanMode;
 
 import lombok.Getter;
 import lombok.Setter;

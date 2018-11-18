@@ -1,4 +1,4 @@
-package com.apms.StudyPlanMode;
+package com.apms.studyPlanMode;
 
 import lombok.Getter;
 import lombok.Setter;
