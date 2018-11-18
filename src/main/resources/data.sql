@@ -148,11 +148,11 @@ insert into position (abbreviation, description, name) values ('Anl.', 'Analista
 insert into position (abbreviation, description, name) values ('Sub. Ac.', 'Subdirector Académico', 'Subdirector Académico');
 
 -- add roles
-insert into role (description, name) values ('Encargado de: ', 'Analista');
-insert into role (description, name) values ('Encargado de: ', 'Jefe de Departamento de Desarrollo e Innovación Curricular');
-insert into role (description, name) values ('Encargado de: ', 'Jefe de Innovación Educativa');
-insert into role (description, name) values ('Encargado de: ', 'Jefe de la División de Innovacion Académica');
-insert into role (description, name) values ('Encargado de: plan de estudios,unidades de aprendizaje y programa sintético', 'Docente');
+insert into role (description, name, rank) values ('Encargado de: ', 'Analista', 9);
+insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de Departamento de Desarrollo e Innovación Curricular', 8);
+insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de Innovación Educativa', 7);
+insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de la División de Innovacion Académica', 6);
+insert into role (description, name, rank) values ('Encargado de: plan de estudios,unidades de aprendizaje y programa sintético', 'Docente', 10);
 
 -- add human resource
 insert into human_resource values ('1234567890', 'Chávez', 'Oscar', 'Barrera', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
