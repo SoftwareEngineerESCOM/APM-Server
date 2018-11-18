@@ -148,11 +148,11 @@ insert into position (abbreviation, description, name) values ('Anl.', 'Analista
 insert into position (abbreviation, description, name) values ('Sub. Ac.', 'Subdirector Académico', 'Subdirector Académico');
 
 -- add roles
-insert into role (description, name, rank) values ('Encargado de: ', 'Analista', 9);
-insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de Departamento de Desarrollo e Innovación Curricular', 8);
-insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de Innovación Educativa', 7);
-insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de la División de Innovacion Académica', 6);
-insert into role (description, name, rank) values ('Encargado de: plan de estudios,unidades de aprendizaje y programa sintético', 'Docente', 10);
+insert into role (description, name, rank) values ('Encargado de: ', 'Analista', 1);
+insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de Departamento de Desarrollo e Innovación Curricular', 3);
+insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de Innovación Educativa', 2);
+insert into role (description, name, rank) values ('Encargado de: ', 'Jefe de la División de Innovacion Académica', 4);
+insert into role (description, name, rank) values ('Encargado de: plan de estudios,unidades de aprendizaje y programa sintético', 'Docente', 1);
 
 -- add human resource
 insert into human_resource (second_surname, name, first_surname, position_id, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
@@ -166,12 +166,19 @@ insert into human_resource (second_surname, name, first_surname, position_id, ti
 insert into human_resource (second_surname, name, first_surname, position_id, title_id, workplace_id) values ('Castillo', 'Alejandra', 'Jiménez', (select id from position where abbreviation like '%Doc.%'), (select id from title where abbreviation like '%Lic.%'), (select id from workplace where abbreviation like 'ESIT'));
 insert into human_resource (second_surname, name, first_surname, position_id, title_id, workplace_id) values ('Guerra', 'David', 'Vargas', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIBI'));
 
--- add user
+-- add user_apms
 insert into user_apms (is_account_active, password, token, human_resource_id, email) values (true, 'admin1', '1', (select id from human_resource where name like '%Oscar%'), 'admin1@test.com');
 insert into user_apms (is_account_active, password, token, human_resource_id, email) values (true, 'test1', '2', (select id from human_resource where name like '%Emiliano%'), 'test1@test.com');
 insert into user_apms (is_account_active, password, token, human_resource_id, email) values (false, 'test2', '3', (select id from human_resource where name like '%Erika%'), 'test2@test.com');
 insert into user_apms (is_account_active, password, token, human_resource_id, email) values (true, 'test3', '4', (select id from human_resource where name like '%Eduardo%'), 'test3@test.com');
 insert into user_apms (is_account_active, password, token, human_resource_id, email) values (false, 'test4', '5', (select id from human_resource where name like '%Arturo%'), 'test4@test.com');
+
+-- add user_apms_roles
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Analista%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Innovación Educativa%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Docente%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Analista%'));
 
 -- add message
 insert into message values (0, 'Esta es la descripción', 'Matrícula y/o contraseña no válidas.');

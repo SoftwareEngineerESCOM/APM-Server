@@ -122,4 +122,20 @@ public class RoleRestController {
 		}
 		return new RESTResponse<Role>(RESTResponse.OK, "Role modificado.", null);
 	}
+
+	@GetMapping("/rolesByUserId/{id}")
+	public RESTResponse<List<Role>> rolesByUserId(@PathVariable Integer id) {
+		List<Role> res;
+		try {
+			res = roleService.rolesByUserId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Role>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Role>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Permisos insuficientes para ejecutar la operación.", null);
+		}
+	}
 }

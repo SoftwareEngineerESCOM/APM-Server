@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
-	@Query(value = "SELECT * FROM roles WHERE rank < (SELECT rank FROM role WHERE id = (SELECT roles_id FROM user_apms_roles WHERE user_apms_id = :id))", nativeQuery = true)
+	@Query(value = "SELECT * FROM role WHERE rank < (SELECT MAX(rank) FROM role WHERE id IN (SELECT roles_id FROM user_apms_roles WHERE user_apms_id = :id ));", nativeQuery = true)
 	List<Role> rolesByUserId(@Param("id") Integer Id);
 }
