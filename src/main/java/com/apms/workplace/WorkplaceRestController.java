@@ -33,8 +33,8 @@ public class WorkplaceRestController {
 			res = workplaceService.getAll();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL,
-					"Inconsistencia en la base de datos.", new ArrayList<Workplace>());
+			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<Workplace>());
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", res);
@@ -42,7 +42,6 @@ public class WorkplaceRestController {
 			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
 					res);
 		}
-
 	}
 
 	/*
@@ -50,7 +49,7 @@ public class WorkplaceRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<Workplace> getOne(@PathVariable Integer id) {
-		return new RESTResponse<Workplace>(RESTResponse.OK, "", workplaceService.getOne(id));
+		return new RESTResponse<>(RESTResponse.OK, "", workplaceService.getOne(id));
 	}
 
 	/*
