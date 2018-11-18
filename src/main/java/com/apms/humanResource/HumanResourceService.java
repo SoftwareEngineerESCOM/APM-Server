@@ -18,7 +18,7 @@ public class HumanResourceService {
         return records;
     }
 
-    public HumanResource getOne(String id) {
+    public HumanResource getOne(Integer id) {
         return humanResourceRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class HumanResourceService {
         humanResourceRepository.save(humanResource);
     }
 
-    public void delete(String id) {
+    public void delete(Integer id) {
         humanResourceRepository.deleteById(id);
     }
     

@@ -16,7 +16,8 @@ import lombok.Setter;
 public class User {
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	@Column(nullable = false)
 	private String token;
 	@Column(nullable = false)
@@ -35,7 +36,7 @@ public class User {
 
 	}
 
-	public User(String id, String token, String password, boolean isAccountActive, HumanResource humanResource) {
+	public User(Integer id, String token, String password, boolean isAccountActive, HumanResource humanResource) {
 		super();
 		this.id = id;
 		this.token = token;

@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import com.apms.position.Position;
 import com.apms.title.Title;
 import com.apms.workplace.Workplace;
@@ -19,8 +20,8 @@ import lombok.Setter;
 public class HumanResource {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
@@ -40,7 +41,7 @@ public class HumanResource {
 	public HumanResource() {
 	}
 
-	public HumanResource(String id, String name, String firstSurname, String secondSurname, Title title,
+	public HumanResource(Integer id, String name, String firstSurname, String secondSurname, Title title,
 						 Position position, Workplace workplace) {
 		this.id = id;
 		this.name = name;

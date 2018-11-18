@@ -51,7 +51,7 @@ public class HumanResourceRestController {
 	 ** Return one resource
 	 */
 	@GetMapping("/{id}")
-	public RESTResponse<HumanResource> getOne(@PathVariable String id) {
+	public RESTResponse<HumanResource> getOne(@PathVariable Integer id) {
 		return new RESTResponse<HumanResource>(1, "", humanResourceService.getOne(id));
 	}
 
@@ -77,7 +77,7 @@ public class HumanResourceRestController {
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable String id) {
+	public void delete(@PathVariable Integer id) {
 		if (userService.getOne(id) != null)
 			userService.delete(id);
 		humanResourceService.delete(id);

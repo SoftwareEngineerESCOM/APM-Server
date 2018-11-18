@@ -50,7 +50,7 @@ public class UserRestController {
 	 ** Return one resource
 	 */
 	@GetMapping("/{id}")
-	public RESTResponse<User> getOne(@PathVariable String id) {
+	public RESTResponse<User> getOne(@PathVariable Integer id) {
 		return new RESTResponse<User>(1, "", userService.getOne(id));
 	}
 
@@ -77,7 +77,7 @@ public class UserRestController {
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable String id) {
+	public void delete(@PathVariable Integer id) {
 		userService.delete(id);
 	}
 
