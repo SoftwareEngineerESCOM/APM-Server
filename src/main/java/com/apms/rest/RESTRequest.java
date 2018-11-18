@@ -1,4 +1,4 @@
-package com.apms.restResponse;
+package com.apms.rest;
 
 import lombok.Getter;
 import lombok.Setter;

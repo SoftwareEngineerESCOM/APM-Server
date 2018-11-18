@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.restResponse.RESTRequest;
-import com.apms.restResponse.RESTResponse;
+import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTResponse;
 
 @RestController
 @RequestMapping("/StudyPlan")
