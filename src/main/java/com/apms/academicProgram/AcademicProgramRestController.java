@@ -1,77 +1,131 @@
 package com.apms.academicProgram;
 
-import com.apms.rest.RESTRequest;
-import com.apms.rest.RESTResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTResponse;
+
 @RestController
-@RequestMapping("/AcademicProgram")
+@RequestMapping("/academicProgram")
 public class AcademicProgramRestController {
 
-    @Autowired
-    private AcademicProgramService academicProgramService;
+	@Autowired
+	private AcademicProgramService academicProgramService;
 
-    /*
-     ** Return a listing of all the resources
-     */
-    @GetMapping
-    public RESTResponse<List<AcademicProgram>> getAll() {
-        List<AcademicProgram> res;
-        try {
-            res = academicProgramService.getAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new RESTResponse<List<AcademicProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-                    new ArrayList<AcademicProgram>());
-        }
-        if (!res.isEmpty()) {
-            return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", res);
-        } else {
-            return new RESTResponse<List<AcademicProgram>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
-                    res);
-        }
-    }
+	/*
+	 ** Return a listing of all the resources
+	 */
+	@GetMapping
+	public RESTResponse<List<AcademicProgram>> getAll() {
+		List<AcademicProgram> res;
+		try {
+			res = academicProgramService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<AcademicProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<AcademicProgram>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado.", null);
+		}
+	}
 
-    /*
-     ** Return one resource
-     */
-    @GetMapping("/{id}")
-    public RESTResponse<AcademicProgram> getOne(@PathVariable Integer id) {
-        return new RESTResponse<AcademicProgram>(RESTResponse.OK, "", academicProgramService.getOne(id));
-    }
+	/*
+	 ** Return one resource
+	 */
+	@GetMapping("/{id}")
+	public RESTResponse<AcademicProgram> getOne(@PathVariable Integer id) {
+		AcademicProgram res;
+		try {
+			res = academicProgramService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<AcademicProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<AcademicProgram>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "AcademicProgram no registrado.", null);
+		}
+	}
 
-    /*
-     ** Store a newly created resource in storage.
-     */
-    @PostMapping
-    public RESTResponse<AcademicProgram> add(@RequestBody RESTRequest<AcademicProgram> req) {
-        academicProgramService.add(req.getPayload());
-        return new RESTResponse<>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-    }
+	/*
+	 ** Store a newly created resource in storage.
+	 */
+	@PostMapping
+	public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
+		try {
+			academicProgramService.add(academicProgram.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+	}
 
-    /*
-     ** Update the specified resource in storage.
-     */
-    @PatchMapping
-    public void update(@RequestBody RESTRequest<AcademicProgram> req) {
-        academicProgramService.update(req.getPayload());
-    }
+	/*
+	 ** Update the specified resource in storage partially.
+	 */
+	@PatchMapping
+	public RESTResponse<AcademicProgram> patch(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
+		try {
+			academicProgramService.update(academicProgram.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
+	}
 
-    /*
-     ** Remove the specified resource from storage.
-     */
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        academicProgramService.delete(id);
-    }
+	/*
+	 ** Update the specified resource in storage.
+	 */
+	@PutMapping
+	public RESTResponse<AcademicProgram> put(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
+		try {
+			academicProgramService.update(academicProgram.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
+	}
 
-    @GetMapping("/AcademicProgramsByWorkPlaceId/{id}")
-    public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
-        return new RESTResponse<List<AcademicProgram>>(1, "",
-                academicProgramService.getAcademicProgramsByWorkPlaceId(id));
-    }
+	/*
+	 ** Remove the specified resource from storage.
+	 */
+	@DeleteMapping("/{id}")
+	public RESTResponse<AcademicProgram> delete(@PathVariable Integer id) {
+		try {
+			academicProgramService.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
+	}
+
+	@GetMapping("/AcademicProgramsByWorkPlaceId/{id}")
+	public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
+		return new RESTResponse<List<AcademicProgram>>(1, "",
+				academicProgramService.getAcademicProgramsByWorkPlaceId(id));
+	}
 }
