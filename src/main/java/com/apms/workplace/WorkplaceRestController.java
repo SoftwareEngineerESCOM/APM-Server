@@ -1,5 +1,6 @@
 package com.apms.workplace;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,21 @@ public class WorkplaceRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Workplace>> getAll() {
-		return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", workplaceService.getAll());
+		List<Workplace> res;
+		try {
+			res = workplaceService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL,
+					"Inconsistencia en la base de datos.", new ArrayList<Workplace>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					res);
+		}
+
 	}
 
 	/*
