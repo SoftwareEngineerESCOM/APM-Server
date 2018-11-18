@@ -57,8 +57,9 @@ public class AcademicProgramRestController {
      ** Update the specified resource in storage.
      */
     @PatchMapping
-    public void update(@RequestBody RESTRequest<AcademicProgram> req) {
+    public RESTResponse<AcademicProgram> update(@RequestBody RESTRequest<AcademicProgram> req) {
         academicProgramService.update(req.getPayload());
+        return new RESTResponse<>(RESTResponse.OK, "Programa Academico Modificado.", null);
     }
 
     /*

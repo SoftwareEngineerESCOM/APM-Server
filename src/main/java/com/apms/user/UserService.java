@@ -18,7 +18,7 @@ public class UserService {
 		return records;
 	}
 
-	public User getOne(String id) {
+	public User getOne(Integer id) {
 		return userRepository.findById(id).isPresent() ? userRepository.findById(id).get() : null;
 	}
 
@@ -31,7 +31,7 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-	public void delete(String id) {
+	public void delete(Integer id) {
 		userRepository.deleteById(id);
 	}
 
@@ -39,7 +39,7 @@ public class UserService {
 		return userRepository.getUsersByWorkplaceIdAndPositionId(workplace_Id, position_Id);
 	}
 
-	public List<User> getUserByIdAndPassword(String user_Id, String user_Password) {
+	public List<User> getUserByIdAndPassword(Integer user_Id, String user_Password) {
 		return userRepository.getUserByIdAndPassword(user_Id, user_Password);
 	}
 
