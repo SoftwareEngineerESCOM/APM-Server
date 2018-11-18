@@ -27,7 +27,7 @@ public class WorkplaceRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Workplace>> getAll() {
-		return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", workplaceService.getAll());
+		return new RESTResponse<>(RESTResponse.OK, "", workplaceService.getAll());
 	}
 
 	/*
@@ -35,7 +35,7 @@ public class WorkplaceRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<Workplace> getOne(@PathVariable Integer id) {
-		return new RESTResponse<Workplace>(RESTResponse.OK, "", workplaceService.getOne(id));
+		return new RESTResponse<>(RESTResponse.OK, "", workplaceService.getOne(id));
 	}
 
 	/*
