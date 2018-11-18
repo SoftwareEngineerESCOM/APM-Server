@@ -134,9 +134,9 @@ public class UserRestController {
 		}
 	}
 
-	@PostMapping("/userByIdAndPassword")
-	public RESTResponse<User> getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
-		List<User> res = userService.getUserByIdAndPassword(req.getPayload().getEmail(), req.getPayload().getPassword());
+	@PostMapping("/userByEmailAndPassword")
+	public RESTResponse<User> getUserByEmailAndPassword(@RequestBody RESTRequest<User> req) {
+		List<User> res = userService.getUserByEmailAndPassword(req.getPayload().getEmail(), req.getPayload().getPassword());
 		if (!res.isEmpty())
 			return new RESTResponse<User>(200, "", res.get(0));
 		else
