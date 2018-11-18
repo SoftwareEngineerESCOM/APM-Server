@@ -1,5 +1,6 @@
 package com.apms.studyPlan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,52 +19,65 @@ import com.apms.rest.RESTResponse;
 @RestController
 @RequestMapping("/StudyPlan")
 public class StudyPlanRestController {
-	
-    @Autowired
-    private StudyPlanService studyPlanService;
 
-    /*
-    **Return a listing of all the resources
-    */
-    @GetMapping
-    public RESTResponse<List<StudyPlan>> getAll() {
-    	return new RESTResponse<>(1, "", studyPlanService.getAll());
-    }
+	@Autowired
+	private StudyPlanService studyPlanService;
 
-    /*
-    **Return one resource
-    */
-    @GetMapping("/{id}")
-    public RESTResponse<StudyPlan> getOne(@PathVariable Integer id) {
-        return new RESTResponse<StudyPlan>(1, "", studyPlanService.getOne(id));
-    }
+	/*
+	 ** Return a listing of all the resources
+	 */
+	@GetMapping
+	public RESTResponse<List<StudyPlan>> getAll() {
+		List<StudyPlan> res;
+		try {
+			res = studyPlanService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<StudyPlan>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<StudyPlan>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					res);
+		}
+	}
 
-    /*
-    **Store a newly created resource in storage.
-    */
-    @PostMapping
-    public void add(@RequestBody RESTRequest<StudyPlan> req) {
-        studyPlanService.add(req.getPayload());
-    }
+	/*
+	 ** Return one resource
+	 */
+	@GetMapping("/{id}")
+	public RESTResponse<StudyPlan> getOne(@PathVariable Integer id) {
+		return new RESTResponse<StudyPlan>(1, "", studyPlanService.getOne(id));
+	}
 
-    /*
-    **Update the specified resource in storage.
-    */
-    @PatchMapping
-    public void update(@RequestBody RESTRequest<StudyPlan> req) {
-        studyPlanService.update(req.getPayload());
-    }
+	/*
+	 ** Store a newly created resource in storage.
+	 */
+	@PostMapping
+	public void add(@RequestBody RESTRequest<StudyPlan> req) {
+		studyPlanService.add(req.getPayload());
+	}
 
-    /*
-    **Remove the specified resource from storage.
-    */
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        studyPlanService.delete(id);
-    }
-    
-    @GetMapping("/StudyPlansByAcademicProgramId/{id}")
-    public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
-    	return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
-    }
+	/*
+	 ** Update the specified resource in storage.
+	 */
+	@PatchMapping
+	public void update(@RequestBody RESTRequest<StudyPlan> req) {
+		studyPlanService.update(req.getPayload());
+	}
+
+	/*
+	 ** Remove the specified resource from storage.
+	 */
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Integer id) {
+		studyPlanService.delete(id);
+	}
+
+	@GetMapping("/StudyPlansByAcademicProgramId/{id}")
+	public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
+		return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
+	}
 }

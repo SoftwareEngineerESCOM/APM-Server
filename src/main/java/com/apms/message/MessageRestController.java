@@ -1,5 +1,6 @@
 package com.apms.message;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,20 @@ public class MessageRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Message>> getAll() {
-		return new RESTResponse<List<Message>>(1, "", messageService.getAll());
+		List<Message> res;
+		try {
+			res = messageService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Message>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<Message>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Message>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Message>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					res);
+		}
 	}
 
 	/*

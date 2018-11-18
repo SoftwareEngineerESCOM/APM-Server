@@ -1,5 +1,6 @@
 package com.apms.role;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,19 @@ public class RoleRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Role>> getAll() {
-		return new RESTResponse<List<Role>>(1, "", roleService.getAll());
+		List<Role> res;
+		try {
+			res = roleService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Role>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<Role>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Role>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", res);
+		}
 	}
 
 	/*

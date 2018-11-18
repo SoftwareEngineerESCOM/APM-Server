@@ -1,5 +1,6 @@
 package com.apms.humanResource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,20 @@ public class HumanResourceRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<HumanResource>> getAll() {
-		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getAll());
+		List<HumanResource> res;
+		try {
+			res = humanResourceService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<HumanResource>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<HumanResource>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<HumanResource>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<HumanResource>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado.", res);
+		}
 	}
 
 	/*

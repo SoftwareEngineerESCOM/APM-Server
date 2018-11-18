@@ -1,5 +1,6 @@
 package com.apms.academicProgram;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,20 @@ public class AcademicProgramRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<AcademicProgram>> getAll() {
-		return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", academicProgramService.getAll());
+		List<AcademicProgram> res;
+		try {
+			res = academicProgramService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<AcademicProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<AcademicProgram>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<AcademicProgram>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					res);
+		}
 	}
 
 	/*

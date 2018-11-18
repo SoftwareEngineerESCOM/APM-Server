@@ -1,5 +1,6 @@
 package com.apms.position;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,20 @@ public class PositionRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Position>> getAll() {
-		return new RESTResponse<List<Position>>(1, "", positionService.getAll());
+		List<Position> res;
+		try {
+			res = positionService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Position>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<Position>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Position>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Position>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					res);
+		}
 	}
 
 	/*

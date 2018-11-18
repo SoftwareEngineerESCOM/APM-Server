@@ -20,6 +20,8 @@ public class Role {
 	private String name;
 	@Column(nullable = false)
 	private String description;
+	@Column(nullable = false)
+	private Integer rank;
 
 	public Role() {
 	}

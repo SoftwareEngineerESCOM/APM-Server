@@ -1,5 +1,6 @@
 package com.apms.learningUnit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,20 @@ public class LearningUnitRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<LearningUnit>> getAll() {
-		return new RESTResponse<List<LearningUnit>>(1, "", learningUnitService.getAll());
+		List<LearningUnit> res;
+		try {
+			res = learningUnitService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<LearningUnit>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado.", res);
+		}
 	}
 
 	/*

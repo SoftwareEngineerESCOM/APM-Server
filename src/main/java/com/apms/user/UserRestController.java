@@ -1,5 +1,6 @@
 package com.apms.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,19 @@ public class UserRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<User>> getAll() {
-		return new RESTResponse<List<User>>(1, "", userService.getAll());
+		List<User> res;
+		try {
+			res = userService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<User>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", res);
+		}
 	}
 
 	/*
@@ -82,7 +95,7 @@ public class UserRestController {
 	@PostMapping("/UserByIdAndPassword")
 	public RESTResponse<User> getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
 		List<User> res = userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
-		if(!res.isEmpty())
+		if (!res.isEmpty())
 			return new RESTResponse<User>(200, "", res.get(0));
 		else
 			return new RESTResponse<User>(500, "", null);

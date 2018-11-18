@@ -1,5 +1,6 @@
 package com.apms.title;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,19 @@ public class TitleRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Title>> getAll() {
-		return new RESTResponse<List<Title>>(1, "", titleService.getAll());
+		List<Title> res;
+		try {
+			res = titleService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Title>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<Title>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Title>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Title>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", res);
+		}
 	}
 
 	/*

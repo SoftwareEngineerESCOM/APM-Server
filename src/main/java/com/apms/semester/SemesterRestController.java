@@ -1,5 +1,6 @@
 package com.apms.semester;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,20 @@ public class SemesterRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<Semester>> getAll() {
-		return new RESTResponse<List<Semester>>(1, "", semesterService.getAll());
+		List<Semester> res;
+		try {
+			res = semesterService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Semester>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					new ArrayList<Semester>());
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Semester>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Semester>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					res);
+		}
 	}
 
 	/*
