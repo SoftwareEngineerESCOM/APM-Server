@@ -39,8 +39,8 @@ public class UserService {
 		return userRepository.getUsersByWorkplaceIdAndPositionId(workplace_Id, position_Id);
 	}
 
-	public List<User> getUserByIdAndPassword(Integer user_Id, String user_Password) {
-		return userRepository.getUserByIdAndPassword(user_Id, user_Password);
+	public List<User> getUserByIdAndPassword(String user_Email, String user_Password) {
+		return userRepository.getUserByIdAndPassword(user_Email, user_Password);
 	}
 
 	public List<User> getUsersByWorkplaceId(Integer id) {

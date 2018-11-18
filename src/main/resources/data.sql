@@ -167,11 +167,11 @@ insert into human_resource (second_surname, name, first_surname, position_id, ti
 insert into human_resource (second_surname, name, first_surname, position_id, title_id, workplace_id) values ('Guerra', 'David', 'Vargas', (select id from position where abbreviation like '%Dir.%'), (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIBI'));
 
 -- add user
-insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'admin1', '1', (select id from human_resource where name like '%Oscar%'));
-insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'test1', '2', (select id from human_resource where name like '%Emiliano%'));
-insert into user_apms (is_account_active, password, token, human_resource_id) values (false, 'test2', '3', (select id from human_resource where name like '%Erika%'));
-insert into user_apms (is_account_active, password, token, human_resource_id) values (true, 'test3', '4', (select id from human_resource where name like '%Eduardo%'));
-insert into user_apms (is_account_active, password, token, human_resource_id) values (false, 'test4', '5', (select id from human_resource where name like '%Arturo%'));
+insert into user_apms (is_account_active, password, token, human_resource_id, email) values (true, 'admin1', '1', (select id from human_resource where name like '%Oscar%'), 'admin1@test.com');
+insert into user_apms (is_account_active, password, token, human_resource_id, email) values (true, 'test1', '2', (select id from human_resource where name like '%Emiliano%'), 'test1@test.com');
+insert into user_apms (is_account_active, password, token, human_resource_id, email) values (false, 'test2', '3', (select id from human_resource where name like '%Erika%'), 'test2@test.com');
+insert into user_apms (is_account_active, password, token, human_resource_id, email) values (true, 'test3', '4', (select id from human_resource where name like '%Eduardo%'), 'test3@test.com');
+insert into user_apms (is_account_active, password, token, human_resource_id, email) values (false, 'test4', '5', (select id from human_resource where name like '%Arturo%'), 'test4@test.com');
 
 -- add message
 insert into message values (0, 'Esta es la descripción', 'Matrícula y/o contraseña no válidas.');
