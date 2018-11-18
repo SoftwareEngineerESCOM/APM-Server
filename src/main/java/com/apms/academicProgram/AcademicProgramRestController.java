@@ -27,7 +27,7 @@ public class AcademicProgramRestController {
 	 */
 	@GetMapping
 	public RESTResponse<List<AcademicProgram>> getAll() {
-		return new RESTResponse<List<AcademicProgram>>(1, "", academicProgramService.getAll());
+		return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", academicProgramService.getAll());
 	}
 
 	/*
@@ -35,7 +35,7 @@ public class AcademicProgramRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<AcademicProgram> getOne(@PathVariable Integer id) {
-		return new RESTResponse<AcademicProgram>(1, "", academicProgramService.getOne(id));
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "", academicProgramService.getOne(id));
 	}
 
 	/*
