@@ -68,13 +68,8 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
-<<<<<<< HEAD
 			if(userService.getOne(user.getPayload().getId()) != null)
                 return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
-=======
-			if (userService.getOne(user.getPayload().getId()) != null)
-				return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
->>>>>>> 7c6e410c28dd5093f0267832745286e730bf6fae
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -171,12 +166,7 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-<<<<<<< HEAD
-			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
-=======
-			return new RESTResponse<List<User>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
->>>>>>> 7c6e410c28dd5093f0267832745286e730bf6fae
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
