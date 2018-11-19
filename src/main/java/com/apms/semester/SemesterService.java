@@ -1,41 +1,41 @@
 package com.apms.semester;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class SemesterService {
-	
-    @Autowired
-    private SemesterRepository semesterRepository;
 
-    public List<Semester> getAll() {
-        List<Semester> records = new ArrayList<>();
-        semesterRepository.findAll().forEach(records::add);
-        return records;
-    }
+	@Autowired
+	private SemesterRepository semesterRepository;
 
-    public Semester getOne(Integer id) {
-        return semesterRepository.findById(id).get();
-    }
+	public List<Semester> getAll() {
+		List<Semester> records = new ArrayList<>();
+		semesterRepository.findAll().forEach(records::add);
+		return records;
+	}
 
-    public void add(Semester semester) {
-        semesterRepository.save(semester);
-    }
+	public Semester getOne(Integer id) {
+		return semesterRepository.findById(id).isPresent() ? semesterRepository.findById(id).get() : null;
+	}
 
-    public void update(Semester semester) {
-        // if exists updates otherwise inserts
-        semesterRepository.save(semester);
-    }
+	public void add(Semester semester) {
+		semesterRepository.save(semester);
+	}
 
-    public void delete(Integer id) {
-        semesterRepository.deleteById(id);
-    }
-    
-    public List<Semester> getSemestersByStudyPlanId(Integer id){
-    	return semesterRepository.getSemestersByStudyPlanId(id);
-    }
+	public void update(Semester semester) {
+		// if exists updates otherwise inserts
+		semesterRepository.save(semester);
+	}
+
+	public void delete(Integer id) {
+		semesterRepository.deleteById(id);
+	}
+
+	public List<Semester> getSemestersByStudyPlanId(Integer id) {
+		return semesterRepository.getSemestersByStudyPlanId(id);
+	}
 }

@@ -1,29 +1,37 @@
 package com.apms.placePractice;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class PlacePracticeService {
-    @Autowired
-    private PlacePracticeRepository placePracticeRepository;
-    public List<PlacePractice> getAll() {
-        List<PlacePractice> records = new ArrayList<>();
-        placePracticeRepository.findAll().forEach(records::add);
-        return records;
-    }
-    public PlacePractice getOne(Integer id) {
-        return placePracticeRepository.findById(id).get();
-    }
-    public void add(PlacePractice PlacePractice) {
-        placePracticeRepository.save(PlacePractice);
-    }
-    public void update(PlacePractice PlacePractice) {
-        // if exists updates otherwise inserts
-        placePracticeRepository.save(PlacePractice);
-    }
-    public void delete(Integer id) {
-        placePracticeRepository.deleteById(id);
-    }
+
+	@Autowired
+	private PlacePracticeRepository placePracticeRepository;
+
+	public List<PlacePractice> getAll() {
+		List<PlacePractice> records = new ArrayList<>();
+		placePracticeRepository.findAll().forEach(records::add);
+		return records;
+	}
+
+	public PlacePractice getOne(Integer id) {
+		return placePracticeRepository.findById(id).isPresent() ? placePracticeRepository.findById(id).get() : null;
+	}
+
+	public void add(PlacePractice placePractice) {
+		placePracticeRepository.save(placePractice);
+	}
+
+	public void update(PlacePractice placePractice) {
+		// if exists updates otherwise inserts
+		placePracticeRepository.save(placePractice);
+	}
+
+	public void delete(Integer id) {
+		placePracticeRepository.deleteById(id);
+	}
 }

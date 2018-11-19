@@ -1,6 +1,5 @@
 package com.apms.humanResource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,22 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
-import com.apms.user.UserService;
 
 @RestController
-@RequestMapping("/HumanResource")
+@RequestMapping("/humanResource")
 public class HumanResourceRestController {
 
 	@Autowired
 	private HumanResourceService humanResourceService;
-	@Autowired
-	private UserService userService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -37,13 +34,13 @@ public class HumanResourceRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<List<HumanResource>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-					new ArrayList<HumanResource>());
+					null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<HumanResource>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<HumanResource>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", res);
+					"Los catalogos necesarios no se han cargado.", null);
 		}
 	}
 
@@ -52,35 +49,78 @@ public class HumanResourceRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<HumanResource> getOne(@PathVariable Integer id) {
-		return new RESTResponse<HumanResource>(1, "", humanResourceService.getOne(id));
+		HumanResource res;
+		try {
+			res = humanResourceService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<HumanResource>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<HumanResource>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL, "HumanResource no registrado.", null);
+		}
 	}
 
 	/*
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<HumanResource> req) {
-		System.out.println("hola'");
-		humanResourceService.add(req.getPayload());
+	public RESTResponse<HumanResource> post(@RequestBody RESTRequest<HumanResource> humanResource) {
+		try {
+			humanResourceService.add(humanResource.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+	}
+
+	/*
+	 ** Update the specified resource in storage partially.
+	 */
+	@PatchMapping
+	public RESTResponse<HumanResource> patch(@RequestBody RESTRequest<HumanResource> humanResource) {
+		try {
+			humanResourceService.update(humanResource.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
-	@PatchMapping
-	public void update(@RequestBody RESTRequest<HumanResource> req) {
-		System.out.println("olaaaad erqw rdsfRR");
-		humanResourceService.update(req.getPayload());
+	@PutMapping
+	public RESTResponse<HumanResource> put(@RequestBody RESTRequest<HumanResource> humanResource) {
+		try {
+			humanResourceService.update(humanResource.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
 	}
 
 	/*
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
-		if (userService.getOne(id) != null)
-			userService.delete(id);
-		humanResourceService.delete(id);
+	public RESTResponse<HumanResource> delete(@PathVariable Integer id) {
+		try {
+			humanResourceService.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
 	}
 
 	@GetMapping("/HumanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
@@ -94,4 +134,5 @@ public class HumanResourceRestController {
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceId(@PathVariable Integer id) {
 		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
 	}
+
 }

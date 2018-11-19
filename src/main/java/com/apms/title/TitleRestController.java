@@ -1,6 +1,5 @@
 package com.apms.title;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +17,7 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
 @RestController
-@RequestMapping("/Title")
+@RequestMapping("/title")
 public class TitleRestController {
 
 	@Autowired
@@ -33,13 +33,13 @@ public class TitleRestController {
 			res = titleService.getAll();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<Title>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-					new ArrayList<Title>());
+			return new RESTResponse<List<Title>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Title>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Title>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", res);
+			return new RESTResponse<List<Title>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+					null);
 		}
 	}
 
@@ -48,30 +48,77 @@ public class TitleRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<Title> getOne(@PathVariable Integer id) {
-		return new RESTResponse<Title>(1, "", titleService.getOne(id));
+		Title res;
+		try {
+			res = titleService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Title>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<Title>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<Title>(RESTResponse.FAIL, "Title no registrado.", null);
+		}
 	}
 
 	/*
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<Title> req) {
-		titleService.add(req.getPayload());
+	public RESTResponse<Title> post(@RequestBody RESTRequest<Title> title) {
+		try {
+			titleService.add(title.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Title>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<Title>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+	}
+
+	/*
+	 ** Update the specified resource in storage partially.
+	 */
+	@PatchMapping
+	public RESTResponse<Title> patch(@RequestBody RESTRequest<Title> title) {
+		try {
+			titleService.update(title.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Title>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<Title>(RESTResponse.OK, "Title modificado.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
-	@PatchMapping
-	public void update(@RequestBody RESTRequest<Title> req) {
-		titleService.update(req.getPayload());
+	@PutMapping
+	public RESTResponse<Title> put(@RequestBody RESTRequest<Title> title) {
+		try {
+			titleService.update(title.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Title>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<Title>(RESTResponse.OK, "Title modificado.", null);
 	}
 
 	/*
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
-		titleService.delete(id);
+	public RESTResponse<Title> delete(@PathVariable Integer id) {
+		try {
+			titleService.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Title>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<Title>(RESTResponse.OK, "Title modificado.", null);
 	}
 }

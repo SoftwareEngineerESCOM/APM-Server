@@ -1,37 +1,37 @@
 package com.apms.workplaceType;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class WorkplaceTypeService {
-	
-    @Autowired
-    private WorkplaceTypeRepository workplaceTypeRepository;
 
-    public List<WorkplaceType> getAll() {
-        List<WorkplaceType> records = new ArrayList<>();
-        workplaceTypeRepository.findAll().forEach(records::add);
-        return records;
-    }
+	@Autowired
+	private WorkplaceTypeRepository workplaceTypeRepository;
 
-    public WorkplaceType getOne(Integer id) {
-        return workplaceTypeRepository.findById(id).get();
-    }
+	public List<WorkplaceType> getAll() {
+		List<WorkplaceType> records = new ArrayList<>();
+		workplaceTypeRepository.findAll().forEach(records::add);
+		return records;
+	}
 
-    public void add(WorkplaceType workplaceType) {
-        workplaceTypeRepository.save(workplaceType);
-    }
+	public WorkplaceType getOne(Integer id) {
+		return workplaceTypeRepository.findById(id).isPresent() ? workplaceTypeRepository.findById(id).get() : null;
+	}
 
-    public void update(WorkplaceType workplaceType) {
-        // if exists updates otherwise inserts
-        workplaceTypeRepository.save(workplaceType);
-    }
+	public void add(WorkplaceType workplaceType) {
+		workplaceTypeRepository.save(workplaceType);
+	}
 
-    public void delete(Integer id) {
-        workplaceTypeRepository.deleteById(id);
-    }
+	public void update(WorkplaceType workplaceType) {
+		// if exists updates otherwise inserts
+		workplaceTypeRepository.save(workplaceType);
+	}
+
+	public void delete(Integer id) {
+		workplaceTypeRepository.deleteById(id);
+	}
 }

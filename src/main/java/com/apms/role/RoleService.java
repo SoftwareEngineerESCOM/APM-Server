@@ -1,37 +1,37 @@
 package com.apms.role;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class RoleService {
-	
-    @Autowired
-    private RoleRepository roleRepository;
 
-    public List<Role> getAll() {
-        List<Role> records = new ArrayList<>();
-        roleRepository.findAll().forEach(records::add);
-        return records;
-    }
+	@Autowired
+	private RoleRepository roleRepository;
 
-    public Role getOne(Integer id) {
-        return roleRepository.findById(id).get();
-    }
+	public List<Role> getAll() {
+		List<Role> records = new ArrayList<>();
+		roleRepository.findAll().forEach(records::add);
+		return records;
+	}
 
-    public void add(Role role) {
-        roleRepository.save(role);
-    }
+	public Role getOne(Integer id) {
+		return roleRepository.findById(id).isPresent() ? roleRepository.findById(id).get() : null;
+	}
 
-    public void update(Role role) {
-        // if exists updates otherwise inserts
-        roleRepository.save(role);
-    }
+	public void add(Role role) {
+		roleRepository.save(role);
+	}
 
-    public void delete(Integer id) {
-        roleRepository.deleteById(id);
-    }
+	public void update(Role role) {
+		// if exists updates otherwise inserts
+		roleRepository.save(role);
+	}
+
+	public void delete(Integer id) {
+		roleRepository.deleteById(id);
+	}
 }

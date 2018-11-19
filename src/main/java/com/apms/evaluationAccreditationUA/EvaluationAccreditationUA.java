@@ -1,4 +1,5 @@
 package com.apms.evaluationAccreditationUA;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,18 +13,19 @@ import com.apms.accreditation.Accreditation;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
-public class EvaluationAccreditationUA{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;   
-    @ManyToMany
-    @JoinColumn(nullable=false)
-    private List<Accreditation> accreditation;
-    
-    public EvaluationAccreditationUA(){
-    
-    }
+public class EvaluationAccreditationUA {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@ManyToMany
+	@JoinColumn(nullable = false)
+	private List<Accreditation> accreditation;
+
+	public EvaluationAccreditationUA() {
+
+	}
 }

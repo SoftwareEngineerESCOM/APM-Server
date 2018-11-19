@@ -1,4 +1,5 @@
 package com.apms.extensiveProgram;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,29 +19,30 @@ import com.apms.type.Type;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
-public class ExtensiveProgram{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;    
-    @ManyToMany
-    @JoinColumn(nullable=false)
-    private List<Type> types;
-    @OneToOne
+public class ExtensiveProgram {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@ManyToMany
 	@JoinColumn(nullable = false)
-    private AssignedTime assignedTime;
-    @OneToOne
+	private List<Type> types;
+	@OneToOne
 	@JoinColumn(nullable = false)
-    private TeachingProfile teachingProfile;
-    @ManyToOne
-    @JoinColumn(nullable=false)
-    private Modality modality;
-    @ManyToOne
-    @JoinColumn(nullable=false)
-    private Teaching teaching;
-    
-    public ExtensiveProgram(){
-    }
+	private AssignedTime assignedTime;
+	@OneToOne
+	@JoinColumn(nullable = false)
+	private TeachingProfile teachingProfile;
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Modality modality;
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Teaching teaching;
+
+	public ExtensiveProgram() {
+	}
 }

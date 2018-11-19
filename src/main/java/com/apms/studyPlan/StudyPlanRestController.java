@@ -1,6 +1,5 @@
 package com.apms.studyPlan;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +17,7 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
 @RestController
-@RequestMapping("/StudyPlan")
+@RequestMapping("/studyPlan")
 public class StudyPlanRestController {
 
 	@Autowired
@@ -33,14 +33,13 @@ public class StudyPlanRestController {
 			res = studyPlanService.getAll();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<StudyPlan>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-					new ArrayList<StudyPlan>());
+			return new RESTResponse<List<StudyPlan>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
-					res);
+					null);
 		}
 	}
 
@@ -49,31 +48,78 @@ public class StudyPlanRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<StudyPlan> getOne(@PathVariable Integer id) {
-		return new RESTResponse<StudyPlan>(1, "", studyPlanService.getOne(id));
+		StudyPlan res;
+		try {
+			res = studyPlanService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<StudyPlan>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "StudyPlan no registrado.", null);
+		}
 	}
 
 	/*
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<StudyPlan> req) {
-		studyPlanService.add(req.getPayload());
+	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
+		try {
+			studyPlanService.add(studyPlan.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+	}
+
+	/*
+	 ** Update the specified resource in storage partially.
+	 */
+	@PatchMapping
+	public RESTResponse<StudyPlan> patch(@RequestBody RESTRequest<StudyPlan> studyPlan) {
+		try {
+			studyPlanService.update(studyPlan.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
-	@PatchMapping
-	public void update(@RequestBody RESTRequest<StudyPlan> req) {
-		studyPlanService.update(req.getPayload());
+	@PutMapping
+	public RESTResponse<StudyPlan> put(@RequestBody RESTRequest<StudyPlan> studyPlan) {
+		try {
+			studyPlanService.update(studyPlan.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
 	}
 
 	/*
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
-		studyPlanService.delete(id);
+	public RESTResponse<StudyPlan> delete(@PathVariable Integer id) {
+		try {
+			studyPlanService.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
 	}
 
 	@GetMapping("/StudyPlansByAcademicProgramId/{id}")

@@ -1,6 +1,5 @@
 package com.apms.workplaceType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +17,7 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
 @RestController
-@RequestMapping("/WorkplaceType")
+@RequestMapping("/workplaceType")
 public class WorkplaceTypeRestController {
 
 	@Autowired
@@ -34,13 +34,13 @@ public class WorkplaceTypeRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<List<WorkplaceType>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-					new ArrayList<WorkplaceType>());
+					null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<WorkplaceType>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<WorkplaceType>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", res);
+					"Los catalogos necesarios no se han cargado.", null);
 		}
 	}
 
@@ -49,30 +49,77 @@ public class WorkplaceTypeRestController {
 	 */
 	@GetMapping("/{id}")
 	public RESTResponse<WorkplaceType> getOne(@PathVariable Integer id) {
-		return new RESTResponse<WorkplaceType>(1, "", workplaceTypeService.getOne(id));
+		WorkplaceType res;
+		try {
+			res = workplaceTypeService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<WorkplaceType>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<WorkplaceType>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL, "WorkplaceType no registrado.", null);
+		}
 	}
 
 	/*
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public void add(@RequestBody RESTRequest<WorkplaceType> req) {
-		workplaceTypeService.add(req.getPayload());
+	public RESTResponse<WorkplaceType> post(@RequestBody RESTRequest<WorkplaceType> workplaceType) {
+		try {
+			workplaceTypeService.add(workplaceType.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+	}
+
+	/*
+	 ** Update the specified resource in storage partially.
+	 */
+	@PatchMapping
+	public RESTResponse<WorkplaceType> patch(@RequestBody RESTRequest<WorkplaceType> workplaceType) {
+		try {
+			workplaceTypeService.update(workplaceType.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "WorkplaceType modificado.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
-	@PatchMapping
-	public void update(@RequestBody RESTRequest<WorkplaceType> req) {
-		workplaceTypeService.update(req.getPayload());
+	@PutMapping
+	public RESTResponse<WorkplaceType> put(@RequestBody RESTRequest<WorkplaceType> workplaceType) {
+		try {
+			workplaceTypeService.update(workplaceType.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "WorkplaceType modificado.", null);
 	}
 
 	/*
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
-		workplaceTypeService.delete(id);
+	public RESTResponse<WorkplaceType> delete(@PathVariable Integer id) {
+		try {
+			workplaceTypeService.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "WorkplaceType modificado.", null);
 	}
 }

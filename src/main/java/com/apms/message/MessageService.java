@@ -1,37 +1,37 @@
 package com.apms.message;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class MessageService {
-	
-    @Autowired
-    private MessageRepository messageRepository;
 
-    public List<Message> getAll() {
-        List<Message> records = new ArrayList<>();
-        messageRepository.findAll().forEach(records::add);
-        return records;
-    }
+	@Autowired
+	private MessageRepository messageRepository;
 
-    public Message getOne(Integer id) {
-        return messageRepository.findById(id).get();
-    }
+	public List<Message> getAll() {
+		List<Message> records = new ArrayList<>();
+		messageRepository.findAll().forEach(records::add);
+		return records;
+	}
 
-    public void add(Message message) {
-        messageRepository.save(message);
-    }
+	public Message getOne(Integer id) {
+		return messageRepository.findById(id).isPresent() ? messageRepository.findById(id).get() : null;
+	}
 
-    public void update(Message message) {
-        // if exists updates otherwise inserts
-        messageRepository.save(message);
-    }
+	public void add(Message message) {
+		messageRepository.save(message);
+	}
 
-    public void delete(Integer id) {
-        messageRepository.deleteById(id);
-    }
+	public void update(Message message) {
+		// if exists updates otherwise inserts
+		messageRepository.save(message);
+	}
+
+	public void delete(Integer id) {
+		messageRepository.deleteById(id);
+	}
 }

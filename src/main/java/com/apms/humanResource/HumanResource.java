@@ -2,11 +2,12 @@ package com.apms.humanResource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import com.apms.position.Position;
 import com.apms.title.Title;
 import com.apms.workplace.Workplace;
@@ -42,7 +43,7 @@ public class HumanResource {
 	}
 
 	public HumanResource(Integer id, String name, String firstSurname, String secondSurname, Title title,
-						 Position position, Workplace workplace) {
+			Position position, Workplace workplace) {
 		this.id = id;
 		this.name = name;
 		this.firstSurname = firstSurname;
