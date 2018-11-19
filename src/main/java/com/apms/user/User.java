@@ -31,7 +31,7 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	@Column(nullable = false)
-	private boolean isAccountActive;
+	private boolean isAccountBlocked;
 	@Column(nullable = false, unique = true)
 	private String email;
 
@@ -46,12 +46,12 @@ public class User {
 
 	}
 
-	public User(Integer id, String token, String password, boolean isAccountActive, HumanResource humanResource) {
+	public User(Integer id, String token, String password, boolean isAccountBlocked, HumanResource humanResource) {
 		super();
 		this.id = id;
 		this.token = token;
 		this.password = password;
-		this.isAccountActive = isAccountActive;
+		this.isAccountBlocked = isAccountBlocked;
 		this.humanResource = humanResource;
 	}
 	
@@ -60,7 +60,7 @@ public class User {
 		this.id = user.getId();
 		this.token = user.getToken();
 		this.password = user.getPassword();
-		this.isAccountActive = user.isAccountActive();
+		this.isAccountBlocked = user.isAccountBlocked();
 		this.humanResource = user.getHumanResource();
 	}
 
