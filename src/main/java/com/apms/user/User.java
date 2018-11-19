@@ -52,5 +52,14 @@ public class User {
 		this.isAccountActive = isAccountActive;
 		this.humanResource = humanResource;
 	}
+	
+	public User(User user) {
+		super();
+		this.id = user.getId();
+		this.token = user.getToken();
+		this.password = user.getPassword();
+		this.isAccountActive = user.isAccountActive();
+		this.humanResource = user.getHumanResource();
+	}
 
 }
