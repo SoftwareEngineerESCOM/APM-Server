@@ -69,6 +69,8 @@ public class SyntheticProgramRestController {
 	@PostMapping
 	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> syntheticProgram) {
 		try {
+			if(syntheticProgramService.getOne(syntheticProgram.getPayload().getId()) != null)
+                return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "SyntheticProgram ya existe en el sistema.", null);
 			syntheticProgramService.add(syntheticProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

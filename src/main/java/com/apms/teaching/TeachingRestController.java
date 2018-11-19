@@ -68,6 +68,8 @@ public class TeachingRestController {
 	@PostMapping
 	public RESTResponse<Teaching> post(@RequestBody RESTRequest<Teaching> teaching) {
 		try {
+			if(teachingService.getOne(teaching.getPayload().getId()) != null)
+                return new RESTResponse<Teaching>(RESTResponse.FAIL, "Teaching ya existe en el sistema.", null);
 			teachingService.add(teaching.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

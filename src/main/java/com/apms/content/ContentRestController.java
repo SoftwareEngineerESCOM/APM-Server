@@ -68,6 +68,8 @@ public class ContentRestController {
 	@PostMapping
 	public RESTResponse<Content> post(@RequestBody RESTRequest<Content> content) {
 		try {
+			if(contentService.getOne(content.getPayload().getId()) != null)
+                return new RESTResponse<Content>(RESTResponse.FAIL, "Content ya existe en el sistema.", null);
 			contentService.add(content.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

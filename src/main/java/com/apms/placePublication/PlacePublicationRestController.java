@@ -69,6 +69,8 @@ public class PlacePublicationRestController {
 	@PostMapping
 	public RESTResponse<PlacePublication> post(@RequestBody RESTRequest<PlacePublication> placePublication) {
 		try {
+			if(placePublicationService.getOne(placePublication.getPayload().getId()) != null)
+                return new RESTResponse<PlacePublication>(RESTResponse.FAIL, "PlacePublication ya existe en el sistema.", null);
 			placePublicationService.add(placePublication.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

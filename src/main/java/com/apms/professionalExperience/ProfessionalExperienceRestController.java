@@ -72,6 +72,8 @@ public class ProfessionalExperienceRestController {
 	public RESTResponse<ProfessionalExperience> post(
 			@RequestBody RESTRequest<ProfessionalExperience> professionalExperience) {
 		try {
+			if(professionalExperienceService.getOne(professionalExperience.getPayload().getId()) != null)
+                return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL, "ProfessionalExperience ya existe en el sistema.", null);
 			professionalExperienceService.add(professionalExperience.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -68,6 +68,8 @@ public class KnowledgeRestController {
 	@PostMapping
 	public RESTResponse<Knowledge> post(@RequestBody RESTRequest<Knowledge> knowledge) {
 		try {
+			if(knowledgeService.getOne(knowledge.getPayload().getId()) != null)
+                return new RESTResponse<Knowledge>(RESTResponse.FAIL, "Knowledge ya existe en el sistema.", null);
 			knowledgeService.add(knowledge.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

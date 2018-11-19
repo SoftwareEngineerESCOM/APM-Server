@@ -69,6 +69,8 @@ public class HumanResourceRestController {
 	@PostMapping
 	public RESTResponse<HumanResource> post(@RequestBody RESTRequest<HumanResource> humanResource) {
 		try {
+			if(humanResourceService.getOne(humanResource.getPayload().getId()) != null)
+                return new RESTResponse<HumanResource>(RESTResponse.FAIL, "HumanResource ya existe en el sistema.", null);
 			humanResourceService.add(humanResource.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,14 +125,14 @@ public class HumanResourceRestController {
 		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
 	}
 
-	@GetMapping("/HumanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
+	@GetMapping("/humanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceIdAndPositionId(@PathVariable Integer idW,
 			@PathVariable Integer idP) {
 		return new RESTResponse<List<HumanResource>>(1, "",
 				humanResourceService.getHumanResourcesByWorkplaceIdAndPositionId(idW, idP));
 	}
 
-	@GetMapping("/HumanResourcesByWorkplaceId/{id}")
+	@GetMapping("/humanResourcesByWorkplaceId/{id}")
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceId(@PathVariable Integer id) {
 		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
 	}

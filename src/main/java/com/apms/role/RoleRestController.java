@@ -67,6 +67,8 @@ public class RoleRestController {
 	@PostMapping
 	public RESTResponse<Role> post(@RequestBody RESTRequest<Role> role) {
 		try {
+			if(roleService.getOne(role.getPayload().getId()) != null)
+                return new RESTResponse<Role>(RESTResponse.FAIL, "Role ya existe en el sistema.", null);
 			roleService.add(role.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -68,6 +68,8 @@ public class PositionRestController {
 	@PostMapping
 	public RESTResponse<Position> post(@RequestBody RESTRequest<Position> position) {
 		try {
+			if(positionService.getOne(position.getPayload().getId()) != null)
+                return new RESTResponse<Position>(RESTResponse.FAIL, "Position ya existe en el sistema.", null);
 			positionService.add(position.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

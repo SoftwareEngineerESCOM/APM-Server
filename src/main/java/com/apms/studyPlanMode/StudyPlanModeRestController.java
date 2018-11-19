@@ -69,6 +69,8 @@ public class StudyPlanModeRestController {
 	@PostMapping
 	public RESTResponse<StudyPlanMode> post(@RequestBody RESTRequest<StudyPlanMode> studyPlanMode) {
 		try {
+			if(studyPlanModeService.getOne(studyPlanMode.getPayload().getId()) != null)
+                return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL, "StudyPlanMode ya existe en el sistema.", null);
 			studyPlanModeService.add(studyPlanMode.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

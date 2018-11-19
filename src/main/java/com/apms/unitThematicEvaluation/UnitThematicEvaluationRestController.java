@@ -72,6 +72,8 @@ public class UnitThematicEvaluationRestController {
 	public RESTResponse<UnitThematicEvaluation> post(
 			@RequestBody RESTRequest<UnitThematicEvaluation> unitThematicEvaluation) {
 		try {
+			if(unitThematicEvaluationService.getOne(unitThematicEvaluation.getPayload().getId()) != null)
+                return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL, "UnitThematicEvaluation ya existe en el sistema.", null);
 			unitThematicEvaluationService.add(unitThematicEvaluation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

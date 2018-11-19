@@ -67,6 +67,8 @@ public class TypeRestController {
 	@PostMapping
 	public RESTResponse<Type> post(@RequestBody RESTRequest<Type> type) {
 		try {
+			if(typeService.getOne(type.getPayload().getId()) != null)
+                return new RESTResponse<Type>(RESTResponse.FAIL, "Type ya existe en el sistema.", null);
 			typeService.add(type.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

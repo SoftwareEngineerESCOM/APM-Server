@@ -67,6 +67,8 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
+			if(userService.getOne(user.getPayload().getId()) != null)
+                return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,7 +123,7 @@ public class UserRestController {
 		return new RESTResponse<User>(RESTResponse.OK, "User modificado.", null);
 	}
 
-	@GetMapping("/UsersByWorkplaceIdAndPositionId/{idW}/{idP}")
+	@GetMapping("/usersByWorkplaceIdAndPositionId/{idW}/{idP}")
 	public RESTResponse<List<User>> getUsersByWorkplaceIdAndPositionId(@PathVariable Integer idW,
 			@PathVariable Integer idP) {
 		List<User> res = userService.getUsersByWorkplaceIdAndPositionId(idW, idP);
@@ -132,7 +134,7 @@ public class UserRestController {
 		}
 	}
 
-	@PostMapping("/UserByIdAndPassword")
+	@PostMapping("/userByIdAndPassword")
 	public RESTResponse<User> getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
 		List<User> res = userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
 		if (!res.isEmpty())
@@ -141,7 +143,7 @@ public class UserRestController {
 			return new RESTResponse<User>(500, "", null);
 	}
 
-	@GetMapping("/UsersByWorkplaceId/{id}")
+	@GetMapping("/usersByWorkplaceId/{id}")
 	public RESTResponse<List<User>> getUsersByWorkplaceId(@PathVariable Integer id) {
 		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceId(id));
 	}

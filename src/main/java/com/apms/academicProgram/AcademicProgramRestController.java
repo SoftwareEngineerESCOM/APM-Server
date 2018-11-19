@@ -69,6 +69,8 @@ public class AcademicProgramRestController {
 	@PostMapping
 	public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
 		try {
+			if(academicProgramService.getOne(academicProgram.getPayload().getId()) != null)
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "AcademicProgram ya existe en el sistema.", null);
 			academicProgramService.add(academicProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,7 +125,7 @@ public class AcademicProgramRestController {
 		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
 	}
 
-	@GetMapping("/AcademicProgramsByWorkPlaceId/{id}")
+	@GetMapping("/academicProgramsByWorkPlaceId/{id}")
 	public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
 		return new RESTResponse<List<AcademicProgram>>(1, "",
 				academicProgramService.getAcademicProgramsByWorkPlaceId(id));

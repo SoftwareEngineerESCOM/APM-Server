@@ -69,6 +69,8 @@ public class ExtensiveProgramRestController {
 	@PostMapping
 	public RESTResponse<ExtensiveProgram> post(@RequestBody RESTRequest<ExtensiveProgram> extensiveProgram) {
 		try {
+			if(extensiveProgramService.getOne(extensiveProgram.getPayload().getId()) != null)
+                return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL, "ExtensiveProgram ya existe en el sistema.", null);
 			extensiveProgramService.add(extensiveProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

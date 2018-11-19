@@ -68,6 +68,8 @@ public class TitleRestController {
 	@PostMapping
 	public RESTResponse<Title> post(@RequestBody RESTRequest<Title> title) {
 		try {
+			if(titleService.getOne(title.getPayload().getId()) != null)
+                return new RESTResponse<Title>(RESTResponse.FAIL, "Title ya existe en el sistema.", null);
 			titleService.add(title.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

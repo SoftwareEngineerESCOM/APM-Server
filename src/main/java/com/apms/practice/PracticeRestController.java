@@ -68,6 +68,8 @@ public class PracticeRestController {
 	@PostMapping
 	public RESTResponse<Practice> post(@RequestBody RESTRequest<Practice> practice) {
 		try {
+			if(practiceService.getOne(practice.getPayload().getId()) != null)
+                return new RESTResponse<Practice>(RESTResponse.FAIL, "Practice ya existe en el sistema.", null);
 			practiceService.add(practice.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

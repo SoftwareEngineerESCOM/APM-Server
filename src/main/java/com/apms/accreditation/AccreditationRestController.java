@@ -69,6 +69,8 @@ public class AccreditationRestController {
 	@PostMapping
 	public RESTResponse<Accreditation> post(@RequestBody RESTRequest<Accreditation> accreditation) {
 		try {
+			if(accreditationService.getOne(accreditation.getPayload().getId()) != null)
+                return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Accreditation ya existe en el sistema.", null);
 			accreditationService.add(accreditation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

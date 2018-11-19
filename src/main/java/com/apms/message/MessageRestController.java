@@ -68,6 +68,8 @@ public class MessageRestController {
 	@PostMapping
 	public RESTResponse<Message> post(@RequestBody RESTRequest<Message> message) {
 		try {
+			if(messageService.getOne(message.getPayload().getId()) != null)
+                return new RESTResponse<Message>(RESTResponse.FAIL, "Message ya existe en el sistema.", null);
 			messageService.add(message.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

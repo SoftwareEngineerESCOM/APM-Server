@@ -68,6 +68,8 @@ public class SubtopicRestController {
 	@PostMapping
 	public RESTResponse<Subtopic> post(@RequestBody RESTRequest<Subtopic> subtopic) {
 		try {
+			if(subtopicService.getOne(subtopic.getPayload().getId()) != null)
+                return new RESTResponse<Subtopic>(RESTResponse.FAIL, "Subtopic ya existe en el sistema.", null);
 			subtopicService.add(subtopic.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
