@@ -25,7 +25,9 @@ public class Bibliography {
 	@Column(nullable = false)
 	private String title;
 	@Column(nullable = false)
-	private String publicationYear;
+	private int publicationYear;
+	@Column(nullable = false)
+	private String publicationPlace;
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private BibliographyType bibliographyType;
