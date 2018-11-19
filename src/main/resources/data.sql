@@ -141,11 +141,12 @@ insert into title (abbreviation, description, name) values ('Tec.', ' Persona qu
 -- insert into title (abbreviation, description, name) values ('Sarg.', ' Persona que posee el título de Sargento', 'Sargento');
 
 -- add positions
-insert into position (abbreviation, description, name) values ('Dir.', 'Director', 'Director');
-insert into position (abbreviation, description, name) values ('Doc.', 'Docente', 'Docente');
-insert into position (abbreviation, description, name) values ('JDES.', 'Jefa Dirección Estudios Superiores', 'Jefa Dirección Estudios Superiores');
-insert into position (abbreviation, description, name) values ('Anl.', 'Analista', 'Analista');
-insert into position (abbreviation, description, name) values ('Sub. Ac.', 'Subdirector Académico', 'Subdirector Académico');
+insert into position values (1, 'S.A.', 'Posición general para usuarios nuevos', 'Sin asignar');
+insert into position values (2, 'Dir.', 'Director', 'Director');
+insert into position values (3, 'Doc.', 'Docente', 'Docente');
+insert into position values (4, 'JDES.', 'Jefa Dirección Estudios Superiores', 'Jefa Dirección Estudios Superiores');
+insert into position values (5, 'Anl.', 'Analista', 'Analista');
+insert into position values (6, 'Sub. Ac.', 'Subdirector Académico', 'Subdirector Académico');
 
 -- add roles
 insert into role (description, name, rank) values ('Encargado de: ', 'Analista', 1);
