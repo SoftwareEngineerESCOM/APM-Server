@@ -22,6 +22,14 @@ public class UserService {
 		return userRepository.findById(id).isPresent() ? userRepository.findById(id).get() : null;
 	}
 
+	public User getOne(String email) {
+		return userRepository.getByEmail(email);
+	}
+
+	public User getOne(String name, String first_surname, String second_surname) {
+		return userRepository.getByName(name, first_surname, second_surname);
+	}
+
 	public void add(User user) {
 		userRepository.save(user);
 	}

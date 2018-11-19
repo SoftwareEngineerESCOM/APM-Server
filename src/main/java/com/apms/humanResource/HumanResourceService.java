@@ -22,6 +22,10 @@ public class HumanResourceService {
 		return humanResourceRepository.findById(id).isPresent() ? humanResourceRepository.findById(id).get() : null;
 	}
 
+	public HumanResource getOne(String name, String first_surname, String second_surname) {
+		return humanResourceRepository.getByName(name, first_surname, second_surname);
+	}
+
 	public void add(HumanResource humanResource) {
 		humanResourceRepository.save(humanResource);
 	}

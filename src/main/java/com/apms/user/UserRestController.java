@@ -165,4 +165,36 @@ public class UserRestController {
 			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
 		}
 	}
+
+	@GetMapping("/userByEmail/{email}")
+	public RESTResponse<User> userByEmail(@PathVariable String email) {
+		User res;
+		try {
+			res = userService.getOne(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<User>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<User>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+		}
+	}
+
+	@GetMapping("/userByName/{name}/{first_surname}/{second_surname}")
+	public RESTResponse<User> userByName(@PathVariable String name, @PathVariable String first_surname, @PathVariable String second_surname) {
+		User res;
+		try {
+			res = userService.getOne(name, first_surname, second_surname);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<User>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<User>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+		}
+	}
 }

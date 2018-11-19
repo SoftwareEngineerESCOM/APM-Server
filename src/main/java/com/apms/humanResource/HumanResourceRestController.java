@@ -137,4 +137,20 @@ public class HumanResourceRestController {
 		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
 	}
 
+	@GetMapping("/humanResourceByName/{name}/{first_surname}/{second_surname}")
+	public RESTResponse<HumanResource> humanResourceByName(@PathVariable String name, @PathVariable String first_surname, @PathVariable String second_surname) {
+		HumanResource res;
+		try {
+			res = humanResourceService.getOne(name, first_surname, second_surname);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<HumanResource>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<HumanResource>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+		}
+	}
+
 }
