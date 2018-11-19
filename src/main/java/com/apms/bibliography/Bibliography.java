@@ -28,6 +28,8 @@ public class Bibliography {
 	private int publicationYear;
 	@Column(nullable = false)
 	private String publicationPlace;
+	@Column(nullable = false)
+	private String editorial;
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private BibliographyType bibliographyType;
