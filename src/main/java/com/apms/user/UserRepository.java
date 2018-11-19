@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	List<User> getUserByEmailAndPassword(@Param("user_email") String user_Email, @Param("user_password") String user_Password);
 
 	@Query(value = "SELECT * FROM user_apms WHERE human_resource_id IN (SELECT id FROM human_resource WHERE workplace_id = :id)", nativeQuery = true)
-	List<User> getUsersByWorkplaceId(@Param("id") Integer Id);
+	List<User> getUsersByWorkplaceId(@Param("id") Integer id);
 	
 	@Nullable
 	@Query(value = "SELECT u from user_apms u WHERE u.email = :email")
@@ -27,5 +27,22 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Nullable
 	@Query(value = "SELECT * FROM user_apms WHERE human_resource_id = (SELECT id from human_resource WHERE name = :name AND first_surname = :first_surname AND second_surname = :second_surname)", nativeQuery = true)
 	User getByName(@Param("name") String name, @Param("first_surname") String first_surname, @Param("second_surname") String second_surname);
+
+	@Query(value = "SELECT u from user_apms u WHERE u.isAccountBlocked = false")
+	List<User> getActiveUsers();
+
+	// Recibo idUsuario
+	@Query(value = "SELECT u.* FROM user_apms u, user_apms_roles ur WHERE u.id = ur.user_apms_id AND ur.roles_id IN (SELECT id FROM role WHERE rank < (SELECT MAX(rank) FROM role WHERE id IN (SELECT roles_id FROM user_apms_roles WHERE user_apms_id = :id )) AND rank > (SELECT MAX(rank) FROM role WHERE id IN (SELECT roles_id FROM user_apms_roles WHERE user_apms_id = :id )) - 3) GROUP BY u.id", nativeQuery = true)
+	List<User> getActiveUsersForUserForDES(@Param("id") Integer id);
+
+	@Query(value = "SELECT u.* FROM user_apms u, user_apms_roles ur, human_resource hr WHERE (u.id = ur.user_apms_id AND ur.roles_id IN (SELECT id FROM role WHERE rank < (SELECT MAX(rank) FROM role WHERE id IN (SELECT roles_id FROM user_apms_roles WHERE user_apms_id = :id )) AND rank > (SELECT MAX(rank) FROM role WHERE id IN (SELECT roles_id FROM user_apms_roles WHERE user_apms_id = :id )) - 3)) AND (u.human_resource_id = hr.id AND hr.workplace_id = :workplace_id) GROUP BY u.id", nativeQuery = true)
+	List<User> getActiveUsersForUser(@Param("id") Integer id, @Param("workplace_id") Integer workplace_id);
+
+	// Recibo idUsuario y filtro idRole
+	@Query(value = "SELECT u.* FROM user_apms u, user_apms_roles ur WHERE u.id = ur.user_apms_id AND ur.roles_id = :role_id GROUP BY u.id", nativeQuery = true)
+	List<User> getActiveUsersForUserByRoleForDES(@Param("role_id") Integer role_id);
+
+	@Query(value = "SELECT u.* FROM user_apms u, user_apms_roles ur, human_resource hr WHERE (u.id = ur.user_apms_id AND ur.roles_id = :role_id) AND (u.human_resource_id = hr.id AND hr.workplace_id = :workplace_id) GROUP BY u.id", nativeQuery = true)
+	List<User> getActiveUsersForUserByRole(@Param("workplace_id") Integer workplace_id, @Param("role_id") Integer role_id);
 
 }
