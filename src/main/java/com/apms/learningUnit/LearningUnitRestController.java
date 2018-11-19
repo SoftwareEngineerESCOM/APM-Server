@@ -69,6 +69,8 @@ public class LearningUnitRestController {
 	@PostMapping
 	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> learningUnit) {
 		try {
+			if(learningUnitService.getOne(learningUnit.getPayload().getId()) != null)
+                return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "LearningUnit ya existe en el sistema.", null);
 			learningUnitService.add(learningUnit.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

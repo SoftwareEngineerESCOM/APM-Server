@@ -69,6 +69,8 @@ public class BibliographyTypeRestController {
 	@PostMapping
 	public RESTResponse<BibliographyType> post(@RequestBody RESTRequest<BibliographyType> bibliographyType) {
 		try {
+			if(bibliographyTypeService.getOne(bibliographyType.getPayload().getId()) != null)
+                return new RESTResponse<BibliographyType>(RESTResponse.FAIL, "BibliographyType ya existe en el sistema.", null);
 			bibliographyTypeService.add(bibliographyType.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

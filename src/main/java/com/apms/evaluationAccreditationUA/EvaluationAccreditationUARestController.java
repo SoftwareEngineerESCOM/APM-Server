@@ -72,6 +72,8 @@ public class EvaluationAccreditationUARestController {
 	public RESTResponse<EvaluationAccreditationUA> post(
 			@RequestBody RESTRequest<EvaluationAccreditationUA> evaluationAccreditationUA) {
 		try {
+			if(evaluationAccreditationUAService.getOne(evaluationAccreditationUA.getPayload().getId()) != null)
+                return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.FAIL, "EvaluationAccreditationUA ya existe en el sistema.", null);
 			evaluationAccreditationUAService.add(evaluationAccreditationUA.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

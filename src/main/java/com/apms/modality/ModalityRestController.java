@@ -68,6 +68,8 @@ public class ModalityRestController {
 	@PostMapping
 	public RESTResponse<Modality> post(@RequestBody RESTRequest<Modality> modality) {
 		try {
+			if(modalityService.getOne(modality.getPayload().getId()) != null)
+                return new RESTResponse<Modality>(RESTResponse.FAIL, "Modality ya existe en el sistema.", null);
 			modalityService.add(modality.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

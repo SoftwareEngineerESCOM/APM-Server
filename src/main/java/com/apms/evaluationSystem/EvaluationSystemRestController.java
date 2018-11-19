@@ -69,6 +69,8 @@ public class EvaluationSystemRestController {
 	@PostMapping
 	public RESTResponse<EvaluationSystem> post(@RequestBody RESTRequest<EvaluationSystem> evaluationSystem) {
 		try {
+			if(evaluationSystemService.getOne(evaluationSystem.getPayload().getId()) != null)
+                return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "EvaluationSystem ya existe en el sistema.", null);
 			evaluationSystemService.add(evaluationSystem.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

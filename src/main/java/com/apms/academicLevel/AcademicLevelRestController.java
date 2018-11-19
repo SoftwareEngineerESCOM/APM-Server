@@ -67,6 +67,8 @@ public class AcademicLevelRestController {
     @PostMapping
     public RESTResponse<AcademicLevel> post(@RequestBody RESTRequest<AcademicLevel> academicLevel) {
         try {
+        	if(academicLevelService.getOne(academicLevel.getPayload().getId()) != null)
+                return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "AcademicLevel ya existe en el sistema.", null);
             academicLevelService.add(academicLevel.getPayload());
         } catch (Exception e) {
             e.printStackTrace();

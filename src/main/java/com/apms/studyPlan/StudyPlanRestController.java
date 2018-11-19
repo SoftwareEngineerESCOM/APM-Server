@@ -68,6 +68,8 @@ public class StudyPlanRestController {
 	@PostMapping
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
 		try {
+			if(studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
+                return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "StudyPlan ya existe en el sistema.", null);
 			studyPlanService.add(studyPlan.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,7 +124,7 @@ public class StudyPlanRestController {
 		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
 	}
 
-	@GetMapping("/StudyPlansByAcademicProgramId/{id}")
+	@GetMapping("/studyPlansByAcademicProgramId/{id}")
 	public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
 		return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
 	}

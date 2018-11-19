@@ -68,6 +68,8 @@ public class AttitudeRestController {
 	@PostMapping
 	public RESTResponse<Attitude> post(@RequestBody RESTRequest<Attitude> attitude) {
 		try {
+			if(attitudeService.getOne(attitude.getPayload().getId()) != null)
+                return new RESTResponse<Attitude>(RESTResponse.FAIL, "Attitude ya existe en el sistema.", null);
 			attitudeService.add(attitude.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

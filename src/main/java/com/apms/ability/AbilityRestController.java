@@ -68,6 +68,8 @@ public class AbilityRestController {
 	@PostMapping
 	public RESTResponse<Ability> post(@RequestBody RESTRequest<Ability> ability) {
 		try {
+			if (abilityService.getOne(ability.getPayload().getId()) != null)
+				return new RESTResponse<Ability>(RESTResponse.FAIL, "Ability ya existe en el sistema.", null);
 			abilityService.add(ability.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

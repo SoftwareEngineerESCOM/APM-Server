@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apms.role.Role;
+
 @Service
 public class RoleService {
 
@@ -33,5 +35,9 @@ public class RoleService {
 
 	public void delete(Integer id) {
 		roleRepository.deleteById(id);
+	}
+
+	public List<Role> rolesByUserId(Integer id) {
+		return roleRepository.rolesByUserId(id);
 	}
 }

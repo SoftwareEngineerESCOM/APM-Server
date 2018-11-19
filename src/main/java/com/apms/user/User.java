@@ -32,6 +32,8 @@ public class User {
 	private String password;
 	@Column(nullable = false)
 	private boolean isAccountActive;
+	@Column(nullable = false, unique = true)
+	private String email;
 
 	@OneToOne
 	@JoinColumn(nullable = false)

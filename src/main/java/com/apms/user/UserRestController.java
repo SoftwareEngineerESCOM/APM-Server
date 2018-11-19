@@ -67,6 +67,8 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
+			if(userService.getOne(user.getPayload().getId()) != null)
+                return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,28 +123,78 @@ public class UserRestController {
 		return new RESTResponse<User>(RESTResponse.OK, "User modificado.", null);
 	}
 
-	@GetMapping("/UsersByWorkplaceIdAndPositionId/{idW}/{idP}")
+	@GetMapping("/usersByWorkplaceIdAndPositionId/{idW}/{idP}")
 	public RESTResponse<List<User>> getUsersByWorkplaceIdAndPositionId(@PathVariable Integer idW,
 			@PathVariable Integer idP) {
 		List<User> res = userService.getUsersByWorkplaceIdAndPositionId(idW, idP);
 		if (!res.isEmpty()) {
-			return new RESTResponse<List<User>>(200, "OK", res);
+			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(500, "No hay usuarios registrados con ese cargo.", res);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "No hay usuarios registrados con ese cargo.", res);
 		}
 	}
 
-	@PostMapping("/UserByIdAndPassword")
-	public RESTResponse<User> getUserByIdAndPassword(@RequestBody RESTRequest<User> req) {
-		List<User> res = userService.getUserByIdAndPassword(req.getPayload().getId(), req.getPayload().getPassword());
-		if (!res.isEmpty())
-			return new RESTResponse<User>(200, "", res.get(0));
-		else
-			return new RESTResponse<User>(500, "", null);
+	@PostMapping("/userByEmailAndPassword")
+	public RESTResponse<User> getUserByEmailAndPassword(@RequestBody RESTRequest<User> req) {
+		List<User> res;
+		try {
+			res = userService.getUserByEmailAndPassword(req.getPayload().getEmail(), req.getPayload().getPassword());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<User>(RESTResponse.OK, "", res.get(0));
+		} else {
+			return new RESTResponse<User>(RESTResponse.FAIL, "Correo y/o contraseña no válidas.", null);
+		}
 	}
 
-	@GetMapping("/UsersByWorkplaceId/{id}")
+	@GetMapping("/usersByWorkplaceId/{id}")
 	public RESTResponse<List<User>> getUsersByWorkplaceId(@PathVariable Integer id) {
-		return new RESTResponse<List<User>>(1, "", userService.getUsersByWorkplaceId(id));
+		List<User> res;
+		try {
+			res = userService.getUsersByWorkplaceId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+		}
+	}
+
+	@GetMapping("/userByEmail/{email}")
+	public RESTResponse<User> userByEmail(@PathVariable String email) {
+		User res;
+		try {
+			res = userService.getOne(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<User>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
+	}
+
+	@GetMapping("/userByName/{name}/{first_surname}/{second_surname}")
+	public RESTResponse<User> userByName(@PathVariable String name, @PathVariable String first_surname, @PathVariable String second_surname) {
+		User res;
+		try {
+			res = userService.getOne(name, first_surname, second_surname);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<User>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
 	}
 }

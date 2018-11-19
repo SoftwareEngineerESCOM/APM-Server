@@ -69,6 +69,8 @@ public class ThematicUnitRestController {
 	@PostMapping
 	public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> thematicUnit) {
 		try {
+			if(thematicUnitService.getOne(thematicUnit.getPayload().getId()) != null)
+                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "ThematicUnit ya existe en el sistema.", null);
 			thematicUnitService.add(thematicUnit.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

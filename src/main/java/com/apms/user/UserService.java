@@ -22,6 +22,14 @@ public class UserService {
 		return userRepository.findById(id).isPresent() ? userRepository.findById(id).get() : null;
 	}
 
+	public User getOne(String email) {
+		return userRepository.getByEmail(email);
+	}
+
+	public User getOne(String name, String first_surname, String second_surname) {
+		return userRepository.getByName(name, first_surname, second_surname);
+	}
+
 	public void add(User user) {
 		userRepository.save(user);
 	}
@@ -39,8 +47,8 @@ public class UserService {
 		return userRepository.getUsersByWorkplaceIdAndPositionId(workplace_Id, position_Id);
 	}
 
-	public List<User> getUserByIdAndPassword(Integer user_Id, String user_Password) {
-		return userRepository.getUserByIdAndPassword(user_Id, user_Password);
+	public List<User> getUserByEmailAndPassword(String user_Email, String user_Password) {
+		return userRepository.getUserByEmailAndPassword(user_Email, user_Password);
 	}
 
 	public List<User> getUsersByWorkplaceId(Integer id) {

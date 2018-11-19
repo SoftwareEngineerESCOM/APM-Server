@@ -68,6 +68,8 @@ public class WorkplaceRestController {
 	@PostMapping
 	public RESTResponse<Workplace> post(@RequestBody RESTRequest<Workplace> workplace) {
 		try {
+			if(workplaceService.getOne(workplace.getPayload().getId()) != null)
+                return new RESTResponse<Workplace>(RESTResponse.FAIL, "Workplace ya existe en el sistema.", null);
 			workplaceService.add(workplace.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

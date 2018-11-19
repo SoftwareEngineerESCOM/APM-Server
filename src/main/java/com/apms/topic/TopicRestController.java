@@ -68,6 +68,8 @@ public class TopicRestController {
 	@PostMapping
 	public RESTResponse<Topic> post(@RequestBody RESTRequest<Topic> topic) {
 		try {
+			if(topicService.getOne(topic.getPayload().getId()) != null)
+                return new RESTResponse<Topic>(RESTResponse.FAIL, "Topic ya existe en el sistema.", null);
 			topicService.add(topic.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

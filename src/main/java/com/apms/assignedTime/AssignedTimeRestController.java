@@ -69,6 +69,8 @@ public class AssignedTimeRestController {
 	@PostMapping
 	public RESTResponse<AssignedTime> post(@RequestBody RESTRequest<AssignedTime> assignedTime) {
 		try {
+			if(assignedTimeService.getOne(assignedTime.getPayload().getId()) != null)
+                return new RESTResponse<AssignedTime>(RESTResponse.FAIL, "AssignedTime ya existe en el sistema.", null);
 			assignedTimeService.add(assignedTime.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

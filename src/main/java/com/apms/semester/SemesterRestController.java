@@ -68,6 +68,8 @@ public class SemesterRestController {
 	@PostMapping
 	public RESTResponse<Semester> post(@RequestBody RESTRequest<Semester> semester) {
 		try {
+			if(semesterService.getOne(semester.getPayload().getId()) != null)
+                return new RESTResponse<Semester>(RESTResponse.FAIL, "Semester ya existe en el sistema.", null);
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,7 +124,7 @@ public class SemesterRestController {
 		return new RESTResponse<Semester>(RESTResponse.OK, "Semester modificado.", null);
 	}
 
-	@GetMapping("/SemestersByStudyPlanId/{id}")
+	@GetMapping("/semestersByStudyPlanId/{id}")
 	public RESTResponse<List<Semester>> getSemestersByStudyPlanId(@PathVariable Integer id) {
 		return new RESTResponse<List<Semester>>(1, "", semesterService.getSemestersByStudyPlanId(id));
 	}

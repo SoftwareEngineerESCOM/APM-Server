@@ -72,6 +72,8 @@ public class LearningUnitEvaluationRestController {
 	public RESTResponse<LearningUnitEvaluation> post(
 			@RequestBody RESTRequest<LearningUnitEvaluation> learningUnitEvaluation) {
 		try {
+			if(learningUnitEvaluationService.getOne(learningUnitEvaluation.getPayload().getId()) != null)
+                return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL, "LearningUnitEvaluation ya existe en el sistema.", null);
 			learningUnitEvaluationService.add(learningUnitEvaluation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

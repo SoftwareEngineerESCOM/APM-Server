@@ -68,6 +68,8 @@ public class TopicHourRestController {
 	@PostMapping
 	public RESTResponse<TopicHour> post(@RequestBody RESTRequest<TopicHour> topicHour) {
 		try {
+			if(topicHourService.getOne(topicHour.getPayload().getId()) != null)
+                return new RESTResponse<TopicHour>(RESTResponse.FAIL, "TopicHour ya existe en el sistema.", null);
 			topicHourService.add(topicHour.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

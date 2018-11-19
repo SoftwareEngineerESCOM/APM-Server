@@ -67,6 +67,8 @@ public class RoleRestController {
 	@PostMapping
 	public RESTResponse<Role> post(@RequestBody RESTRequest<Role> role) {
 		try {
+			if(roleService.getOne(role.getPayload().getId()) != null)
+                return new RESTResponse<Role>(RESTResponse.FAIL, "Role ya existe en el sistema.", null);
 			roleService.add(role.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,5 +121,21 @@ public class RoleRestController {
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<Role>(RESTResponse.OK, "Role modificado.", null);
+	}
+
+	@GetMapping("/rolesByUserId/{id}")
+	public RESTResponse<List<Role>> rolesByUserId(@PathVariable Integer id) {
+		List<Role> res;
+		try {
+			res = roleService.rolesByUserId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Role>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Role>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Permisos insuficientes para ejecutar la operación.", null);
+		}
 	}
 }

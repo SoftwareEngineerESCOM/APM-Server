@@ -69,6 +69,8 @@ public class SchoolingGradeRestController {
 	@PostMapping
 	public RESTResponse<SchoolingGrade> post(@RequestBody RESTRequest<SchoolingGrade> schoolingGrade) {
 		try {
+			if(schoolingGradeService.getOne(schoolingGrade.getPayload().getId()) != null)
+                return new RESTResponse<SchoolingGrade>(RESTResponse.FAIL, "SchoolingGrade ya existe en el sistema.", null);
 			schoolingGradeService.add(schoolingGrade.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
