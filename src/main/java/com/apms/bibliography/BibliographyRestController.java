@@ -59,7 +59,7 @@ public class BibliographyRestController {
 		if (res != null) {
 			return new RESTResponse<Bibliography>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Bibliography>(RESTResponse.FAIL, "Bibliography no registrado.", null);
+			return new RESTResponse<Bibliography>(RESTResponse.FAIL, "Bibliografia no registrada.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class BibliographyRestController {
 	public RESTResponse<Bibliography> post(@RequestBody RESTRequest<Bibliography> bibliography) {
 		try {
 			if(bibliographyService.getOne(bibliography.getPayload().getId()) != null)
-                return new RESTResponse<Bibliography>(RESTResponse.FAIL, "Bibliography ya existe en el sistema.", null);
+                return new RESTResponse<Bibliography>(RESTResponse.FAIL, "La bibliografia ya existe en el sistema.", null);
 			bibliographyService.add(bibliography.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class BibliographyRestController {
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Bibliography>(RESTResponse.OK, "Bibliography modificado.", null);
+		return new RESTResponse<Bibliography>(RESTResponse.OK, "Bibliografia modificada.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class BibliographyRestController {
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Bibliography>(RESTResponse.OK, "Bibliography modificado.", null);
+		return new RESTResponse<Bibliography>(RESTResponse.OK, "Bibliografia modificada.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class BibliographyRestController {
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Bibliography>(RESTResponse.OK, "Bibliography modificado.", null);
+		return new RESTResponse<Bibliography>(RESTResponse.OK, "Bibliografia modificada.", null);
 	}
 }

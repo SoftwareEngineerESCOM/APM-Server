@@ -69,7 +69,7 @@ public class AuthorRestController {
 	public RESTResponse<Author> post(@RequestBody RESTRequest<Author> author) {
 		try {
 			if(authorService.getOne(author.getPayload().getId()) != null)
-                return new RESTResponse<Author>(RESTResponse.FAIL, "Autor ya existe en el sistema.", null);
+                return new RESTResponse<Author>(RESTResponse.FAIL, "El autor ya existe en el sistema.", null);
 			authorService.add(author.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
