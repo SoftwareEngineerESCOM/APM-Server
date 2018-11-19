@@ -149,7 +149,7 @@ public class HumanResourceRestController {
 		if (res != null) {
 			return new RESTResponse<HumanResource>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<HumanResource>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL, "Recurso Humano no registrado.", null);
 		}
 	}
 

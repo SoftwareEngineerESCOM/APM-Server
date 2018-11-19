@@ -178,7 +178,7 @@ public class UserRestController {
 		if (res != null) {
 			return new RESTResponse<User>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<User>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
 		}
 	}
 
@@ -194,7 +194,7 @@ public class UserRestController {
 		if (res != null) {
 			return new RESTResponse<User>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<User>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
 		}
 	}
 }
