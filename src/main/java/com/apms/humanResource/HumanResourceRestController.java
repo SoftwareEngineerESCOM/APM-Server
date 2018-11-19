@@ -128,13 +128,13 @@ public class HumanResourceRestController {
 	@GetMapping("/humanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceIdAndPositionId(@PathVariable Integer idW,
 			@PathVariable Integer idP) {
-		return new RESTResponse<List<HumanResource>>(1, "",
+		return new RESTResponse<List<HumanResource>>(RESTResponse.OK, "",
 				humanResourceService.getHumanResourcesByWorkplaceIdAndPositionId(idW, idP));
 	}
 
 	@GetMapping("/humanResourcesByWorkplaceId/{id}")
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceId(@PathVariable Integer id) {
-		return new RESTResponse<List<HumanResource>>(1, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
+		return new RESTResponse<List<HumanResource>>(RESTResponse.OK, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
 	}
 
 	@GetMapping("/humanResourceByName/{name}/{first_surname}/{second_surname}")
