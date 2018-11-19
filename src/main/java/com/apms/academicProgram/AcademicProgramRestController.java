@@ -69,7 +69,7 @@ public class AcademicProgramRestController {
 	@PostMapping
 	public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
 		try {
-			if(academicProgramService.getOne(academicProgram.getPayload().getId()) != null)
+			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
                 return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "AcademicProgram ya existe en el sistema.", null);
 			academicProgramService.add(academicProgram.getPayload());
 		} catch (Exception e) {

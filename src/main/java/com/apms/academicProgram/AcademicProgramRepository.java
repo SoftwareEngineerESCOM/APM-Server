@@ -10,5 +10,9 @@ import java.util.List;
 @Repository
 public interface AcademicProgramRepository extends JpaRepository<AcademicProgram, Integer> {
 	@Query(value = "SELECT * FROM academic_program WHERE workplace_id = :id", nativeQuery = true)
-	List<AcademicProgram> getAcademicProgramsByWorkPlaceId(@Param("id") Integer Id);
+	List<AcademicProgram> getAcademicProgramsByWorkPlaceId(@Param("id") Integer id);
+
+	@Query(value = "SELECT a FROM AcademicProgram a WHERE a.name = :name AND workplace_id = :workplaceId")
+	List<AcademicProgram> getAcademicProgramByNameAndWorkplaceId(@Param("name") String name, @Param("workplaceId") Integer id);
+	
 }

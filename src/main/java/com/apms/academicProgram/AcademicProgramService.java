@@ -38,4 +38,9 @@ public class AcademicProgramService {
 	public List<AcademicProgram> getAcademicProgramsByWorkPlaceId(Integer id) {
 		return academicProgramRepository.getAcademicProgramsByWorkPlaceId(id);
 	}
+
+	public List<AcademicProgram> getAcademicProgramByNameAndWorkplaceId(String name, Integer workplaceId) {
+		return academicProgramRepository.getAcademicProgramByNameAndWorkplaceId(name, workplaceId);
+	}
+
 }
