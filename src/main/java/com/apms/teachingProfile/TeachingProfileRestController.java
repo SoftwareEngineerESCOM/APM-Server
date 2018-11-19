@@ -40,7 +40,7 @@ public class TeachingProfileRestController {
 			return new RESTResponse<List<TeachingProfile>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<TeachingProfile>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

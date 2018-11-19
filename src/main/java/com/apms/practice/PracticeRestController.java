@@ -38,7 +38,7 @@ public class PracticeRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Practice>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Practice>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+			return new RESTResponse<List<Practice>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
 					null);
 		}
 	}

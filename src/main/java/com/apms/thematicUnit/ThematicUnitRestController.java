@@ -40,7 +40,7 @@ public class ThematicUnitRestController {
 			return new RESTResponse<List<ThematicUnit>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<ThematicUnit>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

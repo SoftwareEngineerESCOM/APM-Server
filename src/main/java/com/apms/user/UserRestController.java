@@ -68,8 +68,13 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
+<<<<<<< HEAD
 			if(userService.getOne(user.getPayload().getId()) != null)
                 return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
+=======
+			if (userService.getOne(user.getPayload().getId()) != null)
+				return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
+>>>>>>> 7c6e410c28dd5093f0267832745286e730bf6fae
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -114,8 +119,11 @@ public class UserRestController {
 	 */
 	@DeleteMapping("/{id}")
 	public RESTResponse<User> delete(@PathVariable Integer id) {
+		User res;
 		try {
-			userService.delete(id);
+			res = userService.getOne(id);
+			res.setAccountBlocked(true);
+			userService.update(res);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
@@ -163,7 +171,12 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
+<<<<<<< HEAD
 			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+=======
+			return new RESTResponse<List<User>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+>>>>>>> 7c6e410c28dd5093f0267832745286e730bf6fae
 		}
 	}
 
@@ -184,7 +197,8 @@ public class UserRestController {
 	}
 
 	@GetMapping("/userByName/{name}/{first_surname}/{second_surname}")
-	public RESTResponse<User> userByName(@PathVariable String name, @PathVariable String first_surname, @PathVariable String second_surname) {
+	public RESTResponse<User> userByName(@PathVariable String name, @PathVariable String first_surname,
+			@PathVariable String second_surname) {
 		User res;
 		try {
 			res = userService.getOne(name, first_surname, second_surname);

@@ -38,7 +38,7 @@ public class EvaluationRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Evaluation>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Evaluation>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+			return new RESTResponse<List<Evaluation>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
 					null);
 		}
 	}

@@ -38,8 +38,8 @@ public class AbilityRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Ability>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Ability>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
-					null);
+			return new RESTResponse<List<Ability>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class AbilityRestController {
 		if (res != null) {
 			return new RESTResponse<Ability>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Ability>(RESTResponse.FAIL, "Ability no registrado.", null);
+			return new RESTResponse<Ability>(RESTResponse.FAIL, "Habilidad no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class AbilityRestController {
 	public RESTResponse<Ability> post(@RequestBody RESTRequest<Ability> ability) {
 		try {
 			if (abilityService.getOne(ability.getPayload().getId()) != null)
-				return new RESTResponse<Ability>(RESTResponse.FAIL, "Ability ya existe en el sistema.", null);
+				return new RESTResponse<Ability>(RESTResponse.FAIL, "La habilidad ya existe en el sistema.", null);
 			abilityService.add(ability.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class AbilityRestController {
 			return new RESTResponse<Ability>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Ability>(RESTResponse.OK, "Ability modificado.", null);
+		return new RESTResponse<Ability>(RESTResponse.OK, "Habilidad modificada.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class AbilityRestController {
 			return new RESTResponse<Ability>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Ability>(RESTResponse.OK, "Ability modificado.", null);
+		return new RESTResponse<Ability>(RESTResponse.OK, "Habilidad modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class AbilityRestController {
 			return new RESTResponse<Ability>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Ability>(RESTResponse.OK, "Ability modificado.", null);
+		return new RESTResponse<Ability>(RESTResponse.OK, "Habilidad modificada.", null);
 	}
 }
