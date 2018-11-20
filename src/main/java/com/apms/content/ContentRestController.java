@@ -58,7 +58,7 @@ public class ContentRestController {
 		if (res != null) {
 			return new RESTResponse<Content>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Content>(RESTResponse.FAIL, "Content no registrado.", null);
+			return new RESTResponse<Content>(RESTResponse.FAIL, "Contenido no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class ContentRestController {
 	public RESTResponse<Content> post(@RequestBody RESTRequest<Content> content) {
 		try {
 			if(contentService.getOne(content.getPayload().getId()) != null)
-                return new RESTResponse<Content>(RESTResponse.FAIL, "Content ya existe en el sistema.", null);
+                return new RESTResponse<Content>(RESTResponse.FAIL, "El contenido ya existe en el sistema.", null);
 			contentService.add(content.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Content>(RESTResponse.OK, "Content modificado.", null);
+		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Content>(RESTResponse.OK, "Content modificado.", null);
+		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Content>(RESTResponse.OK, "Content modificado.", null);
+		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
 	}
 }
