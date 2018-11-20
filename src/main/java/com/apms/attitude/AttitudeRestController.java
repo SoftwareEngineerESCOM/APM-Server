@@ -58,7 +58,7 @@ public class AttitudeRestController {
 		if (res != null) {
 			return new RESTResponse<Attitude>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Attitude>(RESTResponse.FAIL, "Attitude no registrado.", null);
+			return new RESTResponse<Attitude>(RESTResponse.FAIL, "Actitud no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class AttitudeRestController {
 	public RESTResponse<Attitude> post(@RequestBody RESTRequest<Attitude> attitude) {
 		try {
 			if(attitudeService.getOne(attitude.getPayload().getId()) != null)
-                return new RESTResponse<Attitude>(RESTResponse.FAIL, "Attitude ya existe en el sistema.", null);
+                return new RESTResponse<Attitude>(RESTResponse.FAIL, "Actitud ya existe en el sistema.", null);
 			attitudeService.add(attitude.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class AttitudeRestController {
 			return new RESTResponse<Attitude>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Attitude>(RESTResponse.OK, "Attitude modificado.", null);
+		return new RESTResponse<Attitude>(RESTResponse.OK, "Actitud modificada.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class AttitudeRestController {
 			return new RESTResponse<Attitude>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Attitude>(RESTResponse.OK, "Attitude modificado.", null);
+		return new RESTResponse<Attitude>(RESTResponse.OK, "Actitud modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class AttitudeRestController {
 			return new RESTResponse<Attitude>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Attitude>(RESTResponse.OK, "Attitude modificado.", null);
+		return new RESTResponse<Attitude>(RESTResponse.OK, "Actitud modificada.", null);
 	}
 }
