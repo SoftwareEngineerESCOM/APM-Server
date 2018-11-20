@@ -58,7 +58,7 @@ public class CountryRestController {
 		if (res != null) {
 			return new RESTResponse<Country>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Country>(RESTResponse.FAIL, "País no registrado.", null);
+			return new RESTResponse<Country>(RESTResponse.FAIL, "Pais no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class CountryRestController {
 	public RESTResponse<Country> post(@RequestBody RESTRequest<Country> country) {
 		try {
 			if(countryService.getOne(country.getPayload().getId()) != null)
-                return new RESTResponse<Country>(RESTResponse.FAIL, "El país ya existe en el sistema.", null);
+                return new RESTResponse<Country>(RESTResponse.FAIL, "El pais ya existe en el sistema.", null);
 				countryService.add(country.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class CountryRestController {
 			return new RESTResponse<Country>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Country>(RESTResponse.OK, "País modificado.", null);
+		return new RESTResponse<Country>(RESTResponse.OK, "Pais modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class CountryRestController {
 			return new RESTResponse<Country>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Country>(RESTResponse.OK, "País modificado.", null);
+		return new RESTResponse<Country>(RESTResponse.OK, "Pais modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class CountryRestController {
 			return new RESTResponse<Country>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Country>(RESTResponse.OK, "País eliminado.", null);
+		return new RESTResponse<Country>(RESTResponse.OK, "Pais eliminado.", null);
 	}
 }
