@@ -58,7 +58,7 @@ public class AuthorRestController {
 		if (res != null) {
 			return new RESTResponse<Author>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Author>(RESTResponse.FAIL, "Author no registrado.", null);
+			return new RESTResponse<Author>(RESTResponse.FAIL, "Autor no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class AuthorRestController {
 	public RESTResponse<Author> post(@RequestBody RESTRequest<Author> author) {
 		try {
 			if(authorService.getOne(author.getPayload().getId()) != null)
-                return new RESTResponse<Author>(RESTResponse.FAIL, "Author ya existe en el sistema.", null);
+                return new RESTResponse<Author>(RESTResponse.FAIL, "Autor ya existe en el sistema.", null);
 			authorService.add(author.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class AuthorRestController {
 			return new RESTResponse<Author>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Author>(RESTResponse.OK, "Author modificado.", null);
+		return new RESTResponse<Author>(RESTResponse.OK, "Autor modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class AuthorRestController {
 			return new RESTResponse<Author>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Author>(RESTResponse.OK, "Author modificado.", null);
+		return new RESTResponse<Author>(RESTResponse.OK, "Autor modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class AuthorRestController {
 			return new RESTResponse<Author>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Author>(RESTResponse.OK, "Author modificado.", null);
+		return new RESTResponse<Author>(RESTResponse.OK, "Autor modificado.", null);
 	}
 }
