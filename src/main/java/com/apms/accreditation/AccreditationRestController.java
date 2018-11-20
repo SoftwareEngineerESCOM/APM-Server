@@ -59,7 +59,7 @@ public class AccreditationRestController {
 		if (res != null) {
 			return new RESTResponse<Accreditation>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Accreditation no registrado.", null);
+			return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Acreditacion no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class AccreditationRestController {
 	public RESTResponse<Accreditation> post(@RequestBody RESTRequest<Accreditation> accreditation) {
 		try {
 			if(accreditationService.getOne(accreditation.getPayload().getId()) != null)
-                return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Accreditation ya existe en el sistema.", null);
+                return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Acreditacion ya existe en el sistema.", null);
 			accreditationService.add(accreditation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class AccreditationRestController {
 			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Accreditation modificado.", null);
+		return new RESTResponse<Accreditation>(RESTResponse.OK, "Acreditacion modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class AccreditationRestController {
 			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Accreditation modificado.", null);
+		return new RESTResponse<Accreditation>(RESTResponse.OK, "Acreditacion modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class AccreditationRestController {
 			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Accreditation modificado.", null);
+		return new RESTResponse<Accreditation>(RESTResponse.OK, "Acreditacion modificado.", null);
 	}
 }
