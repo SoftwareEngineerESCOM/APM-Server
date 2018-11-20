@@ -57,7 +57,7 @@ public class RoleRestController {
 		if (res != null) {
 			return new RESTResponse<Role>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Role>(RESTResponse.FAIL, "Role no registrado.", null);
+			return new RESTResponse<Role>(RESTResponse.FAIL, "Cargo no registrado.", null);
 		}
 	}
 
@@ -68,7 +68,7 @@ public class RoleRestController {
 	public RESTResponse<Role> post(@RequestBody RESTRequest<Role> role) {
 		try {
 			if(roleService.getOne(role.getPayload().getId()) != null)
-                return new RESTResponse<Role>(RESTResponse.FAIL, "Role ya existe en el sistema.", null);
+                return new RESTResponse<Role>(RESTResponse.FAIL, "El cargo ya existe en el sistema.", null);
 			roleService.add(role.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class RoleRestController {
 			return new RESTResponse<Role>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Role>(RESTResponse.OK, "Role modificado.", null);
+		return new RESTResponse<Role>(RESTResponse.OK, "Cargo modificado.", null);
 	}
 
 	/*
@@ -105,7 +105,7 @@ public class RoleRestController {
 			return new RESTResponse<Role>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Role>(RESTResponse.OK, "Role modificado.", null);
+		return new RESTResponse<Role>(RESTResponse.OK, "Cargo modificado.", null);
 	}
 
 	/*
@@ -120,7 +120,7 @@ public class RoleRestController {
 			return new RESTResponse<Role>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Role>(RESTResponse.OK, "Role modificado.", null);
+		return new RESTResponse<Role>(RESTResponse.OK, "Cargo modificado.", null);
 	}
 
 	@GetMapping("/rolesByUserId/{id}")

@@ -58,7 +58,7 @@ public class SemesterRestController {
 		if (res != null) {
 			return new RESTResponse<Semester>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Semester>(RESTResponse.FAIL, "Semester no registrado.", null);
+			return new RESTResponse<Semester>(RESTResponse.FAIL, "Semestre no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class SemesterRestController {
 	public RESTResponse<Semester> post(@RequestBody RESTRequest<Semester> semester) {
 		try {
 			if(semesterService.getOne(semester.getPayload().getId()) != null)
-                return new RESTResponse<Semester>(RESTResponse.FAIL, "Semester ya existe en el sistema.", null);
+                return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semester modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semester modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
 	}
 
 	/*
@@ -121,7 +121,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semester modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
 	}
 
 	@GetMapping("/semestersByStudyPlanId/{id}")

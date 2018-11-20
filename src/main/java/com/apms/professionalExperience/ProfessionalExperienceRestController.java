@@ -60,7 +60,7 @@ public class ProfessionalExperienceRestController {
 		if (res != null) {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL, "ProfessionalExperience no registrado.",
+			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL, "Experiencia profesional no registrada.",
 					null);
 		}
 	}
@@ -73,7 +73,7 @@ public class ProfessionalExperienceRestController {
 			@RequestBody RESTRequest<ProfessionalExperience> professionalExperience) {
 		try {
 			if(professionalExperienceService.getOne(professionalExperience.getPayload().getId()) != null)
-                return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL, "ProfessionalExperience ya existe en el sistema.", null);
+                return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL, "Experiencia profesional ya existe en el sistema.", null);
 			professionalExperienceService.add(professionalExperience.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,7 +96,7 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "ProfessionalExperience modificado.", null);
+		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Experiencia profesional modificada.", null);
 	}
 
 	/*
@@ -112,7 +112,7 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "ProfessionalExperience modificado.", null);
+		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Experiencia profesional modificada.", null);
 	}
 
 	/*
@@ -127,6 +127,6 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "ProfessionalExperience modificado.", null);
+		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Experiencia profesional modificada.", null);
 	}
 }

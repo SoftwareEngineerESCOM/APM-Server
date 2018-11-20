@@ -58,7 +58,7 @@ public class StudyPlanRestController {
 		if (res != null) {
 			return new RESTResponse<StudyPlan>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "StudyPlan no registrado.", null);
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Plan de estudio no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class StudyPlanRestController {
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
 		try {
 			if(studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
-                return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "StudyPlan ya existe en el sistema.", null);
+                return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.", null);
 			studyPlanService.add(studyPlan.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
 	}
 
 	/*
@@ -121,7 +121,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "StudyPlan modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
 	}
 
 	@GetMapping("/studyPlansByAcademicProgramId/{id}")

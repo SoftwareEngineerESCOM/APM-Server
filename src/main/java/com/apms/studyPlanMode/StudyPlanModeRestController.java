@@ -59,7 +59,7 @@ public class StudyPlanModeRestController {
 		if (res != null) {
 			return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL, "StudyPlanMode no registrado.", null);
+			return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL, "Modalidad del Plan de estudio no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class StudyPlanModeRestController {
 	public RESTResponse<StudyPlanMode> post(@RequestBody RESTRequest<StudyPlanMode> studyPlanMode) {
 		try {
 			if(studyPlanModeService.getOne(studyPlanMode.getPayload().getId()) != null)
-                return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL, "StudyPlanMode ya existe en el sistema.", null);
+                return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL, "La modalidad del Plan de estudio ya existe en el sistema.", null);
 			studyPlanModeService.add(studyPlanMode.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class StudyPlanModeRestController {
 			return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "StudyPlanMode modificado.", null);
+		return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "Modalidad del Plan de estudio modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class StudyPlanModeRestController {
 			return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "StudyPlanMode modificado.", null);
+		return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "Modalidad del Plan de estudio modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class StudyPlanModeRestController {
 			return new RESTResponse<StudyPlanMode>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "StudyPlanMode modificado.", null);
+		return new RESTResponse<StudyPlanMode>(RESTResponse.OK, "Modalidad del Plan de estudio modificado.", null);
 	}
 }

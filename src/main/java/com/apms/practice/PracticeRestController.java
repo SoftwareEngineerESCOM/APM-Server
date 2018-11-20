@@ -58,7 +58,7 @@ public class PracticeRestController {
 		if (res != null) {
 			return new RESTResponse<Practice>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Practice>(RESTResponse.FAIL, "Practice no registrado.", null);
+			return new RESTResponse<Practice>(RESTResponse.FAIL, "Practica no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class PracticeRestController {
 	public RESTResponse<Practice> post(@RequestBody RESTRequest<Practice> practice) {
 		try {
 			if(practiceService.getOne(practice.getPayload().getId()) != null)
-                return new RESTResponse<Practice>(RESTResponse.FAIL, "Practice ya existe en el sistema.", null);
+                return new RESTResponse<Practice>(RESTResponse.FAIL, "La practica ya existe en el sistema.", null);
 			practiceService.add(practice.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class PracticeRestController {
 			return new RESTResponse<Practice>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Practice>(RESTResponse.OK, "Practice modificado.", null);
+		return new RESTResponse<Practice>(RESTResponse.OK, "Practica modificada.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class PracticeRestController {
 			return new RESTResponse<Practice>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Practice>(RESTResponse.OK, "Practice modificado.", null);
+		return new RESTResponse<Practice>(RESTResponse.OK, "Practica modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class PracticeRestController {
 			return new RESTResponse<Practice>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Practice>(RESTResponse.OK, "Practice modificado.", null);
+		return new RESTResponse<Practice>(RESTResponse.OK, "Practica modificada.", null);
 	}
 }

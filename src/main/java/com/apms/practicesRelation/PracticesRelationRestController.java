@@ -60,7 +60,7 @@ public class PracticesRelationRestController {
 		if (res != null) {
 			return new RESTResponse<PracticesRelation>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL, "PracticesRelation no registrado.", null);
+			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL, "Relacion de practicas no registrado.", null);
 		}
 	}
 
@@ -71,7 +71,7 @@ public class PracticesRelationRestController {
 	public RESTResponse<PracticesRelation> post(@RequestBody RESTRequest<PracticesRelation> practicesRelation) {
 		try {
 			if(practicesRelationService.getOne(practicesRelation.getPayload().getId()) != null)
-                return new RESTResponse<PracticesRelation>(RESTResponse.FAIL, "PracticesRelation ya existe en el sistema.", null);
+                return new RESTResponse<PracticesRelation>(RESTResponse.FAIL, "La relacion de practicas ya existe en el sistema.", null);
 			practicesRelationService.add(practicesRelation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,7 +93,7 @@ public class PracticesRelationRestController {
 			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "PracticesRelation modificado.", null);
+		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Relacion de practicas modificado.", null);
 	}
 
 	/*
@@ -108,7 +108,7 @@ public class PracticesRelationRestController {
 			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "PracticesRelation modificado.", null);
+		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Relacion de practicas modificado.", null);
 	}
 
 	/*
@@ -123,6 +123,6 @@ public class PracticesRelationRestController {
 			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "PracticesRelation modificado.", null);
+		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Relacion de practicas modificado.", null);
 	}
 }
