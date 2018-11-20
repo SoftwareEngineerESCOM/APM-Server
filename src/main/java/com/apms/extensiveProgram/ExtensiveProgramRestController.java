@@ -59,7 +59,7 @@ public class ExtensiveProgramRestController {
 		if (res != null) {
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL, "ExtensiveProgram no registrado.", null);
+			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL, "Programa en extenso no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class ExtensiveProgramRestController {
 	public RESTResponse<ExtensiveProgram> post(@RequestBody RESTRequest<ExtensiveProgram> extensiveProgram) {
 		try {
 			if(extensiveProgramService.getOne(extensiveProgram.getPayload().getId()) != null)
-                return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL, "ExtensiveProgram ya existe en el sistema.", null);
+                return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL, "Programa en extenso ya existe en el sistema.", null);
 			extensiveProgramService.add(extensiveProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class ExtensiveProgramRestController {
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "ExtensiveProgram modificado.", null);
+		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "Programa en extenso modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class ExtensiveProgramRestController {
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "ExtensiveProgram modificado.", null);
+		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "Programa en extenso modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class ExtensiveProgramRestController {
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "ExtensiveProgram modificado.", null);
+		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "Programa en extenso modificado.", null);
 	}
 }
