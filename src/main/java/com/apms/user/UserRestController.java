@@ -147,7 +147,7 @@ public class UserRestController {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
-		if (res != null) {
+		if (!res.isEmpty()) {
 			return new RESTResponse<User>(RESTResponse.OK, "", res.get(0));
 		} else {
 			return new RESTResponse<User>(RESTResponse.FAIL, "Correo y/o contraseña no válidas.", null);
