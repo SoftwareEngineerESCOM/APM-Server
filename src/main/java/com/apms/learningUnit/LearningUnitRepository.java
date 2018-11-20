@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface LearningUnitRepository extends JpaRepository<LearningUnit, Integer> {
 	@Query(value = "SELECT * FROM learning_unit WHERE semester_id = :id", nativeQuery = true)
 	List<LearningUnit> getLearningUnitsBySemesterId(@Param("id") Integer Id);
+
+	@Query(value = "SELECT l FROM LearningUnit l WHERE l.name = :name AND l.semester.id = :semester_id")
+	List<LearningUnit> getLearningUnitByNameAndSemesterId(@Param("name") String name, @Param("semester_id") Integer semester_id);
 }
