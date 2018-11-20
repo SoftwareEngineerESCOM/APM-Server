@@ -59,7 +59,7 @@ public class AssignedTimeRestController {
 		if (res != null) {
 			return new RESTResponse<AssignedTime>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<AssignedTime>(RESTResponse.FAIL, "AssignedTime no registrado.", null);
+			return new RESTResponse<AssignedTime>(RESTResponse.FAIL, "Tiempo asignado no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class AssignedTimeRestController {
 	public RESTResponse<AssignedTime> post(@RequestBody RESTRequest<AssignedTime> assignedTime) {
 		try {
 			if(assignedTimeService.getOne(assignedTime.getPayload().getId()) != null)
-                return new RESTResponse<AssignedTime>(RESTResponse.FAIL, "AssignedTime ya existe en el sistema.", null);
+                return new RESTResponse<AssignedTime>(RESTResponse.FAIL, "Tiempo asignado ya existe en el sistema.", null);
 			assignedTimeService.add(assignedTime.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class AssignedTimeRestController {
 			return new RESTResponse<AssignedTime>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AssignedTime>(RESTResponse.OK, "AssignedTime modificado.", null);
+		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Tiempo asignado modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class AssignedTimeRestController {
 			return new RESTResponse<AssignedTime>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AssignedTime>(RESTResponse.OK, "AssignedTime modificado.", null);
+		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Tiempo asignado modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class AssignedTimeRestController {
 			return new RESTResponse<AssignedTime>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AssignedTime>(RESTResponse.OK, "AssignedTime modificado.", null);
+		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Tiempo asignado modificado.", null);
 	}
 }
