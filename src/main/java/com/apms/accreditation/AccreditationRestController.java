@@ -40,7 +40,7 @@ public class AccreditationRestController {
 			return new RESTResponse<List<Accreditation>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<Accreditation>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

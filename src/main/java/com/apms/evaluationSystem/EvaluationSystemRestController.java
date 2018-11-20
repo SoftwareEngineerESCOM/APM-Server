@@ -40,7 +40,7 @@ public class EvaluationSystemRestController {
 			return new RESTResponse<List<EvaluationSystem>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<EvaluationSystem>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

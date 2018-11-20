@@ -38,7 +38,7 @@ public class AbilityRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Ability>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Ability>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+			return new RESTResponse<List<Ability>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
 					null);
 		}
 	}

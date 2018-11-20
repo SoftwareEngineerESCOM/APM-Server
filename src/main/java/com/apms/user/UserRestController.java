@@ -38,7 +38,7 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
@@ -162,7 +162,7 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

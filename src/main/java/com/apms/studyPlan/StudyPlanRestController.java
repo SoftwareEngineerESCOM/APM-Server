@@ -38,7 +38,7 @@ public class StudyPlanRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.",
+			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
 					null);
 		}
 	}

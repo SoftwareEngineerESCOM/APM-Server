@@ -40,7 +40,7 @@ public class AcademicProgramRestController {
 			return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<AcademicProgram>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

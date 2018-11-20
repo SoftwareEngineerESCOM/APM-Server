@@ -40,7 +40,7 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<List<ProfessionalExperience>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<ProfessionalExperience>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 

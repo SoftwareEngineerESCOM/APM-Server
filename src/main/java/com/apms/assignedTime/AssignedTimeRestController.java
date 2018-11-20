@@ -40,7 +40,7 @@ public class AssignedTimeRestController {
 			return new RESTResponse<List<AssignedTime>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<AssignedTime>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado.", null);
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
