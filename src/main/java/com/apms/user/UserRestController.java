@@ -38,7 +38,8 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
@@ -67,8 +68,8 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
-			if(userService.getOne(user.getPayload().getId()) != null)
-                return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
+			if (userService.getOne(user.getPayload().getId()) != null)
+				return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,8 +114,11 @@ public class UserRestController {
 	 */
 	@DeleteMapping("/{id}")
 	public RESTResponse<User> delete(@PathVariable Integer id) {
+		User res;
 		try {
-			userService.delete(id);
+			res = userService.getOne(id);
+			res.setAccountBlocked(true);
+			userService.update(res);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
@@ -162,7 +166,8 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
@@ -183,7 +188,8 @@ public class UserRestController {
 	}
 
 	@GetMapping("/userByName/{name}/{first_surname}/{second_surname}")
-	public RESTResponse<User> userByName(@PathVariable String name, @PathVariable String first_surname, @PathVariable String second_surname) {
+	public RESTResponse<User> userByName(@PathVariable String name, @PathVariable String first_surname,
+			@PathVariable String second_surname) {
 		User res;
 		try {
 			res = userService.getOne(name, first_surname, second_surname);
