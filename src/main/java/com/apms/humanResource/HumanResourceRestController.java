@@ -59,7 +59,7 @@ public class HumanResourceRestController {
 		if (res != null) {
 			return new RESTResponse<HumanResource>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<HumanResource>(RESTResponse.FAIL, "HumanResource no registrado.", null);
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL, "Recurso humano no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class HumanResourceRestController {
 	public RESTResponse<HumanResource> post(@RequestBody RESTRequest<HumanResource> humanResource) {
 		try {
 			if(humanResourceService.getOne(humanResource.getPayload().getId()) != null)
-                return new RESTResponse<HumanResource>(RESTResponse.FAIL, "HumanResource ya existe en el sistema.", null);
+                return new RESTResponse<HumanResource>(RESTResponse.FAIL, "El recurso humano ya existe en el sistema.", null);
 			humanResourceService.add(humanResource.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class HumanResourceRestController {
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Recurso humano modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class HumanResourceRestController {
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Recurso humano modificado.", null);
 	}
 
 	/*
@@ -122,7 +122,7 @@ public class HumanResourceRestController {
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<HumanResource>(RESTResponse.OK, "HumanResource modificado.", null);
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Recurso humano modificado.", null);
 	}
 
 	@GetMapping("/humanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")
