@@ -17,7 +17,11 @@ public class BibliographyType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
+	private String abbreviation;
+	@Column(nullable = false)
 	private String type;
+	@Column(nullable = false)
+	private String description;
 
 	public BibliographyType() {
 	}

@@ -198,6 +198,10 @@ insert into user_apms_roles values ((select id from user_apms where email like '
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Docente%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Analista%'));
 
+-- add bibliography_type
+insert into bibliography_type (type, abbreviation, description) values ('Básica', 'B', 'Bibliogragía básica para la Unidad de Aprendizaje');
+insert into bibliography_type (type, abbreviation, description) values ('Complementaria', 'C', 'Bibliogragía complementaria para la Unidad de Aprendizaje');
+
 -- add message
 insert into message values (0, 'Esta es la descripción', 'Matrícula y/o contraseña no válidas.');
 insert into message values (1, 'Esta es la descripción', '¿Está seguro que desea editar el Programa Académico?');
