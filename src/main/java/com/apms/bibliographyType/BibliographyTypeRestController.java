@@ -59,7 +59,7 @@ public class BibliographyTypeRestController {
 		if (res != null) {
 			return new RESTResponse<BibliographyType>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<BibliographyType>(RESTResponse.FAIL, "BibliographyType no registrado.", null);
+			return new RESTResponse<BibliographyType>(RESTResponse.FAIL, "Tipo de bibliografia no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class BibliographyTypeRestController {
 	public RESTResponse<BibliographyType> post(@RequestBody RESTRequest<BibliographyType> bibliographyType) {
 		try {
 			if(bibliographyTypeService.getOne(bibliographyType.getPayload().getId()) != null)
-                return new RESTResponse<BibliographyType>(RESTResponse.FAIL, "BibliographyType ya existe en el sistema.", null);
+                return new RESTResponse<BibliographyType>(RESTResponse.FAIL, "Tipo de bibliografia ya existe en el sistema.", null);
 			bibliographyTypeService.add(bibliographyType.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class BibliographyTypeRestController {
 			return new RESTResponse<BibliographyType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<BibliographyType>(RESTResponse.OK, "BibliographyType modificado.", null);
+		return new RESTResponse<BibliographyType>(RESTResponse.OK, "Tipo de bibliografia modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class BibliographyTypeRestController {
 			return new RESTResponse<BibliographyType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<BibliographyType>(RESTResponse.OK, "BibliographyType modificado.", null);
+		return new RESTResponse<BibliographyType>(RESTResponse.OK, "Tipo de bibliografia modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class BibliographyTypeRestController {
 			return new RESTResponse<BibliographyType>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<BibliographyType>(RESTResponse.OK, "BibliographyType modificado.", null);
+		return new RESTResponse<BibliographyType>(RESTResponse.OK, "Tipo de bibliografia modificado.", null);
 	}
 }
