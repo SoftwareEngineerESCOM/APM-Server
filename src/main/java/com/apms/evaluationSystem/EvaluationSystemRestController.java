@@ -59,7 +59,7 @@ public class EvaluationSystemRestController {
 		if (res != null) {
 			return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "EvaluationSystem no registrado.", null);
+			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "Sistema de evaluacion no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class EvaluationSystemRestController {
 	public RESTResponse<EvaluationSystem> post(@RequestBody RESTRequest<EvaluationSystem> evaluationSystem) {
 		try {
 			if(evaluationSystemService.getOne(evaluationSystem.getPayload().getId()) != null)
-                return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "EvaluationSystem ya existe en el sistema.", null);
+                return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "El sistema de evaluacion ya existe en el sistema.", null);
 			evaluationSystemService.add(evaluationSystem.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class EvaluationSystemRestController {
 			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "EvaluationSystem modificado.", null);
+		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "Sistema de evaluacion modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class EvaluationSystemRestController {
 			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "EvaluationSystem modificado.", null);
+		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "Sistema de evaluacion modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class EvaluationSystemRestController {
 			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "EvaluationSystem modificado.", null);
+		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "Sistema de evaluacion modificado.", null);
 	}
 }
