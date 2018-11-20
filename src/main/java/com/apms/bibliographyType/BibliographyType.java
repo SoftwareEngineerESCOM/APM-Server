@@ -16,11 +16,8 @@ public class BibliographyType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	@Column(nullable = false)
 	private String type;
-	@Column(nullable = false)
-	private boolean isClassic;
 
 	public BibliographyType() {
 	}

@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import com.apms.bibliographyType.BibliographyType;
 import com.apms.country.Country;
 import com.apms.author.Author;
 
@@ -42,10 +42,6 @@ public class Bibliography {
 
 	@Column(nullable = false)
 	private String editorial;
-	
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private BibliographyType bibliographyType;
 
 	public Bibliography() {
 	}
