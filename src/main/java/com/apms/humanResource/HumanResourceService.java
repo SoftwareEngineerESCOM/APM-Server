@@ -26,13 +26,13 @@ public class HumanResourceService {
 		return humanResourceRepository.getByName(name, first_surname, second_surname);
 	}
 
-	public void add(HumanResource humanResource) {
-		humanResourceRepository.save(humanResource);
+	public HumanResource add(HumanResource humanResource) {
+		return humanResourceRepository.save(humanResource);
 	}
 
-	public void update(HumanResource humanResource) {
+	public HumanResource update(HumanResource humanResource) {
 		// if exists updates otherwise inserts
-		humanResourceRepository.save(humanResource);
+		return humanResourceRepository.save(humanResource);
 	}
 
 	public void delete(Integer id) {

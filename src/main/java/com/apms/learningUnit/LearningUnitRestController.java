@@ -69,8 +69,8 @@ public class LearningUnitRestController {
 	@PostMapping
 	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> learningUnit) {
 		try {
-			if(learningUnitService.getOne(learningUnit.getPayload().getId()) != null)
-                return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "La unidad de aprendizaje ya existe en el sistema.", null);
+			if(!learningUnitService.getLearningUnitByNameAndSemesterId(learningUnit.getPayload().getName(), learningUnit.getPayload().getSemester().getId()).isEmpty())
+				return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Unidad de Aprendizaje ya existe en el sistema.", null);
 			learningUnitService.add(learningUnit.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,8 +125,35 @@ public class LearningUnitRestController {
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 
-	@GetMapping("LearningUnitsBySemesterId/{id}")
+	@GetMapping("/learningUnitsBySemesterId/{id}")
 	public RESTResponse<List<LearningUnit>> getLearningUnitsBySemesterId(@PathVariable Integer id) {
-		return new RESTResponse<List<LearningUnit>>(1, "", learningUnitService.getLearningUnitsBySemesterId(id));
+		List<LearningUnit> res;
+		try {
+			res = learningUnitService.getLearningUnitsBySemesterId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+		}
+	}
+
+	@GetMapping("/learningUnitByNameAndSemesterId/{name}/{id}")
+	public RESTResponse<List<LearningUnit>> getLearningUnitByNameAndSemesterId(@PathVariable String name, @PathVariable Integer id) {
+		List<LearningUnit> res;
+		try {
+			res = learningUnitService.getLearningUnitByNameAndSemesterId(name, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+		}
 	}
 }

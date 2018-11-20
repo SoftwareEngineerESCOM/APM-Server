@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.humanResource.HumanResourceService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
@@ -22,6 +23,9 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private HumanResourceService humanResourceService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -70,6 +74,7 @@ public class UserRestController {
 		try {
 			if(userService.getOne(user.getPayload().getId()) != null)
                 return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
+			user.getPayload().getHumanResource().setId(humanResourceService.add(user.getPayload().getHumanResource()).getId());
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,6 +90,8 @@ public class UserRestController {
 	@PatchMapping
 	public RESTResponse<User> patch(@RequestBody RESTRequest<User> user) {
 		try {
+			humanResourceService.update(user.getPayload().getHumanResource());
+			user.getPayload().getHumanResource().setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
 			userService.update(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,6 +107,7 @@ public class UserRestController {
 	@PutMapping
 	public RESTResponse<User> put(@RequestBody RESTRequest<User> user) {
 		try {
+			user.getPayload().getHumanResource().setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
 			userService.update(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

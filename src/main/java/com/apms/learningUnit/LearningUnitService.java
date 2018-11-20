@@ -38,4 +38,8 @@ public class LearningUnitService {
 	public List<LearningUnit> getLearningUnitsBySemesterId(Integer id) {
 		return learningUnitRepository.getLearningUnitsBySemesterId(id);
 	}
+
+	public List<LearningUnit> getLearningUnitByNameAndSemesterId(String name, Integer semester_id) {
+		return learningUnitRepository.getLearningUnitByNameAndSemesterId(name, semester_id);
+	}
 }
