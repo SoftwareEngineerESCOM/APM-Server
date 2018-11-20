@@ -124,18 +124,18 @@ insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, 
 
 
 -- add titles
-insert into title (abbreviation, description, name) values ('Abg.', ' Persona que posee el título de Abogado/a', 'Abogado/a');
-insert into title (abbreviation, description, name) values ('Arq.', ' Persona que posee el título de Arquitecto/a', 'Arquitecto/a');
-insert into title (abbreviation, description, name) values ('C.', ' Ciudadano del país.', 'Ciudadano/a');
-insert into title (abbreviation, description, name) values ('C.P.T.', ' Persona que posee el título de Contador público titulado', 'Contador público titulado');
-insert into title (abbreviation, description, name) values ('Dr.', ' Persona que posee el título de Doctor', 'Doctor');
-insert into title (abbreviation, description, name) values ('Dra.', ' Persona que posee el título de Doctora', 'Doctora');
-insert into title (abbreviation, description, name) values ('Ing.', ' Persona que posee el título de Ingeniero/a', 'Ingeniero/a');
-insert into title (abbreviation, description, name) values ('Lic.', ' Persona que posee el título de Licenciado/a', 'Licenciado/a');
-insert into title (abbreviation, description, name) values ('Mtr.', ' Persona que posee el título de Máster || Magíster', 'Máster || Magíster');
-insert into title (abbreviation, description, name) values ('Mtro.', ' Persona que posee el título de Maestro || Ministro', 'Maestro || Ministro');
-insert into title (abbreviation, description, name) values ('Mtra.', ' Persona que posee el título de Maestra || Ministra', 'Maestra || Ministra');
-insert into title (abbreviation, description, name) values ('Tec.', ' Persona que posee el título de Técnico', 'Técnico');
+insert into title values (2, 'Abg.', ' Persona que posee el título de Abogado/a', 'Abogado/a');
+insert into title values (3, 'Arq.', ' Persona que posee el título de Arquitecto/a', 'Arquitecto/a');
+insert into title values (1, 'C.', ' Ciudadano del país.', 'Ciudadano/a');
+insert into title values (4, 'C.P.T.', ' Persona que posee el título de Contador público titulado', 'Contador público titulado');
+insert into title values (5, 'Dr.', ' Persona que posee el título de Doctor', 'Doctor');
+insert into title values (6, 'Dra.', ' Persona que posee el título de Doctora', 'Doctora');
+insert into title values (7, 'Ing.', ' Persona que posee el título de Ingeniero/a', 'Ingeniero/a');
+insert into title values (8, 'Lic.', ' Persona que posee el título de Licenciado/a', 'Licenciado/a');
+insert into title values (9, 'Mtr.', ' Persona que posee el título de Máster || Magíster', 'Máster || Magíster');
+insert into title values (10, 'Mtro.', ' Persona que posee el título de Maestro || Ministro', 'Maestro || Ministro');
+insert into title values (11, 'Mtra.', ' Persona que posee el título de Maestra || Ministra', 'Maestra || Ministra');
+insert into title values (12, 'Tec.', ' Persona que posee el título de Técnico', 'Técnico');
 -- insert into title (abbreviation, description, name) values ('Dir.', ' Persona que posee el título de Director/a', 'Director/a');
 -- insert into title (abbreviation, description, name) values ('Pdte.', ' Persona que posee el título de Presidente', 'Presidente');
 -- insert into title (abbreviation, description, name) values ('Magtr.', ' Persona que posee el título de Magíster', 'Magíster');
