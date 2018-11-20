@@ -54,4 +54,24 @@ public class UserService {
 	public List<User> getUsersByWorkplaceId(Integer id) {
 		return userRepository.getUsersByWorkplaceId(id);
 	}
+
+	public List<User> getActiveUsers() {
+		return userRepository.getActiveUsers();
+	}
+
+	public List<User> getActiveUsersForUserForDES(Integer id) {
+		return userRepository.getActiveUsersForUserForDES(id);
+	}
+
+	public List<User> getActiveUsersForUser(Integer id, Integer workplace_id) {
+		return userRepository.getActiveUsersForUser(id, workplace_id);
+	}
+
+	public List<User> getActiveUsersForUserByRoleForDES(Integer role_id) {
+		return userRepository.getActiveUsersForUserByRoleForDES(role_id);
+	}
+
+	public List<User> getActiveUsersForUserByRole(Integer workplace_id, Integer role_id) {
+		return userRepository.getActiveUsersForUserByRole(workplace_id, role_id);
+	}
 }

@@ -58,7 +58,7 @@ public class UserRestController {
 		if (res != null) {
 			return new RESTResponse<User>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<User>(RESTResponse.FAIL, "User no registrado.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
 		}
 	}
 
@@ -68,8 +68,8 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
-			if (userService.getOne(user.getPayload().getId()) != null)
-				return new RESTResponse<User>(RESTResponse.FAIL, "User ya existe en el sistema.", null);
+			if(userService.getOne(user.getPayload().getId()) != null)
+                return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class UserRestController {
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<User>(RESTResponse.OK, "User modificado.", null);
+		return new RESTResponse<User>(RESTResponse.OK, "Usuario modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class UserRestController {
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<User>(RESTResponse.OK, "User modificado.", null);
+		return new RESTResponse<User>(RESTResponse.OK, "Usuario modificado.", null);
 	}
 
 	/*
@@ -124,7 +124,7 @@ public class UserRestController {
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<User>(RESTResponse.OK, "User modificado.", null);
+		return new RESTResponse<User>(RESTResponse.OK, "Usuario modificado.", null);
 	}
 
 	@GetMapping("/usersByWorkplaceIdAndPositionId/{idW}/{idP}")
@@ -166,8 +166,7 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
@@ -201,6 +200,84 @@ public class UserRestController {
 			return new RESTResponse<User>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
+	}
+
+	@GetMapping("/activeUsers")
+	public RESTResponse<List<User>> activeUsers() {
+		List<User> res;
+		try {
+			res = userService.getActiveUsers();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
+	}
+
+	@GetMapping("/activeUsersForUser/{id}")
+	public RESTResponse<List<User>> activeUsersForUser(@PathVariable Integer id) {
+		User res;
+		try {
+			res = userService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			List<User> aux;
+			try {
+				if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
+					aux = userService.getActiveUsersForUserForDES(id);
+				}else{
+					aux = userService.getActiveUsersForUser(id, res.getHumanResource().getWorkplace().getId());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<User>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+			}
+		} else {
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
+	}
+
+	@GetMapping("/activeUsersForUserByRole/{id}/{id_role}")
+	public RESTResponse<List<User>> activeUsersForUserByRole(@PathVariable Integer id, @PathVariable Integer id_role) {
+		User res;
+		try {
+			res = userService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			List<User> aux;
+			try {
+				if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
+					aux = userService.getActiveUsersForUserByRoleForDES(id_role);
+				}else{
+					aux = userService.getActiveUsersForUserByRole(res.getHumanResource().getWorkplace().getId(), id_role);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<User>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+			}
+		} else {
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);
 		}
 	}
 }
