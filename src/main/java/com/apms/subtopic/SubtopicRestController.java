@@ -58,7 +58,7 @@ public class SubtopicRestController {
 		if (res != null) {
 			return new RESTResponse<Subtopic>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Subtopic>(RESTResponse.FAIL, "Subtopic no registrado.", null);
+			return new RESTResponse<Subtopic>(RESTResponse.FAIL, "Subtema no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class SubtopicRestController {
 	public RESTResponse<Subtopic> post(@RequestBody RESTRequest<Subtopic> subtopic) {
 		try {
 			if(subtopicService.getOne(subtopic.getPayload().getId()) != null)
-                return new RESTResponse<Subtopic>(RESTResponse.FAIL, "Subtopic ya existe en el sistema.", null);
+                return new RESTResponse<Subtopic>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
 			subtopicService.add(subtopic.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class SubtopicRestController {
 			return new RESTResponse<Subtopic>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Subtopic>(RESTResponse.OK, "Subtopic modificado.", null);
+		return new RESTResponse<Subtopic>(RESTResponse.OK, "Subtema modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class SubtopicRestController {
 			return new RESTResponse<Subtopic>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Subtopic>(RESTResponse.OK, "Subtopic modificado.", null);
+		return new RESTResponse<Subtopic>(RESTResponse.OK, "Subtema modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class SubtopicRestController {
 			return new RESTResponse<Subtopic>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Subtopic>(RESTResponse.OK, "Subtopic modificado.", null);
+		return new RESTResponse<Subtopic>(RESTResponse.OK, "Subtema modificado.", null);
 	}
 }

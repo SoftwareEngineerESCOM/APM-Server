@@ -59,7 +59,7 @@ public class SyntheticProgramRestController {
 		if (res != null) {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "SyntheticProgram no registrado.", null);
+			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "Programa sintetico no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class SyntheticProgramRestController {
 	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> syntheticProgram) {
 		try {
 			if(syntheticProgramService.getOne(syntheticProgram.getPayload().getId()) != null)
-                return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "SyntheticProgram ya existe en el sistema.", null);
+                return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "El Programa sintetico  ya existe en el sistema.", null);
 			syntheticProgramService.add(syntheticProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "SyntheticProgram modificado.", null);
+		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Programa sintetico modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "SyntheticProgram modificado.", null);
+		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Programa sintetico modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "SyntheticProgram modificado.", null);
+		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Programa sintetico modificado.", null);
 	}
 }

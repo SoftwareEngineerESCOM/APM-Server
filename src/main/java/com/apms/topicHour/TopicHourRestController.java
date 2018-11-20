@@ -58,7 +58,7 @@ public class TopicHourRestController {
 		if (res != null) {
 			return new RESTResponse<TopicHour>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<TopicHour>(RESTResponse.FAIL, "TopicHour no registrado.", null);
+			return new RESTResponse<TopicHour>(RESTResponse.FAIL, "Horas de tema no registradas.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class TopicHourRestController {
 	public RESTResponse<TopicHour> post(@RequestBody RESTRequest<TopicHour> topicHour) {
 		try {
 			if(topicHourService.getOne(topicHour.getPayload().getId()) != null)
-                return new RESTResponse<TopicHour>(RESTResponse.FAIL, "TopicHour ya existe en el sistema.", null);
+                return new RESTResponse<TopicHour>(RESTResponse.FAIL, "Las horas de tema ya existen en el sistema.", null);
 			topicHourService.add(topicHour.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class TopicHourRestController {
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<TopicHour>(RESTResponse.OK, "TopicHour modificado.", null);
+		return new RESTResponse<TopicHour>(RESTResponse.OK, "Horas de tema modificadas.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class TopicHourRestController {
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<TopicHour>(RESTResponse.OK, "TopicHour modificado.", null);
+		return new RESTResponse<TopicHour>(RESTResponse.OK, "Horas de tema modificadas.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class TopicHourRestController {
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<TopicHour>(RESTResponse.OK, "TopicHour modificado.", null);
+		return new RESTResponse<TopicHour>(RESTResponse.OK, "Horas de tema modificadas.", null);
 	}
 }

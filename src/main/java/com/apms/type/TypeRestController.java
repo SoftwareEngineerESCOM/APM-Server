@@ -57,7 +57,7 @@ public class TypeRestController {
 		if (res != null) {
 			return new RESTResponse<Type>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Type>(RESTResponse.FAIL, "Type no registrado.", null);
+			return new RESTResponse<Type>(RESTResponse.FAIL, "Tipo no registrado.", null);
 		}
 	}
 
@@ -68,7 +68,7 @@ public class TypeRestController {
 	public RESTResponse<Type> post(@RequestBody RESTRequest<Type> type) {
 		try {
 			if(typeService.getOne(type.getPayload().getId()) != null)
-                return new RESTResponse<Type>(RESTResponse.FAIL, "Type ya existe en el sistema.", null);
+                return new RESTResponse<Type>(RESTResponse.FAIL, "El tipo ya existe en el sistema.", null);
 			typeService.add(type.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class TypeRestController {
 			return new RESTResponse<Type>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Type>(RESTResponse.OK, "Type modificado.", null);
+		return new RESTResponse<Type>(RESTResponse.OK, "Tipo modificado.", null);
 	}
 
 	/*
@@ -105,7 +105,7 @@ public class TypeRestController {
 			return new RESTResponse<Type>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Type>(RESTResponse.OK, "Type modificado.", null);
+		return new RESTResponse<Type>(RESTResponse.OK, "Tipo modificado.", null);
 	}
 
 	/*
@@ -120,6 +120,6 @@ public class TypeRestController {
 			return new RESTResponse<Type>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Type>(RESTResponse.OK, "Type modificado.", null);
+		return new RESTResponse<Type>(RESTResponse.OK, "Tipo modificado.", null);
 	}
 }

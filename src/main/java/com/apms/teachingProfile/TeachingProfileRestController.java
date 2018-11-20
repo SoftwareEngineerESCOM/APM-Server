@@ -59,7 +59,7 @@ public class TeachingProfileRestController {
 		if (res != null) {
 			return new RESTResponse<TeachingProfile>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<TeachingProfile>(RESTResponse.FAIL, "TeachingProfile no registrado.", null);
+			return new RESTResponse<TeachingProfile>(RESTResponse.FAIL, "Perfil docente no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class TeachingProfileRestController {
 	public RESTResponse<TeachingProfile> post(@RequestBody RESTRequest<TeachingProfile> teachingProfile) {
 		try {
 			if(teachingProfileService.getOne(teachingProfile.getPayload().getId()) != null)
-                return new RESTResponse<TeachingProfile>(RESTResponse.FAIL, "TeachingProfile ya existe en el sistema.", null);
+                return new RESTResponse<TeachingProfile>(RESTResponse.FAIL, "El perfil docente ya existe en el sistema.", null);
 			teachingProfileService.add(teachingProfile.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class TeachingProfileRestController {
 			return new RESTResponse<TeachingProfile>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<TeachingProfile>(RESTResponse.OK, "TeachingProfile modificado.", null);
+		return new RESTResponse<TeachingProfile>(RESTResponse.OK, "Perfil docente modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class TeachingProfileRestController {
 			return new RESTResponse<TeachingProfile>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<TeachingProfile>(RESTResponse.OK, "TeachingProfile modificado.", null);
+		return new RESTResponse<TeachingProfile>(RESTResponse.OK, "Perfil docente modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class TeachingProfileRestController {
 			return new RESTResponse<TeachingProfile>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<TeachingProfile>(RESTResponse.OK, "TeachingProfile modificado.", null);
+		return new RESTResponse<TeachingProfile>(RESTResponse.OK, "Perfil docente modificado.", null);
 	}
 }

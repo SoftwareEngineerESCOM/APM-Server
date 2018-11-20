@@ -58,7 +58,7 @@ public class WorkplaceRestController {
 		if (res != null) {
 			return new RESTResponse<Workplace>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Workplace>(RESTResponse.FAIL, "Workplace no registrado.", null);
+			return new RESTResponse<Workplace>(RESTResponse.FAIL, "Unidad no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class WorkplaceRestController {
 	public RESTResponse<Workplace> post(@RequestBody RESTRequest<Workplace> workplace) {
 		try {
 			if(workplaceService.getOne(workplace.getPayload().getId()) != null)
-                return new RESTResponse<Workplace>(RESTResponse.FAIL, "Workplace ya existe en el sistema.", null);
+                return new RESTResponse<Workplace>(RESTResponse.FAIL, "La Unidad ya existe en el sistema.", null);
 			workplaceService.add(workplace.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class WorkplaceRestController {
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Workplace>(RESTResponse.OK, "Workplace modificado.", null);
+		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class WorkplaceRestController {
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Workplace>(RESTResponse.OK, "Workplace modificado.", null);
+		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class WorkplaceRestController {
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Workplace>(RESTResponse.OK, "Workplace modificado.", null);
+		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
 	}
 }

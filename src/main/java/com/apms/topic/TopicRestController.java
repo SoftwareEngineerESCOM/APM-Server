@@ -58,7 +58,7 @@ public class TopicRestController {
 		if (res != null) {
 			return new RESTResponse<Topic>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Topic>(RESTResponse.FAIL, "Topic no registrado.", null);
+			return new RESTResponse<Topic>(RESTResponse.FAIL, "Tema no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class TopicRestController {
 	public RESTResponse<Topic> post(@RequestBody RESTRequest<Topic> topic) {
 		try {
 			if(topicService.getOne(topic.getPayload().getId()) != null)
-                return new RESTResponse<Topic>(RESTResponse.FAIL, "Topic ya existe en el sistema.", null);
+                return new RESTResponse<Topic>(RESTResponse.FAIL, "El tema ya existe en el sistema.", null);
 			topicService.add(topic.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class TopicRestController {
 			return new RESTResponse<Topic>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Topic>(RESTResponse.OK, "Topic modificado.", null);
+		return new RESTResponse<Topic>(RESTResponse.OK, "Tema modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class TopicRestController {
 			return new RESTResponse<Topic>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Topic>(RESTResponse.OK, "Topic modificado.", null);
+		return new RESTResponse<Topic>(RESTResponse.OK, "Tema modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class TopicRestController {
 			return new RESTResponse<Topic>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Topic>(RESTResponse.OK, "Topic modificado.", null);
+		return new RESTResponse<Topic>(RESTResponse.OK, "Tema modificado.", null);
 	}
 }

@@ -59,7 +59,7 @@ public class ThematicUnitRestController {
 		if (res != null) {
 			return new RESTResponse<ThematicUnit>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "ThematicUnit no registrado.", null);
+			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "Unidad tematica no registrada.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class ThematicUnitRestController {
 	public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> thematicUnit) {
 		try {
 			if(thematicUnitService.getOne(thematicUnit.getPayload().getId()) != null)
-                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "ThematicUnit ya existe en el sistema.", null);
+                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
 			thematicUnitService.add(thematicUnit.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class ThematicUnitRestController {
 			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "ThematicUnit modificado.", null);
+		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Unidad tematica modificada.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class ThematicUnitRestController {
 			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "ThematicUnit modificado.", null);
+		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Unidad tematica modificada.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class ThematicUnitRestController {
 			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "ThematicUnit modificado.", null);
+		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Unidad tematica modificada.", null);
 	}
 }

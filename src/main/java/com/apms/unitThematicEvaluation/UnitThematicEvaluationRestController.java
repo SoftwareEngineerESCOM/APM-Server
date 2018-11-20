@@ -60,7 +60,7 @@ public class UnitThematicEvaluationRestController {
 		if (res != null) {
 			return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL, "UnitThematicEvaluation no registrado.",
+			return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL, "Unidad de Evaluacion tematica no registrada.",
 					null);
 		}
 	}
@@ -73,7 +73,7 @@ public class UnitThematicEvaluationRestController {
 			@RequestBody RESTRequest<UnitThematicEvaluation> unitThematicEvaluation) {
 		try {
 			if(unitThematicEvaluationService.getOne(unitThematicEvaluation.getPayload().getId()) != null)
-                return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL, "UnitThematicEvaluation ya existe en el sistema.", null);
+                return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL, "La Unidad de Evaluacion tematica ya existe en el sistema.", null);
 			unitThematicEvaluationService.add(unitThematicEvaluation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,7 +96,7 @@ public class UnitThematicEvaluationRestController {
 			return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "UnitThematicEvaluation modificado.", null);
+		return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "Unidad de Evaluacion tematica modificada.", null);
 	}
 
 	/*
@@ -112,7 +112,7 @@ public class UnitThematicEvaluationRestController {
 			return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "UnitThematicEvaluation modificado.", null);
+		return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "Unidad de Evaluacion tematica modificada.", null);
 	}
 
 	/*
@@ -127,6 +127,6 @@ public class UnitThematicEvaluationRestController {
 			return new RESTResponse<UnitThematicEvaluation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "UnitThematicEvaluation modificado.", null);
+		return new RESTResponse<UnitThematicEvaluation>(RESTResponse.OK, "Unidad de Evaluacion tematica modificada.", null);
 	}
 }

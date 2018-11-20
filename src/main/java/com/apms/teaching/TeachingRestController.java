@@ -58,7 +58,7 @@ public class TeachingRestController {
 		if (res != null) {
 			return new RESTResponse<Teaching>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Teaching>(RESTResponse.FAIL, "Teaching no registrado.", null);
+			return new RESTResponse<Teaching>(RESTResponse.FAIL, "Enseñanza no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class TeachingRestController {
 	public RESTResponse<Teaching> post(@RequestBody RESTRequest<Teaching> teaching) {
 		try {
 			if(teachingService.getOne(teaching.getPayload().getId()) != null)
-                return new RESTResponse<Teaching>(RESTResponse.FAIL, "Teaching ya existe en el sistema.", null);
+                return new RESTResponse<Teaching>(RESTResponse.FAIL, "La enseñanza ya existe en el sistema.", null);
 			teachingService.add(teaching.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class TeachingRestController {
 			return new RESTResponse<Teaching>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Teaching>(RESTResponse.OK, "Teaching modificado.", null);
+		return new RESTResponse<Teaching>(RESTResponse.OK, "Enseñanza modificada.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class TeachingRestController {
 			return new RESTResponse<Teaching>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Teaching>(RESTResponse.OK, "Teaching modificado.", null);
+		return new RESTResponse<Teaching>(RESTResponse.OK, "Enseñanza modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class TeachingRestController {
 			return new RESTResponse<Teaching>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Teaching>(RESTResponse.OK, "Teaching modificado.", null);
+		return new RESTResponse<Teaching>(RESTResponse.OK, "Teaching modificada.", null);
 	}
 }

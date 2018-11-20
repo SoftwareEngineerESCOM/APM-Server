@@ -58,7 +58,7 @@ public class TitleRestController {
 		if (res != null) {
 			return new RESTResponse<Title>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Title>(RESTResponse.FAIL, "Title no registrado.", null);
+			return new RESTResponse<Title>(RESTResponse.FAIL, "Titulo no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class TitleRestController {
 	public RESTResponse<Title> post(@RequestBody RESTRequest<Title> title) {
 		try {
 			if(titleService.getOne(title.getPayload().getId()) != null)
-                return new RESTResponse<Title>(RESTResponse.FAIL, "Title ya existe en el sistema.", null);
+                return new RESTResponse<Title>(RESTResponse.FAIL, "El titulo ya existe en el sistema.", null);
 			titleService.add(title.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class TitleRestController {
 			return new RESTResponse<Title>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Title>(RESTResponse.OK, "Title modificado.", null);
+		return new RESTResponse<Title>(RESTResponse.OK, "Titulo modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class TitleRestController {
 			return new RESTResponse<Title>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Title>(RESTResponse.OK, "Title modificado.", null);
+		return new RESTResponse<Title>(RESTResponse.OK, "Titulo modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class TitleRestController {
 			return new RESTResponse<Title>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Title>(RESTResponse.OK, "Title modificado.", null);
+		return new RESTResponse<Title>(RESTResponse.OK, "Titulo modificado.", null);
 	}
 }
