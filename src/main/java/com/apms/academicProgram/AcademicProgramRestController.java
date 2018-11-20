@@ -59,7 +59,7 @@ public class AcademicProgramRestController {
 		if (res != null) {
 			return new RESTResponse<AcademicProgram>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "AcademicProgram no registrado.", null);
+			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Programa academico no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class AcademicProgramRestController {
 	public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
 		try {
 			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
-                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "AcademicProgram ya existe en el sistema.", null);
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Programa academico ya existe en el sistema.", null);
 			academicProgramService.add(academicProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class AcademicProgramRestController {
 			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Programa academico modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class AcademicProgramRestController {
 			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Programa academico modificado.", null);
 	}
 
 	/*
@@ -122,7 +122,7 @@ public class AcademicProgramRestController {
 			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "AcademicProgram modificado.", null);
+		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Programa academico modificado.", null);
 	}
 
 	@GetMapping("/academicProgramsByWorkPlaceId/{id}")
