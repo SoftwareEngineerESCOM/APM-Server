@@ -59,7 +59,7 @@ public class PlacePracticeRestController {
 		if (res != null) {
 			return new RESTResponse<PlacePractice>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<PlacePractice>(RESTResponse.FAIL, "PlacePractice no registrado.", null);
+			return new RESTResponse<PlacePractice>(RESTResponse.FAIL, "Lugar de practica no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class PlacePracticeRestController {
 	public RESTResponse<PlacePractice> post(@RequestBody RESTRequest<PlacePractice> placePractice) {
 		try {
 			if(placePracticeService.getOne(placePractice.getPayload().getId()) != null)
-                return new RESTResponse<PlacePractice>(RESTResponse.FAIL, "PlacePractice ya existe en el sistema.", null);
+                return new RESTResponse<PlacePractice>(RESTResponse.FAIL, "El lugar de practica ya existe en el sistema.", null);
 			placePracticeService.add(placePractice.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class PlacePracticeRestController {
 			return new RESTResponse<PlacePractice>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PlacePractice>(RESTResponse.OK, "PlacePractice modificado.", null);
+		return new RESTResponse<PlacePractice>(RESTResponse.OK, "Lugar de practica modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class PlacePracticeRestController {
 			return new RESTResponse<PlacePractice>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PlacePractice>(RESTResponse.OK, "PlacePractice modificado.", null);
+		return new RESTResponse<PlacePractice>(RESTResponse.OK, "Lugar de practica modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class PlacePracticeRestController {
 			return new RESTResponse<PlacePractice>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PlacePractice>(RESTResponse.OK, "PlacePractice modificado.", null);
+		return new RESTResponse<PlacePractice>(RESTResponse.OK, "Lugar de practica modificado.", null);
 	}
 }

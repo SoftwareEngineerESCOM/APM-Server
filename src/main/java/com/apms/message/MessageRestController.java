@@ -58,7 +58,7 @@ public class MessageRestController {
 		if (res != null) {
 			return new RESTResponse<Message>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Message>(RESTResponse.FAIL, "Message no registrado.", null);
+			return new RESTResponse<Message>(RESTResponse.FAIL, "Mensaje no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class MessageRestController {
 	public RESTResponse<Message> post(@RequestBody RESTRequest<Message> message) {
 		try {
 			if(messageService.getOne(message.getPayload().getId()) != null)
-                return new RESTResponse<Message>(RESTResponse.FAIL, "Message ya existe en el sistema.", null);
+                return new RESTResponse<Message>(RESTResponse.FAIL, "El mensaje ya existe en el sistema.", null);
 			messageService.add(message.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class MessageRestController {
 			return new RESTResponse<Message>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Message>(RESTResponse.OK, "Message modificado.", null);
+		return new RESTResponse<Message>(RESTResponse.OK, "Mensaje modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class MessageRestController {
 			return new RESTResponse<Message>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Message>(RESTResponse.OK, "Message modificado.", null);
+		return new RESTResponse<Message>(RESTResponse.OK, "Mensaje modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class MessageRestController {
 			return new RESTResponse<Message>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Message>(RESTResponse.OK, "Message modificado.", null);
+		return new RESTResponse<Message>(RESTResponse.OK, "Mensaje modificado.", null);
 	}
 }

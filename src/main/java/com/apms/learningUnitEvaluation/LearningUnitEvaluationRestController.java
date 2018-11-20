@@ -60,7 +60,7 @@ public class LearningUnitEvaluationRestController {
 		if (res != null) {
 			return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL, "LearningUnitEvaluation no registrado.",
+			return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL, "Evaluacion de Unidad de aprendizaje no registrada.",
 					null);
 		}
 	}
@@ -73,7 +73,7 @@ public class LearningUnitEvaluationRestController {
 			@RequestBody RESTRequest<LearningUnitEvaluation> learningUnitEvaluation) {
 		try {
 			if(learningUnitEvaluationService.getOne(learningUnitEvaluation.getPayload().getId()) != null)
-                return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL, "LearningUnitEvaluation ya existe en el sistema.", null);
+                return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL, "La Evaluacion de Unidad de aprendizaje ya existe en el sistema.", null);
 			learningUnitEvaluationService.add(learningUnitEvaluation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,7 +96,7 @@ public class LearningUnitEvaluationRestController {
 			return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "LearningUnitEvaluation modificado.", null);
+		return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "Evaluacion de Unidad de aprendizaje modificada.", null);
 	}
 
 	/*
@@ -112,7 +112,7 @@ public class LearningUnitEvaluationRestController {
 			return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "LearningUnitEvaluation modificado.", null);
+		return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "Evaluacion de Unidad de aprendizaje modificada.", null);
 	}
 
 	/*
@@ -127,6 +127,6 @@ public class LearningUnitEvaluationRestController {
 			return new RESTResponse<LearningUnitEvaluation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "LearningUnitEvaluation modificado.", null);
+		return new RESTResponse<LearningUnitEvaluation>(RESTResponse.OK, "Evaluacion de Unidad de aprendizaje modificada.", null);
 	}
 }

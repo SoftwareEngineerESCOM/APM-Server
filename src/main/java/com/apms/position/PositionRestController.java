@@ -58,7 +58,7 @@ public class PositionRestController {
 		if (res != null) {
 			return new RESTResponse<Position>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Position>(RESTResponse.FAIL, "Position no registrado.", null);
+			return new RESTResponse<Position>(RESTResponse.FAIL, "Cargo no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class PositionRestController {
 	public RESTResponse<Position> post(@RequestBody RESTRequest<Position> position) {
 		try {
 			if(positionService.getOne(position.getPayload().getId()) != null)
-                return new RESTResponse<Position>(RESTResponse.FAIL, "Position ya existe en el sistema.", null);
+                return new RESTResponse<Position>(RESTResponse.FAIL, "El cargo ya existe en el sistema.", null);
 			positionService.add(position.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class PositionRestController {
 			return new RESTResponse<Position>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Position>(RESTResponse.OK, "Position modificado.", null);
+		return new RESTResponse<Position>(RESTResponse.OK, "Cargo modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class PositionRestController {
 			return new RESTResponse<Position>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Position>(RESTResponse.OK, "Position modificado.", null);
+		return new RESTResponse<Position>(RESTResponse.OK, "Cargo modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class PositionRestController {
 			return new RESTResponse<Position>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Position>(RESTResponse.OK, "Position modificado.", null);
+		return new RESTResponse<Position>(RESTResponse.OK, "Cargo modificado.", null);
 	}
 }

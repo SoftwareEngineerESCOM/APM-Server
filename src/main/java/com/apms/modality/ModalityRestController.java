@@ -58,7 +58,7 @@ public class ModalityRestController {
 		if (res != null) {
 			return new RESTResponse<Modality>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Modality>(RESTResponse.FAIL, "Modality no registrado.", null);
+			return new RESTResponse<Modality>(RESTResponse.FAIL, "Modalidad no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class ModalityRestController {
 	public RESTResponse<Modality> post(@RequestBody RESTRequest<Modality> modality) {
 		try {
 			if(modalityService.getOne(modality.getPayload().getId()) != null)
-                return new RESTResponse<Modality>(RESTResponse.FAIL, "Modality ya existe en el sistema.", null);
+                return new RESTResponse<Modality>(RESTResponse.FAIL, "La modalidad ya existe en el sistema.", null);
 			modalityService.add(modality.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class ModalityRestController {
 			return new RESTResponse<Modality>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Modality>(RESTResponse.OK, "Modality modificado.", null);
+		return new RESTResponse<Modality>(RESTResponse.OK, "Modalidad modificada", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class ModalityRestController {
 			return new RESTResponse<Modality>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Modality>(RESTResponse.OK, "Modality modificado.", null);
+		return new RESTResponse<Modality>(RESTResponse.OK, "Modalidad modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class ModalityRestController {
 			return new RESTResponse<Modality>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Modality>(RESTResponse.OK, "Modality modificado.", null);
+		return new RESTResponse<Modality>(RESTResponse.OK, "Modalidad modificada.", null);
 	}
 }

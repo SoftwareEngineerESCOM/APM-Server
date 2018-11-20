@@ -59,7 +59,7 @@ public class PlacePublicationRestController {
 		if (res != null) {
 			return new RESTResponse<PlacePublication>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<PlacePublication>(RESTResponse.FAIL, "PlacePublication no registrado.", null);
+			return new RESTResponse<PlacePublication>(RESTResponse.FAIL, "Lugar de publicacion no registrado.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class PlacePublicationRestController {
 	public RESTResponse<PlacePublication> post(@RequestBody RESTRequest<PlacePublication> placePublication) {
 		try {
 			if(placePublicationService.getOne(placePublication.getPayload().getId()) != null)
-                return new RESTResponse<PlacePublication>(RESTResponse.FAIL, "PlacePublication ya existe en el sistema.", null);
+                return new RESTResponse<PlacePublication>(RESTResponse.FAIL, "El lugar de publicacion ya existe en el sistema.", null);
 			placePublicationService.add(placePublication.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class PlacePublicationRestController {
 			return new RESTResponse<PlacePublication>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PlacePublication>(RESTResponse.OK, "PlacePublication modificado.", null);
+		return new RESTResponse<PlacePublication>(RESTResponse.OK, "Lugar de publicacion modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class PlacePublicationRestController {
 			return new RESTResponse<PlacePublication>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PlacePublication>(RESTResponse.OK, "PlacePublication modificado.", null);
+		return new RESTResponse<PlacePublication>(RESTResponse.OK, "Lugar de publicacion modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class PlacePublicationRestController {
 			return new RESTResponse<PlacePublication>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PlacePublication>(RESTResponse.OK, "PlacePublication modificado.", null);
+		return new RESTResponse<PlacePublication>(RESTResponse.OK, "Lugar de publicacion modificado.", null);
 	}
 }

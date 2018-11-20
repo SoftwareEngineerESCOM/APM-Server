@@ -59,7 +59,7 @@ public class LearningUnitRestController {
 		if (res != null) {
 			return new RESTResponse<LearningUnit>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "LearningUnit no registrado.", null);
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Unidad de apredizaje no registrada.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class LearningUnitRestController {
 	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> learningUnit) {
 		try {
 			if(learningUnitService.getOne(learningUnit.getPayload().getId()) != null)
-                return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "LearningUnit ya existe en el sistema.", null);
+                return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "La unidad de aprendizaje ya existe en el sistema.", null);
 			learningUnitService.add(learningUnit.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class LearningUnitRestController {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "LearningUnit modificado.", null);
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class LearningUnitRestController {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "LearningUnit modificado.", null);
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 
 	/*
@@ -122,7 +122,7 @@ public class LearningUnitRestController {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "LearningUnit modificado.", null);
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 
 	@GetMapping("LearningUnitsBySemesterId/{id}")
