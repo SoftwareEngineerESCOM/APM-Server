@@ -57,7 +57,7 @@ public class AcademicLevelRestController {
         if (res != null) {
 			return new RESTResponse<AcademicLevel>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "AcademicLevel no registrado.", null);
+			return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Nivel academico no registrado.", null);
 		}
     }
 
@@ -68,7 +68,7 @@ public class AcademicLevelRestController {
     public RESTResponse<AcademicLevel> post(@RequestBody RESTRequest<AcademicLevel> academicLevel) {
         try {
         	if(academicLevelService.getOne(academicLevel.getPayload().getId()) != null)
-                return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "AcademicLevel ya existe en el sistema.", null);
+                return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Nivel academico ya existe en el sistema.", null);
             academicLevelService.add(academicLevel.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,7 +88,7 @@ public class AcademicLevelRestController {
             e.printStackTrace();
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<AcademicLevel>(RESTResponse.OK, "AcademicLevel modificado.", null);
+        return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Nivel academico modificado.", null);
     }
 
     /*
@@ -102,7 +102,7 @@ public class AcademicLevelRestController {
             e.printStackTrace();
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<AcademicLevel>(RESTResponse.OK, "AcademicLevel modificado.", null);
+        return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Nivel academico modificado.", null);
     }
 
     /*
@@ -116,6 +116,6 @@ public class AcademicLevelRestController {
             e.printStackTrace();
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<AcademicLevel>(RESTResponse.OK, "AcademicLevel modificado.", null);
+        return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Nivel academico modificado.", null);
     }
 }
