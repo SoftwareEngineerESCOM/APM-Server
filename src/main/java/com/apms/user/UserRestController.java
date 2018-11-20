@@ -74,7 +74,7 @@ public class UserRestController {
 		try {
 			if(userService.getOne(user.getPayload().getId()) != null)
                 return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
-			humanResourceService.add(user.getPayload().getHumanResource());
+			user.getPayload().getHumanResource().setId(humanResourceService.add(user.getPayload().getHumanResource()).getId());
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
