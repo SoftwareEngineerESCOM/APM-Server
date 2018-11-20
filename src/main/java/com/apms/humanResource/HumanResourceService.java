@@ -30,9 +30,9 @@ public class HumanResourceService {
 		return humanResourceRepository.save(humanResource);
 	}
 
-	public void update(HumanResource humanResource) {
+	public HumanResource update(HumanResource humanResource) {
 		// if exists updates otherwise inserts
-		humanResourceRepository.save(humanResource);
+		return humanResourceRepository.save(humanResource);
 	}
 
 	public void delete(Integer id) {

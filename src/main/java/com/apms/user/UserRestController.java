@@ -91,6 +91,7 @@ public class UserRestController {
 	public RESTResponse<User> patch(@RequestBody RESTRequest<User> user) {
 		try {
 			humanResourceService.update(user.getPayload().getHumanResource());
+			user.getPayload().getHumanResource().setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
 			userService.update(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,7 +107,7 @@ public class UserRestController {
 	@PutMapping
 	public RESTResponse<User> put(@RequestBody RESTRequest<User> user) {
 		try {
-			humanResourceService.update(user.getPayload().getHumanResource());
+			user.getPayload().getHumanResource().setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
 			userService.update(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
