@@ -61,7 +61,7 @@ public class EvaluationAccreditationUARestController {
 			return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.FAIL,
-					"EvaluationAccreditationUA no registrado.", null);
+					"Evaluacion de acreditacion de Unidad de Aprendizaje no registrada.", null);
 		}
 	}
 
@@ -96,7 +96,7 @@ public class EvaluationAccreditationUARestController {
 			return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "EvaluationAccreditationUA modificado.",
+		return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "Evaluacion de acreditacion de Unidad de Aprendizaje  modificada.",
 				null);
 	}
 
@@ -113,7 +113,7 @@ public class EvaluationAccreditationUARestController {
 			return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "EvaluationAccreditationUA modificado.",
+		return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "Evaluacion de acreditacion de Unidad de Aprendizaje modificada.",
 				null);
 	}
 
@@ -129,7 +129,7 @@ public class EvaluationAccreditationUARestController {
 			return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "EvaluationAccreditationUA modificado.",
+		return new RESTResponse<EvaluationAccreditationUA>(RESTResponse.OK, "Evaluacion de acreditacion de Unidad de Aprendizaje modificada.",
 				null);
 	}
 }
