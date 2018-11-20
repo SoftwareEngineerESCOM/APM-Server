@@ -59,7 +59,7 @@ public class WorkplaceTypeRestController {
 		if (res != null) {
 			return new RESTResponse<WorkplaceType>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL, "WorkplaceType no registrado.", null);
+			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL, "Tipo de unidad no registrada.", null);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class WorkplaceTypeRestController {
 	public RESTResponse<WorkplaceType> post(@RequestBody RESTRequest<WorkplaceType> workplaceType) {
 		try {
 			if(workplaceTypeService.getOne(workplaceType.getPayload().getId()) != null)
-                return new RESTResponse<WorkplaceType>(RESTResponse.FAIL, "WorkplaceType ya existe en el sistema.", null);
+                return new RESTResponse<WorkplaceType>(RESTResponse.FAIL, "El tipo de unidad ya existe en el sistema.", null);
 			workplaceTypeService.add(workplaceType.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class WorkplaceTypeRestController {
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "WorkplaceType modificado.", null);
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "Tipo de unidad modificado.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class WorkplaceTypeRestController {
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "WorkplaceType modificado.", null);
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "Tipo de unidad modificado.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class WorkplaceTypeRestController {
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "WorkplaceType modificado.", null);
+		return new RESTResponse<WorkplaceType>(RESTResponse.OK, "Tipo de unidad modificado.", null);
 	}
 }
