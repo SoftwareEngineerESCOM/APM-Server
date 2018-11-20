@@ -58,7 +58,7 @@ public class KnowledgeRestController {
 		if (res != null) {
 			return new RESTResponse<Knowledge>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Knowledge>(RESTResponse.FAIL, "Knowledge no registrado.", null);
+			return new RESTResponse<Knowledge>(RESTResponse.FAIL, "Conocimiento no registrado.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class KnowledgeRestController {
 	public RESTResponse<Knowledge> post(@RequestBody RESTRequest<Knowledge> knowledge) {
 		try {
 			if(knowledgeService.getOne(knowledge.getPayload().getId()) != null)
-                return new RESTResponse<Knowledge>(RESTResponse.FAIL, "Knowledge ya existe en el sistema.", null);
+                return new RESTResponse<Knowledge>(RESTResponse.FAIL, "El Conocimiento ya existe en el sistema.", null);
 			knowledgeService.add(knowledge.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class KnowledgeRestController {
 			return new RESTResponse<Knowledge>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Knowledge>(RESTResponse.OK, "Knowledge modificado.", null);
+		return new RESTResponse<Knowledge>(RESTResponse.OK, "Conocimiento modificado.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class KnowledgeRestController {
 			return new RESTResponse<Knowledge>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Knowledge>(RESTResponse.OK, "Knowledge modificado.", null);
+		return new RESTResponse<Knowledge>(RESTResponse.OK, "Conocimiento modificado.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class KnowledgeRestController {
 			return new RESTResponse<Knowledge>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Knowledge>(RESTResponse.OK, "Knowledge modificado.", null);
+		return new RESTResponse<Knowledge>(RESTResponse.OK, "Conocimiento modificado.", null);
 	}
 }
