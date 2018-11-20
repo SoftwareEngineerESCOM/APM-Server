@@ -38,7 +38,7 @@ public class HumanResource {
 	@JoinColumn(nullable = false)
 	private Title title;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private List<Position> position;
 
 	@ManyToOne

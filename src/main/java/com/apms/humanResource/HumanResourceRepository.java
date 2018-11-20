@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HumanResourceRepository extends JpaRepository<HumanResource, Integer> {
-	@Query(value = "SELECT * FROM human_resource WHERE position_id = :position_id and workplace_id = :workplace_id", nativeQuery = true)
+	@Query(value = "SELECT * FROM human_resource WHERE id IN (SELECT human_resource_id FROM human_resource_position WHERE position_id = :position_id) AND workplace_id = :workplace_id", nativeQuery = true)
 	List<HumanResource> getHumanResourcesByWorkplaceIdAndPositionId(@Param("workplace_id") Integer workplace_Id,
 			@Param("position_id") Integer position_Id);
 

@@ -39,7 +39,7 @@ public class User {
 	@JoinColumn(nullable = false)
 	private HumanResource humanResource;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private List<Role> roles;
 
 	public User() {
