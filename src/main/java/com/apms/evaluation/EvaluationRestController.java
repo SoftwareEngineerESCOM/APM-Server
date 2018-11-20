@@ -58,7 +58,7 @@ public class EvaluationRestController {
 		if (res != null) {
 			return new RESTResponse<Evaluation>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Evaluation>(RESTResponse.FAIL, "Evaluation no registrado.", null);
+			return new RESTResponse<Evaluation>(RESTResponse.FAIL, "Evaluacion no registrada.", null);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class EvaluationRestController {
 	public RESTResponse<Evaluation> post(@RequestBody RESTRequest<Evaluation> evaluation) {
 		try {
 			if(evaluationService.getOne(evaluation.getPayload().getId()) != null)
-                return new RESTResponse<Evaluation>(RESTResponse.FAIL, "Evaluation ya existe en el sistema.", null);
+                return new RESTResponse<Evaluation>(RESTResponse.FAIL, "La evaluacion ya existe en el sistema.", null);
 			evaluationService.add(evaluation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class EvaluationRestController {
 			return new RESTResponse<Evaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluation modificado.", null);
+		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluacion modificada.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class EvaluationRestController {
 			return new RESTResponse<Evaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluation modificado.", null);
+		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluacion modificada.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class EvaluationRestController {
 			return new RESTResponse<Evaluation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluation modificado.", null);
+		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluacion modificada.", null);
 	}
 }
