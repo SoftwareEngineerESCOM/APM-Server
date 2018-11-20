@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.apms.bibliographyType.BibliographyType;
+import com.apms.country.Country;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,10 +27,14 @@ public class Bibliography {
 	private String title;
 	@Column(nullable = false)
 	private int publicationYear;
-	@Column(nullable = false)
-	private String publicationPlace;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Country publicationPlace;
+
 	@Column(nullable = false)
 	private String editorial;
+	
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private BibliographyType bibliographyType;
