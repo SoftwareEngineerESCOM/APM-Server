@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.apms.learningUnit.LearningUnit;
 import com.apms.evaluationAccreditationUA.EvaluationAccreditationUA;
 
 import lombok.Getter;
@@ -25,6 +26,11 @@ public class SyntheticProgram {
 	private String regard;
 	@Column(nullable = false)
 	private String didacticOrientation;
+
+	@OneToOne
+	@JoinColumn(nullable = false)
+	private LearningUnit learningUnit;
+
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private EvaluationAccreditationUA evaluationAccreditationUA;

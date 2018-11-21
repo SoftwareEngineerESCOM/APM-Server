@@ -1,5 +1,6 @@
-package com.apms.modality;
+package com.apms.learningUnitMode;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +12,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Modality {
+public class LearningUnitMode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(nullable = false)
+	private String name;
+	@Column(nullable = false)
+	private String description;
 
-	public Modality() {
+	public LearningUnitMode() {
 	}
 }

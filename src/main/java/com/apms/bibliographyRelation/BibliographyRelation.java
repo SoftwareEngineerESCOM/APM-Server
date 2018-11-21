@@ -25,6 +25,8 @@ public class BibliographyRelation {
     private Integer id;
 	@Column(nullable = false)
 	private boolean isClassic;
+	@Column(nullable = false)
+	private Integer number;
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
