@@ -142,9 +142,9 @@ public class LearningUnitRestController {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
-		if (!res.isEmpty()) {
+		// if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
-		} 
+		// } 
 		// else {
 		// 	return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
 		// 			"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
