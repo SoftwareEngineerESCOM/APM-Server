@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -32,7 +33,7 @@ public class Bibliography {
 	@Column(nullable = false)
 	private int publicationYear;
 	
-	@OneToMany
+	@ManyToMany
 	@JoinColumn(nullable = false)
 	private List<Author> authors = new ArrayList<Author>(3);
 	
