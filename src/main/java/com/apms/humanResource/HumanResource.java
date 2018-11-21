@@ -39,7 +39,7 @@ public class HumanResource {
 	private Title title;
 
 	@ManyToMany
-	private List<Position> position;
+	private List<Position> positions;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
