@@ -1,5 +1,8 @@
 package com.apms.bibliography;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +13,7 @@ import javax.persistence.ManyToOne;
 
 import com.apms.bibliographyType.BibliographyType;
 import com.apms.country.Country;
+import com.apms.author.Author;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +31,10 @@ public class Bibliography {
 	private String title;
 	@Column(nullable = false)
 	private int publicationYear;
+	
+	@OneToMany
+	@JoinColumn(nullable = false)
+	private List<Author> authors = new ArrayList<Author>(3);
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
