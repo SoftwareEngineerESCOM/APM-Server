@@ -69,8 +69,9 @@ public class HumanResourceRestController {
 	@PostMapping
 	public RESTResponse<HumanResource> post(@RequestBody RESTRequest<HumanResource> humanResource) {
 		try {
-			if(humanResourceService.getOne(humanResource.getPayload().getId()) != null)
-                return new RESTResponse<HumanResource>(RESTResponse.FAIL, "El recurso humano ya existe en el sistema.", null);
+			if (humanResourceService.getOne(humanResource.getPayload().getId()) != null)
+				return new RESTResponse<HumanResource>(RESTResponse.FAIL, "El recurso humano ya existe en el sistema.",
+						null);
 			humanResourceService.add(humanResource.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,11 +135,13 @@ public class HumanResourceRestController {
 
 	@GetMapping("/humanResourcesByWorkplaceId/{id}")
 	public RESTResponse<List<HumanResource>> getHumanResourcesByWorkplaceId(@PathVariable Integer id) {
-		return new RESTResponse<List<HumanResource>>(RESTResponse.OK, "", humanResourceService.getHumanResourcesByWorkplaceId(id));
+		return new RESTResponse<List<HumanResource>>(RESTResponse.OK, "",
+				humanResourceService.getHumanResourcesByWorkplaceId(id));
 	}
 
 	@GetMapping("/humanResourceByName/{name}/{first_surname}/{second_surname}")
-	public RESTResponse<HumanResource> humanResourceByName(@PathVariable String name, @PathVariable String first_surname, @PathVariable String second_surname) {
+	public RESTResponse<HumanResource> humanResourceByName(@PathVariable String name,
+			@PathVariable String first_surname, @PathVariable String second_surname) {
 		HumanResource res;
 		try {
 			res = humanResourceService.getOne(name, first_surname, second_surname);

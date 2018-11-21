@@ -38,8 +38,8 @@ public class SemesterRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Semester>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Semester>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
-					null);
+			return new RESTResponse<List<Semester>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
@@ -68,8 +68,8 @@ public class SemesterRestController {
 	@PostMapping
 	public RESTResponse<Semester> post(@RequestBody RESTRequest<Semester> semester) {
 		try {
-			if(semesterService.getOne(semester.getPayload().getId()) != null)
-                return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
+			if (semesterService.getOne(semester.getPayload().getId()) != null)
+				return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,6 +126,18 @@ public class SemesterRestController {
 
 	@GetMapping("/semestersByStudyPlanId/{id}")
 	public RESTResponse<List<Semester>> getSemestersByStudyPlanId(@PathVariable Integer id) {
-		return new RESTResponse<List<Semester>>(1, "", semesterService.getSemestersByStudyPlanId(id));
+		List<Semester> res;
+		try {
+			res = semesterService.getSemestersByStudyPlanId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Semester>>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Semester>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Semester>>(RESTResponse.FAIL, "Semestres no registrados.", null);
+		}
 	}
 }
