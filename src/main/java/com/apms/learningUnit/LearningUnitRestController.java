@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import com.apms.semester.Semester;
+import com.apms.semester.SemesterService;
 
 @RestController
 @RequestMapping("/learningUnit")
@@ -22,6 +24,9 @@ public class LearningUnitRestController {
 
 	@Autowired
 	private LearningUnitService learningUnitService;
+
+	@Autowired
+	private SemesterService semesterService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -69,8 +74,10 @@ public class LearningUnitRestController {
 	@PostMapping
 	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> learningUnit) {
 		try {
-			if(!learningUnitService.getLearningUnitByNameAndSemesterId(learningUnit.getPayload().getName(), learningUnit.getPayload().getSemester().getId()).isEmpty())
-				return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Unidad de Aprendizaje ya existe en el sistema.", null);
+			if (!learningUnitService.getLearningUnitByNameAndSemesterId(learningUnit.getPayload().getName(),
+					learningUnit.getPayload().getSemester().getId()).isEmpty())
+				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+						"Unidad de Aprendizaje ya existe en el sistema.", null);
 			learningUnitService.add(learningUnit.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,28 +139,51 @@ public class LearningUnitRestController {
 			res = learningUnitService.getLearningUnitsBySemesterId(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
 	}
 
 	@GetMapping("/learningUnitByNameAndSemesterId/{name}/{id}")
-	public RESTResponse<List<LearningUnit>> getLearningUnitByNameAndSemesterId(@PathVariable String name, @PathVariable Integer id) {
+	public RESTResponse<List<LearningUnit>> getLearningUnitByNameAndSemesterId(@PathVariable String name,
+			@PathVariable Integer id) {
 		List<LearningUnit> res;
 		try {
 			res = learningUnitService.getLearningUnitByNameAndSemesterId(name, id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
+					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
 		}
+	}
+
+	@GetMapping("/changeLearningUnitToSemester/{learningUnitId}/{semesterId}")
+	public RESTResponse<LearningUnit> changeLearningUnitToSemester(@PathVariable Integer learningUnitId,
+			@PathVariable Integer semesterId) {
+		Semester semester;
+		LearningUnit res;
+		try {
+			semester = semesterService.getOne(semesterId);
+			res = learningUnitService.getOne(learningUnitId);
+			res.setSemester(semester);
+			learningUnitService.update(res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 }

@@ -26,9 +26,9 @@ public class LearningUnitService {
 		learningUnitRepository.save(learningUnit);
 	}
 
-	public void update(LearningUnit learningUnit) {
+	public LearningUnit update(LearningUnit learningUnit) {
 		// if exists updates otherwise inserts
-		learningUnitRepository.save(learningUnit);
+		return learningUnitRepository.save(learningUnit);
 	}
 
 	public void delete(Integer id) {
