@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.apms.formationArea.FormationArea;
 import com.apms.semester.Semester;
 
 import lombok.Getter;
@@ -31,26 +32,14 @@ public class LearningUnit {
 	private Double theoryHoursPerWeek;
 	@Column(nullable = false)
 	private Double practiceHoursPerWeek;
-	@Column(nullable = false)
-	private String formationArea;
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private FormationArea formationArea;
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Semester semester;
 
 	public LearningUnit() {
-	}
-
-	public LearningUnit(Integer id, String name, Double tEPICCredits, Double sATCACredits, Double theoryHoursPerWeek,
-			Double practiceHoursPerWeek, String formationArea, Semester semester) {
-		super();
-		this.id = id;
-		this.name = name;
-		TEPICCredits = tEPICCredits;
-		SATCACredits = sATCACredits;
-		this.theoryHoursPerWeek = theoryHoursPerWeek;
-		this.practiceHoursPerWeek = practiceHoursPerWeek;
-		this.formationArea = formationArea;
-		this.semester = semester;
 	}
 
 }

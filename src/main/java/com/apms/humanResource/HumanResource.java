@@ -1,11 +1,15 @@
 package com.apms.humanResource;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.apms.position.Position;
@@ -29,28 +33,19 @@ public class HumanResource {
 	private String firstSurname;
 	@Column(nullable = false)
 	private String secondSurname;
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Title title;
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Position position;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Position> position;
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Workplace workplace;
 
 	public HumanResource() {
-	}
-
-	public HumanResource(Integer id, String name, String firstSurname, String secondSurname, Title title,
-			Position position, Workplace workplace) {
-		this.id = id;
-		this.name = name;
-		this.firstSurname = firstSurname;
-		this.secondSurname = secondSurname;
-		this.title = title;
-		this.position = position;
-		this.workplace = workplace;
 	}
 
 }
