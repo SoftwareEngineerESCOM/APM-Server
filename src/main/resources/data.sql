@@ -26,11 +26,11 @@ insert into study_plan (mode_id, total_practice_hours, totalsatcacredits, totalt
 insert into semester (semester_number, study_plan_id) (select 1, id from study_plan);
 insert into semester (semester_number, study_plan_id) (select 2, id from study_plan);
 insert into semester (semester_number, study_plan_id) (select 3, id from study_plan);
-insert into semester (semester_number, study_plan_id) (select 4, id from study_plan);
-insert into semester (semester_number, study_plan_id) (select 5, id from study_plan);
-insert into semester (semester_number, study_plan_id) (select 6, id from study_plan);
-insert into semester (semester_number, study_plan_id) (select 7, id from study_plan);
-insert into semester (semester_number, study_plan_id) (select 8, id from study_plan);
+-- insert into semester (semester_number, study_plan_id) (select 4, id from study_plan);
+-- insert into semester (semester_number, study_plan_id) (select 5, id from study_plan);
+-- insert into semester (semester_number, study_plan_id) (select 6, id from study_plan);
+-- insert into semester (semester_number, study_plan_id) (select 7, id from study_plan);
+-- insert into semester (semester_number, study_plan_id) (select 8, id from study_plan);
 
 -----------------------
 -- add learning_unit --
@@ -111,3 +111,29 @@ insert into user_apms_roles values ((select id from user_apms where email like '
 insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Docente%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Analista%'));
+
+-- add author
+insert into author values (1, '', 'Louis', 'Leithold');
+insert into author values (2, '', 'John', 'Hopcroft');
+insert into author values (3, '', 'Rajeev', 'Motwani');
+insert into author values (4, '', 'Jeffrey', 'Ullman');
+insert into author values (5, '', 'Leiserson T.', 'Cormen');
+insert into author values (6, '', 'Rivest R.', 'Ch.');
+
+-- add bibliography
+insert into bibliography values (1, '9706131825', 'Oxford', 1999, 'El Cálculo', (select id from country where name like '%M_xico%'));
+insert into bibliography values (2, '9788478290888', 'Addison Wesley', 2008, 'Teoría de autómatas, lenguajes y computación', (select id from country where name like '%M_xico%'));
+insert into bibliography values (3, '9780072970548', ' MIT press', 2003, 'Introduction to algorithms', (select id from country where name like '%Estados Unidos de Am_rica%'));
+
+-- add bibliography_authors
+insert into bibliography_authors values (1, 1);
+insert into bibliography_authors values (2, 2);
+insert into bibliography_authors values (2, 3);
+insert into bibliography_authors values (2, 4);
+insert into bibliography_authors values (3, 5);
+insert into bibliography_authors values (3, 6);
+
+-- add bibliography_relation
+insert into bibliography_relation values (1, false, 1, 1, 1, 1);
+insert into bibliography_relation values (2, true, 2, 2, 1, 1);
+insert into bibliography_relation values (3, false, 3, 3, 2, 1);

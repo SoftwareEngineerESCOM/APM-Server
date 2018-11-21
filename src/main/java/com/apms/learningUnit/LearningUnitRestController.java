@@ -144,10 +144,11 @@ public class LearningUnitRestController {
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
-		}
+		} 
+		// else {
+		// 	return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
+		// 			"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+		// }
 	}
 
 	@GetMapping("/learningUnitByNameAndSemesterId/{name}/{id}")
