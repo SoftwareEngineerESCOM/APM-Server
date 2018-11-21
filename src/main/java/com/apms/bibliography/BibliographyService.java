@@ -23,7 +23,7 @@ public class BibliographyService {
 	}
 
 	public void add(Bibliography bibliography) {
-		bibliographyRepository.save(bibliography);
+            bibliographyRepository.save(bibliography);
 	}
 
 	public void update(Bibliography bibliography) {
