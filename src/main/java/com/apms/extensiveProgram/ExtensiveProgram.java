@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 
 import com.apms.learningUnit.LearningUnit;
 import com.apms.assignedTime.AssignedTime;
-import com.apms.learningUnitMode.LearningUnitMode;
+import com.apms.modality.Modality;
 import com.apms.teaching.Teaching;
 import com.apms.teachingProfile.TeachingProfile;
 import com.apms.type.Type;
@@ -52,7 +52,7 @@ public class ExtensiveProgram {
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private LearningUnitMode learningUnitMode;
+	private Modality modality;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)

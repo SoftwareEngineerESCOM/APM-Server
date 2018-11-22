@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Position {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -28,11 +27,10 @@ public class Position {
 
 	}
 
-	public Position(Integer id, String name, String abbreviation, String description) {
+	public Position(Integer id, String name, String abbreviation) {
 		this.id = id;
 		this.name = name;
 		this.abbreviation = abbreviation;
-		this.description = description;
 	}
 
 }

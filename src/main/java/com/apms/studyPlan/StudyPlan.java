@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.apms.academicProgram.AcademicProgram;
-import com.apms.studyPlanMode.StudyPlanMode;
+import com.apms.modality.Modality;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,14 +22,8 @@ public class StudyPlan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private AcademicProgram academicProgram;
 	@Column(nullable = false)
 	private Integer year;
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private StudyPlanMode mode;
 	@Column(nullable = false)
 	private Double totalTEPICCredits;
 	@Column(nullable = false)
@@ -38,6 +32,14 @@ public class StudyPlan {
 	private Double totalTheoryHours;
 	@Column(nullable = false)
 	private Double totalPracticeHours;
+
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Modality modality;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private AcademicProgram academicProgram;
 
 	public StudyPlan() {
 

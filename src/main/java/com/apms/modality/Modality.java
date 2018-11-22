@@ -18,10 +18,13 @@ public class Modality {
 	private Integer id;
 	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
+	private String description;
 	
-	public Modality(Integer id, String name) {
+	public Modality(Integer id, String name, String description) {
 		this.id = id;
 		this.name = name;
+		this.description = description;
 	}
 	
 	public Modality() {
