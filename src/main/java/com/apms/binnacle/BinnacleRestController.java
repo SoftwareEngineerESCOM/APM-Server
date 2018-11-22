@@ -106,7 +106,7 @@ public class BinnacleRestController {
 			return new RESTResponse<Binnacle>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Binnacle>(RESTResponse.OK, "Bitácora modificado.", null);
+		return new RESTResponse<Binnacle>(RESTResponse.OK, "Bitácora modificada.", null);
 	}
 
 	/*
