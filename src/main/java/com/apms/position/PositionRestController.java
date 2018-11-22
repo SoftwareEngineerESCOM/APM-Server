@@ -38,7 +38,7 @@ public class PositionRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Position>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Position>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
+			return new RESTResponse<List<Position>>(RESTResponse.FAIL, "Servicios no disponibles.",
 					null);
 		}
 	}

@@ -40,7 +40,7 @@ public class ExtensiveProgramRestController {
 			return new RESTResponse<List<ExtensiveProgram>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<ExtensiveProgram>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+					"Servicios no disponibles.", null);
 		}
 	}
 

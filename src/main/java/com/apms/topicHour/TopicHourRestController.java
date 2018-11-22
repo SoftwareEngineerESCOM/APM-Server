@@ -38,7 +38,7 @@ public class TopicHourRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<TopicHour>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<TopicHour>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
+			return new RESTResponse<List<TopicHour>>(RESTResponse.FAIL, "Servicios no disponibles.",
 					null);
 		}
 	}

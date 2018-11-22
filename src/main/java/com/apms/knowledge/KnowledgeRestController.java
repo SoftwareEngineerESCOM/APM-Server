@@ -38,7 +38,7 @@ public class KnowledgeRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Knowledge>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Knowledge>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
+			return new RESTResponse<List<Knowledge>>(RESTResponse.FAIL, "Servicios no disponibles.",
 					null);
 		}
 	}

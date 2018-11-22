@@ -40,7 +40,7 @@ public class BibliographyTypeRestController {
 			return new RESTResponse<List<BibliographyType>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<BibliographyType>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+					"Servicios no disponibles.", null);
 		}
 	}
 

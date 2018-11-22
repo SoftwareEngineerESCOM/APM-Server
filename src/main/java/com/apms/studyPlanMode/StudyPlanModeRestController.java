@@ -40,7 +40,7 @@ public class StudyPlanModeRestController {
 			return new RESTResponse<List<StudyPlanMode>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<StudyPlanMode>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+					"Servicios no disponibles.", null);
 		}
 	}
 

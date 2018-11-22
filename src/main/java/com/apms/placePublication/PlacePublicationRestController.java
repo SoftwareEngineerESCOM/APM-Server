@@ -40,7 +40,7 @@ public class PlacePublicationRestController {
 			return new RESTResponse<List<PlacePublication>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<PlacePublication>>(RESTResponse.FAIL,
-					"Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+					"Servicios no disponibles.", null);
 		}
 	}
 

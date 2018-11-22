@@ -38,7 +38,7 @@ public class FormationAreaRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<FormationArea>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<FormationArea>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<FormationArea>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 

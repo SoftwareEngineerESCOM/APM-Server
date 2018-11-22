@@ -38,7 +38,7 @@ public class AcademicLevelRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<AcademicLevel>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<AcademicLevel>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<AcademicLevel>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 

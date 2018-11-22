@@ -38,7 +38,7 @@ public class TeachingRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Teaching>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Teaching>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.",
+			return new RESTResponse<List<Teaching>>(RESTResponse.FAIL, "Servicios no disponibles.",
 					null);
 		}
 	}

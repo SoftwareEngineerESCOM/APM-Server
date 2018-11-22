@@ -38,7 +38,7 @@ public class RoleRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Role>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado, favor de intentarlo mas tarde.", null);
+			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
