@@ -38,8 +38,7 @@ public class StudyPlanRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -81,8 +80,7 @@ public class StudyPlanRestController {
 			}
 			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 		} else {
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-					"Pendiente", null);
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Pendientes", null);
 		}
 	}
 
