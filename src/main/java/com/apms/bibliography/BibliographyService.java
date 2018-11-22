@@ -18,12 +18,12 @@ public class BibliographyService {
 		return records;
 	}
 
-	public Bibliography getOne(Integer id) {
-		return bibliographyRepository.findById(id).isPresent() ? bibliographyRepository.findById(id).get() : null;
+	public Bibliography getOne(String isbn) {
+		return bibliographyRepository.findById(isbn).isPresent() ? bibliographyRepository.findById(isbn).get() : null;
 	}
 
 	public void add(Bibliography bibliography) {
-		bibliographyRepository.save(bibliography);
+            bibliographyRepository.save(bibliography);
 	}
 
 	public void update(Bibliography bibliography) {
@@ -31,7 +31,7 @@ public class BibliographyService {
 		bibliographyRepository.save(bibliography);
 	}
 
-	public void delete(Integer id) {
-		bibliographyRepository.deleteById(id);
+	public void delete(String isbn) {
+		bibliographyRepository.deleteById(isbn);
 	}
 }

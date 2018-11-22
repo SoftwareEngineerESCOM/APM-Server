@@ -1,5 +1,7 @@
 package com.apms.bibliographyRelation;
 
+import com.apms.bibliography.BibliographyRepository;
+import com.apms.bibliography.BibliographyService;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,8 @@ public class BibliographyRelationService {
 
     @Autowired
     private BibliographyRelationRepository bibliographyRelationRepository;
-
+    @Autowired
+    private BibliographyRepository biblioRepo;
     public List<BibliographyRelation> getAll() {
         List<BibliographyRelation> records = new ArrayList<>();
         bibliographyRelationRepository.findAll().forEach(records::add);
@@ -23,6 +26,7 @@ public class BibliographyRelationService {
     }
 
     public void add(BibliographyRelation bibliographyRelation) {
+        biblioRepo.save(bibliographyRelation.getBibliography());
         bibliographyRelationRepository.save(bibliographyRelation);
     }
 
