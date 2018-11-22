@@ -67,7 +67,7 @@ public class StudyPlanRestController {
 	 */
 	@PostMapping
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-		Double sum = studyPlan.getPayload().getTotalPracticeHours() + studyPlan.getPayload().getTotalPracticeHours();
+		Double sum = studyPlan.getPayload().getTotalPracticeHours() + studyPlan.getPayload().getTotalTheoryHours();
 		if (350 > sum && sum > 450) {
 			try {
 				if (studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
@@ -82,7 +82,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 		} else {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Pendiente", null);
 		}
 	}
 
