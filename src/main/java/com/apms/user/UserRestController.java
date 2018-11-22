@@ -239,7 +239,7 @@ public class UserRestController {
 	// 	if (res != null) {
 	// 		List<User> aux;
 	// 		try {
-	// 			if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
+	// 			if (res.getHumanResource().findByWorkplaces().getAbbreviation() == "DES") {
 	// 				aux = userService.getActiveUsersForUserForDES(id);
 	// 			}else{
 	// 				aux = userService.getActiveUsersForUser(id, res.getHumanResource().getWorkplace().getId());
