@@ -76,27 +76,38 @@ insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, 
 insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Terminal y de Integración%'), 'Topografia', 4.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
 
 -- add human resource
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Emiliano', 'Hinojosa', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Frías', 'Erika', 'Covarrubias', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Jiménez', 'Eduardo', 'Hernádez', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Rojas', 'Arturo', 'Rivas', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'UPIBI'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Daniela', 'Hernández', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Figueroa', 'Hugo', 'Bernal', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESIME Zacatenco'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Castrejón', 'Miguel', 'Sánchez', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESFM'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Castillo', 'Alejandra', 'Jiménez', (select id from title where abbreviation like '%Lic.%'), (select id from workplace where abbreviation like 'ESIT'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Guerra', 'David', 'Vargas', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIBI'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('González', 'Emiliano', 'Hinojosa', (select id from title where abbreviation like '%Dr.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Frías', 'Erika', 'Covarrubias', (select id from title where abbreviation like '%Mtro.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Jiménez', 'Eduardo', 'Hernádez', (select id from title where abbreviation like '%Dr.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Rojas', 'Arturo', 'Rivas', (select id from title where abbreviation like '%Mtro.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('González', 'Daniela', 'Hernández', (select id from title where abbreviation like '%Mtro.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Figueroa', 'Hugo', 'Bernal', (select id from title where abbreviation like '%Mtro.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Castrejón', 'Miguel', 'Sánchez', (select id from title where abbreviation like '%Mtro.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Castillo', 'Alejandra', 'Jiménez', (select id from title where abbreviation like '%Lic.%'));
+insert into human_resource (second_surname, name, first_surname, title_id) values ('Guerra', 'David', 'Vargas', (select id from title where abbreviation like '%Dr.%'));
 
-insert into human_resource_position values ((select id from human_resource where name like '%Oscar%'), (select id from position where abbreviation like '%Dir.'));
-insert into human_resource_position values ((select id from human_resource where name like '%Emiliano%'), (select id from position where abbreviation like '%Dir.'));
-insert into human_resource_position values ((select id from human_resource where name like '%Erika%'), (select id from position where abbreviation like '%Sub. Ac.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%Eduardo%'), (select id from position where abbreviation like '%Sub. Ac.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%Arturo%'), (select id from position where abbreviation like '%Sub. Ac.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%Daniela%'), (select id from position where abbreviation like '%Doc.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%Hugo%'), (select id from position where abbreviation like '%Doc.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%Miguel%'), (select id from position where abbreviation like '%Doc.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%Alejandra%'), (select id from position where abbreviation like '%Doc.%'));
-insert into human_resource_position values ((select id from human_resource where name like '%David%'), (select id from position where abbreviation like '%Dir.'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Oscar%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Emiliano%'), (select id from workplace where abbreviation like 'UPIITA'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Erika%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Eduardo%'), (select id from workplace where abbreviation like 'UPIITA'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Arturo%'), (select id from workplace where abbreviation like 'UPIBI'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Daniela%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Hugo%'), (select id from workplace where abbreviation like 'ESIME Zacatenco'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Miguel%'), (select id from workplace where abbreviation like 'ESFM'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%Alejandra%'), (select id from workplace where abbreviation like 'ESIT'));
+insert into human_resource_workplaces values ((select id from human_resource where name like '%David%'), (select id from workplace where abbreviation like 'UPIBI'));
+
+insert into human_resource_positions values ((select id from human_resource where name like '%Oscar%'), (select id from position where abbreviation like '%Dir.'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Emiliano%'), (select id from position where abbreviation like '%Dir.'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Erika%'), (select id from position where abbreviation like '%Sub. Ac.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Eduardo%'), (select id from position where abbreviation like '%Sub. Ac.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Arturo%'), (select id from position where abbreviation like '%Sub. Ac.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Daniela%'), (select id from position where abbreviation like '%Doc.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Hugo%'), (select id from position where abbreviation like '%Doc.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Miguel%'), (select id from position where abbreviation like '%Doc.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%Alejandra%'), (select id from position where abbreviation like '%Doc.%'));
+insert into human_resource_positions values ((select id from human_resource where name like '%David%'), (select id from position where abbreviation like '%Dir.'));
 
 -- add user_apms
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'admin1', '1', (select id from human_resource where name like '%Oscar%'), 'admin1@test.com');

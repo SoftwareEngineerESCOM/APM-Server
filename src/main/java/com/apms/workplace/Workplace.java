@@ -25,6 +25,7 @@ public class Workplace {
 	private String name;
 	@Column(nullable = false)
 	private String abbreviation;
+	private String pathToLogo;
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private WorkplaceType workplaceType;
