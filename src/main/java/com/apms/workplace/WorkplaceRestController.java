@@ -123,20 +123,4 @@ public class WorkplaceRestController {
 		}
 		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
 	}
-
-	@GetMapping("/workplacesForUserId/{id}")
-	public RESTResponse<List<Workplace>> getWorkplacesForUserId(@PathVariable Integer id) {
-		List<Workplace> res;
-		try {
-			res = workplaceService.getWorkplacesForUserId(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
-		}
-		if (!res.isEmpty()) {
-			return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
-		}
-	}
 }

@@ -40,8 +40,9 @@ public class HumanResource {
 	@ManyToMany
 	private List<Position> positions;
 
-	@ManyToMany
-	private List<Workplace> workplaces;
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Workplace workplace;
 
 	public HumanResource() {
 	}
