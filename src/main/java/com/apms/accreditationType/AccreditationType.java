@@ -1,4 +1,4 @@
-package com.apms.accreditation;
+package com.apms.accreditationType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,13 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Accreditation {
+public class AccreditationType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
 	private String name;
 
-	public Accreditation() {
+	public AccreditationType() {
 	}
 }

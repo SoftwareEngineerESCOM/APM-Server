@@ -1,4 +1,4 @@
-package com.apms.accreditation;
+package com.apms.accreditationType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,26 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccreditationService {
+public class AccreditationTypeService {
 
 	@Autowired
-	private AccreditationRepository accreditationRepository;
+	private AccreditationTypeRepository accreditationRepository;
 
-	public List<Accreditation> getAll() {
-		List<Accreditation> records = new ArrayList<>();
+	public List<AccreditationType> getAll() {
+		List<AccreditationType> records = new ArrayList<>();
 		accreditationRepository.findAll().forEach(records::add);
 		return records;
 	}
 
-	public Accreditation getOne(Integer id) {
+	public AccreditationType getOne(Integer id) {
 		return accreditationRepository.findById(id).isPresent() ? accreditationRepository.findById(id).get() : null;
 	}
 
-	public void add(Accreditation accreditation) {
+	public void add(AccreditationType accreditation) {
 		accreditationRepository.save(accreditation);
 	}
 
-	public void update(Accreditation accreditation) {
+	public void update(AccreditationType accreditation) {
 		// if exists updates otherwise inserts
 		accreditationRepository.save(accreditation);
 	}

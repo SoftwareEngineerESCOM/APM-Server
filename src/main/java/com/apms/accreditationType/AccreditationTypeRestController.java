@@ -1,4 +1,4 @@
-package com.apms.accreditation;
+package com.apms.accreditationType;
 
 import java.util.List;
 
@@ -18,28 +18,28 @@ import com.apms.rest.RESTResponse;
 
 @RestController
 @RequestMapping("/accreditation")
-public class AccreditationRestController {
+public class AccreditationTypeRestController {
 
 	@Autowired
-	private AccreditationService accreditationService;
+	private AccreditationTypeService accreditationService;
 
 	/*
 	 ** Return a listing of all the resources
 	 */
 	@GetMapping
-	public RESTResponse<List<Accreditation>> getAll() {
-		List<Accreditation> res;
+	public RESTResponse<List<AccreditationType>> getAll() {
+		List<AccreditationType> res;
 		try {
 			res = accreditationService.getAll();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<Accreditation>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+			return new RESTResponse<List<AccreditationType>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
 		if (!res.isEmpty()) {
-			return new RESTResponse<List<Accreditation>>(RESTResponse.OK, "", res);
+			return new RESTResponse<List<AccreditationType>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Accreditation>>(RESTResponse.FAIL,
+			return new RESTResponse<List<AccreditationType>>(RESTResponse.FAIL,
 					"Servicios no disponibles.", null);
 		}
 	}
@@ -48,18 +48,18 @@ public class AccreditationRestController {
 	 ** Return one resource
 	 */
 	@GetMapping("/{id}")
-	public RESTResponse<Accreditation> getOne(@PathVariable Integer id) {
-		Accreditation res;
+	public RESTResponse<AccreditationType> getOne(@PathVariable Integer id) {
+		AccreditationType res;
 		try {
 			res = accreditationService.getOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Accreditation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			return new RESTResponse<AccreditationType>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
-			return new RESTResponse<Accreditation>(RESTResponse.OK, "", res);
+			return new RESTResponse<AccreditationType>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Acreditacion no registrado.", null);
+			return new RESTResponse<AccreditationType>(RESTResponse.FAIL, "Acreditacion no registrado.", null);
 		}
 	}
 
@@ -67,61 +67,61 @@ public class AccreditationRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<Accreditation> post(@RequestBody RESTRequest<Accreditation> accreditation) {
+	public RESTResponse<AccreditationType> post(@RequestBody RESTRequest<AccreditationType> accreditation) {
 		try {
 			if(accreditationService.getOne(accreditation.getPayload().getId()) != null)
-                return new RESTResponse<Accreditation>(RESTResponse.FAIL, "Acreditacion ya existe en el sistema.", null);
+                return new RESTResponse<AccreditationType>(RESTResponse.FAIL, "Acreditacion ya existe en el sistema.", null);
 			accreditationService.add(accreditation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
+			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+		return new RESTResponse<AccreditationType>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage partially.
 	 */
 	@PatchMapping
-	public RESTResponse<Accreditation> patch(@RequestBody RESTRequest<Accreditation> accreditation) {
+	public RESTResponse<AccreditationType> patch(@RequestBody RESTRequest<AccreditationType> accreditation) {
 		try {
 			accreditationService.update(accreditation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
+			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Acreditacion modificado.", null);
+		return new RESTResponse<AccreditationType>(RESTResponse.OK, "Acreditacion modificado.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PutMapping
-	public RESTResponse<Accreditation> put(@RequestBody RESTRequest<Accreditation> accreditation) {
+	public RESTResponse<AccreditationType> put(@RequestBody RESTRequest<AccreditationType> accreditation) {
 		try {
 			accreditationService.update(accreditation.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
+			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Acreditacion modificado.", null);
+		return new RESTResponse<AccreditationType>(RESTResponse.OK, "Acreditacion modificado.", null);
 	}
 
 	/*
 	 ** Remove the specified resource from storage.
 	 */
 	@DeleteMapping("/{id}")
-	public RESTResponse<Accreditation> delete(@PathVariable Integer id) {
+	public RESTResponse<AccreditationType> delete(@PathVariable Integer id) {
 		try {
 			accreditationService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Accreditation>(RESTResponse.FAIL,
+			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Accreditation>(RESTResponse.OK, "Acreditacion modificado.", null);
+		return new RESTResponse<AccreditationType>(RESTResponse.OK, "Acreditacion modificado.", null);
 	}
 }

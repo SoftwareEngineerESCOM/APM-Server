@@ -1,5 +1,6 @@
 package com.apms.evaluationAccreditationUA;
 
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,10 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import com.apms.accreditation.Accreditation;
+import com.apms.accreditationType.AccreditationType;
+import com.apms.evaluationUA.EvaluationUA;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,13 +28,12 @@ public class EvaluationAccreditationUA {
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private Accreditation accreditation;
+	private AccreditationType accreditationType;
 	
-	@Column(nullable = false)
-	private float evaluacion1;
+	@OneToMany
+	@JoinColumn(nullable = false)
+	private List<EvaluationUA> evaluationUA;
 	
-	@Column(nullable = false)
-	private float evaluacion2;
 	
 	public EvaluationAccreditationUA() {
 
