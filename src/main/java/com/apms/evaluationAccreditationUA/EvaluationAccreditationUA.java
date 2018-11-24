@@ -26,7 +26,7 @@ public class EvaluationAccreditationUA {
 	
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private List<Accreditation> accreditation;
+	private Accreditation accreditation;
 	
 	@Column(nullable = false)
 	private float evaluacion1;
