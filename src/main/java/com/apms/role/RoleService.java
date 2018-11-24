@@ -37,7 +37,11 @@ public class RoleService {
 		roleRepository.deleteById(id);
 	}
 
-	public List<Role> rolesByUserId(Integer id) {
-		return roleRepository.rolesByUserId(id);
+	public List<Role> getRolesByUserId(Integer id) {
+		return roleRepository.getRolesByUserId(id);
+	}
+
+	public Role getMaxRoleByUserId(Integer id) {
+		return roleRepository.getMaxRoleByUserId(id);
 	}
 }

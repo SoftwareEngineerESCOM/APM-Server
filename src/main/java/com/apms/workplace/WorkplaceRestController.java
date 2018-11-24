@@ -1,5 +1,6 @@
 package com.apms.workplace;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import com.apms.role.Role;
+import com.apms.role.RoleService;
+import com.apms.user.User;
+import com.apms.user.UserService;
 
 @RestController
 @RequestMapping("/workplace")
@@ -22,6 +27,12 @@ public class WorkplaceRestController {
 
 	@Autowired
 	private WorkplaceService workplaceService;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private RoleService roleService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -122,5 +133,42 @@ public class WorkplaceRestController {
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
+	}
+
+	@GetMapping("/workplacesForUser/{id}")
+	public RESTResponse<List<Workplace>> workplacesForUser(@PathVariable Integer id) {
+		User res;
+		try {
+			res = userService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			List<Workplace> aux;
+			try {
+				System.out.println(1);
+				Role userRole = roleService.getMaxRoleByUserId(res.getId());
+				if (userRole.getRank() > 2) {
+					System.out.println(2);
+					aux = workplaceService.getWorkplacesForUserForDES(id);
+				}else{
+					System.out.println(3);
+					aux = new ArrayList<Workplace>();
+					System.out.println(4);
+					aux.add(res.getHumanResource().getWorkplace());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+			}
+		} else {
+			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
 	}
 }

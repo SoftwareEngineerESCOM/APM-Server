@@ -127,7 +127,7 @@ public class RoleRestController {
 	public RESTResponse<List<Role>> rolesByUserId(@PathVariable Integer id) {
 		List<Role> res;
 		try {
-			res = roleService.rolesByUserId(id);
+			res = roleService.getRolesByUserId(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<List<Role>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
@@ -136,6 +136,22 @@ public class RoleRestController {
 			return new RESTResponse<List<Role>>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Permisos insuficientes para ejecutar la operación.", null);
+		}
+	}
+
+	@GetMapping("/maxRoleByUserId/{id}")
+	public RESTResponse<Role> maxRoleByUserId(@PathVariable Integer id) {
+		Role res;
+		try {
+			res = roleService.getMaxRoleByUserId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Role>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<Role>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<Role>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 }
