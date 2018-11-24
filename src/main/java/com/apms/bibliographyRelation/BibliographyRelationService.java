@@ -1,7 +1,6 @@
 package com.apms.bibliographyRelation;
 
 import com.apms.bibliography.BibliographyRepository;
-import com.apms.bibliography.BibliographyService;
 import java.util.ArrayList;
 import java.util.List;
 
