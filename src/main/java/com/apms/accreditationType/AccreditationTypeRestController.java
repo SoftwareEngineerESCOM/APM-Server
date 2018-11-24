@@ -17,7 +17,7 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
 @RestController
-@RequestMapping("/accreditation")
+@RequestMapping("/accreditationtype")
 public class AccreditationTypeRestController {
 
 	@Autowired
