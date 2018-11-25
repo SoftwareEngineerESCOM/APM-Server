@@ -38,4 +38,8 @@ public class SemesterService {
 	public List<Semester> getSemestersByStudyPlanId(Integer id) {
 		return semesterRepository.getSemestersByStudyPlanId(id);
 	}
+
+	public Semester getMaxSemesterNumberByStudyPlanId(Integer id) {
+		return semesterRepository.getMaxSemesterNumberByStudyPlanId(id);
+	}
 }

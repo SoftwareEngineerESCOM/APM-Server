@@ -70,6 +70,8 @@ public class SemesterRestController {
 		try {
 			if (semesterService.getOne(semester.getPayload().getId()) != null)
 				return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
+			Semester aux = semesterService.getMaxSemesterNumberByStudyPlanId(semester.getPayload().getStudyPlan().getId());
+			semester.getPayload().setSemesterNumber(aux.getSemesterNumber() + 1);
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
