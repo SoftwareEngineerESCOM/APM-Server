@@ -74,8 +74,8 @@ public class LearningUnitRestController {
 	@PostMapping
 	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> learningUnit) {
 		try {
-			if (!learningUnitService.getLearningUnitByNameAndSemesterId(learningUnit.getPayload().getName(),
-					learningUnit.getPayload().getSemester().getId()).isEmpty())
+			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(learningUnit.getPayload().getName(),
+					learningUnit.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 						"Unidad de Aprendizaje ya existe en el sistema.", null);
 			learningUnitService.add(learningUnit.getPayload());
@@ -152,11 +152,30 @@ public class LearningUnitRestController {
 	}
 
 	@GetMapping("/learningUnitByNameAndSemesterId/{name}/{id}")
-	public RESTResponse<List<LearningUnit>> getLearningUnitByNameAndSemesterId(@PathVariable String name,
+	public RESTResponse<List<LearningUnit>> learningUnitByNameAndSemesterId(@PathVariable String name,
 			@PathVariable Integer id) {
 		List<LearningUnit> res;
 		try {
 			res = learningUnitService.getLearningUnitByNameAndSemesterId(name, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
+					"Servicios no disponibles.", null);
+		}
+	}
+
+	@GetMapping("/learningUnitByNameAndStudyPlanId/{name}/{id}")
+	public RESTResponse<List<LearningUnit>> learningUnitByNameAndStudyPlanId(@PathVariable String name,
+			@PathVariable Integer id) {
+		List<LearningUnit> res;
+		try {
+			res = learningUnitService.getLearningUnitByNameAndStudyPlanId(name, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",

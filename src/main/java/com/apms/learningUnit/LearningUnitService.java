@@ -42,4 +42,11 @@ public class LearningUnitService {
 	public List<LearningUnit> getLearningUnitByNameAndSemesterId(String name, Integer semester_id) {
 		return learningUnitRepository.getLearningUnitByNameAndSemesterId(name, semester_id);
 	}
+
+	public List<LearningUnit> getLearningUnitByNameAndStudyPlanId(String name, Integer study_plan_id) {
+		String auxName = name.trim();
+		String pattern = "(\\s)(\\s+)";
+		String updated = auxName.replaceAll(pattern,"$1");
+		return learningUnitRepository.getLearningUnitByNameAndStudyPlanId(updated, study_plan_id);
+	}
 }
