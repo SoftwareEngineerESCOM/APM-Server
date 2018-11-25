@@ -9,6 +9,8 @@ insert into academic_program (name, title_name, workplace_id) values ('Ingenier�
 insert into academic_program (name, title_name, workplace_id) values ('Ingeniería Química Petrolera', 'Ingeniero', (select id from workplace where abbreviation like 'ESIQIE'));
 insert into academic_program (name, title_name, workplace_id) values ('Ingeniería Civil', 'Ingeniero', (select id from workplace where abbreviation like 'ESIA Zacatenco'));
 insert into academic_program (name, title_name, workplace_id) values ('Ingeniería en Sistemas Ambientales', 'Ingeniero', (select id from workplace where abbreviation like 'ENCB'));
+insert into academic_program (name, title_name, workplace_id) values ('Médico Cirujano y Homeópata', 'Licenciado', (select id from workplace where abbreviation like 'ENMH'));
+insert into academic_program (name, title_name, workplace_id) values ('Médico Cirujano y Partero', 'Licenciado', (select id from workplace where abbreviation like 'ENMH'));
 
 -- add study_plan
 insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, totaltepiccredits, total_theory_hours, year, academic_program_id) values ((select id from modality where name like '%Escolarizado%'), 250.0, 30.0, 35.0, 137.0, 2018, (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%'));
@@ -21,6 +23,8 @@ insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, to
 insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, totaltepiccredits, total_theory_hours, year, academic_program_id) values ((select id from modality where name like '%Escolarizado%'), 235.0, 30.0, 33.0, 137.0, 2018, (select id from academic_program where name like '%Ingeniería Química Petrolera%'));
 insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, totaltepiccredits, total_theory_hours, year, academic_program_id) values ((select id from modality where name like '%A distancia%'), 245.0, 31.0, 31.0, 137.0, 2018, (select id from academic_program where name like '%Ingeniería Civil%'));
 insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, totaltepiccredits, total_theory_hours, year, academic_program_id) values ((select id from modality where name like '%Escolarizado%'), 255.0, 31.0, 30.0, 138.0, 2018, (select id from academic_program where name like '%Ingeniería en Sistemas Ambientales%'));
+insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, totaltepiccredits, total_theory_hours, year, academic_program_id) values ((select id from modality where name like '%Escolarizado%'), 255.0, 31.0, 30.0, 138.0, 2018, (select id from academic_program where name like '%Médico Cirujano y Homeópata%'));
+insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, totaltepiccredits, total_theory_hours, year, academic_program_id) values ((select id from modality where name like '%Escolarizado%'), 255.0, 31.0, 30.0, 138.0, 2018, (select id from academic_program where name like '%Médico Cirujano y Partero%'));
 
 -- add semester 
 insert into semester (semester_number, study_plan_id) (select 1, id from study_plan);

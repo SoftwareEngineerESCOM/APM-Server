@@ -71,12 +71,17 @@ public class SemesterRestController {
 			if (semesterService.getOne(semester.getPayload().getId()) != null)
 				return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
 			Semester aux = semesterService.getMaxSemesterNumberByStudyPlanId(semester.getPayload().getStudyPlan().getId());
+			String sAcademicProgram = semester.getPayload().getStudyPlan().getAcademicProgram().getName();
+			if ((sAcademicProgram == "Médico Cirujano y Homeópata" || sAcademicProgram == "Médico Cirujano y Partero") && aux.getSemesterNumber() == 16) {
+				return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+			}else if(aux.getSemesterNumber() == 8){
+				return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+			}
 			semester.getPayload().setSemesterNumber(aux.getSemesterNumber() + 1);
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Semester>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			return new RESTResponse<Semester>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<Semester>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
