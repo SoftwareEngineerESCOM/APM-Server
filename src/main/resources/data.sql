@@ -111,3 +111,9 @@ insert into user_apms_roles values ((select id from user_apms where email like '
 insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Docente%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Analista%'));
+
+--add accreditation type
+insert into accreditation_type(name) values('Saberes previos');
+insert into accreditation_type(name) values('Equivalencia en unidad academica del IPN');
+insert into accreditation_type(name) values('Equivalencia en extranjero');
+insert into accreditation_type(name) values('Inscripcion normal');
