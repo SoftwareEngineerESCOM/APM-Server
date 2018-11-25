@@ -72,8 +72,10 @@ public class SemesterRestController {
 				return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
 			Semester aux = semesterService.getMaxSemesterNumberByStudyPlanId(semester.getPayload().getStudyPlan().getId());
 			String sAcademicProgram = semester.getPayload().getStudyPlan().getAcademicProgram().getName();
-			if ((sAcademicProgram == "Médico Cirujano y Homeópata" || sAcademicProgram == "Médico Cirujano y Partero") && aux.getSemesterNumber() == 16) {
-				return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+			if (sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Homeópata") || sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Partero")) {
+				if (aux.getSemesterNumber() == 14) {
+					return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+				}
 			}else if(aux.getSemesterNumber() == 8){
 				return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
 			}
