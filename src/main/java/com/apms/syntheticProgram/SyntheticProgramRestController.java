@@ -71,6 +71,7 @@ public class SyntheticProgramRestController {
 	 */
 	@PostMapping
 	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> req) {
+		System.out.println(req.getPayload());
 		try {
 			if (syntheticProgramService.getOne(req.getPayload().getId()) != null)
 				return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "El Programa sintetico  ya existe en el sistema.", null);
