@@ -16,10 +16,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LearningUnitDocument {
-	private final File firstSection = new File("D:\\xXEdG\\Escritorio\\LatexAndJava\\learning_unit_document\\first_part_document.tex");
-    private final File secondSectionTemplate = new File("D:\\xXEdG\\Escritorio\\LatexAndJava\\learning_unit_document\\second_part_document_template.tex");
-    private final File secondSection = new File("D:\\xXEdG\\Escritorio\\LatexAndJava\\learning_unit_document\\second_part_document.tex");
-    private final File thirdSection = new File("D:\\xXEdG\\Escritorio\\LatexAndJava\\learning_unit_document\\third_part_document.tex");
+	private final File firstSection = new File("src/main/resources/document_latex/learning_unit_document/first_part_document.tex");
+    private final File secondSectionTemplate = new File("src/main/resources/document_latex/learning_unit_document/second_part_document_template.tex");
+    private final File secondSection = new File("src/main/resources/document_latex/learning_unit_document/second_part_document.tex");
+    private final File thirdSection = new File("src/main/resources/document_latex/learning_unit_document/third_part_document.tex");
     private final Pattern regex = Pattern.compile("<(.*?)>");
     private HashMap<String,String> dataLabels;
     private String content;
@@ -39,12 +39,10 @@ public class LearningUnitDocument {
         createFirstSection();
         createSecondSection();
         createThirdSection();
-        FileWriter writer = new FileWriter("D:\\xXEdG\\Escritorio\\LatexAndJava\\FormatoPrueba.tex"); //Salida del documento
+        FileWriter writer = new FileWriter("src/main/resources/document_latex/FormatoUnidadAcademica.tex"); //Salida del documento
         writer.write(content);
         writer.close();
-        
-        //ejecutarCMD("pdflatex -interaction nonstopmode D:\\xXEdG\\Escritorio\\LatexAndJava\\FormatoPrueba.tex --output-directory = D:\\xXEdG\\Escritorio\\LatexAndJava\\");
-        ejecutarCMD("pdflatex -interaction nonstopmode D:/xXEdG/Escritorio/LatexAndJava/FormatoPrueba.tex --output-directory=D:/xXEdG/Escritorio/LatexAndJava/");
+        ejecutarCMD("pdflatex -interaction nonstopmode src/main/resources/document_latex/FormatoUnidadAcademica.tex --output-directory=src/main/resources/document_latex/");
     }
     
     private void ejecutarCMD(String cmd){
@@ -87,7 +85,7 @@ public class LearningUnitDocument {
         editSecondSectionTemplate();
         //Llenar los labels con los datos de las unidades
         HashMap<String,String> dataUnitsLabels = new HashMap<>();
-        //agragar funcion fillUnitLabels conforme al formato de sus etiquetas
+        //agregar funcion fillUnitLabels conforme al formato de sus etiquetas
         BufferedReader reader = new BufferedReader(new FileReader(secondSection));
         String line = reader.readLine();
         Matcher regexMatcher;
