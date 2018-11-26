@@ -1,5 +1,6 @@
 package com.apms.content;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,7 @@ public class ContentRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Content>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Content>>(RESTResponse.FAIL, "Servicios no disponibles.",
-					null);
+			return new RESTResponse<List<Content>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -68,8 +68,8 @@ public class ContentRestController {
 	@PostMapping
 	public RESTResponse<Content> post(@RequestBody RESTRequest<Content> content) {
 		try {
-			if(contentService.getOne(content.getPayload().getId()) != null)
-                return new RESTResponse<Content>(RESTResponse.FAIL, "El contenido ya existe en el sistema.", null);
+			if (contentService.getOne(content.getPayload().getId()) != null)
+				return new RESTResponse<Content>(RESTResponse.FAIL, "El contenido ya existe en el sistema.", null);
 			contentService.add(content.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,5 +122,18 @@ public class ContentRestController {
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
+	}
+
+	@PostMapping("/saveAll")
+	public RESTResponse<List<Content>> saveAll(@RequestBody RESTRequest<List<Content>> req) {
+		try {
+			for (Iterator<Content> i = req.getPayload().iterator(); i.hasNext();)
+				contentService.add(i.next()).getId();
+			return new RESTResponse<List<Content>>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Content>>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+		}
 	}
 }

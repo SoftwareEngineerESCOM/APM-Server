@@ -1,6 +1,5 @@
 package com.apms.syntheticProgram;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.content.Content;
-import com.apms.content.ContentService;
 import com.apms.evaluationAccreditationUA.EvaluationAccreditationUAService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
@@ -26,9 +23,6 @@ public class SyntheticProgramRestController {
 
 	@Autowired
 	private SyntheticProgramService syntheticProgramService;
-
-	@Autowired
-	private ContentService contentService;
 
 	@Autowired
 	private EvaluationAccreditationUAService evaluationAccreditationUAService;
@@ -81,11 +75,8 @@ public class SyntheticProgramRestController {
 			if (syntheticProgramService.getOne(req.getPayload().getId()) != null)
 				return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 						"El Programa sintetico  ya existe en el sistema.", null);
-			for (Iterator<Content> i = req.getPayload().getContent().iterator(); i.hasNext();)
-				i.next().setId(contentService.add(i.next()).getId());
 			req.getPayload().getEvaluationAccreditationUA().setId(
 					evaluationAccreditationUAService.add(req.getPayload().getEvaluationAccreditationUA()).getId());
-			syntheticProgramService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,

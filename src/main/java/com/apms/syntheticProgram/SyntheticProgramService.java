@@ -23,8 +23,8 @@ public class SyntheticProgramService {
 				: null;
 	}
 
-	public void add(SyntheticProgram syntheticProgram) {
-		syntheticProgramRepository.save(syntheticProgram);
+	public SyntheticProgram add(SyntheticProgram syntheticProgram) {
+		return syntheticProgramRepository.save(syntheticProgram);
 	}
 
 	public void update(SyntheticProgram syntheticProgram) {
