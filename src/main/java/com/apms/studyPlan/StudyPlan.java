@@ -32,6 +32,8 @@ public class StudyPlan {
 	private Double totalTheoryHours;
 	@Column(nullable = false)
 	private Double totalPracticeHours;
+	@Column(nullable = false)
+	private String status;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)

@@ -165,7 +165,7 @@ public class WorkplaceRestController {
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+				return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 			}
 		} else {
 			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Usuario no registrado.", null);

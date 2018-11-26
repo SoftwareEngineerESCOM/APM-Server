@@ -1,5 +1,6 @@
 package com.apms.syntheticProgram;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.content.Content;
+import com.apms.content.ContentService;
+import com.apms.evaluationAccreditationUA.EvaluationAccreditationUAService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
@@ -23,6 +27,12 @@ public class SyntheticProgramRestController {
 	@Autowired
 	private SyntheticProgramService syntheticProgramService;
 
+	@Autowired
+	private ContentService contentService;
+	
+	@Autowired
+	private EvaluationAccreditationUAService evaluationAccreditationUAService;
+	
 	/*
 	 ** Return a listing of all the resources
 	 */
@@ -67,11 +77,14 @@ public class SyntheticProgramRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> syntheticProgram) {
+	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> req) {
 		try {
-			if(syntheticProgramService.getOne(syntheticProgram.getPayload().getId()) != null)
+			if(syntheticProgramService.getOne(req.getPayload().getId()) != null)
                 return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "El Programa sintetico  ya existe en el sistema.", null);
-			syntheticProgramService.add(syntheticProgram.getPayload());
+			for(Iterator<Content> i = req.getPayload().getContent().iterator(); i.hasNext();)
+				contentService.add(i.next());
+			evaluationAccreditationUAService.add(req.getPayload().getEvaluationAccreditationUA());
+			syntheticProgramService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
@@ -84,9 +97,9 @@ public class SyntheticProgramRestController {
 	 ** Update the specified resource in storage partially.
 	 */
 	@PatchMapping
-	public RESTResponse<SyntheticProgram> patch(@RequestBody RESTRequest<SyntheticProgram> syntheticProgram) {
+	public RESTResponse<SyntheticProgram> patch(@RequestBody RESTRequest<SyntheticProgram> req) {
 		try {
-			syntheticProgramService.update(syntheticProgram.getPayload());
+			syntheticProgramService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
@@ -99,9 +112,9 @@ public class SyntheticProgramRestController {
 	 ** Update the specified resource in storage.
 	 */
 	@PutMapping
-	public RESTResponse<SyntheticProgram> put(@RequestBody RESTRequest<SyntheticProgram> syntheticProgram) {
+	public RESTResponse<SyntheticProgram> put(@RequestBody RESTRequest<SyntheticProgram> req) {
 		try {
-			syntheticProgramService.update(syntheticProgram.getPayload());
+			syntheticProgramService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
