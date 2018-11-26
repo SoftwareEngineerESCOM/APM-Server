@@ -24,8 +24,8 @@ public class EvaluationAccreditationUAService {
 				: null;
 	}
 
-	public void add(EvaluationAccreditationUA evaluationAccreditationUA) {
-		evaluationAccreditationUARepository.save(evaluationAccreditationUA);
+	public EvaluationAccreditationUA add(EvaluationAccreditationUA evaluationAccreditationUA) {
+		return evaluationAccreditationUARepository.save(evaluationAccreditationUA);
 	}
 
 	public void update(EvaluationAccreditationUA evaluationAccreditationUA) {

@@ -22,8 +22,8 @@ public class ContentService {
 		return contentRepository.findById(id).isPresent() ? contentRepository.findById(id).get() : null;
 	}
 
-	public void add(Content content) {
-		contentRepository.save(content);
+	public Content add(Content content) {
+		return contentRepository.save(content);
 	}
 
 	public void update(Content content) {

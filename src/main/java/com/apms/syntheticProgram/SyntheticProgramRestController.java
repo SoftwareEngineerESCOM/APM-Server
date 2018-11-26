@@ -29,10 +29,10 @@ public class SyntheticProgramRestController {
 
 	@Autowired
 	private ContentService contentService;
-	
+
 	@Autowired
 	private EvaluationAccreditationUAService evaluationAccreditationUAService;
-	
+
 	/*
 	 ** Return a listing of all the resources
 	 */
@@ -49,8 +49,7 @@ public class SyntheticProgramRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<SyntheticProgram>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<SyntheticProgram>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<SyntheticProgram>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -79,11 +78,13 @@ public class SyntheticProgramRestController {
 	@PostMapping
 	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> req) {
 		try {
-			if(syntheticProgramService.getOne(req.getPayload().getId()) != null)
-                return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "El Programa sintetico  ya existe en el sistema.", null);
-			for(Iterator<Content> i = req.getPayload().getContent().iterator(); i.hasNext();)
-				contentService.add(i.next());
-			evaluationAccreditationUAService.add(req.getPayload().getEvaluationAccreditationUA());
+			if (syntheticProgramService.getOne(req.getPayload().getId()) != null)
+				return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
+						"El Programa sintetico  ya existe en el sistema.", null);
+			for (Iterator<Content> i = req.getPayload().getContent().iterator(); i.hasNext();)
+				i.next().setId(contentService.add(i.next()).getId());
+			req.getPayload().getEvaluationAccreditationUA().setId(
+					evaluationAccreditationUAService.add(req.getPayload().getEvaluationAccreditationUA()).getId());
 			syntheticProgramService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
