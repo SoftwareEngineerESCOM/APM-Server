@@ -73,10 +73,8 @@ public class SyntheticProgramRestController {
 	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> req) {
 		try {
 			if (syntheticProgramService.getOne(req.getPayload().getId()) != null)
-				return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
-						"El Programa sintetico  ya existe en el sistema.", null);
-			req.getPayload().getEvaluationAccreditationUA().setId(
-					evaluationAccreditationUAService.add(req.getPayload().getEvaluationAccreditationUA()).getId());
+				return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "El Programa sintetico  ya existe en el sistema.", null);
+			syntheticProgramService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,

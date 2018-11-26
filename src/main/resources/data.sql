@@ -79,6 +79,16 @@ insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, 
 insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Profesional%'), 'Dinamica de la Particula', 0, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
 insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Terminal y de Integración%'), 'Topografia', 4.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
 
+-- add synthetic_program
+insert into evaluation_accreditationua values (1);
+insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) values (1, (select id from accreditation_type where name like '%Equivalencia en unidad académica del IPN%'));
+insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) values (1, (select id from accreditation_type where name like '%Inscripción normal%'));
+insert into evaluationua (name, percentage, evaluationua_id) values ('test1', 0.3, 1);
+insert into evaluationua (name, percentage, evaluationua_id) values ('test2', 4.3, 1);
+insert into synthetic_program (didactic_orientation, regard, evaluation_accreditationua_id, learning_unit_id) values ('Esto es una orientación educativa', 'Esto es un objetivo', 1, (select id from learning_unit where name like '%Ingenieria de software%'));
+insert into content (name, number, content_id) values ('contenido1', 1, (select id from synthetic_program where didactic_orientation like '%Esto es una orientación educativa%'));
+insert into content (name, number, content_id) values ('contenido2', 2, (select id from synthetic_program where didactic_orientation like '%Esto es una orientación educativa%'));
+
 -- add human resource
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Emiliano', 'Hinojosa', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));

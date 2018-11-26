@@ -25,9 +25,9 @@ public class Content {
 	@Column(nullable = false)
 	private int number;
 
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private SyntheticProgram syntheticProgram;
+	// @ManyToOne
+	// @JoinColumn(nullable = false)
+	// private SyntheticProgram syntheticProgram;
 
 	public Content() {
 	}
