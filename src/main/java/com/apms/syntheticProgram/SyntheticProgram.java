@@ -39,9 +39,9 @@ public class SyntheticProgram {
 	@JoinColumn(nullable = false)
 	private EvaluationAccreditationUA evaluationAccreditationUA;
 	
-	@OneToMany
-	@JoinColumn(nullable = false)
-	private List<Content> content;
+	// @OneToMany
+	// @JoinColumn(nullable = false)
+	// private List<Content> content;
 
 	public SyntheticProgram() {
 

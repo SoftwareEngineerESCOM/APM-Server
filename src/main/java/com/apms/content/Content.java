@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.apms.syntheticProgram.SyntheticProgram;
+import javax.persistence.ManyToOne;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +23,10 @@ public class Content {
 	private String name;
 	@Column(nullable = false)
 	private int number;
+
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private SyntheticProgram syntheticProgram;
 
 	public Content() {
 	}
