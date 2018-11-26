@@ -38,4 +38,12 @@ public class StudyPlanService {
 	public List<StudyPlan> getStudyPlansByAcademicProgramId(Integer id) {
 		return studyPlanRepository.getStudyPlansByAcademicProgramId(id);
 	}
+
+	public void setSemestersToCopy(Integer studyPlan_id, Integer new_studyPlan_id) {
+		studyPlanRepository.setSemestersToCopy(studyPlan_id, new_studyPlan_id);
+	}
+
+	public void setLearningUnitsToCopy(Integer studyPlan_id, Integer new_studyPlan_id, Integer semesternumber) {
+		studyPlanRepository.setLearningUnitsToCopy(studyPlan_id, new_studyPlan_id, semesternumber);
+	}
 }
