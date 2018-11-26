@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToMany;
 import com.apms.accreditationType.AccreditationType;
 import com.apms.evaluationUA.EvaluationUA;
 
@@ -26,9 +26,9 @@ public class EvaluationAccreditationUA {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne
+	@ManyToMany
 	@JoinColumn(nullable = false)
-	private AccreditationType accreditationType;
+	private List<AccreditationType> accreditationType;
 	
 	@OneToMany
 	@JoinColumn(nullable = false)
