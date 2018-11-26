@@ -125,8 +125,12 @@ public class UserRestController {
 		User res;
 		try {
 			res = userService.getOne(id);
-			res.setAccountBlocked(true);
-			userService.update(res);
+			if (res != null) {
+				res.setAccountBlocked(true);
+				userService.update(res);
+			} else {
+				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
