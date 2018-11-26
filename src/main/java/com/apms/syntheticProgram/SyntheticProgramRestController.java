@@ -1,6 +1,9 @@
 package com.apms.syntheticProgram;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,9 +16,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.accreditationType.AccreditationType;
+import com.apms.content.Content;
+import com.apms.content.ContentService;
+import com.apms.evaluationAccreditationUA.EvaluationAccreditationUA;
 import com.apms.evaluationAccreditationUA.EvaluationAccreditationUAService;
+import com.apms.evaluationUA.EvaluationUA;
+import com.apms.evaluationUA.EvaluationUAService;
+import com.apms.learningUnit.LearningUnit;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/syntheticProgram")
@@ -26,6 +40,14 @@ public class SyntheticProgramRestController {
 
 	@Autowired
 	private EvaluationAccreditationUAService evaluationAccreditationUAService;
+	
+	@Autowired
+	private ContentService contentService;
+	
+	@Autowired
+	private EvaluationUAService evaluationUAService;
+
+
 
 	/*
 	 ** Return a listing of all the resources
@@ -70,12 +92,38 @@ public class SyntheticProgramRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<SyntheticProgram> post(@RequestBody RESTRequest<SyntheticProgram> req) {
-		System.out.println(req.getPayload());
+	public RESTResponse<SyntheticProgram> post(@RequestBody Map<String,JsonNode> req) throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		List<Content> content = new ArrayList<Content>();
+		List<AccreditationType> accreditationtype = new ArrayList<AccreditationType>();
+		List<EvaluationUA> evaluationUA = new ArrayList<EvaluationUA>();
+		LearningUnit learningUnit = mapper.treeToValue(req.get("learningUnit"),LearningUnit.class);
+		String regard = mapper.treeToValue(req.get("regard"),String.class);
+		String didacticOrientation = mapper.treeToValue(req.get("didacticOrientation"),String.class);
+
+		for(JsonNode c :req.get("content")) {
+			content.add(contentService.add(mapper.treeToValue(c,Content.class)));
+		}
+		int i = 0;
+		for(JsonNode c :req.get("evaluationAccreditationUA")) {
+			System.out.println(c);
+			if(i==0) {
+				for(JsonNode a : c) {
+					System.out.println(a);
+					accreditationtype.add(mapper.treeToValue(a,AccreditationType.class));
+				}
+			}else {
+				for(JsonNode a : c) {
+					evaluationUA.add(evaluationUAService.add(mapper.treeToValue(a,EvaluationUA.class)));
+				}
+			}
+			i++;
+		}
+		EvaluationAccreditationUA evaluationAccreditationUA = evaluationAccreditationUAService.add(new EvaluationAccreditationUA(0,accreditationtype,evaluationUA));
+
 		try {
-			if (syntheticProgramService.getOne(req.getPayload().getId()) != null)
-				return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "El Programa sintetico  ya existe en el sistema.", null);
-			syntheticProgramService.add(req.getPayload());
+			syntheticProgramService.add(new SyntheticProgram(regard,didacticOrientation,learningUnit,evaluationAccreditationUA,content));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,

@@ -26,15 +26,21 @@ public class EvaluationAccreditationUA {
 	private Integer id;
 	
 	@ManyToMany
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private List<AccreditationType> accreditationType;
 	
 	@OneToMany
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private List<EvaluationUA> evaluationUA;
 	
 	
 	public EvaluationAccreditationUA() {
 
+	}
+
+	public EvaluationAccreditationUA(int id, List<AccreditationType> accreditationtype, List<EvaluationUA> evaluationUA) {
+		this.id = id;
+		this.evaluationUA = evaluationUA;
+		this.accreditationType = accreditationtype;
 	}
 }

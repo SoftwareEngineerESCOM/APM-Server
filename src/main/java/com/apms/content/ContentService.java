@@ -26,6 +26,10 @@ public class ContentService {
 		return contentRepository.save(content);
 	}
 
+	public List<Content> addAll(List<Content> content) {
+		return contentRepository.saveAll(content);
+	}
+	
 	public void update(Content content) {
 		// if exists updates otherwise inserts
 		contentRepository.save(content);
