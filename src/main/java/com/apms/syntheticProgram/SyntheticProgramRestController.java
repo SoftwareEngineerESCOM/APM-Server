@@ -110,7 +110,6 @@ public class SyntheticProgramRestController {
 			System.out.println(c);
 			if(i==0) {
 				for(JsonNode a : c) {
-					System.out.println(a);
 					accreditationtype.add(mapper.treeToValue(a,AccreditationType.class));
 				}
 			}else {
