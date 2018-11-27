@@ -91,7 +91,7 @@ public class CommentRestController {
 			return new RESTResponse<Comment>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Comment>(RESTResponse.OK, "Comentario modificada.", null);
+		return new RESTResponse<Comment>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class CommentRestController {
 			return new RESTResponse<Comment>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Comment>(RESTResponse.OK, "Comentario modificado.", null);
+		return new RESTResponse<Comment>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -121,7 +121,7 @@ public class CommentRestController {
 			return new RESTResponse<Comment>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Comment>(RESTResponse.OK, "Comentario modificada.", null);
+		return new RESTResponse<Comment>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 	
 }

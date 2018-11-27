@@ -91,7 +91,7 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
+		return new RESTResponse<Content>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
+		return new RESTResponse<Content>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -121,7 +121,7 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
+		return new RESTResponse<Content>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@PostMapping("/saveAll")

@@ -102,7 +102,7 @@ public class WorkplaceRestController {
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
+		return new RESTResponse<Workplace>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -117,7 +117,7 @@ public class WorkplaceRestController {
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
+		return new RESTResponse<Workplace>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -132,7 +132,7 @@ public class WorkplaceRestController {
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Workplace>(RESTResponse.OK, "Unidad modificada.", null);
+		return new RESTResponse<Workplace>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/workplacesForUser/{id}")

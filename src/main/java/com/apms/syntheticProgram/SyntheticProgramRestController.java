@@ -96,7 +96,7 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Programa sintetico modificado.", null);
+		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -111,7 +111,7 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Programa sintetico modificado.", null);
+		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -126,6 +126,6 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Programa sintetico modificado.", null);
+		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

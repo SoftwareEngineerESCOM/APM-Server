@@ -66,22 +66,18 @@ public class StudyPlanRestController {
 	 */
 	@PostMapping
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-		Double sum = studyPlan.getPayload().getTotalPracticeHours() + studyPlan.getPayload().getTotalTheoryHours();
-		if (350 > sum && sum > 450) {
-			try {
-				if (studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
-					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
-							null);
-				studyPlanService.add(studyPlan.getPayload());
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-						"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
-			}
-			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-		} else {
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Pendientes", null);
+		try {
+			if (studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
+				return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
+						null);
+			studyPlanService.add(studyPlan.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+
 	}
 
 	/*
@@ -96,7 +92,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -111,7 +107,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -126,11 +122,11 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/studyPlansByAcademicProgramId/{id}")
 	public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
-		return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
+		return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
 	}
 }

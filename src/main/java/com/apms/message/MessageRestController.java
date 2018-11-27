@@ -91,7 +91,7 @@ public class MessageRestController {
 			return new RESTResponse<Message>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Message>(RESTResponse.OK, "Mensaje modificado.", null);
+		return new RESTResponse<Message>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class MessageRestController {
 			return new RESTResponse<Message>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Message>(RESTResponse.OK, "Mensaje modificado.", null);
+		return new RESTResponse<Message>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class MessageRestController {
 			return new RESTResponse<Message>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Message>(RESTResponse.OK, "Mensaje modificado.", null);
+		return new RESTResponse<Message>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

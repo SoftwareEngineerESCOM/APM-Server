@@ -93,7 +93,7 @@ public class HumanResourceRestController {
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<HumanResource>(RESTResponse.OK, "Recurso humano modificado.", null);
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -108,7 +108,7 @@ public class HumanResourceRestController {
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<HumanResource>(RESTResponse.OK, "Recurso humano modificado.", null);
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -123,7 +123,7 @@ public class HumanResourceRestController {
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<HumanResource>(RESTResponse.OK, "Recurso humano modificado.", null);
+		return new RESTResponse<HumanResource>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/humanResourcesByWorkplaceIdAndPositionId/{idW}/{idP}")

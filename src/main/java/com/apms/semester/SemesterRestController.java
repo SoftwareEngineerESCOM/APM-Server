@@ -100,7 +100,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -115,7 +115,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -130,7 +130,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/semestersByStudyPlanId/{id}")

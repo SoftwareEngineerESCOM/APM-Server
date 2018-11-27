@@ -98,7 +98,7 @@ public class UserRestController {
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<User>(RESTResponse.OK, "Usuario modificado.", null);
+		return new RESTResponse<User>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -114,7 +114,7 @@ public class UserRestController {
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<User>(RESTResponse.OK, "Usuario modificado.", null);
+		return new RESTResponse<User>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -125,14 +125,18 @@ public class UserRestController {
 		User res;
 		try {
 			res = userService.getOne(id);
-			res.setAccountBlocked(true);
-			userService.update(res);
+			if (res != null) {
+				res.setAccountBlocked(true);
+				userService.update(res);
+			} else {
+				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<User>(RESTResponse.OK, "Usuario modificado.", null);
+		return new RESTResponse<User>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/usersByWorkplaceIdAndPositionId/{idW}/{idP}")

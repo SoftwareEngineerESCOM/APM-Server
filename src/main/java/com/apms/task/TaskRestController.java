@@ -88,7 +88,7 @@ public class TaskRestController {
 			return new RESTResponse<Task>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Task>(RESTResponse.OK, "Tarea modificada.", null);
+		return new RESTResponse<Task>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -103,7 +103,7 @@ public class TaskRestController {
 			return new RESTResponse<Task>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Task>(RESTResponse.OK, "Tarea modificado.", null);
+		return new RESTResponse<Task>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -118,7 +118,7 @@ public class TaskRestController {
 			return new RESTResponse<Task>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Task>(RESTResponse.OK, "Tarea modificada.", null);
+		return new RESTResponse<Task>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 	
 }

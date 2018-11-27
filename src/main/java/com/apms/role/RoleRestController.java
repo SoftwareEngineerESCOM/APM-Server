@@ -90,7 +90,7 @@ public class RoleRestController {
 			return new RESTResponse<Role>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Role>(RESTResponse.OK, "Cargo modificado.", null);
+		return new RESTResponse<Role>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -105,7 +105,7 @@ public class RoleRestController {
 			return new RESTResponse<Role>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Role>(RESTResponse.OK, "Cargo modificado.", null);
+		return new RESTResponse<Role>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -120,7 +120,7 @@ public class RoleRestController {
 			return new RESTResponse<Role>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Role>(RESTResponse.OK, "Cargo modificado.", null);
+		return new RESTResponse<Role>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/rolesByUserId/{id}")
