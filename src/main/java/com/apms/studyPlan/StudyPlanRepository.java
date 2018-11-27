@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudyPlanRepository extends JpaRepository<StudyPlan, Integer> {
-	@Query(value = "SELECT * FROM study_plan WHERE academic_program_id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM study_plan WHERE academic_program_id = :id ORDER BY id DESC", nativeQuery = true)
 	List<StudyPlan> getStudyPlansByAcademicProgramId(@Param("id") Integer Id);
 
 	@Transactional
