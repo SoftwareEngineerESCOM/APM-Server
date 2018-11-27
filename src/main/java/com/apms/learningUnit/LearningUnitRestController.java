@@ -145,18 +145,28 @@ public class LearningUnitRestController {
 
 	@GetMapping("/learningUnitsBySemesterId/{id}")
 	public RESTResponse<List<LearningUnit>> getLearningUnitsBySemesterId(@PathVariable Integer id) {
-		List<LearningUnit> res;
+		Semester res;
 		try {
-			res = learningUnitService.getLearningUnitsBySemesterId(id);
+			res = semesterService.getOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-					null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
-		if (!res.isEmpty()) {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
+		if (res != null) {
+			List<LearningUnit> aux;
+			try {
+				aux = learningUnitService.getLearningUnitsBySemesterId(id);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "El semestre no cuenta con unidades de aprendizaje.", aux);
+			}
 		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Semestre no registrado.", null);
 		}
 	}
 
