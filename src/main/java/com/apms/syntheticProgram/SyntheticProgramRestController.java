@@ -87,7 +87,6 @@ public class SyntheticProgramRestController {
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "Programa sintetico no registrado.", null);
 		}
 	}
-
 	/*
 	 ** Store a newly created resource in storage.
 	 */
@@ -185,4 +184,21 @@ public class SyntheticProgramRestController {
 		}
 		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
+	
+	@GetMapping("syntheticprogrambylearningunit/{id}")
+	public RESTResponse<SyntheticProgram> getSyntheticProgrambylearningunit(@PathVariable Integer id) {
+		SyntheticProgram res;
+		try {
+			res = syntheticProgramService.getSyntheticProgrambylearningunit(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "Programa sintetico no registrado.", null);
+		}
+	}
+
 }

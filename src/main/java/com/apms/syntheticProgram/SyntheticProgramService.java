@@ -35,4 +35,8 @@ public class SyntheticProgramService {
 	public void delete(Integer id) {
 		syntheticProgramRepository.deleteById(id);
 	}
+	
+	public SyntheticProgram getSyntheticProgrambylearningunit(Integer id) {
+		return syntheticProgramRepository.getLearningUnitByNameAndSemesterId(id);
+	}
 }
