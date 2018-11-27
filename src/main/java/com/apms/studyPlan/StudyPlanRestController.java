@@ -178,7 +178,6 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
-			System.out.println(1);
 			StudyPlan aux = new StudyPlan();
 			aux.setYear(res.getYear());
 			aux.setTotalTEPICCredits(res.getTotalTEPICCredits());
@@ -189,15 +188,11 @@ public class StudyPlanRestController {
 			aux.setAcademicProgram(res.getAcademicProgram());
 			try{
 				studyPlanService.add(aux);
-				System.out.println(2);
 				List<Semester> auxSemester = semesterService.getSemestersByStudyPlanId(res.getId());
-				System.out.println(4);
 				studyPlanService.setSemestersToCopy(res.getId(), aux.getId());
-				System.out.println(3);
 				auxSemester.forEach(semester->{
 					studyPlanService.setLearningUnitsToCopy(res.getId(), aux.getId(), semester.getSemesterNumber());
 				});
-				System.out.println(5);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return new RESTResponse<StudyPlan>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
