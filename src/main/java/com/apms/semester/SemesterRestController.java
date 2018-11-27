@@ -71,15 +71,19 @@ public class SemesterRestController {
 			if (semesterService.getOne(semester.getPayload().getId()) != null)
 				return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
 			Semester aux = semesterService.getMaxSemesterNumberByStudyPlanId(semester.getPayload().getStudyPlan().getId());
-			String sAcademicProgram = semester.getPayload().getStudyPlan().getAcademicProgram().getName();
-			if (sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Homeópata") || sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Partero")) {
-				if (aux.getSemesterNumber() == 14) {
+			if (aux != null) {
+				String sAcademicProgram = semester.getPayload().getStudyPlan().getAcademicProgram().getName();
+				if (sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Homeópata") || sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Partero")) {
+					if (aux.getSemesterNumber() == 14) {
+						return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+					}
+				}else if(aux.getSemesterNumber() == 8){
 					return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
 				}
-			}else if(aux.getSemesterNumber() == 8){
-				return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+				semester.getPayload().setSemesterNumber(aux.getSemesterNumber() + 1);
+			}else{
+				semester.getPayload().setSemesterNumber(1);
 			}
-			semester.getPayload().setSemesterNumber(aux.getSemesterNumber() + 1);
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +104,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -115,7 +119,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -130,7 +134,7 @@ public class SemesterRestController {
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Semester>(RESTResponse.OK, "Semestre modificado.", null);
+		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/semestersByStudyPlanId/{id}")

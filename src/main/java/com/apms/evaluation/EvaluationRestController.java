@@ -91,7 +91,7 @@ public class EvaluationRestController {
 			return new RESTResponse<Evaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluacion modificada.", null);
+		return new RESTResponse<Evaluation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class EvaluationRestController {
 			return new RESTResponse<Evaluation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluacion modificada.", null);
+		return new RESTResponse<Evaluation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class EvaluationRestController {
 			return new RESTResponse<Evaluation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Evaluation>(RESTResponse.OK, "Evaluacion modificada.", null);
+		return new RESTResponse<Evaluation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

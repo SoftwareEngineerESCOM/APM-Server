@@ -88,7 +88,7 @@ public class BibliographyRelationRestController {
             e.printStackTrace();
             return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "BibliographyRelation modificado.", null);
+        return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }
 
     /*
@@ -102,7 +102,7 @@ public class BibliographyRelationRestController {
             e.printStackTrace();
             return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "BibliographyRelation modificado.", null);
+        return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }
 
     /*
@@ -116,6 +116,6 @@ public class BibliographyRelationRestController {
             e.printStackTrace();
             return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "BibliographyRelation modificado.", null);
+        return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }
 }

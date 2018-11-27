@@ -90,7 +90,7 @@ public class ModalityRestController {
 			return new RESTResponse<Modality>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Modality>(RESTResponse.OK, "Modalidad modificada.", null);
+		return new RESTResponse<Modality>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -105,7 +105,7 @@ public class ModalityRestController {
 			return new RESTResponse<Modality>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Modality>(RESTResponse.OK, "Modalidad modificado.", null);
+		return new RESTResponse<Modality>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -120,6 +120,6 @@ public class ModalityRestController {
 			return new RESTResponse<Modality>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Modality>(RESTResponse.OK, "Modalidad modificada.", null);
+		return new RESTResponse<Modality>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

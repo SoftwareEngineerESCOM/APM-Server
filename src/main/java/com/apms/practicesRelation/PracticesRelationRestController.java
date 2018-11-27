@@ -93,7 +93,7 @@ public class PracticesRelationRestController {
 			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Relacion de practicas modificado.", null);
+		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -108,7 +108,7 @@ public class PracticesRelationRestController {
 			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Relacion de practicas modificado.", null);
+		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -123,6 +123,6 @@ public class PracticesRelationRestController {
 			return new RESTResponse<PracticesRelation>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Relacion de practicas modificado.", null);
+		return new RESTResponse<PracticesRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

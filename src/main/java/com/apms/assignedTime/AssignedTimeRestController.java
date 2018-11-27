@@ -92,7 +92,7 @@ public class AssignedTimeRestController {
 			return new RESTResponse<AssignedTime>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Tiempo asignado modificado.", null);
+		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class AssignedTimeRestController {
 			return new RESTResponse<AssignedTime>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Tiempo asignado modificado.", null);
+		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class AssignedTimeRestController {
 			return new RESTResponse<AssignedTime>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Tiempo asignado modificado.", null);
+		return new RESTResponse<AssignedTime>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

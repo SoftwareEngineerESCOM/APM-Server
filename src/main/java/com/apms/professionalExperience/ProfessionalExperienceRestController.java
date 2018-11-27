@@ -96,7 +96,7 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Experiencia profesional modificada.", null);
+		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -112,7 +112,7 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Experiencia profesional modificada.", null);
+		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -127,6 +127,6 @@ public class ProfessionalExperienceRestController {
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Experiencia profesional modificada.", null);
+		return new RESTResponse<ProfessionalExperience>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }
