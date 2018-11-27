@@ -69,13 +69,14 @@ public class BibliographyRestController {
 	@PostMapping
 	public RESTResponse<Bibliography> post(@RequestBody RESTRequest<Bibliography> bibliography) {
 		try {
-			if(bibliographyService.getOne(bibliography.getPayload().getISBN()) != null)
-                return new RESTResponse<Bibliography>(RESTResponse.FAIL, "La bibliografia ya existe en el sistema.", null);
+			Bibliography biblio = bibliographyService.getOne(bibliography.getPayload().getISBN());
+			if(biblio != null)
+                return new RESTResponse<Bibliography>(RESTResponse.FAIL, "El libro con el ISBN " + biblio.getISBN().toString() + " ya existe.", null);
 			bibliographyService.add(bibliography.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Bibliography>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -120,7 +121,7 @@ public class BibliographyRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Bibliography>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}

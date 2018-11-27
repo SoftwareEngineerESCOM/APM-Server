@@ -76,12 +76,12 @@ public class LearningUnitRestController {
 			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
 					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"Unidad de Aprendizaje ya existe en el sistema.", null);
+						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
 			learningUnitService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
+					null);
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -126,8 +126,8 @@ public class LearningUnitRestController {
 			learningUnitService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
+					null);
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}

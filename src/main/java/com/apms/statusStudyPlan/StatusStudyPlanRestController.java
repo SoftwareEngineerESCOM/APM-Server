@@ -76,7 +76,7 @@ public class StatusStudyPlanRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<StatusStudyPlan>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<StatusStudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -121,7 +121,7 @@ public class StatusStudyPlanRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<StatusStudyPlan>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<StatusStudyPlan>(RESTResponse.OK, "StatusStudyPlan modificado.", null);
 	}
