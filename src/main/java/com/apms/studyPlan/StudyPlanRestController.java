@@ -66,22 +66,18 @@ public class StudyPlanRestController {
 	 */
 	@PostMapping
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-		Double sum = studyPlan.getPayload().getTotalPracticeHours() + studyPlan.getPayload().getTotalTheoryHours();
-		if (350 > sum && sum > 450) {
-			try {
-				if (studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
-					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
-							null);
-				studyPlanService.add(studyPlan.getPayload());
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-						"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
-			}
-			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-		} else {
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Pendientes", null);
+		try {
+			if (studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
+				return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
+						null);
+			studyPlanService.add(studyPlan.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+
 	}
 
 	/*

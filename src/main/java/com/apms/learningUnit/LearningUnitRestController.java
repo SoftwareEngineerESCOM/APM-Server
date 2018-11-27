@@ -44,8 +44,7 @@ public class LearningUnitRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -72,49 +71,61 @@ public class LearningUnitRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-		try {
-			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(learningUnit.getPayload().getName(),
-					learningUnit.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
+	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> req) {
+		if (req.getPayload().getTEPICCredits() >= 350 && req.getPayload().getTEPICCredits() <= 450) {
+			try {
+				if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
+						req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
+					return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+							"Unidad de Aprendizaje ya existe en el sistema.", null);
+				learningUnitService.add(req.getPayload());
+			} catch (Exception e) {
+				e.printStackTrace();
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"Unidad de Aprendizaje ya existe en el sistema.", null);
-			learningUnitService.add(learningUnit.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+						"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			}
+			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+		} else {
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage partially.
 	 */
 	@PatchMapping
-	public RESTResponse<LearningUnit> patch(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-		try {
-			learningUnitService.update(learningUnit.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+	public RESTResponse<LearningUnit> patch(@RequestBody RESTRequest<LearningUnit> req) {
+		if (req.getPayload().getTEPICCredits() >= 350 && req.getPayload().getTEPICCredits() <= 450) {
+			try {
+				learningUnitService.update(req.getPayload());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+			}
+			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
+		} else {
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PutMapping
-	public RESTResponse<LearningUnit> put(@RequestBody RESTRequest<LearningUnit> learningUnit) {
-		try {
-			learningUnitService.update(learningUnit.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+	public RESTResponse<LearningUnit> put(@RequestBody RESTRequest<LearningUnit> req) {
+		if (req.getPayload().getTEPICCredits() >= 350 && req.getPayload().getTEPICCredits() <= 450) {
+			try {
+				learningUnitService.update(req.getPayload());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+			}
+			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
+		} else {
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
 	}
 
 	/*
@@ -142,13 +153,11 @@ public class LearningUnitRestController {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
-		// if (!res.isEmpty()) {
+		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
-		// } 
-		// else {
-		// 	return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
-		// 			"Servicios no disponibles.", null);
-		// }
+		} else {
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
+		}
 	}
 
 	@GetMapping("/learningUnitByNameAndSemesterId/{name}/{id}")
@@ -165,8 +174,7 @@ public class LearningUnitRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -184,8 +192,7 @@ public class LearningUnitRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
