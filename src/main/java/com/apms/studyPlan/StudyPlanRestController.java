@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
-import com.apms.rest.RESTResponse;
-
 import com.apms.academicProgram.AcademicProgram;
 import com.apms.academicProgram.AcademicProgramService;
+import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTResponse;
 import com.apms.semester.Semester;
 import com.apms.semester.SemesterService;
-import com.apms.learningUnit.LearningUnit;
-import com.apms.learningUnit.LearningUnitService;
 
 @RestController
 @RequestMapping("/studyPlan")
@@ -35,9 +32,6 @@ public class StudyPlanRestController {
 
 	@Autowired
 	private SemesterService semesterService;
-
-	@Autowired
-	private LearningUnitService learningUnitService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -81,49 +75,60 @@ public class StudyPlanRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-		try {
-			if (studyPlanService.getOne(studyPlan.getPayload().getId()) != null)
-				return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
-						null);
-			studyPlanService.add(studyPlan.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> req) {
+		if (req.getPayload().getTotalTEPICCredits() >= 350 && req.getPayload().getTotalTEPICCredits() <= 450) {
+			try {
+				if (studyPlanService.getOne(req.getPayload().getId()) != null)
+					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
+							null);
+				studyPlanService.add(req.getPayload());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+						"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			}
+			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+		} else {
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-		
 	}
 
 	/*
 	 ** Update the specified resource in storage partially.
 	 */
 	@PatchMapping
-	public RESTResponse<StudyPlan> patch(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-		try {
-			studyPlanService.update(studyPlan.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+	public RESTResponse<StudyPlan> patch(@RequestBody RESTRequest<StudyPlan> req) {
+		if (req.getPayload().getTotalTEPICCredits() >= 350 && req.getPayload().getTotalTEPICCredits() <= 450) {
+			try {
+				studyPlanService.update(req.getPayload());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+			}
+			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+		} else {
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
 	 ** Update the specified resource in storage.
 	 */
 	@PutMapping
-	public RESTResponse<StudyPlan> put(@RequestBody RESTRequest<StudyPlan> studyPlan) {
-		try {
-			studyPlanService.update(studyPlan.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+	public RESTResponse<StudyPlan> put(@RequestBody RESTRequest<StudyPlan> req) {
+		if (req.getPayload().getTotalTEPICCredits() >= 350 && req.getPayload().getTotalTEPICCredits() <= 450) {
+			try {
+				studyPlanService.update(req.getPayload());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
+						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+			}
+			return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+		} else {
+			return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -156,7 +161,8 @@ public class StudyPlanRestController {
 				aux = studyPlanService.getStudyPlansByAcademicProgramId(id);
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new RESTResponse<List<StudyPlan>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+				return new RESTResponse<List<StudyPlan>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+						null);
 			}
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", aux);
@@ -186,11 +192,11 @@ public class StudyPlanRestController {
 			aux.setTotalPracticeHours(res.getTotalPracticeHours());
 			aux.setModality(res.getModality());
 			aux.setAcademicProgram(res.getAcademicProgram());
-			try{
+			try {
 				studyPlanService.add(aux);
 				List<Semester> auxSemester = semesterService.getSemestersByStudyPlanId(res.getId());
 				studyPlanService.setSemestersToCopy(res.getId(), aux.getId());
-				auxSemester.forEach(semester->{
+				auxSemester.forEach(semester -> {
 					studyPlanService.setLearningUnitsToCopy(res.getId(), aux.getId(), semester.getSemesterNumber());
 				});
 			} catch (Exception e) {
