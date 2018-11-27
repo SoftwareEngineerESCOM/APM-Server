@@ -19,6 +19,7 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 import com.apms.semester.Semester;
 import com.apms.semester.SemesterService;
+import com.apms.statusStudyPlan.StatusStudyPlanService;
 
 @RestController
 @RequestMapping("/studyPlan")
@@ -32,6 +33,9 @@ public class StudyPlanRestController {
 
 	@Autowired
 	private SemesterService semesterService;
+
+	@Autowired
+	private StatusStudyPlanService statusStudyPlanService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -72,7 +76,7 @@ public class StudyPlanRestController {
 	}
 
 	/*
-	 ** Store a newly created resource in storage.
+	 ** Store a newly created resource in storage. Estado de creacion
 	 */
 	@PostMapping
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> req) {
@@ -81,6 +85,7 @@ public class StudyPlanRestController {
 				if (studyPlanService.getOne(req.getPayload().getId()) != null)
 					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
 							null);
+				req.getPayload().setStatusStudyPlan(statusStudyPlanService.getOne(1));
 				studyPlanService.add(req.getPayload());
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -174,6 +179,8 @@ public class StudyPlanRestController {
 		}
 	}
 
+	// Redisenio
+
 	@GetMapping("/createCopy/{id}")
 	public RESTResponse<StudyPlan> createCopy(@PathVariable Integer id) {
 		StudyPlan res;
@@ -192,6 +199,7 @@ public class StudyPlanRestController {
 			aux.setTotalPracticeHours(res.getTotalPracticeHours());
 			aux.setModality(res.getModality());
 			aux.setAcademicProgram(res.getAcademicProgram());
+			aux.setStatusStudyPlan(statusStudyPlanService.getOne(2));
 			try {
 				studyPlanService.add(aux);
 				List<Semester> auxSemester = semesterService.getSemestersByStudyPlanId(res.getId());

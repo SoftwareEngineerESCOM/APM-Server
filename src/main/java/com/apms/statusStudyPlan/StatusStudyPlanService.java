@@ -9,29 +9,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatusStudyPlanService {
 
-    @Autowired
-    private StatusStudyPlanRepository statusStudyPlanRepository;
+	@Autowired
+	private StatusStudyPlanRepository statusStudyPlanRepository;
 
-    public List<StatusStudyPlan> getAll() {
-        List<StatusStudyPlan> records = new ArrayList<>();
-        statusStudyPlanRepository.findAll().forEach(records::add);
-        return records;
-    }
+	public List<StatusStudyPlan> getAll() {
+		List<StatusStudyPlan> records = new ArrayList<>();
+		statusStudyPlanRepository.findAll().forEach(records::add);
+		return records;
+	}
 
-    public StatusStudyPlan getOne(Integer id) {
-	return statusStudyPlanRepository.findById(id).isPresent() ? statusStudyPlanRepository.findById(id).get() : null;
-    }
+	public StatusStudyPlan getOne(Integer id) {
+		return statusStudyPlanRepository.findById(id).isPresent() ? statusStudyPlanRepository.findById(id).get() : null;
+	}
 
-    public void add(StatusStudyPlan statusStudyPlan) {
-        statusStudyPlanRepository.save(statusStudyPlan);
-    }
+	public void add(StatusStudyPlan statusStudyPlan) {
+		statusStudyPlanRepository.save(statusStudyPlan);
+	}
 
-    public void update(StatusStudyPlan statusStudyPlan) {
-        // if exists updates otherwise inserts
-        statusStudyPlanRepository.save(statusStudyPlan);
-    }
+	public void update(StatusStudyPlan statusStudyPlan) {
+		// if exists updates otherwise inserts
+		statusStudyPlanRepository.save(statusStudyPlan);
+	}
 
-    public void delete(Integer id) {
-        statusStudyPlanRepository.deleteById(id);
-    }
+	public void delete(Integer id) {
+		statusStudyPlanRepository.deleteById(id);
+	}
 }
