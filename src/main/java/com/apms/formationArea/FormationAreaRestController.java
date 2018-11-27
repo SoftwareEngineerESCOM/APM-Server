@@ -72,7 +72,7 @@ public class FormationAreaRestController {
             formationAreaService.add(formationArea.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
-            return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+            return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<FormationArea>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
     }
@@ -114,7 +114,7 @@ public class FormationAreaRestController {
             formationAreaService.delete(id);
         } catch (Exception e) {
             e.printStackTrace();
-            return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+            return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<FormationArea>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }

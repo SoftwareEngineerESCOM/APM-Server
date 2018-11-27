@@ -72,7 +72,7 @@ public class BibliographyRelationRestController {
             bibliographyRelationService.add(bibliographyRelation.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
-            return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+            return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
     }
@@ -114,7 +114,7 @@ public class BibliographyRelationRestController {
             bibliographyRelationService.delete(id);
         } catch (Exception e) {
             e.printStackTrace();
-            return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+            return new RESTResponse<BibliographyRelation>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<BibliographyRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }

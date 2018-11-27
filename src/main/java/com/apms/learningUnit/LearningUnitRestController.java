@@ -72,22 +72,18 @@ public class LearningUnitRestController {
 	 */
 	@PostMapping
 	public RESTResponse<LearningUnit> post(@RequestBody RESTRequest<LearningUnit> req) {
-		if (req.getPayload().getTEPICCredits() >= 350 && req.getPayload().getTEPICCredits() <= 450) {
-			try {
-				if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
-						req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
-					return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-							"Unidad de Aprendizaje ya existe en el sistema.", null);
-				learningUnitService.add(req.getPayload());
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
+					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
-			}
-			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-		} else {
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
+						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
+			learningUnitService.add(req.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
+					null);
 		}
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
 
 	/*
@@ -95,18 +91,15 @@ public class LearningUnitRestController {
 	 */
 	@PatchMapping
 	public RESTResponse<LearningUnit> patch(@RequestBody RESTRequest<LearningUnit> req) {
-		if (req.getPayload().getTEPICCredits() >= 350 && req.getPayload().getTEPICCredits() <= 450) {
-			try {
-				learningUnitService.update(req.getPayload());
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
-			}
-			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-		} else {
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
+		try {
+			learningUnitService.update(req.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+
 	}
 
 	/*
@@ -114,18 +107,14 @@ public class LearningUnitRestController {
 	 */
 	@PutMapping
 	public RESTResponse<LearningUnit> put(@RequestBody RESTRequest<LearningUnit> req) {
-		if (req.getPayload().getTEPICCredits() >= 350 && req.getPayload().getTEPICCredits() <= 450) {
-			try {
-				learningUnitService.update(req.getPayload());
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
-			}
-			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-		} else {
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
+		try {
+			learningUnitService.update(req.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -137,8 +126,8 @@ public class LearningUnitRestController {
 			learningUnitService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
+					null);
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
@@ -150,7 +139,8 @@ public class LearningUnitRestController {
 			res = semesterService.getOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					null);
 		}
 		if (res != null) {
 			List<LearningUnit> aux;
@@ -158,12 +148,14 @@ public class LearningUnitRestController {
 				aux = learningUnitService.getLearningUnitsBySemesterId(id);
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+				return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+						null);
 			}
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<LearningUnit>>(RESTResponse.OK, "El semestre no cuenta con unidades de aprendizaje.", aux);
+				return new RESTResponse<List<LearningUnit>>(RESTResponse.OK,
+						"El semestre no cuenta con unidades de aprendizaje.", aux);
 			}
 		} else {
 			return new RESTResponse<List<LearningUnit>>(RESTResponse.FAIL, "Semestre no registrado.", null);

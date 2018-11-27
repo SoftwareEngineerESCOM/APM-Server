@@ -74,7 +74,7 @@ public class SubtopicRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Subtopic>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Subtopic>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -119,7 +119,7 @@ public class SubtopicRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Subtopic>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Subtopic>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}

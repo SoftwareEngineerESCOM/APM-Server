@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
@@ -22,6 +24,9 @@ public class SemesterRestController {
 
 	@Autowired
 	private SemesterService semesterService;
+
+	@Autowired
+	private LearningUnitService learningUnitService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -38,8 +43,7 @@ public class SemesterRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Semester>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<Semester>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<Semester>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -70,24 +74,29 @@ public class SemesterRestController {
 		try {
 			if (semesterService.getOne(semester.getPayload().getId()) != null)
 				return new RESTResponse<Semester>(RESTResponse.FAIL, "El semestre ya existe en el sistema.", null);
-			Semester aux = semesterService.getMaxSemesterNumberByStudyPlanId(semester.getPayload().getStudyPlan().getId());
+			Semester aux = semesterService
+					.getMaxSemesterNumberByStudyPlanId(semester.getPayload().getStudyPlan().getId());
 			if (aux != null) {
 				String sAcademicProgram = semester.getPayload().getStudyPlan().getAcademicProgram().getName();
-				if (sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Homeópata") || sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Partero")) {
+				if (sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Homeópata")
+						|| sAcademicProgram.equalsIgnoreCase("Médico Cirujano y Partero")) {
 					if (aux.getSemesterNumber() == 14) {
-						return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+						return new RESTResponse<Semester>(RESTResponse.FAIL,
+								"Se alcanzó el número máximo de semestres.", null);
 					}
-				}else if(aux.getSemesterNumber() == 8){
-					return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.", null);
+				} else if (aux.getSemesterNumber() == 8) {
+					return new RESTResponse<Semester>(RESTResponse.FAIL, "Se alcanzó el número máximo de semestres.",
+							null);
 				}
 				semester.getPayload().setSemesterNumber(aux.getSemesterNumber() + 1);
-			}else{
+			} else {
 				semester.getPayload().setSemesterNumber(1);
 			}
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<Semester>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+			return new RESTResponse<Semester>(RESTResponse.FAIL,
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Semester>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -127,12 +136,19 @@ public class SemesterRestController {
 	 */
 	@DeleteMapping("/{id}")
 	public RESTResponse<Semester> delete(@PathVariable Integer id) {
+		List<LearningUnit> learningUnits;
 		try {
-			semesterService.delete(id);
+			learningUnits = learningUnitService.getLearningUnitsBySemesterId(id);
+			if (learningUnits.isEmpty()) {
+				semesterService.delete(id);
+			} else {
+				return new RESTResponse<Semester>(RESTResponse.FAIL,
+						"El semestre no se puede eliminar debido a que contiene unidades de aprendizaje.", null);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Semester>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
@@ -145,7 +161,7 @@ public class SemesterRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<List<Semester>>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Semester>>(RESTResponse.OK, "", res);

@@ -73,7 +73,7 @@ public class TypeRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Type>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Type>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -118,7 +118,7 @@ public class TypeRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Type>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Type>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}

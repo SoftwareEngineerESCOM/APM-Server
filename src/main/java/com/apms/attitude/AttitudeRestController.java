@@ -74,7 +74,7 @@ public class AttitudeRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Attitude>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Attitude>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -119,7 +119,7 @@ public class AttitudeRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Attitude>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<Attitude>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}

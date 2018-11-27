@@ -79,7 +79,7 @@ public class UserRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<User>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -134,7 +134,7 @@ public class UserRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
-					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
+					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<User>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
@@ -194,7 +194,7 @@ public class UserRestController {
 		if (res != null) {
 			return new RESTResponse<User>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL, "El correo ingresado no se encuentra registrado en el sistema.", null);
 		}
 	}
 
@@ -286,7 +286,7 @@ public class UserRestController {
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<User>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+				return new RESTResponse<List<User>>(RESTResponse.FAIL, "No hay usuarios registrados con ese cargo.", null);
 			}
 		} else {
 			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);
