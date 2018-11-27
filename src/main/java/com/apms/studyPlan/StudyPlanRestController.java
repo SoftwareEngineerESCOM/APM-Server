@@ -127,6 +127,6 @@ public class StudyPlanRestController {
 
 	@GetMapping("/studyPlansByAcademicProgramId/{id}")
 	public RESTResponse<List<StudyPlan>> getStudyPlansByAcademicProgramId(@PathVariable Integer id) {
-		return new RESTResponse<List<StudyPlan>>(1, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
+		return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", studyPlanService.getStudyPlansByAcademicProgramId(id));
 	}
 }
