@@ -92,7 +92,7 @@ public class SchoolingGradeRestController {
 			return new RESTResponse<SchoolingGrade>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SchoolingGrade>(RESTResponse.OK, "Grado de estudio modificado.", null);
+		return new RESTResponse<SchoolingGrade>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class SchoolingGradeRestController {
 			return new RESTResponse<SchoolingGrade>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SchoolingGrade>(RESTResponse.OK, "Grado de estudio modificado.", null);
+		return new RESTResponse<SchoolingGrade>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -122,6 +122,6 @@ public class SchoolingGradeRestController {
 			return new RESTResponse<SchoolingGrade>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<SchoolingGrade>(RESTResponse.OK, "Grado de estudio modificado.", null);
+		return new RESTResponse<SchoolingGrade>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

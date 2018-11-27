@@ -91,7 +91,7 @@ public class BinnacleRestController {
 			return new RESTResponse<Binnacle>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Binnacle>(RESTResponse.OK, "Bitácora modificada.", null);
+		return new RESTResponse<Binnacle>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class BinnacleRestController {
 			return new RESTResponse<Binnacle>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Binnacle>(RESTResponse.OK, "Bitácora modificada.", null);
+		return new RESTResponse<Binnacle>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -121,6 +121,6 @@ public class BinnacleRestController {
 			return new RESTResponse<Binnacle>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Binnacle>(RESTResponse.OK, "Bitácora modificada.", null);	
+		return new RESTResponse<Binnacle>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);	
 	}
 }

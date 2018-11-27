@@ -103,7 +103,7 @@ public class LearningUnitRestController {
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 			}
-			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
+			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 		} else {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
@@ -122,7 +122,7 @@ public class LearningUnitRestController {
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 						"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 			}
-			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
+			return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 		} else {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Creditos TEPIC fuera de rango.", null);
 		}
@@ -140,7 +140,7 @@ public class LearningUnitRestController {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/learningUnitsBySemesterId/{id}")
@@ -211,6 +211,6 @@ public class LearningUnitRestController {
 			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Unidad de aprendizaje modificada.", null);
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }

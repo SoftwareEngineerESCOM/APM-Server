@@ -91,7 +91,7 @@ public class CountryRestController {
 			return new RESTResponse<Country>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Country>(RESTResponse.OK, "Pais modificado.", null);
+		return new RESTResponse<Country>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -106,7 +106,7 @@ public class CountryRestController {
 			return new RESTResponse<Country>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<Country>(RESTResponse.OK, "Pais modificado.", null);
+		return new RESTResponse<Country>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*

@@ -92,7 +92,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -107,7 +107,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	/*
@@ -122,7 +122,7 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.FAIL,
 					"Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
 		}
-		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Plan de estudio modificado.", null);
+		return new RESTResponse<StudyPlan>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 
 	@GetMapping("/studyPlansByAcademicProgramId/{id}")
