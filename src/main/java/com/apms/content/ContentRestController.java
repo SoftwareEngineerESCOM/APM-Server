@@ -123,7 +123,7 @@ public class ContentRestController {
 		}
 		return new RESTResponse<Content>(RESTResponse.OK, "Contenido modificado.", null);
 	}
-
+	
 	@PostMapping("/saveAll")
 	public RESTResponse<List<Content>> saveAll(@RequestBody RESTRequest<List<Content>> req) {
 		try {

@@ -3,13 +3,11 @@ package com.apms.evaluationAccreditationUA;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 import com.apms.accreditationType.AccreditationType;
@@ -27,15 +25,21 @@ public class EvaluationAccreditationUA {
 	private Integer id;
 	
 	@ManyToMany
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private List<AccreditationType> accreditationType;
 	
 	@OneToMany
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private List<EvaluationUA> evaluationUA;
 	
 	
 	public EvaluationAccreditationUA() {
 
+	}
+
+	public EvaluationAccreditationUA(int id, List<AccreditationType> accreditationtype, List<EvaluationUA> evaluationUA) {
+		this.id = id;
+		this.evaluationUA = evaluationUA;
+		this.accreditationType = accreditationtype;
 	}
 }

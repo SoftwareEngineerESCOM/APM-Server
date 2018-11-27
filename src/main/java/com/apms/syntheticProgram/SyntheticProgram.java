@@ -31,18 +31,29 @@ public class SyntheticProgram {
 	private String didacticOrientation;
 
 	@OneToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private LearningUnit learningUnit;
 
 	@OneToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private EvaluationAccreditationUA evaluationAccreditationUA;
 	
 	@OneToMany
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private List<Content> content;
 
 	public SyntheticProgram() {
 
 	}
+
+	public SyntheticProgram(String regard, String didacticOrientation, LearningUnit learningUnit,
+			EvaluationAccreditationUA evaluationAccreditationUA, List<Content> content) {
+		super();
+		this.regard = regard;
+		this.didacticOrientation = didacticOrientation;
+		this.learningUnit = learningUnit;
+		this.evaluationAccreditationUA = evaluationAccreditationUA;
+		this.content = content;
+	}
+
 }

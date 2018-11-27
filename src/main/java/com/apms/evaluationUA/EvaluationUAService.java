@@ -22,13 +22,13 @@ public class EvaluationUAService {
 		return evaluationUARepository.findById(id).isPresent() ? evaluationUARepository.findById(id).get() : null;
 	}
 
-	public void add(EvaluationUA evaluationUA) {
-		evaluationUARepository.save(evaluationUA);
+	public EvaluationUA add(EvaluationUA evaluationUA) {
+		return evaluationUARepository.save(evaluationUA);
 	}
 
-	public void update(EvaluationUA evaluationUA) {
+	public EvaluationUA update(EvaluationUA evaluationUA) {
 		// if exists updates otherwise inserts
-		evaluationUARepository.save(evaluationUA);
+		return evaluationUARepository.save(evaluationUA);
 	}
 
 	public void delete(Integer id) {
