@@ -7,13 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedStoredProcedureQueries;
-import javax.persistence.NamedStoredProcedureQuery;
-import javax.persistence.StoredProcedureParameter;
-import javax.persistence.ParameterMode;
 
 import com.apms.academicProgram.AcademicProgram;
 import com.apms.modality.Modality;
+import com.apms.statusStudyPlan.StatusStudyPlan;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +41,11 @@ public class StudyPlan {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private AcademicProgram academicProgram;
+
+
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private StatusStudyPlan statusStudyPlan;
 
 	public StudyPlan() {
 
