@@ -46,4 +46,8 @@ public class StudyPlanService {
 	public void setLearningUnitsToCopy(Integer studyPlan_id, Integer new_studyPlan_id, Integer semesternumber) {
 		studyPlanRepository.setLearningUnitsToCopy(studyPlan_id, new_studyPlan_id, semesternumber);
 	}
+
+	public StudyPlan getNewStudyPlan(Integer academicProgram_id) {
+		return studyPlanRepository.getNewStudyPlan(academicProgram_id);
+	}
 }

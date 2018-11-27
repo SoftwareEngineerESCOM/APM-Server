@@ -85,6 +85,10 @@ public class StudyPlanRestController {
 				if (studyPlanService.getOne(req.getPayload().getId()) != null)
 					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
 							null);
+				StudyPlan aux = studyPlanService.getNewStudyPlan(req.getPayload().getAcademicProgram().getId());
+				if (aux != null) {
+					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Ya se encuentra un Plan de Estudios en proceso.", null);
+				}
 				req.getPayload().setStatusStudyPlan(statusStudyPlanService.getOne(1));
 				studyPlanService.add(req.getPayload());
 			} catch (Exception e) {
@@ -191,6 +195,10 @@ public class StudyPlanRestController {
 			return new RESTResponse<StudyPlan>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
+			StudyPlan checkAcademicProgram = studyPlanService.getNewStudyPlan(res.getAcademicProgram().getId());
+			if (checkAcademicProgram != null) {
+				return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Ya se encuentra un Plan de Estudios en proceso.", null);
+			}
 			StudyPlan aux = new StudyPlan();
 			aux.setYear(res.getYear());
 			aux.setTotalTEPICCredits(res.getTotalTEPICCredits());
