@@ -23,7 +23,7 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private HumanResourceService humanResourceService;
 
@@ -42,8 +42,7 @@ public class UserRestController {
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<User>>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<List<User>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
+			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
 		}
 	}
 
@@ -72,14 +71,16 @@ public class UserRestController {
 	@PostMapping
 	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
 		try {
-			if(userService.getOne(user.getPayload().getId()) != null)
-                return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
-			user.getPayload().getHumanResource().setId(humanResourceService.add(user.getPayload().getHumanResource()).getId());
+			User dbUser = userService.getOne(user.getPayload().getId());
+			if (dbUser != null && userService.getByEmail(user.getPayload().getEmail()) != null) {
+				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
+			}
+			user.getPayload().getHumanResource()
+					.setId(humanResourceService.add(user.getPayload().getHumanResource()).getId());
 			userService.add(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<User>(RESTResponse.FAIL,
-					"Por el momento no se puede realizar el registro.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<User>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
@@ -90,8 +91,11 @@ public class UserRestController {
 	@PatchMapping
 	public RESTResponse<User> patch(@RequestBody RESTRequest<User> user) {
 		try {
-			humanResourceService.update(user.getPayload().getHumanResource());
-			user.getPayload().getHumanResource().setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
+			User dbUser = userService.getOne(user.getPayload().getId());
+			if (dbUser.getEmail().equals(user.getPayload().getEmail()))
+				humanResourceService.update(user.getPayload().getHumanResource());
+			user.getPayload().getHumanResource()
+					.setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
 			userService.update(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,7 +111,8 @@ public class UserRestController {
 	@PutMapping
 	public RESTResponse<User> put(@RequestBody RESTRequest<User> user) {
 		try {
-			user.getPayload().getHumanResource().setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
+			user.getPayload().getHumanResource()
+					.setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
 			userService.update(user.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -133,8 +138,7 @@ public class UserRestController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<User>(RESTResponse.FAIL,
-					"Por el momento no se puede realizar el registro.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<User>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
@@ -186,7 +190,7 @@ public class UserRestController {
 	public RESTResponse<User> userByEmail(@PathVariable String email) {
 		User res;
 		try {
-			res = userService.getOne(email);
+			res = userService.getByEmail(email);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
@@ -194,7 +198,8 @@ public class UserRestController {
 		if (res != null) {
 			return new RESTResponse<User>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<User>(RESTResponse.FAIL, "El correo ingresado no se encuentra registrado en el sistema.", null);
+			return new RESTResponse<User>(RESTResponse.FAIL,
+					"El correo ingresado no se encuentra registrado en el sistema.", null);
 		}
 	}
 
@@ -245,7 +250,7 @@ public class UserRestController {
 			try {
 				if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
 					aux = userService.getActiveUsersForUserForDES(id);
-				}else{
+				} else {
 					aux = userService.getActiveUsersForUser(id, res.getHumanResource().getWorkplace().getId());
 				}
 			} catch (Exception e) {
@@ -255,7 +260,8 @@ public class UserRestController {
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<User>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.", null);
+				return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.",
+						null);
 			}
 		} else {
 			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);
@@ -276,8 +282,9 @@ public class UserRestController {
 			try {
 				if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
 					aux = userService.getActiveUsersForUserByRoleForDES(id_role);
-				}else{
-					aux = userService.getActiveUsersForUserByRole(res.getHumanResource().getWorkplace().getId(), id_role);
+				} else {
+					aux = userService.getActiveUsersForUserByRole(res.getHumanResource().getWorkplace().getId(),
+							id_role);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -286,7 +293,8 @@ public class UserRestController {
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<User>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<User>>(RESTResponse.FAIL, "No hay usuarios registrados con ese cargo.", null);
+				return new RESTResponse<List<User>>(RESTResponse.FAIL, "No hay usuarios registrados con ese cargo.",
+						null);
 			}
 		} else {
 			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);

@@ -74,4 +74,8 @@ public class UserService {
 	public List<User> getActiveUsersForUserByRole(Integer workplace_id, Integer role_id) {
 		return userRepository.getActiveUsersForUserByRole(workplace_id, role_id);
 	}
+
+	public User getByEmail(String email) {
+		return userRepository.getByEmail(email);
+	}
 }
