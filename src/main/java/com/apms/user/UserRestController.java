@@ -91,11 +91,9 @@ public class UserRestController {
 	@PatchMapping
 	public RESTResponse<User> patch(@RequestBody RESTRequest<User> user) {
 		try {
-			User dbUser = userService.getOne(user.getPayload().getId());
-			if (dbUser != null || userService.getByEmail(user.getPayload().getEmail()) != null) {
+			if (userService.getByEmail(user.getPayload().getEmail()) != null) {
 				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
 			}
-			if (dbUser.getEmail().equals(user.getPayload().getEmail()))
 				humanResourceService.update(user.getPayload().getHumanResource());
 			user.getPayload().getHumanResource()
 					.setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
@@ -114,8 +112,7 @@ public class UserRestController {
 	@PutMapping
 	public RESTResponse<User> put(@RequestBody RESTRequest<User> user) {
 		try {
-			User dbUser = userService.getOne(user.getPayload().getId());
-			if (dbUser != null || userService.getByEmail(user.getPayload().getEmail()) != null) {
+			if (userService.getByEmail(user.getPayload().getEmail()) != null) {
 				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
 			}
 			user.getPayload().getHumanResource()
