@@ -40,7 +40,10 @@ public class AcademicProgramService {
 	}
 
 	public List<AcademicProgram> getAcademicProgramByNameAndWorkplaceId(String name, Integer workplaceId) {
-		return academicProgramRepository.getAcademicProgramByNameAndWorkplaceId(name, workplaceId);
+		String auxName = name.trim();
+		String pattern = "(\\s)(\\s+)";
+		String updated = auxName.replaceAll(pattern,"$1");
+		return academicProgramRepository.getAcademicProgramByNameAndWorkplaceId(updated, workplaceId);
 	}
 
 }
