@@ -12,7 +12,7 @@ public interface AcademicProgramRepository extends JpaRepository<AcademicProgram
 	@Query(value = "SELECT * FROM academic_program WHERE workplace_id = :id", nativeQuery = true)
 	List<AcademicProgram> getAcademicProgramsByWorkPlaceId(@Param("id") Integer id);
 
-	@Query(value = "SELECT a FROM AcademicProgram a WHERE a.name = :name AND workplace_id = :workplaceId")
+	@Query(value = "SELECT a FROM AcademicProgram a WHERE UPPER(a.name) = :name AND workplace_id = :workplaceId")
 	List<AcademicProgram> getAcademicProgramByNameAndWorkplaceId(@Param("name") String name, @Param("workplaceId") Integer id);
 	
 }
