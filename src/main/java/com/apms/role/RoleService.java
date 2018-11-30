@@ -41,6 +41,14 @@ public class RoleService {
 		return roleRepository.getRolesByUserId(id);
 	}
 
+	public List<Role> getRolesByUserIdAndWorkplaceForDES(Integer id) {
+		return roleRepository.getRolesByUserIdAndWorkplaceForDES(id);
+	}
+
+	public List<Role> getRolesByUserIdAndWorkplace(Integer id) {
+		return roleRepository.getRolesByUserIdAndWorkplace(id);
+	}
+
 	public Role getMaxRoleByUserId(Integer id) {
 		return roleRepository.getMaxRoleByUserId(id);
 	}

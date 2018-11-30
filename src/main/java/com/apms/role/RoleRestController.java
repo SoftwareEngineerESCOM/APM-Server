@@ -16,12 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
+import com.apms.user.User;
+import com.apms.user.UserService;
+import com.apms.workplace.Workplace;
+import com.apms.workplace.WorkplaceService;
+
 @RestController
 @RequestMapping("/role")
 public class RoleRestController {
 
 	@Autowired
 	private RoleService roleService;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private WorkplaceService workplaceService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -134,6 +145,28 @@ public class RoleRestController {
 		}
 		if (!res.isEmpty()) {
 			return new RESTResponse<List<Role>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Permisos insuficientes para ejecutar la operación.", null);
+		}
+	}
+
+	@GetMapping("/rolesByUserIdAndWorkplace/{userId}/{workplaceId}")
+	public RESTResponse<List<Role>> rolesByUserId(@PathVariable Integer userId, @PathVariable Integer workplaceId) {
+		Workplace res = workplaceService.getOne(workplaceId);
+		System.out.println(res.getAbbreviation());
+		List<Role> auxRoles;
+		try {
+			if (res.getAbbreviation().equalsIgnoreCase("DES")) {
+				auxRoles = roleService.getRolesByUserIdAndWorkplaceForDES(userId);
+			}else{
+				auxRoles = roleService.getRolesByUserIdAndWorkplace(userId);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Role>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!auxRoles.isEmpty()) {
+			return new RESTResponse<List<Role>>(RESTResponse.OK, "", auxRoles);
 		} else {
 			return new RESTResponse<List<Role>>(RESTResponse.FAIL, "Permisos insuficientes para ejecutar la operación.", null);
 		}
