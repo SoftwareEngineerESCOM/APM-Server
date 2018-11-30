@@ -176,7 +176,7 @@ public class StudyPlanRestController {
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<StudyPlan>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
+				return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "No se encuentran planes de estudios registrados.", null);
 			}
 		} else {
 			return new RESTResponse<List<StudyPlan>>(RESTResponse.FAIL, "Programa Académico no registrado.", null);

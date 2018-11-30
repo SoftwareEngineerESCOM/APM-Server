@@ -268,8 +268,7 @@ public class UserRestController {
 			if (!aux.isEmpty()) {
 				return new RESTResponse<List<User>>(RESTResponse.OK, "", aux);
 			} else {
-				return new RESTResponse<List<User>>(RESTResponse.FAIL, "Los cátalogos necesarios no se han cargado.",
-						null);
+				return new RESTResponse<List<User>>(RESTResponse.OK, "", null);
 			}
 		} else {
 			return new RESTResponse<List<User>>(RESTResponse.FAIL, "Usuario no registrado.", null);
