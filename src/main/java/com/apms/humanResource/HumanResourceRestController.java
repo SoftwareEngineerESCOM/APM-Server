@@ -127,13 +127,13 @@ public class HumanResourceRestController {
     @DeleteMapping("/{id}")
     public RESTResponse<HumanResource> delete(@PathVariable Integer id) {
         try {
-            List<User> users = userService.getUsersByHumanResource(id);
-            if (users.isEmpty()) {
+            //List<User> users = userService.getUsersByHumanResource(id);
+            //if (users.isEmpty()) {
                 humanResourceService.delete(id);
-            } else {
-                return new RESTResponse<HumanResource>(RESTResponse.FAIL,
-                        "Este Recurso Humano esta asociado a un Usuario por lo que no puede ser eliminado.", null);
-            }
+            //} else {
+            //    return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+            //            "Este Recurso Humano esta asociado a un Usuario por lo que no puede ser eliminado.", null);
+            //}
 
         } catch (Exception e) {
             e.printStackTrace();
