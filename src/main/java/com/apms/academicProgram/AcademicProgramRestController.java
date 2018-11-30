@@ -20,118 +20,130 @@ import com.apms.rest.RESTResponse;
 @RequestMapping("/academicProgram")
 public class AcademicProgramRestController {
 
-	@Autowired
-	private AcademicProgramService academicProgramService;
+    @Autowired
+    private AcademicProgramService academicProgramService;
 
-	/*
-	 ** Return a listing of all the resources
-	 */
-	@GetMapping
-	public RESTResponse<List<AcademicProgram>> getAll() {
-		List<AcademicProgram> res;
-		try {
-			res = academicProgramService.getAll();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<List<AcademicProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-					null);
-		}
-		if (!res.isEmpty()) {
-			return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<List<AcademicProgram>>(RESTResponse.FAIL,
-					"Servicios no disponibles.", null);
-		}
-	}
+    /*
+     ** Return a listing of all the resources
+     */
+    @GetMapping
+    public RESTResponse<List<AcademicProgram>> getAll() {
+        List<AcademicProgram> res;
+        try {
+            res = academicProgramService.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<List<AcademicProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+                    null);
+        }
+        if (!res.isEmpty()) {
+            return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "", res);
+        } else {
+            return new RESTResponse<List<AcademicProgram>>(RESTResponse.FAIL,
+                    "Servicios no disponibles.", null);
+        }
+    }
 
-	/*
-	 ** Return one resource
-	 */
-	@GetMapping("/{id}")
-	public RESTResponse<AcademicProgram> getOne(@PathVariable Integer id) {
-		AcademicProgram res;
-		try {
-			res = academicProgramService.getOne(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<AcademicProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
-		}
-		if (res != null) {
-			return new RESTResponse<AcademicProgram>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Programa academico no registrado.", null);
-		}
-	}
+    /*
+     ** Return one resource
+     */
+    @GetMapping("/{id}")
+    public RESTResponse<AcademicProgram> getOne(@PathVariable Integer id) {
+        AcademicProgram res;
+        try {
+            res = academicProgramService.getOne(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<AcademicProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+        }
+        if (res != null) {
+            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "", res);
+        } else {
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Programa academico no registrado.", null);
+        }
+    }
 
-	/*
-	 ** Store a newly created resource in storage.
-	 */
-	@PostMapping
-	public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
-		try {
-			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
-                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
-			academicProgramService.add(academicProgram.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-					"Por el momento no se puede realizar el registro.", null);
-		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-	}
+    /*
+     ** Store a newly created resource in storage.
+     */
+    @PostMapping
+    public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> req) {
+        if (req.getToken().equals("4")) {
+            try {
+                if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
+                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
+                academicProgramService.add(req.getPayload());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                        "Por el momento no se puede realizar el registro.", null);
+            }
+            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        } else {
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+        }
+    }
 
-	/*
-	 ** Update the specified resource in storage partially.
-	 */
-	@PatchMapping
-	public RESTResponse<AcademicProgram> patch(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
-		try {
-			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
-				return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
-			academicProgramService.update(academicProgram.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
-		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-	}
+    /*
+     ** Update the specified resource in storage partially.
+     */
+    @PatchMapping
+    public RESTResponse<AcademicProgram> patch(@RequestBody RESTRequest<AcademicProgram> req) {
+        if (req.getToken().equals("4")) {
+            try {
+                if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
+                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
+                academicProgramService.update(req.getPayload());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                        "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+            }
+            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+        } else {
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+        }
+    }
 
-	/*
-	 ** Update the specified resource in storage.
-	 */
-	@PutMapping
-	public RESTResponse<AcademicProgram> put(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
-		try {
-			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
-				return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
-			academicProgramService.update(academicProgram.getPayload());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
-		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-	}
+    /*
+     ** Update the specified resource in storage.
+     */
+    @PutMapping
+    public RESTResponse<AcademicProgram> put(@RequestBody RESTRequest<AcademicProgram> req) {
+        if (req.getToken().equals("4")) {
+            try {
+                if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
+                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
+                academicProgramService.update(req.getPayload());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                        "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+            }
+            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+        } else {
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+        }
+    }
 
-	/*
-	 ** Remove the specified resource from storage.
-	 */
-	@DeleteMapping("/{id}")
-	public RESTResponse<AcademicProgram> delete(@PathVariable Integer id) {
-		try {
-			academicProgramService.delete(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-					"Por el momento no se puede realizar el registro.", null);
-		}
-		return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-	}
+    /*
+     ** Remove the specified resource from storage.
+     */
+    @DeleteMapping("/{id}")
+    public RESTResponse<AcademicProgram> delete(@PathVariable Integer id) {
+        try {
+            academicProgramService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                    "Por el momento no se puede realizar el registro.", null);
+        }
+        return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+    }
 
-	@GetMapping("/academicProgramsByWorkPlaceId/{id}")
-	public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
-		return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "",
-				academicProgramService.getAcademicProgramsByWorkPlaceId(id));
-	}
+    @GetMapping("/academicProgramsByWorkPlaceId/{id}")
+    public RESTResponse<List<AcademicProgram>> getAcademicProgramsByWorkPlaceId(@PathVariable Integer id) {
+        return new RESTResponse<List<AcademicProgram>>(RESTResponse.OK, "",
+                academicProgramService.getAcademicProgramsByWorkPlaceId(id));
+    }
 }
