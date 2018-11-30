@@ -78,4 +78,8 @@ public class UserService {
 	public User getByEmail(String email) {
 		return userRepository.getByEmail(email);
 	}
+	public List<User> getHumanResource(int id) {
+		System.out.println(id);
+		return userRepository.getHumanResource(id);
+	}
 }

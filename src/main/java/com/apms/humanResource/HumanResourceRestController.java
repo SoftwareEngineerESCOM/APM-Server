@@ -15,18 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import com.apms.user.UserService;
 
 @RestController
 @RequestMapping("/humanResource")
 public class HumanResourceRestController {
 
+<<<<<<<HEAD
     @Autowired
     private HumanResourceService humanResourceService;
+=======
+    @Autowired
+    private HumanResourceService humanResourceService;
+    @Autowired
+    private UserService userService;
+>>>>>>>8ce57f2ca204728ad71503dab62c28110a6c23df
 
     /*
      ** Return a listing of all the resources
      */
     @GetMapping
+
     public RESTResponse<List<HumanResource>> getAll() {
         List<HumanResource> res;
         try {
@@ -111,13 +120,21 @@ public class HumanResourceRestController {
         return new RESTResponse<HumanResource>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }
 
+
     /*
      ** Remove the specified resource from storage.
      */
     @DeleteMapping("/{id}")
     public RESTResponse<HumanResource> delete(@PathVariable Integer id) {
         try {
-            humanResourceService.delete(id);
+            List<User> users = userService.getUsersByHumanResource(id);
+            if (users.isEmpty()) {
+                humanResourceService.delete(id);
+            } else {
+                return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+                        "Este Recurso Humano esta asociado a un Usuario por lo que no puede ser eliminado.", null);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<HumanResource>(RESTResponse.FAIL,
