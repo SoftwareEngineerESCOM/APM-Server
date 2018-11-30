@@ -150,7 +150,7 @@ public class RoleRestController {
 		}
 	}
 
-	@GetMapping("/rolesByUserIdAndWorkplace/{userId}/{workplaceId}")
+	@GetMapping("/rolesByUserIdAndWorkplaceId/{userId}/{workplaceId}")
 	public RESTResponse<List<Role>> rolesByUserId(@PathVariable Integer userId, @PathVariable Integer workplaceId) {
 		Workplace res = workplaceService.getOne(workplaceId);
 		System.out.println(res.getAbbreviation());
