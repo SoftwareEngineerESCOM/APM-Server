@@ -73,7 +73,7 @@ public class UserRestController {
 		try {
 			User dbUser = userService.getOne(user.getPayload().getId());
 			if (dbUser != null || userService.getByEmail(user.getPayload().getEmail()) != null) {
-				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
+				return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
 			}
 			user.getPayload().getHumanResource()
 					.setId(humanResourceService.add(user.getPayload().getHumanResource()).getId());
@@ -92,7 +92,7 @@ public class UserRestController {
 	public RESTResponse<User> patch(@RequestBody RESTRequest<User> user) {
 		try {
 			if (userService.getByEmail(user.getPayload().getEmail()) != null) {
-				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
+				return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
 			}
 				humanResourceService.update(user.getPayload().getHumanResource());
 			user.getPayload().getHumanResource()
@@ -113,7 +113,7 @@ public class UserRestController {
 	public RESTResponse<User> put(@RequestBody RESTRequest<User> user) {
 		try {
 			if (userService.getByEmail(user.getPayload().getEmail()) != null) {
-				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario ya existe en el sistema.", null);
+				return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
 			}
 			user.getPayload().getHumanResource()
 					.setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());

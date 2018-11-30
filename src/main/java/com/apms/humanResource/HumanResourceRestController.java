@@ -117,6 +117,7 @@ public class HumanResourceRestController {
 	@DeleteMapping("/{id}")
 	public RESTResponse<HumanResource> delete(@PathVariable Integer id) {
 		try {
+
 			humanResourceService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
