@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface WorkplaceRepository extends JpaRepository<Workplace, Integer> {
 	// Recibo idUsuario
 	@Query(value = "SELECT * FROM workplace WHERE workplace_type_id = (SELECT id FROM workplace_type WHERE abbreviation = 'U.A.')", nativeQuery = true)
-	List<Workplace> getWorkplacesForUserForDES(@Param("id") Integer id);
+	List<Workplace> getAcademicUnits();
 }

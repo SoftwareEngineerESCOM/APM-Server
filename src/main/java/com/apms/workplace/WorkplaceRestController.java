@@ -167,4 +167,37 @@ public class WorkplaceRestController {
 			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Usuario no registrado.", null);
 		}
 	}
+
+	@GetMapping("/academicUnits/{id}")
+	public RESTResponse<List<Workplace>> academicUnits(@PathVariable Integer id) {
+		User res;
+		try {
+			res = userService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			List<Workplace> aux;
+			try {
+				Role userRole = roleService.getMaxRoleByUserId(res.getId());
+				if (userRole.getRank() > 4) {
+					aux = workplaceService.getAcademicUnits();
+				}else{
+					aux = new ArrayList<Workplace>();
+					aux.add(res.getHumanResource().getWorkplace());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<Workplace>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Servicios no disponibles.", null);
+			}
+		} else {
+			return new RESTResponse<List<Workplace>>(RESTResponse.FAIL, "Usuario no registrado.", null);
+		}
+	}
 }

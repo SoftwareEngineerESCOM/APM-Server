@@ -35,7 +35,7 @@ public class WorkplaceService {
 		workplaceRepository.deleteById(id);
 	}
 
-	public List<Workplace> getWorkplacesForUserForDES(Integer id) {
-		return workplaceRepository.getWorkplacesForUserForDES(id);
+	public List<Workplace> getAcademicUnits() {
+		return workplaceRepository.getAcademicUnits();
 	}
 }
