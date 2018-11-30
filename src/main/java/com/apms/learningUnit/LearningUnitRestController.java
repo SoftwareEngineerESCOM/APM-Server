@@ -92,6 +92,10 @@ public class LearningUnitRestController {
 	@PatchMapping
 	public RESTResponse<LearningUnit> patch(@RequestBody RESTRequest<LearningUnit> req) {
 		try {
+			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
+					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
+				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
 			learningUnitService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,6 +112,10 @@ public class LearningUnitRestController {
 	@PutMapping
 	public RESTResponse<LearningUnit> put(@RequestBody RESTRequest<LearningUnit> req) {
 		try {
+			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
+					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
+				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
 			learningUnitService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
