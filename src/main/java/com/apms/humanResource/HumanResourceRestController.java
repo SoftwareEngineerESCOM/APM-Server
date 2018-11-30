@@ -21,21 +21,15 @@ import com.apms.user.UserService;
 @RequestMapping("/humanResource")
 public class HumanResourceRestController {
 
-<<<<<<<HEAD
-    @Autowired
-    private HumanResourceService humanResourceService;
-=======
     @Autowired
     private HumanResourceService humanResourceService;
     @Autowired
     private UserService userService;
->>>>>>>8ce57f2ca204728ad71503dab62c28110a6c23df
 
     /*
      ** Return a listing of all the resources
      */
     @GetMapping
-
     public RESTResponse<List<HumanResource>> getAll() {
         List<HumanResource> res;
         try {
