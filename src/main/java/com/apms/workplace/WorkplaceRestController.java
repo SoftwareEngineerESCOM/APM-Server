@@ -149,7 +149,7 @@ public class WorkplaceRestController {
 			try {
 				Role userRole = roleService.getMaxRoleByUserId(res.getId());
 				if (userRole.getRank() > 4) {
-					aux = workplaceService.getWorkplacesForUserForDES(id);
+					aux = workplaceService.getAll();
 				}else{
 					aux = new ArrayList<Workplace>();
 					aux.add(res.getHumanResource().getWorkplace());
