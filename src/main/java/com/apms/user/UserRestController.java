@@ -256,11 +256,12 @@ public class UserRestController {
 		if (res != null) {
 			List<User> aux;
 			try {
-				if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
+				if (res.getHumanResource().getWorkplace().getAbbreviation().equalsIgnoreCase("DES")) {
 					aux = userService.getActiveUsersForUserForDES(id);
 				} else {
 					aux = userService.getActiveUsersForUser(id, res.getHumanResource().getWorkplace().getId());
 				}
+				System.out.println(6);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
@@ -287,7 +288,7 @@ public class UserRestController {
 		if (res != null) {
 			List<User> aux;
 			try {
-				if (res.getHumanResource().getWorkplace().getAbbreviation() == "DES") {
+				if (res.getHumanResource().getWorkplace().getAbbreviation().equalsIgnoreCase("DES")) {
 					aux = userService.getActiveUsersForUserByRoleForDES(id_role);
 				} else {
 					aux = userService.getActiveUsersForUserByRole(res.getHumanResource().getWorkplace().getId(),
