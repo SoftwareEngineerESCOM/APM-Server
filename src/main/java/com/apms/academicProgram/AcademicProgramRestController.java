@@ -70,7 +70,7 @@ public class AcademicProgramRestController {
 	public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
 		try {
 			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
-                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Programa academico ya existe en el sistema.", null);
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
 			academicProgramService.add(academicProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,6 +86,8 @@ public class AcademicProgramRestController {
 	@PatchMapping
 	public RESTResponse<AcademicProgram> patch(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
 		try {
+			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
+				return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
 			academicProgramService.update(academicProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,6 +103,8 @@ public class AcademicProgramRestController {
 	@PutMapping
 	public RESTResponse<AcademicProgram> put(@RequestBody RESTRequest<AcademicProgram> academicProgram) {
 		try {
+			if(!academicProgramService.getAcademicProgramByNameAndWorkplaceId(academicProgram.getPayload().getName(), academicProgram.getPayload().getWorkplace().getId()).isEmpty())
+				return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
 			academicProgramService.update(academicProgram.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
