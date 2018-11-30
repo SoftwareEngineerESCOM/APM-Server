@@ -45,6 +45,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "SELECT u.* FROM user_apms u, user_apms_roles ur, human_resource hr WHERE (u.is_account_blocked = false) AND (u.id = ur.user_apms_id AND ur.roles_id = :role_id) AND (u.human_resource_id = hr.id AND hr.workplace_id = :workplace_id) GROUP BY u.id", nativeQuery = true)
 	List<User> getActiveUsersForUserByRole(@Param("workplace_id") Integer workplace_id, @Param("role_id") Integer role_id);
 	
-	@Query(value = "SELECT * FROM user_apms  WHERE human_resource_id= :id_humanResource", nativeQuery = true)
-	List<User> getHumanResource(@Param("id_humanResource") Integer id_humanResource);
+	@Nullable
+	@Query(value = "SELECT * FROM user_apms  WHERE human_resource_id= :id_humanResource LIMIT 1", nativeQuery = true)
+	User getUserByHumanResource(@Param("id_humanResource") Integer id_humanResource);
 }

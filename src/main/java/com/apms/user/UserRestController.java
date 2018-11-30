@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.humanResource.HumanResourceService;
+import com.apms.humanResource.HumanResource;
+
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
