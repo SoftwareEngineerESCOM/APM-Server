@@ -69,15 +69,15 @@ public class UserRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<User> post(@RequestBody RESTRequest<User> user) {
+	public RESTResponse<User> post(@RequestBody RESTRequest<User> req) {
 		try {
-			User dbUser = userService.getOne(user.getPayload().getId());
-			if (dbUser != null || userService.getByEmail(user.getPayload().getEmail()) != null) {
+			User dbUser = userService.getOne(req.getPayload().getId());
+			if (dbUser != null || userService.getByEmail(req.getPayload().getEmail()) != null) {
 				return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
 			}
-			user.getPayload().getHumanResource()
-					.setId(humanResourceService.add(user.getPayload().getHumanResource()).getId());
-			userService.add(user.getPayload());
+			req.getPayload().getHumanResource()
+					.setId(humanResourceService.add(req.getPayload().getHumanResource()).getId());
+			userService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
@@ -89,15 +89,17 @@ public class UserRestController {
 	 ** Update the specified resource in storage partially.
 	 */
 	@PatchMapping
-	public RESTResponse<User> patch(@RequestBody RESTRequest<User> user) {
+	public RESTResponse<User> patch(@RequestBody RESTRequest<User> req) {
 		try {
-			if (userService.getByEmail(user.getPayload().getEmail()) != null) {
-				return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
+			User dbUserById = userService.getOne(req.getPayload().getId());
+			if (!req.getPayload().getEmail().equalsIgnoreCase(dbUserById.getEmail())){
+				if(userService.getByEmail(req.getPayload().getEmail()) != null)
+					return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
 			}
-				humanResourceService.update(user.getPayload().getHumanResource());
-			user.getPayload().getHumanResource()
-					.setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
-			userService.update(user.getPayload());
+			humanResourceService.update(req.getPayload().getHumanResource());
+			req.getPayload().getHumanResource()
+					.setId(humanResourceService.update(req.getPayload().getHumanResource()).getId());
+			userService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
@@ -110,14 +112,16 @@ public class UserRestController {
 	 ** Update the specified resource in storage.
 	 */
 	@PutMapping
-	public RESTResponse<User> put(@RequestBody RESTRequest<User> user) {
+	public RESTResponse<User> put(@RequestBody RESTRequest<User> req) {
 		try {
-			if (userService.getByEmail(user.getPayload().getEmail()) != null) {
-				return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
+			User dbUserById = userService.getOne(req.getPayload().getId());
+			if (!req.getPayload().getEmail().equalsIgnoreCase(dbUserById.getEmail())){
+				if(userService.getByEmail(req.getPayload().getEmail()) != null)
+					return new RESTResponse<User>(RESTResponse.FAIL, "El usuario ya existe en el sistema.", null);
 			}
-			user.getPayload().getHumanResource()
-					.setId(humanResourceService.update(user.getPayload().getHumanResource()).getId());
-			userService.update(user.getPayload());
+			req.getPayload().getHumanResource()
+					.setId(humanResourceService.update(req.getPayload().getHumanResource()).getId());
+			userService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<User>(RESTResponse.FAIL,
