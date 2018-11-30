@@ -147,15 +147,11 @@ public class WorkplaceRestController {
 		if (res != null) {
 			List<Workplace> aux;
 			try {
-				System.out.println(1);
 				Role userRole = roleService.getMaxRoleByUserId(res.getId());
-				if (userRole.getRank() > 2) {
-					System.out.println(2);
+				if (userRole.getRank() > 4) {
 					aux = workplaceService.getWorkplacesForUserForDES(id);
 				}else{
-					System.out.println(3);
 					aux = new ArrayList<Workplace>();
-					System.out.println(4);
 					aux.add(res.getHumanResource().getWorkplace());
 				}
 			} catch (Exception e) {
