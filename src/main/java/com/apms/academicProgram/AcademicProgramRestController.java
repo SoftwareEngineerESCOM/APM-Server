@@ -1,7 +1,10 @@
 package com.apms.academicProgram;
 
+import java.util.Iterator;
 import java.util.List;
 
+import com.apms.role.Role;
+import com.apms.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +25,9 @@ public class AcademicProgramRestController {
 
     @Autowired
     private AcademicProgramService academicProgramService;
+
+    @Autowired
+    private UserService userService;
 
     /*
      ** Return a listing of all the resources
@@ -68,20 +74,24 @@ public class AcademicProgramRestController {
      */
     @PostMapping
     public RESTResponse<AcademicProgram> post(@RequestBody RESTRequest<AcademicProgram> req) {
-        if (req.getToken().equals("4")) {
-            try {
-                if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
-                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
-                academicProgramService.add(req.getPayload());
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-                        "Por el momento no se puede realizar el registro.", null);
+        try {
+            List<Role> lista = userService.getOne(Integer.parseInt(req.getToken())).getRoles();
+            for (Iterator<Role> i = lista.iterator(); i.hasNext(); ) {
+                if (i.next().getId() == 4) {
+                    if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
+                        return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
+                    academicProgramService.add(req.getPayload());
+                    return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+                } else {
+                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+                }
             }
-            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-        } else {
-            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                    "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
+        return null;
     }
 
     /*
@@ -89,20 +99,23 @@ public class AcademicProgramRestController {
      */
     @PatchMapping
     public RESTResponse<AcademicProgram> patch(@RequestBody RESTRequest<AcademicProgram> req) {
-        if (req.getToken().equals("4")) {
-            try {
-                if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
-                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
-                academicProgramService.update(req.getPayload());
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-                        "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+        try {
+            List<Role> lista = userService.getOne(Integer.parseInt(req.getToken())).getRoles();
+            for (Iterator<Role> i = lista.iterator(); i.hasNext(); ) {
+                if (i.next().getId() == 4) {
+                    if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
+                        return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
+                    academicProgramService.update(req.getPayload());
+                    return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+                }
+                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
             }
-            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-        } else {
-            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                    "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
+        return null;
     }
 
     /*
@@ -110,20 +123,24 @@ public class AcademicProgramRestController {
      */
     @PutMapping
     public RESTResponse<AcademicProgram> put(@RequestBody RESTRequest<AcademicProgram> req) {
-        if (req.getToken().equals("4")) {
-            try {
-                if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
-                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
-                academicProgramService.update(req.getPayload());
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
-                        "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+        try {
+            List<Role> lista = userService.getOne(Integer.parseInt(req.getToken())).getRoles();
+            for (Iterator<Role> i = lista.iterator(); i.hasNext(); ) {
+                if (i.next().getId() == 4) {
+                    if (!academicProgramService.getAcademicProgramByNameAndWorkplaceId(req.getPayload().getName(), req.getPayload().getWorkplace().getId()).isEmpty())
+                        return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "El nombre del Programa Académico ya está registrado.", null);
+                    academicProgramService.update(req.getPayload());
+                    return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+                } else {
+                    return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+                }
             }
-            return new RESTResponse<AcademicProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-        } else {
-            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL, "Permisos Insuficientes.", null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<AcademicProgram>(RESTResponse.FAIL,
+                    "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
+        return null;
     }
 
     /*
