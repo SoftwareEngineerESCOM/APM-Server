@@ -76,7 +76,7 @@ public class LearningUnitRestController {
 			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
 					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
+						"Unidad de Aprendizaje ya existe en el sistema.", null);
 			learningUnitService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,10 +92,13 @@ public class LearningUnitRestController {
 	@PatchMapping
 	public RESTResponse<LearningUnit> patch(@RequestBody RESTRequest<LearningUnit> req) {
 		try {
-			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
-					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
-				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
+			LearningUnit dbLearningUnitById = learningUnitService.getOne(req.getPayload().getId());
+			if (!req.getPayload().getName().equalsIgnoreCase(dbLearningUnitById.getName())) {
+				if (learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
+						req.getPayload().getSemester().getStudyPlan().getId()) != null)
+					return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+							"Unidad de Aprendizaje ya existe en el sistema.", null);
+			}
 			learningUnitService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -112,10 +115,13 @@ public class LearningUnitRestController {
 	@PutMapping
 	public RESTResponse<LearningUnit> put(@RequestBody RESTRequest<LearningUnit> req) {
 		try {
-			if (!learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
-					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
-				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
-						"El nombre de la Unidad de Aprendizaje ya está registrado. Por favor cámbielo.", null);
+			LearningUnit dbLearningUnitById = learningUnitService.getOne(req.getPayload().getId());
+			if (!req.getPayload().getName().equalsIgnoreCase(dbLearningUnitById.getName())) {
+				if (learningUnitService.getLearningUnitByNameAndStudyPlanId(req.getPayload().getName(),
+						req.getPayload().getSemester().getStudyPlan().getId()) != null)
+					return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+							"Unidad de Aprendizaje ya existe en el sistema.", null);
+			}
 			learningUnitService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
