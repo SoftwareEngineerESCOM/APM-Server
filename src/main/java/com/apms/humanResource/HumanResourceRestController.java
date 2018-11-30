@@ -15,13 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
-
+import com.apms.user.UserService;
 @RestController
 @RequestMapping("/humanResource")
 public class HumanResourceRestController {
 
 	@Autowired
 	private HumanResourceService humanResourceService;
+	@Autowired
+	private UserService userService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -117,7 +119,11 @@ public class HumanResourceRestController {
 	@DeleteMapping("/{id}")
 	public RESTResponse<HumanResource> delete(@PathVariable Integer id) {
 		try {
+			if (userService.getHumanResource(id) == null)
 			humanResourceService.delete(id);
+			else
+			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
+					"Este recurso humano esta asociado a un usuario, por lo que no puede ser eliminado.", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<HumanResource>(RESTResponse.FAIL,
