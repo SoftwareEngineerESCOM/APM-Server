@@ -37,6 +37,6 @@ public class SyntheticProgramService {
 	}
 	
 	public SyntheticProgram getSyntheticProgrambylearningunit(Integer id) {
-		return syntheticProgramRepository.getLearningUnitByNameAndSemesterId(id);
+		return syntheticProgramRepository.getSyntheticProgrambylearningunit(id);
 	}
 }

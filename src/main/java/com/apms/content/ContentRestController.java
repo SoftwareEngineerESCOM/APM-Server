@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import com.apms.syntheticProgram.SyntheticProgram;
+import com.apms.syntheticProgram.SyntheticProgramService;
 
 @RestController
 @RequestMapping("/content")
@@ -23,6 +25,9 @@ public class ContentRestController {
 
 	@Autowired
 	private ContentService contentService;
+	
+	@Autowired
+	private SyntheticProgramService syntheticProgramService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -59,6 +64,22 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<Content>(RESTResponse.FAIL, "Contenido no registrado.", null);
+		}
+	}
+	@GetMapping("contentbylearningunit/{id}")
+	public RESTResponse<List<Content>>getContentByLearningUnit(@PathVariable Integer id) {
+		List<Content> res;
+		try {
+			res = contentService.getContentByLearningUnit(id);
+			//res = contentService.getContentByLearningUnit(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Content>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<Content>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<Content>>(RESTResponse.FAIL, "No se encontraron contenidos.", null);
 		}
 	}
 

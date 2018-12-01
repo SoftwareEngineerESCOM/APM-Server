@@ -10,5 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SyntheticProgramRepository extends JpaRepository<SyntheticProgram, Integer> {
 	@Query(value = "SELECT u FROM SyntheticProgram  u WHERE u.learningUnit.id = :id")
-	SyntheticProgram getLearningUnitByNameAndSemesterId(@Param("id") Integer id);
+	SyntheticProgram getSyntheticProgrambylearningunit(@Param("id") Integer id);
+	
+
 }
