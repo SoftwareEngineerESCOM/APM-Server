@@ -23,10 +23,7 @@ public class Subtopic {
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
-	private int number;
-	@ManyToOne
-	@JoinColumn()
-	private Topic topic;
+	private Integer number;
 
 	public Subtopic() {
 	}

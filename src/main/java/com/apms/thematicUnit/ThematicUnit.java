@@ -2,18 +2,14 @@ package com.apms.thematicUnit;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.apms.bibliography.Bibliography;
 import com.apms.content.Content;
 
+import com.apms.learningEvaluation.LearningEvaluation;
+import com.apms.learningUnit.LearningUnit;
+import com.apms.topic.Topic;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,15 +20,22 @@ public class ThematicUnit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
-	private String comptetitiveUnit;
-	@Column(nullable = false)
+	@Column
+	private String competenceUnit;
+	@Column
 	private String learningStrategy;
+	@ManyToOne
+	@JoinColumn
+	private LearningUnit learningUnit;
 	@OneToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private Content content;
-	@ManyToMany
-	private List<Bibliography> bibliography;
+	@OneToMany
+	@JoinColumn
+	private List<Topic> topics;
+	@OneToMany
+	@JoinColumn
+	private List<LearningEvaluation> learningEvaluations;
 
 	public ThematicUnit() {
 	}
