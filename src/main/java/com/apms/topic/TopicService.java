@@ -22,8 +22,8 @@ public class TopicService {
 		return topicRepository.findById(id).isPresent() ? topicRepository.findById(id).get() : null;
 	}
 
-	public void add(Topic topic) {
-		topicRepository.save(topic);
+	public Topic add(Topic topic) {
+		return topicRepository.save(topic);
 	}
 
 	public void update(Topic topic) {

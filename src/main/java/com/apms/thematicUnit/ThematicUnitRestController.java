@@ -1,7 +1,14 @@
 package com.apms.thematicUnit;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
+import com.apms.subtopic.Subtopic;
+import com.apms.subtopic.SubtopicService;
+import com.apms.topic.Topic;
+import com.apms.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +29,12 @@ public class ThematicUnitRestController {
 
 	@Autowired
 	private ThematicUnitService thematicUnitService;
+
+	@Autowired
+	private SubtopicService subtopicService;
+
+	@Autowired
+	private TopicService topicService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -67,11 +80,19 @@ public class ThematicUnitRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> thematicUnit) {
+	public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> req) {
 		try {
-			if(thematicUnitService.getOne(thematicUnit.getPayload().getId()) != null)
+			if(thematicUnitService.getOne(req.getPayload().getId()) != null)
                 return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
-			thematicUnitService.add(thematicUnit.getPayload());
+			List<Topic> topics = req.getPayload().getTopics();
+			List<Integer> ids = new ArrayList<>();
+			for (Iterator<Topic> topic = topics.iterator(); topic.hasNext();) {
+				for (Iterator<Subtopic> subtopic = topic.next().getSubtopics().iterator(); subtopic.hasNext();){
+					subtopic.next().setId(subtopicService.add(subtopic.next()).getId());
+				}
+				topic.next().setId(topicService.add(topic.next()).getId());
+			}
+			thematicUnitService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
@@ -84,9 +105,9 @@ public class ThematicUnitRestController {
 	 ** Update the specified resource in storage partially.
 	 */
 	@PatchMapping
-	public RESTResponse<ThematicUnit> patch(@RequestBody RESTRequest<ThematicUnit> thematicUnit) {
+	public RESTResponse<ThematicUnit> patch(@RequestBody RESTRequest<ThematicUnit> req) {
 		try {
-			thematicUnitService.update(thematicUnit.getPayload());
+			thematicUnitService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
@@ -99,9 +120,9 @@ public class ThematicUnitRestController {
 	 ** Update the specified resource in storage.
 	 */
 	@PutMapping
-	public RESTResponse<ThematicUnit> put(@RequestBody RESTRequest<ThematicUnit> thematicUnit) {
+	public RESTResponse<ThematicUnit> put(@RequestBody RESTRequest<ThematicUnit> req) {
 		try {
-			thematicUnitService.update(thematicUnit.getPayload());
+			thematicUnitService.update(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,

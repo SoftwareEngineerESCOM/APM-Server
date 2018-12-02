@@ -21,12 +21,17 @@ public class ThematicUnit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column
+	private boolean isFinished;
+	@Column
 	private String competenceUnit;
 	@Column
 	private String learningStrategy;
 	@ManyToOne
 	@JoinColumn
 	private LearningUnit learningUnit;
+	@ManyToOne
+	@JoinColumn
+	private Topic topic;
 	@OneToOne
 	@JoinColumn
 	private Content content;

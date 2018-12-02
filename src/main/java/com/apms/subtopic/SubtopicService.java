@@ -22,8 +22,8 @@ public class SubtopicService {
 		return subtopicRepository.findById(id).isPresent() ? subtopicRepository.findById(id).get() : null;
 	}
 
-	public void add(Subtopic subtopic) {
-		subtopicRepository.save(subtopic);
+	public Subtopic add(Subtopic subtopic) {
+		return subtopicRepository.save(subtopic);
 	}
 
 	public void update(Subtopic subtopic) {
