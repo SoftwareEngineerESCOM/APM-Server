@@ -27,7 +27,7 @@ public class ThematicUnit {
 	@Column(nullable = false)
 	private String comptetitiveUnit;
 	@Column(nullable = false)
-	private String learningEstrategy;
+	private String learningStrategy;
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private Content content;

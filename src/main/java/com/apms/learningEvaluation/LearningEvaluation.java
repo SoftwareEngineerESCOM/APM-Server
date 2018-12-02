@@ -1,4 +1,4 @@
-package com.apms.unitThematicEvaluation;
+package com.apms.learningEvaluation;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class UnitThematicEvaluation {
+public class LearningEvaluation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -31,7 +31,7 @@ public class UnitThematicEvaluation {
 	@JoinColumn(nullable = false)
 	private ThematicUnit thematicUnit;
 
-	public UnitThematicEvaluation() {
+	public LearningEvaluation() {
 
 	}
 }
