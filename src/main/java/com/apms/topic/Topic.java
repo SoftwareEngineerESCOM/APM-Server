@@ -29,7 +29,7 @@ public class Topic {
     @Column(nullable = false)
     private Double autonomousHours;
     @OneToMany
-    @JoinColumn(nullable = false)
+    @JoinColumn
     private List<Subtopic> subtopics;
 
 

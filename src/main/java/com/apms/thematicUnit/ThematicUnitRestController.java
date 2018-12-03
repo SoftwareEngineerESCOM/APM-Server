@@ -1,5 +1,8 @@
 package com.apms.thematicUnit;
 
+import com.apms.content.ContentService;
+import com.apms.learningEvaluation.LearningEvaluation;
+import com.apms.learningEvaluation.LearningEvaluationService;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
 import com.apms.rest.RESTRequest;
@@ -11,7 +14,6 @@ import com.apms.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,6 +32,12 @@ public class ThematicUnitRestController {
 
     @Autowired
     private LearningUnitService learningUnitService;
+
+    @Autowired
+    private ContentService contentService;
+
+    @Autowired
+    private LearningEvaluationService learningEvaluationService;
 
     /*
      ** Return a listing of all the resources
@@ -77,19 +85,24 @@ public class ThematicUnitRestController {
     @PostMapping
     public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> req) {
         try {
-            System.out.println(req.getPayload().getId());
             if (thematicUnitService.getOne(req.getPayload().getId()) != null)
                 return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
-            List<Topic> topics = req.getPayload().getTopics();
-            List<Integer> ids = new ArrayList<>();
-            if (topics != null) {
-                for (Iterator<Topic> topic = topics.iterator(); topic.hasNext(); ) {
-                    for (Iterator<Subtopic> subtopic = topic.next().getSubtopics().iterator(); subtopic.hasNext(); ) {
-                        subtopic.next().setId(subtopicService.add(subtopic.next()).getId());
+            if (req.getPayload().getTopics() != null) {
+                for (int i = 0; i < req.getPayload().getTopics().size() ; i++){
+                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++){
+                        req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.add(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
                     }
-                    topic.next().setId(topicService.add(topic.next()).getId());
+                    req.getPayload().getTopics().get(i).setId(topicService.add(req.getPayload().getTopics().get(i)).getId());
                 }
             }
+            List<LearningEvaluation> learningEvaluations = req.getPayload().getLearningEvaluations();
+            if (learningEvaluations != null){
+                for (int i = 0; i < req.getPayload().getLearningEvaluations().size(); i++){
+                    req.getPayload().getLearningEvaluations().get(i).setId(learningEvaluationService.add(req.getPayload().getLearningEvaluations().get(i)).getId());
+                }
+            }
+            req.getPayload().getLearningUnit().setId(learningUnitService.add(req.getPayload().getLearningUnit()).getId());
+            req.getPayload().getContent().setId(contentService.add(req.getPayload().getContent()).getId());
             thematicUnitService.add(req.getPayload());
         } catch (Exception e) {
             e.printStackTrace();

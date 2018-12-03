@@ -24,8 +24,8 @@ public class LearningEvaluationService {
 				: null;
 	}
 
-	public void add(LearningEvaluation learningEvaluation) {
-		learningEvaluationRepository.save(learningEvaluation);
+	public LearningEvaluation add(LearningEvaluation learningEvaluation) {
+		return learningEvaluationRepository.save(learningEvaluation);
 	}
 
 	public void update(LearningEvaluation learningEvaluation) {

@@ -29,9 +29,6 @@ public class ThematicUnit {
 	@ManyToOne
 	@JoinColumn(nullable=false)
 	private LearningUnit learningUnit;
-	@ManyToOne
-	@JoinColumn
-	private Topic topic;
 	@OneToOne
 	@JoinColumn(nullable=false)
 	private Content content;

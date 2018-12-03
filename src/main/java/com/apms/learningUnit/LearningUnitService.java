@@ -22,8 +22,8 @@ public class LearningUnitService {
 		return learningUnitRepository.findById(id).isPresent() ? learningUnitRepository.findById(id).get() : null;
 	}
 
-	public void add(LearningUnit learningUnit) {
-		learningUnitRepository.save(learningUnit);
+	public LearningUnit add(LearningUnit learningUnit) {
+		return learningUnitRepository.save(learningUnit);
 	}
 
 	public LearningUnit update(LearningUnit learningUnit) {
