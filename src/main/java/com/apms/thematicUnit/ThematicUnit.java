@@ -27,13 +27,13 @@ public class ThematicUnit {
 	@Column
 	private String learningStrategy;
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(nullable=false)
 	private LearningUnit learningUnit;
 	@ManyToOne
 	@JoinColumn
 	private Topic topic;
 	@OneToOne
-	@JoinColumn
+	@JoinColumn(nullable=false)
 	private Content content;
 	@OneToMany
 	@JoinColumn
