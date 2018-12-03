@@ -34,4 +34,8 @@ public class ThematicUnitService {
 	public void delete(Integer id) {
 		thematicUnitRepository.deleteById(id);
 	}
+
+	public List<ThematicUnit> getThematicUnitByLearningUnitId(Integer id) {
+		return thematicUnitRepository.getThematicUnitByLearningUnitId(id);
+	}
 }

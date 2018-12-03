@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
+import com.apms.learningUnit.LearningUnitService;
+import com.apms.learningUnit.LearningUnit;
+
 @RestController
 @RequestMapping("/thematicUnit")
 public class ThematicUnitRestController {
@@ -145,4 +148,31 @@ public class ThematicUnitRestController {
 		}
 		return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
+
+    @GetMapping("/thematicUnitByLearningUnitId/{id}")
+    public RESTResponse<List<ThematicUnit>> thematicUnitByLearningUnitId(@PathVariable Integer id) {
+		LearningUnit res;
+		try {
+			res = learningUnitService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			List<ThematicUnit> aux;
+			try {
+				aux = thematicUnitService.getThematicUnitByLearningUnitId(id);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<ThematicUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<ThematicUnit>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<ThematicUnit>>(RESTResponse.FAIL, "No hay Unidades Temáticas asociadas a esta Unidad de Aprendizaje", null);
+			}
+		} else {
+			return new RESTResponse<List<ThematicUnit>>(RESTResponse.FAIL, "Unidad de Aprendizaje no registrada.", null);
+		}
+    }
 }
