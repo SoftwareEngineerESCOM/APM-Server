@@ -118,6 +118,24 @@ public class ThematicUnitRestController {
     @PatchMapping
     public RESTResponse<ThematicUnit> patch(@RequestBody RESTRequest<ThematicUnit> req) {
         try {
+            if (thematicUnitService.getOne(req.getPayload().getId()) != null)
+                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
+            if (req.getPayload().getTopics() != null) {
+                for (int i = 0; i < req.getPayload().getTopics().size() ; i++){
+                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++){
+                        req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.update(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
+                    }
+                    req.getPayload().getTopics().get(i).setId(topicService.update(req.getPayload().getTopics().get(i)).getId());
+                }
+            }
+            List<LearningEvaluation> learningEvaluations = req.getPayload().getLearningEvaluations();
+            if (learningEvaluations != null){
+                for (int i = 0; i < req.getPayload().getLearningEvaluations().size(); i++){
+                    req.getPayload().getLearningEvaluations().get(i).setId(learningEvaluationService.update(req.getPayload().getLearningEvaluations().get(i)).getId());
+                }
+            }
+            req.getPayload().getLearningUnit().setId(learningUnitService.update(req.getPayload().getLearningUnit()).getId());
+            req.getPayload().getContent().setId(contentService.update(req.getPayload().getContent()).getId());
             thematicUnitService.update(req.getPayload());
         } catch (Exception e) {
             e.printStackTrace();

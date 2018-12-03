@@ -1,10 +1,10 @@
 package com.apms.learningEvaluation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class LearningEvaluationService {
@@ -28,9 +28,9 @@ public class LearningEvaluationService {
 		return learningEvaluationRepository.save(learningEvaluation);
 	}
 
-	public void update(LearningEvaluation learningEvaluation) {
+	public LearningEvaluation update(LearningEvaluation learningEvaluation) {
 		// if exists updates otherwise inserts
-		learningEvaluationRepository.save(learningEvaluation);
+		return learningEvaluationRepository.save(learningEvaluation);
 	}
 
 	public void delete(Integer id) {

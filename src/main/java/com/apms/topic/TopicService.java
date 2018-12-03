@@ -26,9 +26,9 @@ public class TopicService {
 		return topicRepository.save(topic);
 	}
 
-	public void update(Topic topic) {
+	public Topic update(Topic topic) {
 		// if exists updates otherwise inserts
-		topicRepository.save(topic);
+		return topicRepository.save(topic);
 	}
 
 	public void delete(Integer id) {

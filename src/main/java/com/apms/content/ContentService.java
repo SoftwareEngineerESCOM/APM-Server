@@ -30,9 +30,9 @@ public class ContentService {
 		return contentRepository.saveAll(content);
 	}
 	
-	public void update(Content content) {
+	public Content update(Content content) {
 		// if exists updates otherwise inserts
-		contentRepository.save(content);
+		return contentRepository.save(content);
 	}
 
 	public void delete(Integer id) {

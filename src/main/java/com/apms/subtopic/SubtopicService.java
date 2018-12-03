@@ -26,9 +26,9 @@ public class SubtopicService {
 		return subtopicRepository.save(subtopic);
 	}
 
-	public void update(Subtopic subtopic) {
+	public Subtopic update(Subtopic subtopic) {
 		// if exists updates otherwise inserts
-		subtopicRepository.save(subtopic);
+		return subtopicRepository.save(subtopic);
 	}
 
 	public void delete(Integer id) {
