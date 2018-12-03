@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.apms.syntheticProgram.SyntheticProgram;
+
 public class LearningUnitDocument {
 	private final File firstSection = new File("src/main/resources/document_latex/learning_unit_document/first_part_document.tex");
     private final File secondSectionTemplate = new File("src/main/resources/document_latex/learning_unit_document/second_part_document_template.tex");
@@ -29,6 +31,13 @@ public class LearningUnitDocument {
     }
 
     public LearningUnitDocument() {
+        this.dataLabels = new HashMap();
+        this.content = "";
+        EtiquetasPrueba ep = new EtiquetasPrueba();
+        this.dataLabels = ep.getEtiquetas();
+    }
+    
+    public LearningUnitDocument(SyntheticProgram syntheticProgram) {
         this.dataLabels = new HashMap();
         this.content = "";
     }

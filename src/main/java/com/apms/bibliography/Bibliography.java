@@ -41,4 +41,27 @@ public class Bibliography {
 
 	public Bibliography() {
 	}
+	
+	public String getBibliographyCitation() {
+		String bibliographyC = "";
+		//Authors
+		for (int i = 0; i < authors.size(); i++) {
+			Author author = authors.get(i);
+			bibliographyC += author.getParentalSurname() + " "
+					+ author.getParentalSurname() + ", ";
+			String[] names = author.getName().split(" ");
+			for (String name : names)
+				bibliographyC += name.charAt(0) + ". ";
+			if(i+1 < authors.size())
+				bibliographyC += ", ";
+		}
+		
+		bibliographyC += "(" + publicationYear + ") "
+				+ title + ", " //Titulo en cursivas
+				+ getPublicationPlace().getName() + ". "
+				+ editorial + ". "
+				+ "ISBN: " + ISBN;
+		
+		return bibliographyC;
+	}
 }
