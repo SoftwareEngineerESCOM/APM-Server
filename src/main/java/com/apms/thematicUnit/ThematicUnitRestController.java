@@ -1,30 +1,19 @@
 package com.apms.thematicUnit;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-
+import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
+import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTResponse;
 import com.apms.subtopic.Subtopic;
 import com.apms.subtopic.SubtopicService;
 import com.apms.topic.Topic;
 import com.apms.topic.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.apms.rest.RESTRequest;
-import com.apms.rest.RESTResponse;
-
-import com.apms.learningUnit.LearningUnitService;
-import com.apms.learningUnit.LearningUnit;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @RestController
 @RequestMapping("/thematicUnit")
@@ -38,6 +27,9 @@ public class ThematicUnitRestController {
 
 	@Autowired
 	private TopicService topicService;
+
+	@Autowired
+	private LearningUnitService learningUnitService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -156,7 +148,7 @@ public class ThematicUnitRestController {
 			res = learningUnitService.getOne(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			return new RESTResponse<List<ThematicUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
 			List<ThematicUnit> aux;
