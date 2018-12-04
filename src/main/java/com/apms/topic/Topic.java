@@ -27,13 +27,27 @@ public class Topic {
     @Column(nullable = false)
     private Double practicalHours;
     @Column(nullable = false)
-    private Double autonomousHours;
+    private Double autonomousTheoreticalHours;
+    @Column(nullable = false)
+    private Double autonomousPracticalHours;
     @OneToMany
     @JoinColumn
     private List<Subtopic> subtopics;
 
-
     public Topic() {
 
     }
+
+	public Topic(Integer id, String name, String number, Double theoricHours, Double practicalHours,
+			Double autonomousTheoreticalHours, Double autonomousPracticalHours, List<Subtopic> subtopics) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.number = number;
+		this.theoricHours = theoricHours;
+		this.practicalHours = practicalHours;
+		this.autonomousTheoreticalHours = autonomousTheoreticalHours;
+		this.autonomousPracticalHours = autonomousPracticalHours;
+		this.subtopics = subtopics;
+	}
 }

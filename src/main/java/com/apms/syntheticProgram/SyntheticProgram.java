@@ -43,7 +43,7 @@ public class SyntheticProgram {
 	private List<Content> content;
 
 	public SyntheticProgram() {
-
+			
 	}
 
 	public SyntheticProgram(String regard, String didacticOrientation, LearningUnit learningUnit,
