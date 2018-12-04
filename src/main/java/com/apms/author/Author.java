@@ -21,7 +21,7 @@ public class Author {
 	private String name;
 	@Column(nullable = false)
 	private String parentalSurname;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String maternalSurname;
 
 	public Author() {

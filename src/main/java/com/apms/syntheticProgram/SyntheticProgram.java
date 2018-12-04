@@ -27,7 +27,7 @@ public class SyntheticProgram {
 	private Integer id;
 	@Column(nullable = false)
 	private String regard;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 2000)
 	private String didacticOrientation;
 
 	@OneToOne

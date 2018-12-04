@@ -36,7 +36,7 @@ public class SyntheticProgramService {
 		syntheticProgramRepository.deleteById(id);
 	}
 	
-	public SyntheticProgram getSyntheticProgrambylearningunit(Integer id) {
-		return syntheticProgramRepository.getSyntheticProgrambylearningunit(id);
+	public SyntheticProgram getSyntheticProgramsByLearningUnitId(Integer id) {
+		return syntheticProgramRepository.getSyntheticProgramsByLearningUnitId(id);
 	}
 }

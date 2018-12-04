@@ -24,9 +24,9 @@ public class LearningUnitEvaluation {
 	private String name;
 	@Column(nullable = false)
 	private double percentage;
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private EvaluationAccreditationUA evaluationAccreditationUA;
+	// @ManyToOne
+	// @JoinColumn(nullable = false)
+	// private EvaluationAccreditationUA evaluationAccreditationUA;
 
 	public LearningUnitEvaluation() {
 	}

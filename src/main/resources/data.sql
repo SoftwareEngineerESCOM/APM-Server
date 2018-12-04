@@ -30,7 +30,7 @@ insert into study_plan (modality_id, total_practice_hours, totalsatcacredits, to
 insert into semester (semester_number, study_plan_id) (select 1, id from study_plan);
 insert into semester (semester_number, study_plan_id) (select 2, id from study_plan);
 insert into semester (semester_number, study_plan_id) (select 3, id from study_plan);
--- insert into semester (semester_number, study_plan_id) (select 4, id from study_plan);
+insert into semester (semester_number, study_plan_id) (select 4, id from study_plan);
 -- insert into semester (semester_number, study_plan_id) (select 5, id from study_plan);
 -- insert into semester (semester_number, study_plan_id) (select 6, id from study_plan);
 -- insert into semester (semester_number, study_plan_id) (select 7, id from study_plan);
@@ -40,9 +40,9 @@ insert into semester (semester_number, study_plan_id) (select 3, id from study_p
 -- add learning_unit --
 -----------------------
 -- Escuela Num 1
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.39, 7.5, (select id from formation_area where name like '%Terminal y de Integración%'), 'Ingenieria de software', 1.5, 54, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.28, 7.5, (select id from formation_area where name like '%Científica Básica%'), 'Estructura de Datos', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.4, 7.5, (select id from formation_area where name like '%Terminal y de Integración%'), 'Base de Datos', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.39, 7.5, (select id from formation_area where name like '%Profesional%'), 'Ingenieria de software', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 4 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.28, 7.5, (select id from formation_area where name like '%Profesional%'), 'Estructura de Datos', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.4, 7.5, (select id from formation_area where name like '%Profesional%'), 'Base de Datos', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
 
 -- Escuela Num 2
 insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Terminal y de Integración%'), 'Fisica Clasica', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
@@ -120,3 +120,46 @@ insert into user_apms_roles values ((select id from user_apms where email like '
 insert into user_apms_roles values ((select id from user_apms where email like '%test3@test.com%'), (select id from role where name like '%Analista%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test4@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test5@test.com%'), (select id from role where name like '%Jefe de la División de Innovacion Académica%'));
+
+insert into evaluation_accreditationua values (DEFAULT);
+
+insert into synthetic_program (didactic_orientation, regard, evaluation_accreditationua_id, learning_unit_id) values ('La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos, el docente conducirá el curso con el método heurístico, se realizarán actividades de indagación, análisis y diseño para seleccionar la metodología adecuada al sistema de información que se quiera implementar, aplicando un enfoque de calidad; utilizando herramientas CASE para facilitar el diseño de los diagramas UML, exposiciones, prácticas y la realización de un proyecto en equipo que integre los conceptos generales así como las competencias referentes al uso de patrones de diseño y el manejo las normas calidad del software.
+Las actividades que se realizarán en clase fomentarán en los estudiantes algunas técnicas, tales como: trabajo colaborativo y participativo, lluvia de ideas, organizadores gráficos, indagación documental, fichas de trabajo, exposición de temas complementarios, discusión dirigida así como la realización de un proyecto.
+Para ello el docente dentro de la planeación establecerá las actividades de aprendizaje a desarrollar y los tiempos para entrega por parte del alumno; así mismo marcara los tiempos de revisión para hacer las observaciones y anotaciones para que el alumno pueda mejorar su aprendizaje, además de establecer las características del proyecto realizado.', 'Elabora un sistema computacional de propósito específico con base en metodologías de Ingeniería de Software.', (SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
+
+insert into content (name, number, content_id) VALUES ('Ingeniería de Software', 1, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
+insert into content (name, number, content_id) VALUES ('Proceso de gestión de proyecto', 2, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
+insert into content (name, number, content_id) VALUES ('Metodologías', 3, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
+insert into content (name, number, content_id) VALUES ('Calidad y normas de calidad', 4, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
+insert into content (name, number, content_id) VALUES ('Modelos de Madurez', 5, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
+insert into content (name, number, content_id) VALUES ('Temas selectos', 6, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
+
+insert into evaluationua (name, percentage, evaluationua_id) VALUES ('Evaluación formativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
+insert into evaluationua (name, percentage, evaluationua_id) VALUES ('Sumativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
+insert into evaluationua (name, percentage, evaluationua_id) VALUES ('rubricas de autoevaluación y coevaluación', 0.4, (SELECT id FROM evaluationua WHERE id = 1));
+
+-- insert into learning_unit_evaluation (name, percentage, evaluation_accreditationua_id) VALUES ('Evaluación formativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
+-- insert into learning_unit_evaluation (name, percentage, evaluation_accreditationua_id) VALUES ('Sumativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
+-- insert into learning_unit_evaluation (name, percentage, evaluation_accreditationua_id) VALUES ('rubricas de autoevaluación y coevaluación', 0.4, (SELECT id FROM evaluationua WHERE id = 1));
+
+insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Saberes previos'));
+insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en unidad académica del IPN'));
+insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en extranjero'));
+insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Inscripción normal'));
+
+insert into bibliography VALUES ('788478978588', 'AlfaOmega', 2008, 'Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('9701509870', 'AlfaOmega', 2004, 'Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('9789701512678', 'AlfaOmega', 2005, 'Calidad de Sistemas Informáticos.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('9701054733', 'Mc Graw Hill', 2007, 'Ingeniería del software: Un enfoque Práctico.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('9789702602064', 'Addison Wesley', 2008, 'Ingeniería de Software.', (SELECT id FROM country WHERE name like 'Espa_a'));
+
+insert into author (name, parental_surname, maternal_surname) VALUES ('Félix Oscar', 'García', 'Rubio');
+insert into author (name, parental_surname, maternal_surname) VALUES ('Mario G.', 'Piattini', 'Velthuis');
+insert into author (name, parental_surname, maternal_surname) VALUES ('Roger S.', 'Pressman', '');
+insert into author (name, parental_surname, maternal_surname) VALUES ('Ian', 'Sommerville', '');
+
+insert into bibliography_authors values ('788478978588', (SELECT id FROM author WHERE name LIKE 'Félix Oscar'));
+insert into bibliography_authors values ('9701509870', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
+insert into bibliography_authors values ('9789701512678', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
+insert into bibliography_authors values ('9701054733', (SELECT id FROM author WHERE name LIKE 'Roger S.'));
+insert into bibliography_authors values ('9789702602064', (SELECT id FROM author WHERE name LIKE 'Ian'));
