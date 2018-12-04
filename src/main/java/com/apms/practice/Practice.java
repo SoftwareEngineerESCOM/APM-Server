@@ -1,10 +1,16 @@
 package com.apms.practice;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.apms.thematicUnit.ThematicUnit;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,15 +29,13 @@ public class Practice {
 	private int number;
 	@Column(nullable = false)
 	private double lenght;
+	@Column(nullable = false)
+	private String placeOfPractice;
+	
+	@ManyToOne
+	@JoinColumn
+	private ThematicUnit thematicUnit;
 
 	public Practice() {
-	}
-
-	public Practice(Integer id, String name, int number, double lenght) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.number = number;
-		this.lenght = lenght;
 	}
 }
