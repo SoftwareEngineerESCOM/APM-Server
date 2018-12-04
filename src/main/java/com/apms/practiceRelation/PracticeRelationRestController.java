@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
+
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 
@@ -22,6 +25,9 @@ public class PracticeRelationRestController {
 	
     @Autowired
     private PracticeRelationService practiceRelationService;
+	
+    @Autowired
+    private LearningUnitService learningUnitService;
 
     /*
      ** Return a listing of all the resources
@@ -124,5 +130,32 @@ public class PracticeRelationRestController {
                     "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+    }
+
+    @GetMapping("/practiceRelationsByLearningUnitId/{id}")
+    public RESTResponse<PracticeRelation> practiceRelationsByLearningUnitId(@PathVariable Integer id) {
+        LearningUnit res;
+        try {
+            res = learningUnitService.getOne(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+        }
+        if (res != null) {
+            PracticeRelation aux;
+            try {
+                aux = practiceRelationService.getPracticeRelationsByLearningUnitId(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+            }
+            if (aux != null) {
+                return new RESTResponse<PracticeRelation>(RESTResponse.OK, "", aux);
+            } else {
+                return new RESTResponse<PracticeRelation>(RESTResponse.FAIL, "No hay Programa Sintético asociado a esta Unidad de Aprendizaje", null);
+            }
+        } else {
+            return new RESTResponse<PracticeRelation>(RESTResponse.FAIL, "Unidad de Aprendizaje no registrada.", null);
+        }
     }
 }

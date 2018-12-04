@@ -89,15 +89,15 @@ public class ThematicUnitRestController {
                 return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
             if (req.getPayload().getTopics() != null) {
                 for (int i = 0; i < req.getPayload().getTopics().size() ; i++){
+                    // if (topicService.getTopicByThematicUnitIdAndName(req.getPayload().getId(), req.getPayload().getTopics().get(i).getName()) != null){
+                    //     return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El tema ya existe en el sistema.", null);
+                    // }
                     for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++){
-                        //if (subtopicService.getSubtopicByName(req.getPayload().getTopics().get(i).getSubtopics().get(j).getName()) != null) {
-                            //return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
-                        //}
+                        // if (subtopicService.getSubtopicByTopicIdAndName(req.getPayload().getTopics().get(i).getId(), req.getPayload().getTopics().get(i).getSubtopics().get(j).getName()) != null) {
+                        //     return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
+                        // }
                         req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.add(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
                     }
-                    //if (topicService.getTopicByName(req.getPayload().getTopics().get(i).getName()) != null){
-                        //return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El tema ya existe en el sistema.", null);
-                    //}
                     req.getPayload().getTopics().get(i).setId(topicService.add(req.getPayload().getTopics().get(i)).getId());
                 }
             }

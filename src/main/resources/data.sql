@@ -134,6 +134,8 @@ insert into content (name, number, content_id) VALUES ('Calidad y normas de cali
 insert into content (name, number, content_id) VALUES ('Modelos de Madurez', 5, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
 insert into content (name, number, content_id) VALUES ('Temas selectos', 6, (SELECT id FROM synthetic_program WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software')));
 
+
+
 insert into evaluationua (name, percentage, evaluationua_id) VALUES ('Evaluación formativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
 insert into evaluationua (name, percentage, evaluationua_id) VALUES ('Sumativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
 insert into evaluationua (name, percentage, evaluationua_id) VALUES ('rubricas de autoevaluación y coevaluación', 0.4, (SELECT id FROM evaluationua WHERE id = 1));

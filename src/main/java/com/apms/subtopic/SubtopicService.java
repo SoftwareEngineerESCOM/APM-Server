@@ -34,4 +34,8 @@ public class SubtopicService {
 	public void delete(Integer id) {
 		subtopicRepository.deleteById(id);
 	}
+	
+	public Subtopic getSubtopicByTopicIdAndName(Integer id, String name) {
+		return subtopicRepository.getSubtopicByTopicIdAndName(id, name);
+	}
 }

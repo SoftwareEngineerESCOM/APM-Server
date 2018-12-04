@@ -34,4 +34,8 @@ public class PracticeRelationService {
     public void delete(Integer id) {
         practiceRelationRepository.deleteById(id);
     }
+    
+    public PracticeRelation getPracticeRelationsByLearningUnitId(Integer id) {
+        return practiceRelationRepository.getPracticeRelationsByLearningUnitId(id);
+    }
 }
