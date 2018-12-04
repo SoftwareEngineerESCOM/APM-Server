@@ -34,4 +34,8 @@ public class TopicService {
 	public void delete(Integer id) {
 		topicRepository.deleteById(id);
 	}
+	
+	public Topic getTopicByThematicUnitIdAndName(Integer id, String name) {
+		return topicRepository.getTopicByThematicUnitIdAndName(id, name);
+	}
 }
