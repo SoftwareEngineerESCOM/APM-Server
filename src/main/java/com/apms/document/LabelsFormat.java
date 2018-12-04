@@ -9,6 +9,7 @@ import com.apms.content.Content;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.studyPlan.StudyPlan;
+import com.apms.subtopic.Subtopic;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.thematicUnit.ThematicUnit;
 import com.apms.topic.Topic;
@@ -89,6 +90,20 @@ public class LabelsFormat {
 			bibliographies += bibliographyR.getBibliography().getBibliographyCitation() + "\\\\";
 		dataLabels.put("bibliography", bibliographies);
 		
+		//BIBLIOGRAPHIES INFO 
+		String bibliographiesInfo = "";
+		for (BibliographyRelation bibliographyR : bibliographiesR) {
+			bibliographiesInfo += bibliographyR.getNumber() + "&";  //Revisar si se deben ordenar
+			//Revisar los tipos de bibliografia
+			if(bibliographyR.getBibliographyType().getAbbreviation().equals("B"))
+				bibliographiesInfo += "X &  &";
+			else
+				bibliographiesInfo += " & X &";
+			//Cita completa
+			bibliographiesInfo += bibliographyR.getBibliography().getBibliographyCitation() + "\\\\";
+		}
+		dataLabels.put("bibliographies_info", bibliographiesInfo);
+		
 		return dataLabels;
 	}
 	
@@ -114,14 +129,29 @@ public class LabelsFormat {
 			/* THEMATIC UNITS TABLE */
 			String contentNumbers = "";
 			String contents = "";
-			String teacherTheoryHours = "";
-			String teacherPracticeHours = "";
-			String autonomousTheoryHours = "";
-			String autonomousPracticeHours = "";
+			String teacherTheoryHoursStr = "";
+			String teacherPracticeHoursStr = "";
+			String autonomousTheoryHoursStr = "";
+			String autonomousPracticeHoursStr = "";
 			String bibliographicKeys = "";
+			//Variables para guardar las sumas de las horas de aprendizaje
+			Double teacherTheoryHours = 0.0;
+			Double teacherPracticeHours = 0.0;
+			Double autonomousTheoryHours = 0.0;
+			Double autonomousPracticeHours = 0.0;
 			//TOPICS IN ORDER
 			List<Topic> topics = thematicUnit.getTopics();
 			for (int index = 1; index <= topics.size(); index++) {
+				if(index != 1) { //Marcar espacio en columna
+					contentNumbers += "\\\\";
+					contents +=  "\\\\";
+					teacherTheoryHoursStr += "\\\\";
+					teacherPracticeHoursStr += "\\\\";
+					autonomousTheoryHoursStr += "\\\\";
+					autonomousPracticeHoursStr += "\\\\";
+					bibliographicKeys += "\\\\";
+				}
+				
 				Topic topic = null;
 				for (Topic topicAux : topics) {
 					if(Integer.parseInt(topicAux.getNumber()) == index) { //Revisar oportunidad de cambio de topic.getNumber() de String a int
@@ -130,17 +160,63 @@ public class LabelsFormat {
 					}
 				}
 				if(topic == null) {
-					System.out.println("No se encontro el tema: " + unit);
+					System.out.println("No se encontro el tema: " + unit + "." + index);
 					continue;
 				}
 				
 				contentNumbers += unit + "." + index;
 				contents +=  topic.getName();
+				teacherTheoryHoursStr += topic.getTheoricHours();
+				teacherPracticeHoursStr += topic.getPracticalHours();
+				autonomousTheoryHoursStr += topic.getAutonomousTheoreticalHours();
+				autonomousPracticeHoursStr += topic.getAutonomousPracticalHours();
+				bibliographicKeys += ""; //Busqueda de claves bibliografias por clave
+				//suma de las horas de aprendizaje
+				teacherTheoryHours += topic.getTheoricHours();
+				teacherPracticeHours += topic.getPracticalHours();
+				autonomousTheoryHours += topic.getAutonomousTheoreticalHours();
+				autonomousPracticeHours += topic.getAutonomousPracticalHours();
+				
+				//SUBTOPICS IN ORDER
+				if(topic.getSubtopics() != null) {
+					List<Subtopic> subtopics = topic.getSubtopics();
+					for (int subindex = 1; subindex < subtopics.size(); subindex++) {
+						Subtopic subtopic = null;
+						for (Subtopic subtopicAux : subtopics) {
+							if(subtopicAux.getNumber() == subindex) {
+								subtopic = subtopicAux;
+								break;
+							}
+						}
+						if(subtopic == null) {
+							System.out.println("No se encontro el subtema: " + unit + "." + index + "." + subindex);
+							continue;
+						}
+						contentNumbers += "\\\\" + unit + "." + index + "." + subindex;
+						contents +=  "\\\\" + subtopic.getName();
+						teacherTheoryHoursStr += "\\\\";
+						teacherPracticeHoursStr += "\\\\";
+						autonomousTheoryHoursStr += "\\\\";
+						autonomousPracticeHoursStr += "\\\\";
+						bibliographicKeys += "\\\\";
+					}
+				}
 			}
-			//dataLabels.put("" + unit, );
-			
+			dataLabels.put("content_numbers_" + unit, contentNumbers);
+			dataLabels.put("contents_" + unit, contents);
+			dataLabels.put("theoretical_hours_with_teacher_" + unit, teacherTheoryHoursStr);
+			dataLabels.put("practical_hours_with_teacher_" + unit, teacherPracticeHoursStr);
+			dataLabels.put("autonomous_theoretical_hours_" + unit, autonomousTheoryHoursStr);
+			dataLabels.put("autonomous_practice_hours_" + unit, autonomousPracticeHoursStr);
+			dataLabels.put("bibliographic_keys_" + unit, bibliographicKeys);
+			dataLabels.put("total_theoretical_hours_with_teacher_" + unit, teacherTheoryHours + "");
+			dataLabels.put("total_practical_hours_with_teacher_" + unit, teacherPracticeHours + "");
+			dataLabels.put("total_autonomous_theoretical_hours_" + unit, autonomousTheoryHours + "");
+			dataLabels.put("total_autonomous_practice_hours_" + unit, autonomousPracticeHours + "");
+			dataLabels.put("learning_strategies_" + unit, thematicUnit.getLearningStrategy());
+			//****** EVALUACION DE LOS APRENDIZAJES
+			dataLabels.put("evaluation_learning_" + unit, "FALTA LLENAR");
 		}
-		
 		return dataLabels;
 	}
 	
