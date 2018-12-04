@@ -68,11 +68,16 @@ public class PracticeRelationRestController {
      ** Store a newly created resource in storage.
      */
     @PostMapping
-    public RESTResponse<PracticeRelation> post(@RequestBody RESTRequest<PracticeRelation> practiceRelation) {
+    public RESTResponse<PracticeRelation> post(@RequestBody RESTRequest<PracticeRelation> req) {
         try {
-            if(practiceRelationService.getOne(practiceRelation.getPayload().getId()) != null)
+            if (practiceRelationService.getOne(req.getPayload().getId()) != null)
                 return new RESTResponse<PracticeRelation>(RESTResponse.FAIL, "La Relación de Prácticas ya existe en el sistema.", null);
-            practiceRelationService.add(practiceRelation.getPayload());
+
+            if (req.getPayload().getPractices() != null) {
+                for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
+                }
+            }
+            practiceRelationService.add(req.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
@@ -85,9 +90,9 @@ public class PracticeRelationRestController {
      ** Update the specified resource in storage partially.
      */
     @PatchMapping
-    public RESTResponse<PracticeRelation> patch(@RequestBody RESTRequest<PracticeRelation> practiceRelation) {
+    public RESTResponse<PracticeRelation> patch(@RequestBody RESTRequest<PracticeRelation> req) {
         try {
-            practiceRelationService.update(practiceRelation.getPayload());
+            practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
@@ -100,9 +105,9 @@ public class PracticeRelationRestController {
      ** Update the specified resource in storage.
      */
     @PutMapping
-    public RESTResponse<PracticeRelation> put(@RequestBody RESTRequest<PracticeRelation> practiceRelation) {
+    public RESTResponse<PracticeRelation> put(@RequestBody RESTRequest<PracticeRelation> req) {
         try {
-            practiceRelationService.update(practiceRelation.getPayload());
+            practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
