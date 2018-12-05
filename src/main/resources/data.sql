@@ -123,6 +123,11 @@ insert into user_apms_roles values ((select id from user_apms where email like '
 
 insert into evaluation_accreditationua values (DEFAULT);
 
+
+--									--
+--		Synthetic Program 			--
+--									--
+
 insert into synthetic_program (didactic_orientation, regard, evaluation_accreditationua_id, learning_unit_id) values ('La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos, el docente conducirá el curso con el método heurístico, se realizarán actividades de indagación, análisis y diseño para seleccionar la metodología adecuada al sistema de información que se quiera implementar, aplicando un enfoque de calidad; utilizando herramientas CASE para facilitar el diseño de los diagramas UML, exposiciones, prácticas y la realización de un proyecto en equipo que integre los conceptos generales así como las competencias referentes al uso de patrones de diseño y el manejo las normas calidad del software.
 Las actividades que se realizarán en clase fomentarán en los estudiantes algunas técnicas, tales como: trabajo colaborativo y participativo, lluvia de ideas, organizadores gráficos, indagación documental, fichas de trabajo, exposición de temas complementarios, discusión dirigida así como la realización de un proyecto.
 Para ello el docente dentro de la planeación establecerá las actividades de aprendizaje a desarrollar y los tiempos para entrega por parte del alumno; así mismo marcara los tiempos de revisión para hacer las observaciones y anotaciones para que el alumno pueda mejorar su aprendizaje, además de establecer las características del proyecto realizado.', 'Elabora un sistema computacional de propósito específico con base en metodologías de Ingeniería de Software.', (SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
@@ -149,6 +154,10 @@ insert into evaluation_accreditationua_accreditation_type (evaluation_accreditat
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en extranjero'));
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Inscripción normal'));
 
+--									--
+--			Bibliography 			--
+--									--
+
 insert into bibliography VALUES ('788478978588', 'AlfaOmega', 2008, 'Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad.', (SELECT id FROM country WHERE name like 'M%xico'));
 insert into bibliography VALUES ('9701509870', 'AlfaOmega', 2004, 'Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software.', (SELECT id FROM country WHERE name like 'M%xico'));
 insert into bibliography VALUES ('9789701512678', 'AlfaOmega', 2005, 'Calidad de Sistemas Informáticos.', (SELECT id FROM country WHERE name like 'M_xico'));
@@ -165,3 +174,78 @@ insert into bibliography_authors values ('9701509870', (SELECT id FROM author WH
 insert into bibliography_authors values ('9789701512678', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
 insert into bibliography_authors values ('9701054733', (SELECT id FROM author WHERE name LIKE 'Roger S.'));
 insert into bibliography_authors values ('9789702602064', (SELECT id FROM author WHERE name LIKE 'Ian'));
+
+--									--
+--		Extensive Program 			--
+--									--
+
+insert into teaching_profile values (DEFAULT);
+
+insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
+
+insert into teaching_profile_schooling grade values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM schooling_grade WHERE speciality LIKE 'Computación' AND academic_level_id = (SELECT id FROM academic_level WHERE name like 'Maestro')));
+
+insert into attitude (name) values ('Responsable');
+insert into attitude (name) values ('Honesto');
+insert into attitude (name) values ('Respetuoso');
+insert into attitude (name) values ('Tolerante');
+insert into attitude (name) values ('Asertivo');
+insert into attitude (name) values ('Colaborativo');
+insert into attitude (name) values ('Participativo');
+
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Responsable'));
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Honesto'));
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Respetuoso'));
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Tolerante'));
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Asertivo'));
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Colaborativo'));
+insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Participativo'));
+
+insert into knowledge (name) values ('Lenguaje de Modelado Unificado');
+insert into knowledge (name) values ('Ingeniería de Software');
+insert into knowledge (name) values ('Programación en un lenguaje de alto nivel.');
+insert into knowledge (name) values ('Modelos de Madurez y Mejora de Procesos');
+insert into knowledge (name) values ('Metodologías Ágiles');
+insert into knowledge (name) values ('Idioma Inglés');
+insert into knowledge (name) values ('MEI');
+
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Lenguaje de Modelado Unificado'));
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Ingeniería de Software'));
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Programación en un lenguaje de alto nivel.'));
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Modelos de Madurez y Mejora de Procesos'));
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Metodologías Ágiles'));
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Idioma Inglés'));
+insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'MEI'));
+
+insert into ability (name) values ('Capacidad para el manejo de grupos');
+insert into ability (name) values ('Fluidez verbal de ideas');
+insert into ability (name) values ('Capacidad de traspasar conocimientos');
+insert into ability (name) values ('Manejo de grupos y trabajo colaborativo');
+insert into ability (name) values ('Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno');
+insert into ability (name) values ('Manejo de estrategias didácticas centradas en el aprendizaje');
+insert into ability (name) values ('Aplicación del MEI');
+
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Capacidad para el manejo de grupos'));
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Fluidez verbal de ideas'));
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Capacidad de traspasar conocimientos'));
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de grupos y trabajo colaborativo'));
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno'));
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de estrategias didácticas centradas en el aprendizaje'));
+insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Aplicación del MEI'));
+
+insert into professional_experience (name) values ('Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)');
+insert into professional_experience (name) values ('Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.');
+insert into professional_experience (name) values ('Experiencia de un año como Docente de Nivel Superior.');
+
+insert into teaching_profile_professional_experience values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)'));
+insert into teaching_profile_professional_experience values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.'));
+insert into teaching_profile_professional_experience values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de un año como Docente de Nivel Superior.'));
+
+insert into assigned_time values (DEFAULT, 1.5, 54, 27, 54, 3, 81);
+
+insert into extensive_program values (DEFAULT, 'Esta unidad de aprendizaje contribuye al perfil de egresado de Ingeniería en Sistemas Computacionales, al desarrollar las habilidades de análisis y diseño de proyectos haciendo uso de software de gestión de proyectos así como herramientas CASE, además de integrar los principios de gestión de la calidad regidos por los estándares establecidos para asegurar, gestionar, auditar y certificar la calidad de procesos y productos informáticos así como también planificar y proyectar es estratégicamente (Recursos Hardware y Software, Recursos Humanos, componentes reutilizables) el desarrollo de proyectos de software. Así mismo, se dinamizan las competencias de pensamiento creativo, comunicación asertiva, trabajo colaborativo y participativo.
+
+Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de Datos y Administración de Proyectos.', 2008, (SELECT id FROM assigned_time WHERE practice_hour_semester = 27 AND theoretical_hour_semester = 54 AND automatic_teaching = 10), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'), (SELECT id FROM modality WHERE name LIKE 'Escolarizado'), (SELECT id FROM teaching WHERE name LIKE 'Obligatoria'), (SELECT id FROM teaching_profile WHERE id = 1));
+
+insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
+insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
