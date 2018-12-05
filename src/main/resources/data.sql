@@ -149,8 +149,8 @@ insert into evaluation_accreditationua_accreditation_type (evaluation_accreditat
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en extranjero'));
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Inscripción normal'));
 
-insert into bibliography VALUES ('788478978588', 'AlfaOmega', 2008, 'Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad.', (SELECT id FROM country WHERE name like 'M_xico'));
-insert into bibliography VALUES ('9701509870', 'AlfaOmega', 2004, 'Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('788478978588', 'AlfaOmega', 2008, 'Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad.', (SELECT id FROM country WHERE name like 'M%xico'));
+insert into bibliography VALUES ('9701509870', 'AlfaOmega', 2004, 'Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software.', (SELECT id FROM country WHERE name like 'M%xico'));
 insert into bibliography VALUES ('9789701512678', 'AlfaOmega', 2005, 'Calidad de Sistemas Informáticos.', (SELECT id FROM country WHERE name like 'M_xico'));
 insert into bibliography VALUES ('9701054733', 'Mc Graw Hill', 2007, 'Ingeniería del software: Un enfoque Práctico.', (SELECT id FROM country WHERE name like 'M_xico'));
 insert into bibliography VALUES ('9789702602064', 'Addison Wesley', 2008, 'Ingeniería de Software.', (SELECT id FROM country WHERE name like 'Espa_a'));
