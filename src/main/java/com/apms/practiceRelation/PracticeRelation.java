@@ -26,10 +26,12 @@ public class PracticeRelation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	@Column(nullable = false, length = 1000)
+	@Column(nullable = true, length = 1000)
 	private String accreditation;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double totalHours;
+	@Column(nullable = false)
+	private boolean isFinished;
 
 	@OneToOne
 	@JoinColumn(nullable = false)
