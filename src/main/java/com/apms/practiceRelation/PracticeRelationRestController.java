@@ -74,8 +74,6 @@ public class PracticeRelationRestController {
     @PostMapping
     public RESTResponse<PracticeRelation> post(@RequestBody RESTRequest<PracticeRelation> req) {
         try {
-            if (practiceRelationService.getOne(req.getPayload().getId()) != null)
-                return new RESTResponse<PracticeRelation>(RESTResponse.FAIL, "La Relación de Prácticas ya existe en el sistema.", null);
 
             if (req.getPayload().getPractices() != null) {
                 for (int i = 0; i < req.getPayload().getPractices().size(); i++) {

@@ -85,8 +85,6 @@ public class ThematicUnitRestController {
     @PostMapping
     public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> req) {
         try {
-            if (thematicUnitService.getOne(req.getPayload().getId()) != null)
-                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
             if (req.getPayload().getTopics() != null) {
                 for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
                     if (topicService.getTopicByThematicUnitIdAndName(req.getPayload().getTopics().get(i).getId(), req.getPayload().getTopics().get(i).getName()) != null) {
