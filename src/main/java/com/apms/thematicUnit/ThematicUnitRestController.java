@@ -146,6 +146,9 @@ public class ThematicUnitRestController {
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
+        if (req.getPayload().isFinished()) {
+            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Unidad temática finalizada exitosamente.", null);
+        }
         return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }
 
