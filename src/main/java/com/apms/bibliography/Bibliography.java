@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import com.apms.author.Author;
 import com.apms.country.Country;
 
+import com.apms.thematicUnit.ThematicUnit;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,6 +39,10 @@ public class Bibliography {
 
 	@Column(nullable = false)
 	private String editorial;
+
+	@ManyToMany
+	@JoinColumn(nullable = false)
+	private List<ThematicUnit> thematicUnits;
 
 	public Bibliography() {
 	}
