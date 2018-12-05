@@ -729,3 +729,15 @@ Hibernate: alter table workplace add constraint FKf8xnydl2w9gnqop70xspaq3ym fore
 2018-12-05 08:44:19.110  INFO 30808 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
 2018-12-05 08:44:19.237  INFO 30808 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2018-12-05 08:44:19.247  INFO 30808 --- [           main] com.apms.ApmsApplication                 : Started ApmsApplication in 16.696 seconds (JVM running for 22.198)
+2018-12-05 08:45:54.426  INFO 30808 --- [       Thread-4] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3aa20ee7: startup date [Wed Dec 05 08:44:03 CST 2018]; root of context hierarchy
+2018-12-05 08:45:54.466  INFO 30808 --- [       Thread-4] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-12-05 08:45:54.489  INFO 30808 --- [       Thread-4] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2018-12-05 08:45:54.609  INFO 30808 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-12-05 08:45:54.618  INFO 30808 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-05 08:45:54.652  INFO 30808 --- [       Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:55 min
+[INFO] Finished at: 2018-12-05T08:45:54-06:00
+[INFO] ------------------------------------------------------------------------
