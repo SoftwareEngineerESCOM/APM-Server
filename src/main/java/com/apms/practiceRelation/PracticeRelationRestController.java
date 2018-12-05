@@ -1,23 +1,15 @@
 package com.apms.practiceRelation;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
-
+import com.apms.practice.PracticeService;
+import com.apms.practiceRelationEvaluation.PracticeRelationEvaluationService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/practiceRelation")
@@ -28,6 +20,12 @@ public class PracticeRelationRestController {
 	
     @Autowired
     private LearningUnitService learningUnitService;
+
+    @Autowired
+    private PracticeService practiceService;
+
+    @Autowired
+    private PracticeRelationEvaluationService practiceRelationEvaluationService;
 
     /*
      ** Return a listing of all the resources
@@ -81,7 +79,12 @@ public class PracticeRelationRestController {
 
             if (req.getPayload().getPractices() != null) {
                 for (int i = 0; i < req.getPayload().getPractices().size(); i++) {
-
+                    req.getPayload().getPractices().get(i).setId(practiceService.add(req.getPayload().getPractices().get(i)).getId());
+                }
+            }
+            if (req.getPayload().getPracticeRelationEvaluations() != null){
+                for (int i = 0; i < req.getPayload().getPracticeRelationEvaluations().size(); i++) {
+                    req.getPayload().getPracticeRelationEvaluations().get(i).setId(practiceRelationEvaluationService.add(req.getPayload().getPracticeRelationEvaluations().get(i)).getId());
                 }
             }
             practiceRelationService.add(req.getPayload());

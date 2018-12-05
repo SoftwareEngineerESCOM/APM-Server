@@ -27,9 +27,7 @@ public class Topic {
     @Column(nullable = false)
     private Double practicalHours;
     @Column(nullable = false)
-    private Double autonomousTheoreticalHours;
-    @Column(nullable = false)
-    private Double autonomousPracticalHours;
+    private Double autonomousHours;
     @OneToMany
     @JoinColumn
     private List<Subtopic> subtopics;
@@ -46,8 +44,6 @@ public class Topic {
 		this.number = number;
 		this.theoricHours = theoricHours;
 		this.practicalHours = practicalHours;
-		this.autonomousTheoreticalHours = autonomousTheoreticalHours;
-		this.autonomousPracticalHours = autonomousPracticalHours;
 		this.subtopics = subtopics;
 	}
 }

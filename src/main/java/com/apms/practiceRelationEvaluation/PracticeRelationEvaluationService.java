@@ -22,8 +22,8 @@ public class PracticeRelationEvaluationService {
 	return practiceRelationEvaluationRepository.findById(id).isPresent() ? practiceRelationEvaluationRepository.findById(id).get() : null;
     }
 
-    public void add(PracticeRelationEvaluation practiceRelationEvaluation) {
-        practiceRelationEvaluationRepository.save(practiceRelationEvaluation);
+    public PracticeRelationEvaluation add(PracticeRelationEvaluation practiceRelationEvaluation) {
+        return practiceRelationEvaluationRepository.save(practiceRelationEvaluation);
     }
 
     public void update(PracticeRelationEvaluation practiceRelationEvaluation) {
