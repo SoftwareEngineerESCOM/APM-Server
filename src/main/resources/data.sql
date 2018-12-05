@@ -183,7 +183,7 @@ insert into teaching_profile values (DEFAULT);
 
 insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
 
-insert into teaching_profile_schooling grade values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM schooling_grade WHERE speciality LIKE 'Computación' AND academic_level_id = (SELECT id FROM academic_level WHERE name like 'Maestro')));
+insert into teaching_profile_schooling_grades values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM schooling_grade WHERE speciality LIKE 'Computación' AND academic_level_id = (SELECT id FROM academic_level WHERE name like 'Maestro')));
 
 insert into attitude (name) values ('Responsable');
 insert into attitude (name) values ('Honesto');
@@ -209,13 +209,13 @@ insert into knowledge (name) values ('Metodologías Ágiles');
 insert into knowledge (name) values ('Idioma Inglés');
 insert into knowledge (name) values ('MEI');
 
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Lenguaje de Modelado Unificado'));
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Ingeniería de Software'));
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Programación en un lenguaje de alto nivel.'));
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Modelos de Madurez y Mejora de Procesos'));
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Metodologías Ágiles'));
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Idioma Inglés'));
-insert into teaching_profile_knowledge values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'MEI'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Lenguaje de Modelado Unificado'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Ingeniería de Software'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Programación en un lenguaje de alto nivel.'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Modelos de Madurez y Mejora de Procesos'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Metodologías Ágiles'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Idioma Inglés'));
+insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'MEI'));
 
 insert into ability (name) values ('Capacidad para el manejo de grupos');
 insert into ability (name) values ('Fluidez verbal de ideas');
@@ -237,15 +237,15 @@ insert into professional_experience (name) values ('Experiencia de dos años en 
 insert into professional_experience (name) values ('Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.');
 insert into professional_experience (name) values ('Experiencia de un año como Docente de Nivel Superior.');
 
-insert into teaching_profile_professional_experience values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)'));
-insert into teaching_profile_professional_experience values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.'));
-insert into teaching_profile_professional_experience values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de un año como Docente de Nivel Superior.'));
+insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)'));
+insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.'));
+insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de un año como Docente de Nivel Superior.'));
 
 insert into assigned_time values (DEFAULT, 1.5, 54, 27, 54, 3, 81);
 
 insert into extensive_program values (DEFAULT, 'Esta unidad de aprendizaje contribuye al perfil de egresado de Ingeniería en Sistemas Computacionales, al desarrollar las habilidades de análisis y diseño de proyectos haciendo uso de software de gestión de proyectos así como herramientas CASE, además de integrar los principios de gestión de la calidad regidos por los estándares establecidos para asegurar, gestionar, auditar y certificar la calidad de procesos y productos informáticos así como también planificar y proyectar es estratégicamente (Recursos Hardware y Software, Recursos Humanos, componentes reutilizables) el desarrollo de proyectos de software. Así mismo, se dinamizan las competencias de pensamiento creativo, comunicación asertiva, trabajo colaborativo y participativo.
 
-Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de Datos y Administración de Proyectos.', 2008, (SELECT id FROM assigned_time WHERE practice_hour_semester = 27 AND theoretical_hour_semester = 54 AND automatic_teaching = 10), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'), (SELECT id FROM modality WHERE name LIKE 'Escolarizado'), (SELECT id FROM teaching WHERE name LIKE 'Obligatoria'), (SELECT id FROM teaching_profile WHERE id = 1));
+Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de Datos y Administración de Proyectos.', 2008, (SELECT id FROM assigned_time WHERE total_semster_hour = 81), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'), (SELECT id FROM modality WHERE name LIKE 'Escolarizado'), (SELECT id FROM teaching WHERE name LIKE 'Obligatoria'), (SELECT id FROM teaching_profile WHERE id = 1));
 
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
