@@ -149,11 +149,9 @@ public class ExtensiveProgramRestController {
 		List<Knowledge> knowledges = new ArrayList<Knowledge>();
 		List<Ability> ability = new ArrayList<Ability>();
 		List<Attitude> attitude = new ArrayList<Attitude>();
-		
+		/*
 		List<ProfessionalExperience> professionalExperience = new ArrayList<ProfessionalExperience>();
 		List<SchoolingGrade> schoolingGrade = new ArrayList<SchoolingGrade>();
-		
-		/*Atributos scholingGrade*/
 
 		for(JsonNode c : req.get("teachingProfile").get("schoolingGrades")) {
 			AcademicLevel a = academicLevelService.add(mapper.treeToValue(c.get("academicLevel"),AcademicLevel.class));
@@ -176,7 +174,7 @@ public class ExtensiveProgramRestController {
 		
 		/*Extensive program*/
 		try {
-			extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching));
+			//extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,

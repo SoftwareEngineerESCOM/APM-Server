@@ -47,5 +47,4 @@ public class TeachingProfile {
 		this.attitude = attitude;
 	}
 	
-	}
 }
