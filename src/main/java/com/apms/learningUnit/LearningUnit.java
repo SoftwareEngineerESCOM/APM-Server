@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 import com.apms.formationArea.FormationArea;
 import com.apms.semester.Semester;
+import com.apms.learningUnitStatus.LearningUnitStatus;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -38,6 +39,9 @@ public class LearningUnit {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Semester semester;
+        @ManyToOne
+        @JoinColumn(nullable = false)
+        private LearningUnitStatus learningUnitStatus;
 
 	public LearningUnit() {
 	}
