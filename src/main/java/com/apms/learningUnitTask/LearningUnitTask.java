@@ -18,14 +18,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@IdClass(LearningUnitTaskPK.class)
 public class LearningUnitTask {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
     @JoinColumn
     @ManyToOne
     private LearningUnit learningUnit;
-    @Id
     @JoinColumn
     @ManyToOne
     private User user;
