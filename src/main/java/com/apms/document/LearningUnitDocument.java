@@ -15,16 +15,23 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.apms.extensiveProgram.ExtensiveProgramService;
 import com.apms.syntheticProgram.SyntheticProgram;
+import com.apms.syntheticProgram.SyntheticProgramService;
 
 public class LearningUnitDocument {
+	private SyntheticProgram syntheticProgram;
 	private final File firstSection = new File("src/main/resources/document_latex/learning_unit_document/first_part_document.tex");
     private final File secondSectionTemplate = new File("src/main/resources/document_latex/learning_unit_document/second_part_document_template.tex");
     private final File secondSection = new File("src/main/resources/document_latex/learning_unit_document/second_part_document.tex");
     private final File thirdSection = new File("src/main/resources/document_latex/learning_unit_document/third_part_document.tex");
     private final Pattern regex = Pattern.compile("<(.*?)>");
     private HashMap<String,String> dataLabels;
+    private int numberUnits;
     private String content;
+    
+    //Services
+    private ExtensiveProgramService extensiveProgramService;
     
     private HashMap<String,String> fillDocumentLabels(){
         return null;
@@ -35,14 +42,18 @@ public class LearningUnitDocument {
         this.content = "";
         EtiquetasPrueba ep = new EtiquetasPrueba();
         this.dataLabels = ep.getEtiquetas();
+        numberUnits = 3;
     }
     
     public LearningUnitDocument(SyntheticProgram syntheticProgram) {
-        this.dataLabels = new HashMap();
+        this.syntheticProgram = syntheticProgram;
+    	this.dataLabels = new HashMap();
+        this.numberUnits = 0;
         this.content = "";
     }
     
     public void createDocument() throws IOException{
+    	fillDataLabels();
         EtiquetasPrueba ep = new EtiquetasPrueba();
         this.dataLabels = ep.getEtiquetas();
         createFirstSection();
@@ -52,6 +63,10 @@ public class LearningUnitDocument {
         writer.write(content);
         writer.close();
         ejecutarCMD("pdflatex -interaction nonstopmode src/main/resources/document_latex/FormatoUnidadAcademica.tex --output-directory=src/main/resources/document_latex/");
+    }
+    
+    private void fillDataLabels() {
+    	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
     }
     
     private void ejecutarCMD(String cmd){
@@ -124,9 +139,8 @@ public class LearningUnitDocument {
     private void editSecondSectionTemplate() throws IOException{
         //SE NECESITARA RECUPERAR EL NUMERO DE UNIDADES DE LA MATERIA
         String contentTemplate = "";
-        int unitNum = 3; //REMPLAZAR CON EL NUMERO DE UNIDADES
         //Creacion de etiquetas para todas las uniades
-        for (int i = 1; i <= unitNum; i++) {
+        for (int unit = 1; unit <= numberUnits; unit++) {
             BufferedReader reader = new BufferedReader(new FileReader(secondSectionTemplate));
             String line = reader.readLine();
             Matcher regexMatcher;
@@ -139,7 +153,7 @@ public class LearningUnitDocument {
 
                 for (String match : matchList) {
                     if(match.contains("#")){
-                        String newLabel = match.replace("#", i + "");
+                        String newLabel = match.replace("#", unit + "");
                         line = line.replaceFirst("<" + match + ">", "<" + newLabel + ">");
                     } else{
                         line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
