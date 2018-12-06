@@ -82,7 +82,10 @@ public class LearningUnitDocument {
 
             for (String match : matchList) {
                 System.out.println("Match: " + match);
-                line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
+                if(dataLabels.get(match) != null)
+                	line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
+                else
+                	line = line.replaceFirst("<" + match + ">", "S/I");
             }
             this.content += line + System.lineSeparator();
             line = reader.readLine();
@@ -107,7 +110,10 @@ public class LearningUnitDocument {
 
             for (String match : matchList) {
                 System.out.println("Match: " + match);
-                line = line.replaceFirst("<" + match + ">", "xx");
+                if(dataLabels.get(match) != null)
+                	line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
+                else
+                	line = line.replaceFirst("<" + match + ">", "S/I");
             }
             this.content += line + System.lineSeparator();
             line = reader.readLine();
@@ -163,7 +169,10 @@ public class LearningUnitDocument {
 
             for (String match : matchList) {
                 System.out.println("Match: " + match);
-                line = line.replaceFirst("<" + match + ">", "XX");
+                if(dataLabels.get(match) != null)
+                	line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
+                else
+                	line = line.replaceFirst("<" + match + ">", "S/I");
             }
             this.content += line + System.lineSeparator();
             line = reader.readLine();

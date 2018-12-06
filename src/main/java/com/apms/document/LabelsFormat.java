@@ -3,15 +3,23 @@ package com.apms.document;
 import java.util.List;
 import java.util.HashMap;
 
+import com.apms.ability.Ability;
 import com.apms.accreditationType.AccreditationType;
+import com.apms.attitude.Attitude;
 import com.apms.bibliographyRelation.BibliographyRelation;
 import com.apms.content.Content;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.extensiveProgram.ExtensiveProgram;
+import com.apms.knowledge.Knowledge;
 import com.apms.learningEvaluation.LearningEvaluation;
+import com.apms.practice.Practice;
+import com.apms.practiceRelation.PracticeRelation;
+import com.apms.professionalExperience.ProfessionalExperience;
+import com.apms.schoolingGrade.SchoolingGrade;
 import com.apms.studyPlan.StudyPlan;
 import com.apms.subtopic.Subtopic;
 import com.apms.syntheticProgram.SyntheticProgram;
+import com.apms.teachingProfile.TeachingProfile;
 import com.apms.thematicUnit.ThematicUnit;
 import com.apms.topic.Topic;
 
@@ -80,9 +88,50 @@ public class LabelsFormat {
 		dataLabels.put("total_semester_hours", extensiveProgram.getAssignedTime().getTotalSemsterHour() + "");
 		
 		
-		//TEACHER PROFILE DATA
-		//extensiveProgram.get
+		//TEACHER PROFILE INFO
+		TeachingProfile teachingProfile = extensiveProgram.getTeachingProfile();
 		
+		//SCHOOLING GRADE INFO
+		String schoolingGradeStr = "";
+		List<SchoolingGrade> schoolingGrades = teachingProfile.getSchoolingGrades();
+		for (int i = 0; i < schoolingGrades.size(); i++) {
+			schoolingGradeStr += schoolingGrades.get(i).getAcademicLevel().getName() + " en " +   schoolingGrades.get(i).getSpeciality();
+			if(i+1 < schoolingGrades.size()) {
+				if(i+2 < schoolingGrades.size())
+					schoolingGradeStr += ", ";
+				else
+					schoolingGradeStr += " o ";
+			}
+		}
+		dataLabels.put("specialty_and_academic_level_required", schoolingGradeStr);
+		
+		//KNOWLEDGES
+		String knowledgesStr = "";
+		for (Knowledge knowledge : teachingProfile.getKnowledges()) {
+			knowledgesStr += knowledge.getName() + "\\\\";
+		}
+		dataLabels.put("teacher_profile_knowledge", knowledgesStr);
+		
+		//EXPERIENCE PROFILE
+		String professionalExperienceStr = "";
+		for (ProfessionalExperience professionalExperience : teachingProfile.getProfessionalExperiences()) {
+			professionalExperienceStr += professionalExperience.getName() + "\\\\";
+		}
+		dataLabels.put("teacher_profile_experience", knowledgesStr);
+		
+		//COMPETENCES PROFILE
+		String abilityStr = "";
+		for (Ability ability : teachingProfile.getAbility()) {
+			abilityStr += ability.getName() + "\\\\";
+		}
+		dataLabels.put("teacher_profile_competence", abilityStr);
+		
+		//ATTITUDES PROFILE
+		String attitudeStr = "";
+		for (Attitude attitude : teachingProfile.getAttitude()) {
+			attitudeStr += attitude.getName() + "\\\\";
+		}
+		dataLabels.put("teacher_profile_attitudes", attitudeStr);
 		
 		return dataLabels;
 	}
@@ -190,7 +239,7 @@ public class LabelsFormat {
 				//SUBTOPICS IN ORDER
 				if(topic.getSubtopics() != null) {
 					List<Subtopic> subtopics = topic.getSubtopics();
-					for (int subindex = 1; subindex < subtopics.size(); subindex++) {
+					for (int subindex = 1; subindex <= subtopics.size(); subindex++) {
 						Subtopic subtopic = null;
 						for (Subtopic subtopicAux : subtopics) {
 							if(subtopicAux.getNumber() == subindex) {
@@ -233,5 +282,31 @@ public class LabelsFormat {
 		}
 		return dataLabels;
 	}
+	
+	public static HashMap<String,String> createPracticeRelationLabels(PracticeRelation practiceRelation){
+		HashMap<String,String> dataLabels = new HashMap<>();
+		String practicesTableStr = "";
+		List<Practice> practices = practiceRelation.getPractices();
+		for (int numPractice = 1; numPractice <= practices.size(); numPractice++) {
+			Practice practice = null;
+			for (Practice practiceAux : practices) {
+				if(practiceAux.getNumber() == numPractice) {
+					practice = practiceAux;
+					break;
+				}
+			}
+			if(practice == null) {
+				System.out.println("No se encontro la practica no: " + numPractice);
+				continue;
+			}
+			practicesTableStr += practice.getNumber() + "&"; //PRACTICE NUMBER
+			practicesTableStr += practice.getThematicUnit().getContent().getNumber() + "&"; //PRACTICE THEMATIC UNIT NUMBER **pasar a numeros romanos 
+			practicesTableStr += practice.getLength() + "&"; //PRACTICE LENGHT
+			practicesTableStr += practice.getPlaceOfPractice() + "\\\\"; //PRACTICE PLACE
+		}
+		dataLabels.put("practice_relationship", practicesTableStr);
+		return dataLabels;
+	}
+	
 	
 }

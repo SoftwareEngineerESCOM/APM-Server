@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.9.14)  27 NOV 2018 12:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.5)  5 DEC 2018 20:26
 entering extended mode
 **./src/main/resources/document_latex/FormatoUnidadAcademica.tex
 (src/main/resources/document_latex/FormatoUnidadAcademica.tex
 LaTeX2e <2018-04-01> patch level 5
-(/home/san/.miktex/texmfs/install/tex/latex/base/article.cls
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/home/san/.miktex/texmfs/install/tex/latex/base/size10.clo
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -19,68 +19,69 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(/home/san/.miktex/texmfs/install/tex/latex/base/inputenc.sty
+) ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
+y"
 Package: inputenc 2018/04/06 v1.3b Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 )
-(/home/san/.miktex/texmfs/install/tex/generic/babel/babel.sty
-Package: babel 2018/09/02 3.23 The Babel package
-
-(/home/san/.miktex/texmfs/install/tex/generic/babel/switch.def
-File: switch.def 2018/09/02 3.23 Babel switching mechanism
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2018/09/26 3.24 The Babel package
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.def
+"
+File: switch.def 2018/09/26 3.24 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-(/home/san/.miktex/texmfs/install/tex/latex/arabi/bblopts.cfg
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(/home/san/.miktex/texmfs/install/tex/latex/babel-spanish/spanish.ldf
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-spanish\span
+ish.ldf"
 Language: spanish.ldf 2016/03/03 v5.0p Spanish support from the babel system
 
-(/home/san/.miktex/texmfs/install/tex/generic/babel/babel.def
-File: babel.def 2018/09/02 3.23 Babel common definitions
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2018/09/26 3.24 Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 
-(/home/san/.miktex/texmfs/install/tex/generic/babel/txtbabel.def)
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txtbabel.d
+ef")
 \bbl@dirlevel=\count89
 )
-
-Package babel Warning: No hyphenation patterns were preloaded for
-(babel)                the language `Spanish' into the format.
-(babel)                Please, configure your TeX system to add them and
-(babel)                rebuild the format. Now I will use the patterns
-(babel)                preloaded for \language=0 instead on input line 51.
-
-\l@spanish = a dialect from \language0
 \es@quottoks=\toks16
 \es@quotdepth=\count90
 Package babel Info: Making " an active character on input line 561.
 Package babel Info: Making . an active character on input line 662.
 Package babel Info: Making < an active character on input line 707.
 Package babel Info: Making > an active character on input line 707.
-)) (/home/san/.miktex/texmfs/install/tex/latex/amsmath/amsmath.sty
+))
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
+y"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/home/san/.miktex/texmfs/install/tex/latex/amsmath/amstext.sty
+
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.st
+y"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/home/san/.miktex/texmfs/install/tex/latex/amsmath/amsgen.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen104
 ))
-(/home/san/.miktex/texmfs/install/tex/latex/amsmath/amsbsy.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen105
 )
-(/home/san/.miktex/texmfs/install/tex/latex/amsmath/amsopn.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count91
@@ -121,14 +122,17 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(/home/san/.miktex/texmfs/install/tex/latex/caption/caption.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.st
+y"
 Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 
-(/home/san/.miktex/texmfs/install/tex/latex/caption/caption3.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.s
+ty"
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
 
-(/home/san/.miktex/texmfs/install/tex/latex/graphics/keyval.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
+y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
 )
@@ -143,7 +147,7 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \c@caption@flags=\count103
 \c@ContinuedFloat=\count104
 )
-(/home/san/.miktex/texmfs/install/tex/latex/amscls/amsthm.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks23
 \thm@bodyfont=\toks24
@@ -155,47 +159,57 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip48
 \dth@everypar=\toks28
 )
-(/home/san/.miktex/texmfs/install/tex/latex/amsfonts/amssymb.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.s
+ty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/home/san/.miktex/texmfs/install/tex/latex/amsfonts/amsfonts.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.
+sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/home/san/.miktex/texmfs/install/tex/latex/graphics/graphicx.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
+sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/home/san/.miktex/texmfs/install/tex/latex/graphics/graphics.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
+sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(/home/san/.miktex/texmfs/install/tex/latex/graphics/trig.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/home/san/.miktex/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
+ics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/home/san/.miktex/texmfs/install/tex/latex/graphics-def/pdftex.def
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
+x.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen120
 \Gin@req@width=\dimen121
 )
-(/home/san/.miktex/texmfs/install/tex/latex/geometry/geometry.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
+sty"
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/ifpdf.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
+ty"
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/ifvtex.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.
+sty"
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/home/san/.miktex/texmfs/install/tex/generic/ifxetex/ifxetex.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
+sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count105
@@ -211,8 +225,10 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen129
 \Gm@dimlist=\toks29
 
-(/home/san/.miktex/texmfs/install/tex/latex/geometry/geometry.cfg))
-(/home/san/.miktex/texmfs/install/tex/latex/fancyhdr/fancyhdr.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
+cfg"))
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.
+sty"
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip49
@@ -225,7 +241,8 @@ s
 \f@nch@O@olf=\skip56
 \f@nch@O@orf=\skip57
 )
-(/home/san/.miktex/texmfs/install/tex/latex/enumitem/enumitem.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem.
+sty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip58
 \enit@outerparindent=\dimen130
@@ -233,7 +250,7 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box28
 \enitdp@description=\count108
 )
-(/home/san/.miktex/texmfs/install/tex/latex/float/float.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count109
 \float@exts=\toks31
@@ -241,25 +258,29 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks32
 \@floatcapt=\box30
 )
-(/home/san/.miktex/texmfs/install/tex/latex/cancel/cancel.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cancel\cancel.sty"
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
-(/home/san/.miktex/texmfs/install/tex/latex/bigints/bigints.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\bigints\bigints.st
+y"
 Package: bigints 2010/02/15 Writing big integrals
 Package bigints Info: This is Bigints by Merciadri Luca. on input line 5.
 )
-(/home/san/.miktex/texmfs/install/tex/latex/graphics/color.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.sty
+"
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-(/home/san/.miktex/texmfs/install/tex/latex/graphics-cfg/color.cfg
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
+.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-(/home/san/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/home/san/.miktex/texmfs/install/tex/latex/graphics-cfg/color.cfg
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
+.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -274,10 +295,12 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/home/san/.miktex/texmfs/install/tex/latex/oberdiek/listingsutf8.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\listingsu
+tf8.sty"
 Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
 
-(/home/san/.miktex/texmfs/install/tex/latex/listings/listings.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+sty"
 \lst@mode=\count110
 \lst@gtempboxa=\box31
 \lst@token=\toks33
@@ -291,29 +314,35 @@ Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
 \lst@lineno=\count115
 \lst@maxwidth=\dimen134
 
-(/home/san/.miktex/texmfs/install/tex/latex/listings/lstmisc.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
+ty"
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
 \c@lstnumber=\count116
 \lst@skipnumbers=\count117
 \lst@framebox=\box32
 )
-(/home/san/.miktex/texmfs/install/tex/latex/listings/listings.cfg
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+cfg"
 File: listings.cfg 2018/09/02 1.7 listings configuration
 ))
 Package: listings 2018/09/02 1.7 (Carsten Heinz)
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/pdftexcmds.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdftexc
+mds.sty"
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/infwarerr.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infware
+rr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/ifluatex.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluate
+x.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/ltxcmds.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds
+.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -321,24 +350,28 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/stringenc.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\stringe
+nc.sty"
 Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
 )
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/pdfescape.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdfesca
+pe.sty"
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 )))
-(/home/san/.miktex/texmfs/install/tex/latex/algorithms/algorithm.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithms\algorit
+hm.sty"
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(/home/san/.miktex/texmfs/install/tex/latex/base/ifthen.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks34
 \c@algorithm=\count118
 )
-(/home/san/.miktex/texmfs/install/tex/latex/tocloft/tocloft.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tocloft\tocloft.st
+y"
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 51.
 \cftparskip=\skip59
@@ -375,21 +408,26 @@ Package tocloft Info: The document has section divisions on input line 51.
 \cfttabindent=\skip88
 \cfttabnumwidth=\skip89
 )
-(/home/san/.miktex/texmfs/install/tex/latex/hyphenat/hyphenat.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyphenat\hyphenat.
+sty"
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
-\langwohyphens=\language1
+\langwohyphens=\language76
 LaTeX Info: Redefining \_ on input line 43.
 )
-(/home/san/.miktex/texmfs/install/tex/latex/oberdiek/grffile.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grffile.s
+ty"
 Package: grffile 2017/06/30 v1.18 Extended file name support for graphics (HO)
 
-(/home/san/.miktex/texmfs/install/tex/latex/oberdiek/kvoptions.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
+.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/kvsetkeys.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvsetke
+ys.sty"
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/etexcmds.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexcmd
+s.sty"
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -401,10 +439,10 @@ Package grffile Info: Option `extendedchars' is set to `false'.
 Package grffile Info: Option `space' is set to `true'.
 Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
 )
-(/home/san/.miktex/texmfs/install/tex/latex/tools/tabularx.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\tabularx.sty
+"
 Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
-
-(/home/san/.miktex/texmfs/install/tex/latex/tools/array.sty
+ ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
 Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \col@sep=\dimen135
 \ar@mcellbox=\box33
@@ -422,23 +460,26 @@ Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \TX@cols=\count121
 \TX@ftn=\toks36
 )
-(/home/san/.miktex/texmfs/install/tex/latex/tocbibind/tocbibind.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tocbibind\tocbibin
+d.sty"
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has section divisions on input line 50.
 
 
 Package tocbibind Note: Using section or other style headings.
 
-) (/home/san/.miktex/texmfs/install/tex/latex/psnfss/times.sty
+) ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\times.sty
+"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/home/san/.miktex/texmfs/install/tex/latex/lastpage/lastpage.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lastpage\lastpage.
+sty"
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-(/home/san/.miktex/texmfs/install/tex/latex/ms/ragged2e.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\ragged2e.sty"
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 
-(/home/san/.miktex/texmfs/install/tex/latex/ms/everysel.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everysel.sty"
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
 \CenteringLeftskip=\skip92
@@ -456,13 +497,16 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 \RaggedRightParindent=\skip104
 \JustifyingParindent=\skip105
 )
-(/home/san/.miktex/texmfs/install/tex/latex/listings/lstlang1.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.
+sty"
 File: lstlang1.sty 2018/09/02 1.7 listings language file
 )
-(/home/san/.miktex/texmfs/install/tex/latex/listings/lstmisc.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
+ty"
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
 )
-(/home/san/.miktex/texmfs/install/tex/latex/cmbright/cmbright.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\cmbright.
+sty"
 Package: cmbright 2005/04/13 v8.1 (WaS)
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -530,17 +574,20 @@ LaTeX Info: Redefining \LaTeXe on input line 139.
 LaTeX Font Info:    Try loading font information for OT1+cmbr on input line 144
 .
 
-(/home/san/.miktex/texmfs/install/tex/latex/cmbright/ot1cmbr.fd
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\ot1cmbr.f
+d"
 File: ot1cmbr.fd 2005/04/13 v8.1 (WaS)
 ))
-(/home/san/.miktex/texmfs/install/tex/latex/multirow/multirow.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\multirow\multirow.
+sty"
 Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
 \multirow@colwidth=\skip106
 \multirow@cntb=\count122
 \multirow@dima=\skip107
 \bigstrutjot=\dimen142
 )
-(/home/san/.miktex/texmfs/install/tex/latex/tools/multicol.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.sty
+"
 Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \c@tracingmulticols=\count123
 \mult@box=\box35
@@ -589,11 +636,12 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \colbreak@box=\box60
 \mc@col@check@num=\count131
 )
-(/home/san/.miktex/texmfs/install/tex/latex/comment/comment.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\comment\comment.st
+y"
 \CommentStream=\write3
-
-Excluding comment 'comment')
-(/home/san/.miktex/texmfs/install/tex/latex/tools/longtable.sty
+ Excluding comment 'comment')
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\longtable.st
+y"
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip110
 \LTright=\skip111
@@ -611,8 +659,8 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count136
 \LT@p@ftn=\toks37
 )
-("/home/san/grive/ESCOM/Ing. Software/SEPROYECT/APMS-Server/src/main/resources/
-document_latex/FormatoUnidadAcademica.aux"
+(D:\xXEdG\Documents\Github\APMS-Server\src\main\resources\document_latex\Format
+oUnidadAcademica.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -637,12 +685,14 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
 
-(/home/san/.miktex/texmfs/install/tex/latex/caption/ltcaption.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ltcaption.
+sty"
 Package: ltcaption 2018/08/26 v1.4-95 longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 
-(/home/san/.miktex/texmfs/install/tex/context/base/supp-pdf.mkii
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
+ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count137
 \scratchdimen=\dimen153
@@ -655,13 +705,17 @@ Package caption Info: End \AtBeginDocument code.
 \MPnumerator=\count141
 \makeMPintoPDFobject=\count142
 \everyMPtoPDFconversion=\toks39
-) (/home/san/.miktex/texmfs/install/tex/latex/oberdiek/epstopdf-base.sty
+)
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
+base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/home/san/.miktex/texmfs/install/tex/latex/oberdiek/grfext.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
+y"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(/home/san/.miktex/texmfs/install/tex/generic/oberdiek/kvdefinekeys.sty
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvdefin
+ekeys.sty"
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 ))
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -722,7 +776,7 @@ Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 130.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 138--138
- []\OT1/cmbr/bx/n/14.4 PROGRAMA SINT[]ETICO 
+ []\OT1/cmbr/bx/n/14.4 PROGRAMA SINT[]ETI-CO 
  []
 
 
@@ -745,19 +799,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--146
 
 LaTeX Font Info:    Try loading font information for OML+cmbrm on input line 15
 0.
-(/home/san/.miktex/texmfs/install/tex/latex/cmbright/omlcmbrm.fd
+
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\omlcmbrm.
+fd"
 File: omlcmbrm.fd 2005/04/13 v8.1 (WaS)
 )
 LaTeX Font Info:    Try loading font information for OMS+cmbrs on input line 15
 0.
 
-(/home/san/.miktex/texmfs/install/tex/latex/cmbright/omscmbrs.fd
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\omscmbrs.
+fd"
 File: omscmbrs.fd 2005/04/13 v8.1 (WaS)
 )
 LaTeX Font Info:    Try loading font information for OMS+cmbr on input line 175
 .
 
-(/home/san/.miktex/texmfs/install/tex/latex/cmbright/omscmbr.fd
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\omscmbr.f
+d"
 File: omscmbr.fd 2005/04/13 v8.1 (WaS)
 )
 LaTeX Font Info:    Font shape `OMS/cmbr/m/n' in size <10> not available
@@ -770,9 +828,9 @@ Overfull \hbox (42.58853pt too wide) in paragraph at lines 150--186
 
 [1
 
-{/home/san/.miktex/texmfs/data/pdftex/config/pdftex.map} </home/san/grive/ESCOM
-/Ing. Software/SEPROYECT/APMS-Server/src/main/resources/document_latex/Analisis
-/FormatoUA/ipn.png>]
+{C:/Users/xXEdG/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <D:/xXEdG/Do
+cuments/Github/APMS-Server/src/main/resources/document_latex/Analisis/FormatoUA
+/ipn.png>]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
 Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 196.
@@ -783,8 +841,8 @@ Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 197.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
 Underfull \hbox (badness 4673) in paragraph at lines 211--211
-[]|\OT1/cmbr/bx/n/10 PROGRAMA ACAD[]EMICO: \OT1/cmbr/m/n/10 Escuela Superior de
-
+[]|\OT1/cmbr/bx/n/10 PROGRAMA ACAD[]EMI-CO: \OT1/cmbr/m/n/10 Es-cue-la Su-pe-ri
+or de
  []
 
 
@@ -794,24 +852,24 @@ Overfull \hbox (41.19997pt too wide) in paragraph at lines 207--221
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 229--230
- []|\OT1/cmbr/bx/n/10 INTENCI[]ON EDUCATIVA: 
+ []|\OT1/cmbr/bx/n/10 INTENCI[]ON EDU-CA-TI-VA: 
  []
 
 
 Underfull \hbox (badness 1603) in paragraph at lines 232--233
-\OT1/cmbr/m/n/10 las habilidades de analisis y dise~no de proyectos haciendo u
-so de software de gestion de proyectos as como 
+\OT1/cmbr/m/n/10 las ha-bi-li-da-des de anali-sis y di-se~no de pro-yec-tos ha
+-cien-do uso de soft-wa-re de ges-tion de pro-yec-tos as co-mo 
  []
 
 
 Underfull \hbox (badness 1043) in paragraph at lines 232--233
-\OT1/cmbr/m/n/10 planificar y proyectar es estrategicamente (Recursos Hardware
- y Software, Recursos Humanos, componentes 
+\OT1/cmbr/m/n/10 pla-ni-fi-car y pro-yec-tar es es-trategi-ca-men-te (Re-cur-s
+os Hard-wa-re y Soft-wa-re, Re-cur-sos Hu-ma-nos, com-po-nen-tes 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 235--236
- []\OT1/cmbr/bx/n/10 PROP[]OSITO DE LA UNIDAD DE APRENDIZAJE: 
+ []\OT1/cmbr/bx/n/10 PROP[]OSI-TO DE LA UNI-DAD DE APREN-DI-ZA-JE: 
  []
 
 
@@ -821,37 +879,37 @@ Overfull \hbox (42.58853pt too wide) in paragraph at lines 226--242
 
 
 Underfull \hbox (badness 6927) in paragraph at lines 257--258
-[]|\OT1/cmbr/bx/n/10 UNIDAD DE APRENDIZAJE
+[]|\OT1/cmbr/bx/n/10 UNIDAD DE APREN-DI-ZA-JE
  []
 
 
 Underfull \hbox (badness 6078) in paragraph at lines 257--258
-\OT1/cmbr/bx/n/10 DISE[]NADA O REDISE[]NADA
+\OT1/cmbr/bx/n/10 DI-SE[]NADA O RE-DI-SE[]NADA
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 266--267
-[]|\OT1/cmbr/bx/n/10 REVISADA POR: \OT1/cmbr/m/n/10 Dr. Flavio
+[]|\OT1/cmbr/bx/n/10 REVISADA POR: \OT1/cmbr/m/n/10 Dr. Fla-vio
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 266--267
-\OT1/cmbr/m/n/10 Arturo Sanchez Garfias
+\OT1/cmbr/m/n/10 Ar-tu-ro Sanchez Gar-fias
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 268--269
-[]|\OT1/cmbr/bx/n/10 HORAS DE APRENDIZAJE
+[]|\OT1/cmbr/bx/n/10 HORAS DE APREN-DI-ZA-JE
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 272--273
-[]|\OT1/cmbr/bx/n/10 APROBADA POR: \OT1/cmbr/m/n/10 Consejo
+[]|\OT1/cmbr/bx/n/10 APROBADA POR: \OT1/cmbr/m/n/10 Con-se-jo
  []
 
 
 Underfull \hbox (badness 3954) in paragraph at lines 274--274
-[]|\OT1/cmbr/bx/n/10 AUTORIZADO Y VALIDADO
+[]|\OT1/cmbr/bx/n/10 AUTORIZADO Y VA-LI-DA-DO
  []
 
 ! Misplaced \noalign.
@@ -896,7 +954,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 302--307
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 317--318
- []|\OT1/cmbr/bx/n/10 UNIDAD DE COMPETENCIA: 
+ []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
  []
 
 
@@ -921,7 +979,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 328--328
 
 
 Overfull \hbox (13.25829pt too wide) in paragraph at lines 328--328
-\OT1/cmbr/bx/n/10 DOCENTE| 
+\OT1/cmbr/bx/n/10 DO-CEN-TE| 
  []
 
 
@@ -931,12 +989,12 @@ Underfull \hbox (badness 1122) in paragraph at lines 328--328
 
 
 Overfull \hbox (14.56424pt too wide) in paragraph at lines 328--328
-\OT1/cmbr/bx/n/10 APRENDIZAJE
+\OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
  []
 
 
 Overfull \hbox (5.4531pt too wide) in paragraph at lines 328--328
-\OT1/cmbr/bx/n/10 AUT[]ONOMO| 
+\OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
  []
 
 
@@ -946,7 +1004,7 @@ Overfull \hbox (3.64322pt too wide) in paragraph at lines 329--329
 
 
 Overfull \hbox (51.44899pt too wide) in paragraph at lines 329--329
-\OT1/cmbr/bx/n/10 BIBLIOGR[]AFICA| 
+\OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
  []
 
 
@@ -955,7 +1013,12 @@ Overfull \hbox (2.18839pt too wide) in paragraph at lines 330--330
  []
 
 
-Overfull \hbox (4.32716pt too wide) in paragraph at lines 351--355
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 343--347
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 351--355
 []|[]| 
  []
 
@@ -972,8 +1035,13 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (4.32716pt too wide) in paragraph at lines 362--362
-[]|\OT1/cmbr/m/n/10 xx| 
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 362--362
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 362--362
+[]|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
@@ -983,7 +1051,7 @@ Overfull \hbox (42.1681pt too wide) in paragraph at lines 327--364
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 371--372
- []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APRENDIZAJE: 
+ []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
  []
 
 
@@ -993,7 +1061,7 @@ Overfull \hbox (42.58853pt too wide) in paragraph at lines 369--377
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 381--382
- []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APRENDIZAJES: 
+ []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
  []
 
 
@@ -1022,7 +1090,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 406--411
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 421--422
- []|\OT1/cmbr/bx/n/10 UNIDAD DE COMPETENCIA: 
+ []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
  []
 
 
@@ -1047,7 +1115,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 432--432
 
 
 Overfull \hbox (13.25829pt too wide) in paragraph at lines 432--432
-\OT1/cmbr/bx/n/10 DOCENTE| 
+\OT1/cmbr/bx/n/10 DO-CEN-TE| 
  []
 
 
@@ -1057,12 +1125,12 @@ Underfull \hbox (badness 1122) in paragraph at lines 432--432
 
 
 Overfull \hbox (14.56424pt too wide) in paragraph at lines 432--432
-\OT1/cmbr/bx/n/10 APRENDIZAJE
+\OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
  []
 
 
 Overfull \hbox (5.4531pt too wide) in paragraph at lines 432--432
-\OT1/cmbr/bx/n/10 AUT[]ONOMO| 
+\OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
  []
 
 
@@ -1072,7 +1140,7 @@ Overfull \hbox (3.64322pt too wide) in paragraph at lines 433--433
 
 
 Overfull \hbox (51.44899pt too wide) in paragraph at lines 433--433
-\OT1/cmbr/bx/n/10 BIBLIOGR[]AFICA| 
+\OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
  []
 
 
@@ -1081,7 +1149,12 @@ Overfull \hbox (2.18839pt too wide) in paragraph at lines 434--434
  []
 
 
-Overfull \hbox (4.32716pt too wide) in paragraph at lines 455--459
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 447--451
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 455--459
 []|[]| 
  []
 
@@ -1098,8 +1171,13 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (4.32716pt too wide) in paragraph at lines 466--466
-[]|\OT1/cmbr/m/n/10 xx| 
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 466--466
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 466--466
+[]|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
@@ -1109,7 +1187,7 @@ Overfull \hbox (42.1681pt too wide) in paragraph at lines 431--468
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 475--476
- []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APRENDIZAJE: 
+ []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
  []
 
 
@@ -1119,7 +1197,7 @@ Overfull \hbox (42.58853pt too wide) in paragraph at lines 473--481
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 485--486
- []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APRENDIZAJES: 
+ []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
  []
 
 
@@ -1148,7 +1226,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 510--515
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 525--526
- []|\OT1/cmbr/bx/n/10 UNIDAD DE COMPETENCIA: 
+ []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
  []
 
 
@@ -1173,7 +1251,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 536--536
 
 
 Overfull \hbox (13.25829pt too wide) in paragraph at lines 536--536
-\OT1/cmbr/bx/n/10 DOCENTE| 
+\OT1/cmbr/bx/n/10 DO-CEN-TE| 
  []
 
 
@@ -1183,12 +1261,12 @@ Underfull \hbox (badness 1122) in paragraph at lines 536--536
 
 
 Overfull \hbox (14.56424pt too wide) in paragraph at lines 536--536
-\OT1/cmbr/bx/n/10 APRENDIZAJE
+\OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
  []
 
 
 Overfull \hbox (5.4531pt too wide) in paragraph at lines 536--536
-\OT1/cmbr/bx/n/10 AUT[]ONOMO| 
+\OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
  []
 
 
@@ -1198,7 +1276,7 @@ Overfull \hbox (3.64322pt too wide) in paragraph at lines 537--537
 
 
 Overfull \hbox (51.44899pt too wide) in paragraph at lines 537--537
-\OT1/cmbr/bx/n/10 BIBLIOGR[]AFICA| 
+\OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
  []
 
 
@@ -1207,7 +1285,12 @@ Overfull \hbox (2.18839pt too wide) in paragraph at lines 538--538
  []
 
 
-Overfull \hbox (4.32716pt too wide) in paragraph at lines 559--563
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 551--555
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 559--563
 []|[]| 
  []
 
@@ -1224,8 +1307,13 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (4.32716pt too wide) in paragraph at lines 570--570
-[]|\OT1/cmbr/m/n/10 xx| 
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 570--570
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 570--570
+[]|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
@@ -1235,7 +1323,7 @@ Overfull \hbox (42.1681pt too wide) in paragraph at lines 535--572
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 579--580
- []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APRENDIZAJE: 
+ []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
  []
 
 
@@ -1245,7 +1333,7 @@ Overfull \hbox (42.58853pt too wide) in paragraph at lines 577--585
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 589--590
- []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APRENDIZAJES: 
+ []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
  []
 
 
@@ -1274,24 +1362,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 614--619
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 620--621
- []\OT1/cmbr/bx/n/14.4 RELACI[]ON DE PR[]ACTICAS 
+ []\OT1/cmbr/bx/n/14.4 RELACI[]ON DE PR[]ACTI-CAS 
  []
 
 
 Overfull \hbox (4.99301pt too wide) in paragraph at lines 626--626
- []|\OT1/cmbr/bx/n/10 PR[]ACTICA 
+ []|\OT1/cmbr/bx/n/10 PR[]ACTI-CA 
  []
 
 
 Overfull \hbox (3.86974pt too wide) in paragraph at lines 626--626
- \OT1/cmbr/bx/n/10 TEM[]ATICAS| 
+ \OT1/cmbr/bx/n/10 TEM[]ATI-CAS| 
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
 l.631     \hline
-                 &&\Centering\textbf{TOTAL DE HORAS}& XX &\\\hline
+                 &&\Centering\textbf{TOTAL DE HORAS}& S/I &\\\hline
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
@@ -1389,7 +1477,7 @@ Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 726.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
 Underfull \hbox (badness 2503) in paragraph at lines 733--733
- []\OT1/cmbr/bx/n/14.4 PERFIL DOCENTE POR UNIDAD DE APRENDIZAJE 
+ []\OT1/cmbr/bx/n/14.4 PERFIL DO-CEN-TE POR UNI-DAD DE APREN-DI-ZA-JE 
  []
 
 
@@ -1427,7 +1515,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 748--748
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 748--749
-[]|\OT1/cmbr/bx/n/10 Cientfica
+[]|\OT1/cmbr/bx/n/10 Cientfi-ca
  []
 
 
@@ -1511,29 +1599,29 @@ an alignment. Proceed, and I'll ignore this case.
 
 AED: lastpage setting LastPage
 [9]
-("/home/san/grive/ESCOM/Ing. Software/SEPROYECT/APMS-Server/src/main/resources/
-document_latex/FormatoUnidadAcademica.aux"
+(D:\xXEdG\Documents\Github\APMS-Server\src\main\resources\document_latex\Format
+oUnidadAcademica.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 8662 strings out of 494891
- 127423 string characters out of 3178793
- 403399 words of memory out of 3000000
- 12096 multiletter control sequences out of 15000+200000
+ 8665 strings out of 492970
+ 130459 string characters out of 3126594
+ 409687 words of memory out of 3000000
+ 12347 multiletter control sequences out of 15000+200000
  9504 words of font info for 36 fonts, out of 3000000 for 9000
- 0 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  36i,20n,56p,834b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/san/.miktex/texmfs/data/fonts/pk/ljfour/public/cmbright/dpi525/cmbrs
-y8.pk> </home/san/.miktex/texmfs/data/fonts/pk/ljfour/public/cmbright/dpi600/cm
-brsy10.pk> </home/san/.miktex/texmfs/data/fonts/pk/ljfour/public/cmbright/dpi60
-0/cmbr10.pk> </home/san/.miktex/texmfs/data/fonts/pk/ljfour/public/cmbright/dpi
-600/cmbrbx10.pk> </home/san/.miktex/texmfs/data/fonts/pk/ljfour/public/cmbright
-/dpi720/cmbrbx10.pk> </home/san/.miktex/texmfs/data/fonts/pk/ljfour/public/cmbr
-ight/dpi864/cmbrbx10.pk>
-Output written on "/home/san/grive/ESCOM/Ing. Software/SEPROYECT/APMS-Server/sr
-c/main/resources/document_latex/FormatoUnidadAcademica.pdf" (9 pages, 140786 by
-tes).
+ <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dp
+i525\cmbrsy8.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\publi
+c\cmbright\dpi600\cmbrsy10.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\public\cmbright\dpi600\cmbr10.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX
+\2.9\fonts\pk\ljfour\public\cmbright\dpi600\cmbrbx10.pk> <C:\Users\xXEdG\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dpi720\cmbrbx10.pk> <C:\User
+s\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dpi864\cmbrbx1
+0.pk>
+Output written on D:\xXEdG\Documents\Github\APMS-Server\src\main\resources\docu
+ment_latex\FormatoUnidadAcademica.pdf (9 pages, 140896 bytes).
 PDF statistics:
  208 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

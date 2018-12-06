@@ -50,6 +50,7 @@ public class EtiquetasPrueba {
         etiquetas.put("second_approved_by_ch", "Comisión de Programas Académicos del Consejo General Consultivo del IPN. 2011");
         etiquetas.put("second_approved_date_ch", "");
         etiquetas.put("authorized_validated_by_ch", "Ing. Rodrigo de Jesús Serrano Domínguez\n Secretario Técnico de la Comisión de Programas Académicos");
+        etiquetas.put("academy", "Academia");
         
     }
 
