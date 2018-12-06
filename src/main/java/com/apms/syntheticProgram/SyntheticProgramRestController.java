@@ -102,19 +102,13 @@ public class SyntheticProgramRestController {
 		List<Content> content = new ArrayList<Content>();
 		List<AccreditationType> accreditationtype = new ArrayList<AccreditationType>();
 		List<EvaluationUA> evaluationUA = new ArrayList<EvaluationUA>();
-		System.out.println("inicio");
 		LearningUnit learningUnit = mapper.treeToValue(req.get("learningUnit"),LearningUnit.class);
-		System.out.println("learningUnit");
 		String regard = mapper.treeToValue(req.get("regard"),String.class);
-		System.out.println("regard");
-
 		String didacticOrientation = mapper.treeToValue(req.get("didacticOrientation"),String.class);
-		System.out.println("didacticOrientation");
 
 		for(JsonNode c :req.get("content")) {
 			content.add(contentService.add(mapper.treeToValue(c,Content.class)));
 		}
-		System.out.println("content");
 
 		int i = 0;
 		for(JsonNode c :req.get("evaluationAccreditationUA")) {
@@ -130,10 +124,7 @@ public class SyntheticProgramRestController {
 			}
 			i++;
 		}
-		System.out.println("evaluationAccreditationUA");
-
 		EvaluationAccreditationUA evaluationAccreditationUA = evaluationAccreditationUAService.add(new EvaluationAccreditationUA(0,accreditationtype,evaluationUA));
-		System.out.println("evaluationAccreditationUA Obejto");
 
 		try {
 			syntheticProgramService.add(new SyntheticProgram(regard,didacticOrientation,learningUnit,evaluationAccreditationUA,content));

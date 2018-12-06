@@ -6,6 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apms.ability.Ability;
+import com.apms.attitude.Attitude;
+import com.apms.knowledge.Knowledge;
+import com.apms.professionalExperience.ProfessionalExperience;
+import com.apms.schoolingGrade.SchoolingGrade;
+
 @Service
 public class TeachingProfileService {
 
@@ -22,8 +28,8 @@ public class TeachingProfileService {
 		return teachingProfileRepository.findById(id).isPresent() ? teachingProfileRepository.findById(id).get() : null;
 	}
 
-	public void add(TeachingProfile teachingProfile) {
-		teachingProfileRepository.save(teachingProfile);
+	public TeachingProfile add(TeachingProfile teachingProfile) {
+		return teachingProfileRepository.save(teachingProfile);
 	}
 
 	public void update(TeachingProfile teachingProfile) {
@@ -33,5 +39,11 @@ public class TeachingProfileService {
 
 	public void delete(Integer id) {
 		teachingProfileRepository.deleteById(id);
+	}
+
+	public TeachingProfile add(SchoolingGrade schoolingGrade, List<Knowledge> knowledges, List<Ability> ability,
+			List<Attitude> attitude, List<ProfessionalExperience> professionalExperience) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

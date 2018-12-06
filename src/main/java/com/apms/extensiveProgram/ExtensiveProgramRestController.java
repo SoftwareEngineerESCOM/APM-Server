@@ -1,6 +1,11 @@
 package com.apms.extensiveProgram;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.persistence.ManyToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,16 +18,70 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apms.ability.Ability;
+import com.apms.ability.AbilityService;
+import com.apms.academicLevel.AcademicLevel;
+import com.apms.academicLevel.AcademicLevelService;
+import com.apms.accreditationType.AccreditationType;
+import com.apms.assignedTime.AssignedTime;
+import com.apms.assignedTime.AssignedTimeService;
+import com.apms.attitude.Attitude;
+import com.apms.attitude.AttitudeService;
+import com.apms.bibliography.Bibliography;
+import com.apms.content.Content;
+import com.apms.evaluationAccreditationUA.EvaluationAccreditationUA;
+import com.apms.evaluationUA.EvaluationUA;
+import com.apms.knowledge.Knowledge;
+import com.apms.knowledge.KnowledgeService;
+import com.apms.learningUnit.LearningUnit;
+import com.apms.modality.Modality;
+import com.apms.professionalExperience.ProfessionalExperience;
+import com.apms.professionalExperience.ProfessionalExperienceService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
+import com.apms.schoolingGrade.SchoolingGrade;
+import com.apms.schoolingGrade.SchoolingGradeService;
+import com.apms.syntheticProgram.SyntheticProgram;
+import com.apms.teaching.Teaching;
+import com.apms.teachingProfile.TeachingProfile;
+import com.apms.teachingProfile.TeachingProfileService;
+import com.apms.type.Type;
+import com.apms.type.TypeService;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 
 @RestController
 @RequestMapping("/extensiveProgram")
 public class ExtensiveProgramRestController {
 
 	@Autowired
-	private ExtensiveProgramService extensiveProgramService;
+	private AssignedTimeService assignedTimeService;
+	
+	
+	@Autowired
+	private AcademicLevelService academicLevelService;
+	
+	@Autowired
+	private SchoolingGradeService schoolingGradeService;
+	
 
+	@Autowired
+	private KnowledgeService knowledgesService;
+	@Autowired
+	private ProfessionalExperienceService professionalExperienceService;
+	@Autowired
+	private AttitudeService attitudeService;
+	@Autowired
+	private AbilityService abilityService;
+	@Autowired
+	private ExtensiveProgramService extensiveProgramService;
+	@Autowired
+	private TeachingProfileService teachingProfileService;
+	
 	/*
 	 ** Return a listing of all the resources
 	 */
@@ -67,11 +126,57 @@ public class ExtensiveProgramRestController {
 	 ** Store a newly created resource in storage.
 	 */
 	@PostMapping
-	public RESTResponse<ExtensiveProgram> post(@RequestBody RESTRequest<ExtensiveProgram> extensiveProgram) {
+	public RESTResponse<ExtensiveProgram> post(@RequestBody Map<String,JsonNode> req) throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		/*Catalogos*/		
+		
+		LearningUnit learningUnit = mapper.treeToValue(req.get("learningUnit"),LearningUnit.class);
+		Modality modality =  mapper.treeToValue(req.get("modality"),Modality.class);
+		Teaching teaching =  mapper.treeToValue(req.get("teaching"),Teaching.class);
+		
+		List<Type> types = new ArrayList<Type>();
+		for(JsonNode c :req.get("types")) {
+			types.add(mapper.treeToValue(c,Type.class));
+		}
+		/*atributos*/
+		AssignedTime assignedTime = assignedTimeService.add(mapper.treeToValue(req.get("assignedTime"),AssignedTime.class));  
+		int validity  = mapper.treeToValue(req.get("validity"),Integer.class);
+		String educationalIntention = mapper.treeToValue(req.get("educationalIntention"),String.class);
+		
+		/*Atributos de perfil docente*/
+		
+		List<Knowledge> knowledges = new ArrayList<Knowledge>();
+		List<Ability> ability = new ArrayList<Ability>();
+		List<Attitude> attitude = new ArrayList<Attitude>();
+		
+		List<ProfessionalExperience> professionalExperience = new ArrayList<ProfessionalExperience>();
+		List<SchoolingGrade> schoolingGrade = new ArrayList<SchoolingGrade>();
+		
+		/*Atributos scholingGrade*/
+
+		for(JsonNode c : req.get("teachingProfile").get("schoolingGrades")) {
+			AcademicLevel a = academicLevelService.add(mapper.treeToValue(c.get("academicLevel"),AcademicLevel.class));
+			String specialty = mapper.treeToValue(c.get("specialty"),String.class);
+			schoolingGrade.add(schoolingGradeService.add(new SchoolingGrade(a,specialty)));
+		}
+		for(JsonNode c : req.get("teachingProfile").get("knowledges")) {
+			knowledges.add(knowledgesService.add(mapper.treeToValue(c,Knowledge.class)));
+		}		
+		for(JsonNode c : req.get("teachingProfile").get("professionalExperiences")) {
+			professionalExperience.add(professionalExperienceService.add(mapper.treeToValue(c,ProfessionalExperience.class)));
+		}
+		for(JsonNode c : req.get("teachingProfile").get("ability")) {
+			ability.add(abilityService.add(mapper.treeToValue(c,Ability.class)));
+		}
+		for(JsonNode c : req.get("teachingProfile").get("attitude")) {
+			attitude.add(attitudeService.add(mapper.treeToValue(c,Attitude.class)));
+		}
+		TeachingProfile teachingProfile = teachingProfileService.add(new TeachingProfile(schoolingGrade, knowledges, ability, attitude, professionalExperience));
+		
+		/*Extensive program*/
 		try {
-			if(extensiveProgramService.getOne(extensiveProgram.getPayload().getId()) != null)
-                return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL, "Programa en extenso ya existe en el sistema.", null);
-			extensiveProgramService.add(extensiveProgram.getPayload());
+			extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
@@ -79,7 +184,6 @@ public class ExtensiveProgramRestController {
 		}
 		return new RESTResponse<ExtensiveProgram>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
 	}
-
 	/*
 	 ** Update the specified resource in storage partially.
 	 */

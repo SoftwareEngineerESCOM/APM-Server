@@ -22,8 +22,8 @@ public class AbilityService {
 	return abilityRepository.findById(id).isPresent() ? abilityRepository.findById(id).get() : null;
     }
 
-    public void add(Ability ability) {
-        abilityRepository.save(ability);
+    public Ability add(Ability ability) {
+        return abilityRepository.save(ability);
     }
 
     public void update(Ability ability) {

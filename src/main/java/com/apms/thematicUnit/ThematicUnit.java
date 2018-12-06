@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.apms.content.Content;
-
+import com.apms.evaluationSystem.EvaluationSystem;
 import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.topic.Topic;
@@ -31,6 +31,9 @@ public class ThematicUnit {
 	@OneToOne
 	@JoinColumn(nullable=false)
 	private Content content;
+	@OneToOne
+	@JoinColumn(nullable=false)
+	private EvaluationSystem evaluationSystem;
 	@OneToMany
 	@JoinColumn
 	private List<Topic> topics;

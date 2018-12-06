@@ -1,0 +1,112 @@
+%            PAGINA 1: PROGRAMA SINTETICO
+<academic_unit> : UNIDAD ACADÉMICA
+<academic_program> : PROGRAMA ACADÉMICO
+<learning_unit> : UNIDAD DE APRENDIZAJE
+<semester> : SEMESTRE
+<purpose_learning_unit> : PROPÓSITO DE LA UNIDAD DE APRENDIZAJE
+<contents> : CONTENIDOS
+<didactic_orientation> : ORIENTACIÓN DIDÁCTICA
+<evaluation_and_accreditation> : EVALUACIÓN Y ACREDITACIÓN
+<bibliography> : BIBLIOGRAFÍA
+
+%            PAGINA 2: CREDITOS Y HORAS
+<type_learning_unit> : TIPO DE UNIDAD DE APRENDIZAJE
+<salida_lateral> : SALIDA LATERAL
+<validity> : VIGENCIA
+<training_area> : ÁREA DE FORMACIÓN
+<modality> : MODALIDAD
+<credits> : CREDITOS
+<educational_intention> : INTENCIÓN EDUCATIVA
+<week_theory_hours> : HORAS TEORÍA/SEMANA
+<week_practice_hours> : HORAS PRÁCTICA/SEMANA
+<learning_unit_designed_redesigned> : UNIDAD DE APRENDIZAJE DISEÑADA O REDISEÑADA POR
+<second_approved_by_ch> : APROBADO POR TERCERA COLUMNA, CREDITOS Y HORAS
+<second_approved_date_ch> : FECHA DE APROBACIÓN TERCERA COLUMNA, CREDITOS Y HORAS
+<semester_theory_hours> : HORAS TEORÍA/SEMESTRE
+<semester_practice_hours> : HORAS PRÁCTICA/SEMESTRE
+<revised_by_ch> : REVISADA POR, CREDITOS Y HORAS
+<autonomous_learning_hours> : HORAS DE APRENDIZAJE AUTÓNOMO
+<total_semester_hours> : HORAS TOTALES/SEMESTRE
+<first_approved_by_ch> : APROBADO POR SEGUNDA COLUMNA, CREDITOS Y HORAS
+<first_approved_date_ch> : FECHA DE APROBACIÓN SEGUNDA COLUMNA, CREDITOS Y HORAS
+<person_approves_ch> : PERSONA QUE APRUEBA SEGUNDA COLUMNA
+<authorized_validated_by_ch> : EL QUE AUTORIZA Y SU CARGO, CREDITOS Y HORAS
+
+
+
+%            PAGINA 3: UNIDADES TEMATICAS Y CONTENIDOS (ESTA PAGINA TENDRA ETIQUETAS DINAMICAS #)
+<thematic_unit_no_#> : NUMERO DE UNIDAD TEMATICA
+<thematic_unit_#> : UNIDAD TEMATICA
+<competence_unit_#> : UNIDAD DE COMPETENCIA
+
+%%%%%%%%%% INICIO CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (AL FINAL AGREGAR \\ PARA DAR FORMATO)
+<content_numbers_#> : NUMERO DE CONTENIDO
+<contents_#> : CONTENIDOS
+<theoretical_hours_with_teacher_#> : HORAS TEORICAS CON DOCENTE
+<practical_hours_with_teacher_#> : HORAS PRACTICAS CON DOCENTE
+<autonomous_theoretical_hours_#> : HORAS TEORICAS DE APRENDIZAJE AUTONOMO
+<autonomous_practice_hours_#> : HORAS PRACTICAS DE APRENDIZAJE AUTONOMO
+<bibliographic_keys_#> : CLAVES BIBLIOGRAFICAS
+
+<total_theoretical_hours_with_teacher_#> : TOTAL HORAS TEORICAS CON DOCENTE
+<total_practical_hours_with_teacher_#> : TOTAL HORAS PRACTICAS CON DOCENTE
+<total_autonomous_theoretical_hours_#> : TOTAL HORAS TEORICAS DE APRENDIZAJE AUTONOMO
+<total_autonomous_practice_hours_#> : TOTAL HORAS PRACTICAS DE APRENDIZAJE AUTONOMO
+
+<learning_strategies_#> : ESTRATEGIAS DE APRENDIZAJE
+<evaluation_learning_#> : EVALUACIÓN DE LOS APRENDIZAJES
+
+
+
+%            PAGINA 4: RELACION PRACTICAS
+
+<practice_relationship> : NUM PRACTICA, NOMBRE, UNIDADES TEMATICAS, DURACION, LUGAR
+Esta etiqueta tiene el siguiente formato:
+    NUM PRACTICA & NOMBRE & UNIDADES TEMATICAS & DURACION & LUGAR\\
+    1 & JAJAJAJAJA & IV & KDSF & KLFJAKLFA\\
+    1 & JAJAJAJAJA & IV & KDSF & KLFJAKLFA\\ 
+    1 & JAJAJAJAJA & IV & KDSF & KLFJAKLFA\\
+    1 & JAJAJAJAJA & IV & KDSF & KLFJAKLFA\\
+    1 & JAJAJAJAJA & IV & KDSF & KLFJAKLFA\\ 
+
+<total_hours_practices> : TOTAL DE HORAS RELACION PRACTICAS
+<evaluation_and_accreditation_practices> : EVALUACIÓN Y ACREDITACIÓN
+
+%            PAGINA 5: EVALUACION
+<evaluation_procedure_by_period> : PROCEDIMIENTO DE EVALUACIÓN POR PERIODO
+Esta etiqueta tiene el siguiente formato:
+	
+	PERIODO & UNIDAD & Evaluación continua\tab[0.5cm]PORCENTAJE EVALUACION\%
+
+    Evidencia de aprendizaje\tab[0.5cm]PORCENTAJE EVIDENCIA \%\\
+
+    %%%%%%%%%% PERIODO, UNIDAD, EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    1 & I & Evaluación continua\tab[0.5cm]50\%
+
+    Evidencia de aprendizaje\tab[0.5cm]50\%\\
+
+    %%%%%%%%%% PERIODO, UNIDAD, EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    1 & I & Evaluación continua\tab[0.5cm]50\%
+
+    Evidencia de aprendizaje\tab[0.5cm]50\%\\
+
+
+%            PAGINA 6: BIBLIOGRAFIA
+<bibliographies_info> : LISTA DE BIBLIOGRAFIAS
+Esta etiqueta tiene el siguiente formato:
+
+%%%%%%%%%% CLAVE, B, X, BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    1 &  & X & Nonummy et enim at. Lorem ipsum dolor sit amet, et sodales faucibus eu, proident mi hendrerit justo, integer semper hac.Lorem ipsum dolor sit amet, et sodales faucibus eu, proident mi hendrerit justo, integer semper hac\\
+
+    2 & X &  & Nonummy et enim at. Lorem ipsum dolor sit amet, et sodales faucibus eu, proident mi hendrerit justo, integer semper hac.Lorem ipsum dolor sit amet, et sodales faucibus eu, proident mi hendrerit justo, integer semper hac\\
+
+%            PAGINA 7: PERFIL DOCENTE
+<academy> : ACADEMIA
+<specialty_and_academic_level_required> : ESPECIALIDAD Y NIVEL ACADÉMICO REQUERIDO
+<teacher_profile_knowledge> : CONOCIMIENTOS PERFIL DOCENTE
+<teacher_profile_experience> : EXPERIENCIA PERFIL DOCENTE
+<teacher_profile_competence> : COMPETENCIAS PERFIL DOCENTE 
+<teacher_profile_attitudes> : ACTITUDES PERFIL DOCENTE
+<elaborated_by_executive> : TABLA DE DIRECTIVOS, ELABORO
+<revised_by_executive> : TABLA DE DIRECTIVOS, REVISO
+<authorized_by_executive> : TABLA DE DIRECTIVOS, REVISO

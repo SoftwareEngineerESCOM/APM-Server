@@ -39,4 +39,17 @@ public class TeachingProfile {
 	public TeachingProfile() {
 
 	}
+
+
+	public TeachingProfile(List<SchoolingGrade> schoolingGrade, List<Knowledge> knowledge, List<Ability> ability,
+			List<Attitude> attitude, List<ProfessionalExperience> professionalExperience) {
+		super();
+
+		this.schoolingGrades = schoolingGrade;
+		this.knowledges = knowledge;
+		this.professionalExperiences = professionalExperience;
+		this.ability = ability;
+		this.attitude = attitude;
+	}
+	
 }

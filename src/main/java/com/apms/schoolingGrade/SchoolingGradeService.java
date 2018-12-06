@@ -22,8 +22,8 @@ public class SchoolingGradeService {
 		return schoolingGradeRepository.findById(id).isPresent() ? schoolingGradeRepository.findById(id).get() : null;
 	}
 
-	public void add(SchoolingGrade schoolingGrade) {
-		schoolingGradeRepository.save(schoolingGrade);
+	public SchoolingGrade add(SchoolingGrade schoolingGrade) {
+		return schoolingGradeRepository.save(schoolingGrade);
 	}
 
 	public void update(SchoolingGrade schoolingGrade) {

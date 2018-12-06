@@ -22,8 +22,8 @@ public class AttitudeService {
 	return attitudeRepository.findById(id).isPresent() ? attitudeRepository.findById(id).get() : null;
     }
 
-    public void add(Attitude attitude) {
-        attitudeRepository.save(attitude);
+    public Attitude add(Attitude attitude) {
+        return attitudeRepository.save(attitude);
     }
 
     public void update(Attitude attitude) {

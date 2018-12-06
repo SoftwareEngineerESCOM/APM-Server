@@ -22,8 +22,8 @@ public class KnowledgeService {
 		return knowledgeRepository.findById(id).isPresent() ? knowledgeRepository.findById(id).get() : null;
 	}
 
-	public void add(Knowledge knowledge) {
-		knowledgeRepository.save(knowledge);
+	public Knowledge add(Knowledge knowledge) {
+		return knowledgeRepository.save(knowledge);
 	}
 
 	public void update(Knowledge knowledge) {

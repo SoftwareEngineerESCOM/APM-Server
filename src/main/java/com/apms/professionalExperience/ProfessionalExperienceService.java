@@ -24,8 +24,8 @@ public class ProfessionalExperienceService {
 				: null;
 	}
 
-	public void add(ProfessionalExperience professionalExperience) {
-		professionalExperienceRepository.save(professionalExperience);
+	public ProfessionalExperience add(ProfessionalExperience professionalExperience) {
+		return professionalExperienceRepository.save(professionalExperience);
 	}
 
 	public void update(ProfessionalExperience professionalExperience) {

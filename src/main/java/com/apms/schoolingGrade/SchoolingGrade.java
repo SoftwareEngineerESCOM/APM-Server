@@ -26,7 +26,11 @@ public class SchoolingGrade {
 	@JoinColumn(nullable = false)
 	private AcademicLevel academicLevel;
 
+	public SchoolingGrade(AcademicLevel academicLevel,String specialty) {
+		this.academicLevel = academicLevel;
+		this.speciality = specialty;
+	}
 	public SchoolingGrade() {
-
+		
 	}
 }

@@ -22,8 +22,8 @@ public class AcademicLevelService {
 	return academicLevelRepository.findById(id).isPresent() ? academicLevelRepository.findById(id).get() : null;
     }
 
-    public void add(AcademicLevel academicLevel) {
-        academicLevelRepository.save(academicLevel);
+    public AcademicLevel add(AcademicLevel academicLevel) {
+        return academicLevelRepository.save(academicLevel);
     }
 
     public void update(AcademicLevel academicLevel) {
