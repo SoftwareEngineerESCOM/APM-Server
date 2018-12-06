@@ -69,7 +69,7 @@ public class LearningUnitTask {
         return deadline;
     }
     
-    public void setDeadLine(String dealLine){
+    public void setDeadLine(String deadLine){
         this.deadline = deadline;
     }
 }
