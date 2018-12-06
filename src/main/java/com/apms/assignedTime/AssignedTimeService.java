@@ -22,8 +22,8 @@ public class AssignedTimeService {
 		return assignedTimeRepository.findById(id).isPresent() ? assignedTimeRepository.findById(id).get() : null;
 	}
 
-	public void add(AssignedTime assignedTime) {
-		assignedTimeRepository.save(assignedTime);
+	public AssignedTime add(AssignedTime assignedTime) {
+		return assignedTimeRepository.save(assignedTime);
 	}
 
 	public void update(AssignedTime assignedTime) {

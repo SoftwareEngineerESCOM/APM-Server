@@ -70,7 +70,7 @@ public class AbilityRestController {
 		try {
 			if (abilityService.getOne(ability.getPayload().getId()) != null)
 				return new RESTResponse<Ability>(RESTResponse.FAIL, "La habilidad ya existe en el sistema.", null);
-			abilityService.add(ability.getPayload());
+			Ability a = abilityService.add(ability.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<Ability>(RESTResponse.FAIL,

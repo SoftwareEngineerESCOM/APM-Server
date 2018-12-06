@@ -1,0 +1,271 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[inline]{enumitem}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{bigints}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+\usepackage{algorithm}
+\usepackage{tocloft}
+\usepackage[none]{hyphenat}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{tabularx}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{times}
+\usepackage{color}
+\usepackage{lastpage}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\pagestyle{empty}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\lstset{tabsize=1}
+\usepackage{ragged2e}
+\usepackage{listings}
+\lstset{ frame=Ltb,
+framerule=0pt,
+aboveskip=0.5cm,
+framextopmargin=3pt,
+framexbottommargin=3pt,
+framexleftmargin=0.4cm,
+framesep=0pt,
+rulesep=.4pt,
+backgroundcolor=\color{gray97},
+rulesepcolor=\color{black},
+stringstyle=\ttfamily,
+showstringspaces = false,
+basicstyle=\small\ttfamily,
+commentstyle=\color{gray45},
+keywordstyle=\bfseries,
+numbers=left,
+numbersep=15pt,
+numberstyle=\tiny,
+numberfirstline = false,
+breaklines=true,
+}
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+\lstdefinestyle{consola}
+{basicstyle=\scriptsize\bf\ttfamily,
+backgroundcolor=\color{gray75},
+}
+\lstdefinestyle{Java}
+{language=Java,
+}
+%%%%%%%%%%%%%%%%%%%%%
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+\lstset{escapechar=@,style=customc}
+\usepackage{cmbright}
+\usepackage{multirow}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+% Font
+%Permite crear columnas en el documento
+\usepackage{multicol} 
+\usepackage{color}
+\usepackage{comment}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\subtabitem}{~~~~\llap{\textbullet}~~}
+\usepackage{longtable}
+% Ayuda para el formato de las tablas
+\usepackage{array}
+% Se declara un nuevo tipo de columna para alinear de manera:
+% -Horizontal
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+% -Vertical
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+% Indica la separacion entre las columnas de una tabla
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+% Indica el padding inferior y superior de las celdas de una tabla
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\newcommand{\finFila}{\hline}
+\usepackage{graphicx}
+
+%/////////////////////////////////////////////////////////////////
+%             INICIO DOCUMENTO
+%/////////////////////////////////////////////////////////////////
+
+\begin{document}
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 1: PROGRAMA SINTETICO
+%/////////////////////////////////////////////////////////////////
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ \\ \ \\
+\Centering{\Large\textbf{PROGRAMA SINTÉTICO}}\\
+\end{center}
+\\
+\textbf{UNIDAD ACADÉMICA:} <academic_unit>\\
+\textbf{PROGRAMA ACADÉMICO:} <academic_program>\\
+\textbf{UNIDAD DE APRENDIZAJE:} <learning_unit>
+\tab[1cm]
+\textbf{SEMESTRE:} <semester>\\
+
+
+%%%%%%%% INICIO TABLA PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
+
+    <purpose_learning_unit>. \\
+
+    \textbf{CONTENIDOS:}
+
+    <contents>. .\\ 
+
+    \textbf{ORIENTACIÓN DIDÁCTICA:}
+
+    <didactic_orientation>. \\ 
+
+    \textbf{EVALUACIÓN Y ACREDITACIÓN:}
+
+    <evaluation_and_accreditation> \\ 
+
+    \textbf{BIBLIOGRAFÍA:}
+
+    <bibliography>.\\ \hline
+  \end{tabular}
+\end{table}
+%%%%%%% FIN TABLA PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% FIN PÁGINA 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 2: CREDITOS Y HORAS
+%/////////////////////////////////////////////////////////////////
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA CREDITOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+    \hline
+    \textbf{UNIDAD ACADÉMICA:} <academic_unit> & 
+    \textbf{UNIDAD DE APRENDIZAJE:} <learning_unit>\\
+    \textbf{PROGRAMA ACADÉMICO:} <academic_program> & 
+    \textbf{TIPO DE UNIDAD DE APRENDIZAJE:} <type_learning_unit>\\ 
+    \textbf{ÁREA DE FORMACIÓN:} <training_area> & 
+    \textbf{VIGENCIA:} <validity>\\
+    \textbf{MODALIDAD:} <modality>& 
+    \textbf{SEMESTRE:} <semester>\\ 
+    & 
+    \textbf{CRÉDITOS:} <credits>\\ 
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA CREDITOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA INTENCION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \Centering
+    \textbf{INTENCIÓN EDUCATIVA:}
+
+    \RaggedRight
+    <educational_intention>.
+
+    \Centering
+    \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
+
+    \RaggedRight
+    <purpose_learning_unit>.\\
+
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA INTENCION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TIEMPOS ASIGNADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{0.34\textwidth}|p{0.31\textwidth}|p{0.31\textwidth}|}
+    \hline
+    \centering
+    \textbf{TIEMPOS ASIGNADOS}
+
+    \raggedright
+    \textbf{HORAS TEORÍA/SEMANA:} <week_theory_hours>
+
+    \textbf{HORAS PRÁCTICA/SEMANA:} <week_practice_hours>
+    & 
+    \textbf{UNIDAD DE APRENDIZAJE DISEÑADA O REDISEÑADA POR: } <learning_unit_designed_redesigned> 
+    &
+    \textbf{APROBADO POR:} <second_approved_by_ch>
+    <second_approved_date_ch>
+    \\
+    \textbf{HORAS TEORÍA/SEMESTRE:} <semester_theory_hours>
+    \raggedright
+    \textbf{HORAS PRÁCTICA/SEMESTRE:} <semester_practice_hours>
+    & 
+    \textbf{REVISADA POR:} <revised_by_ch>
+    &\\ 
+    \textbf{HORAS DE APRENDIZAJE AUTÓNOMO:} <autonomous_learning_hours>
+
+    \textbf{HORAS TOTALES/SEMESTRE:} <total_semester_hours>
+    & 
+    \textbf{APROBADA POR:} <first_approved_by_ch>
+    <first_approved_date_ch> & 
+    \textbf{AUTORIZADO Y VALIDADO POR}:\\& &\\ & \hline
+    %%%%%%%%%%%%%%% AQUI VA EL QUE APRUEBA %%%%%%%%%%%%%%%%%
+    \begin{center}<person_approves_ch>\end{center} & \hline
+
+    %%%%%%%%%%%%%%% AQUI VA EL QUE AUTORIZA %%%%%%%%%%%%%%%%%
+    \begin{center}<authorized_validated_by_ch>\end{center}\\ 
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%% FIN TABLA TIEMPOS ASIGNADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% FIN PÁGINA 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

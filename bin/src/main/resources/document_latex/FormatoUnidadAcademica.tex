@@ -1,0 +1,815 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[inline]{enumitem}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{bigints}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+\usepackage{algorithm}
+\usepackage{tocloft}
+\usepackage[none]{hyphenat}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{tabularx}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{times}
+\usepackage{color}
+\usepackage{lastpage}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\pagestyle{empty}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\lstset{tabsize=1}
+\usepackage{ragged2e}
+\usepackage{listings}
+\lstset{ frame=Ltb,
+framerule=0pt,
+aboveskip=0.5cm,
+framextopmargin=3pt,
+framexbottommargin=3pt,
+framexleftmargin=0.4cm,
+framesep=0pt,
+rulesep=.4pt,
+backgroundcolor=\color{gray97},
+rulesepcolor=\color{black},
+stringstyle=\ttfamily,
+showstringspaces = false,
+basicstyle=\small\ttfamily,
+commentstyle=\color{gray45},
+keywordstyle=\bfseries,
+numbers=left,
+numbersep=15pt,
+numberstyle=\tiny,
+numberfirstline = false,
+breaklines=true,
+}
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+\lstdefinestyle{consola}
+{basicstyle=\scriptsize\bf\ttfamily,
+backgroundcolor=\color{gray75},
+}
+\lstdefinestyle{Java}
+{language=Java,
+}
+%%%%%%%%%%%%%%%%%%%%%
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+\lstset{escapechar=@,style=customc}
+\usepackage{cmbright}
+\usepackage{multirow}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+% Font
+%Permite crear columnas en el documento
+\usepackage{multicol} 
+\usepackage{color}
+\usepackage{comment}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\subtabitem}{~~~~\llap{\textbullet}~~}
+\usepackage{longtable}
+% Ayuda para el formato de las tablas
+\usepackage{array}
+% Se declara un nuevo tipo de columna para alinear de manera:
+% -Horizontal
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+% -Vertical
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+% Indica la separacion entre las columnas de una tabla
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+% Indica el padding inferior y superior de las celdas de una tabla
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\newcommand{\finFila}{\hline}
+\usepackage{graphicx}
+
+%/////////////////////////////////////////////////////////////////
+%             INICIO DOCUMENTO
+%/////////////////////////////////////////////////////////////////
+
+\begin{document}
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 1: PROGRAMA SINTETICO
+%/////////////////////////////////////////////////////////////////
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ \\ \ \\
+\Centering{\Large\textbf{PROGRAMA SINTÉTICO}}\\
+\end{center}
+\\
+\textbf{UNIDAD ACADÉMICA:} Escuela Superior de Cómputo\\
+\textbf{PROGRAMA ACADÉMICO:} Escuela Superior de Cómputo\\
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{SEMESTRE:} 6\\
+
+
+%%%%%%%% INICIO TABLA PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
+
+    Elabora un sistema computacional de propósito específico con base en metodologías de Ingeniería de Software. \\
+
+    \textbf{CONTENIDOS:}
+
+    I. Ingeniería de Software
+II. Proceso de gestión de proyecto
+III. Metodologías
+IV. Calidad y normas de calidad
+V.	Modelos de Madurez
+VI. Temas selectos. .\\ 
+
+    \textbf{ORIENTACIÓN DIDÁCTICA:}
+
+    La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos, el docente conducirá  el curso con el método heurístico, se realizarán actividades de indagación, análisis y diseño para seleccionar la metodología adecuada al sistema de información que se quiera implementar, aplicando un enfoque de calidad; utilizando herramientas CASE para facilitar el diseño de los diagramas UML, exposiciones, prácticas y la realización de un proyecto en equipo que integre los conceptos generales así como las competencias referentes al uso de patrones de diseño y el manejo las normas calidad del software.
+Las actividades que se realizarán en clase fomentarán en los estudiantes algunas técnicas, tales como: trabajo colaborativo y participativo, lluvia de ideas, organizadores gráficos, indagación documental, fichas de trabajo, exposición de temas complementarios, discusión dirigida así como la realización de un proyecto.
+Para ello el docente dentro de la planeación establecerá las actividades de aprendizaje a desarrollar y los tiempos para entrega por parte del alumno; así mismo marcara los tiempos de revisión para hacer las observaciones y anotaciones para que el alumno pueda mejorar su aprendizaje, además de establecer las características del proyecto realizado.. \\ 
+
+    \textbf{EVALUACIÓN Y ACREDITACIÓN:}
+
+    La presente Unidad de Aprendizaje se evaluará a partir del portafolio de evidencias, el cual se conforma de: evaluación formativa, sumativa y rubricas de autoevaluación y coevaluación.
+Esta unidad de aprendizaje también se puede acreditar mediante:
+•	Evaluación de saberes previamente adquiridos, con base en los lineamientos establecidos por la academia.
+•	Acreditación en otra UA del IPN u otra institución educativa ó internacional. \\ 
+
+    \textbf{BIBLIOGRAFÍA:}
+
+    •	García R., Félix O. (2008). Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad. México: AlfaOmega. ISBN 9788478978588
+•	Piattini M., Calvo-Manzano, J (2004). Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software. México: Alfaomega. ISBN 9701509870
+•	Piattini, M., García, F. (2007) Calidad de Sistemas Informáticos. México: Alfaomega. ISBN 9789701512678
+•	Pressman, S. (2005). Ingeniería del software: Un enfoque Práctico. México: Mc Graw Hill. ISBN 9701054733
+•	Sommerville, I. (2008) Ingeniería de Software. España: Addison Wesley.ISBN 9789702602064.\\ \hline
+  \end{tabular}
+\end{table}
+%%%%%%% FIN TABLA PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% FIN PÁGINA 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 2: CREDITOS Y HORAS
+%/////////////////////////////////////////////////////////////////
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA CREDITOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+    \hline
+    \textbf{UNIDAD ACADÉMICA:} Escuela Superior de Cómputo & 
+    \textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software\\
+    \textbf{PROGRAMA ACADÉMICO:} Escuela Superior de Cómputo & 
+    \textbf{TIPO DE UNIDAD DE APRENDIZAJE:} Teórico – práctica\\ 
+    \textbf{ÁREA DE FORMACIÓN:} Profesional & 
+    \textbf{VIGENCIA:} Agosto 2011\\
+    \textbf{MODALIDAD:} Presencial& 
+    \textbf{SEMESTRE:} 6\\ 
+    & 
+    \textbf{CRÉDITOS:} 33\\ 
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA CREDITOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA INTENCION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \Centering
+    \textbf{INTENCIÓN EDUCATIVA:}
+
+    \RaggedRight
+    Esta unidad de aprendizaje contribuye al perfil de egresado de Ingeniería en Sistemas Computacionales, al desarrollar las habilidades de análisis y diseño de proyectos haciendo uso de software de gestión de proyectos así como herramientas CASE, además de integrar los principios de gestión de la calidad regidos por los estándares establecidos para asegurar, gestionar, auditar y certificar la calidad de procesos y productos informáticos así como también planificar y proyectar es estratégicamente (Recursos Hardware y Software, Recursos Humanos, componentes reutilizables) el desarrollo de proyectos de software. Así mismo, se dinamizan las competencias de pensamiento creativo, comunicación asertiva, trabajo colaborativo y participativo.
+
+    \Centering
+    \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
+
+    \RaggedRight
+    Elabora un sistema computacional de propósito específico con base en metodologías de Ingeniería de Software.\\
+
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA INTENCION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TIEMPOS ASIGNADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{0.34\textwidth}|p{0.31\textwidth}|p{0.31\textwidth}|}
+    \hline
+    \centering
+    \textbf{TIEMPOS ASIGNADOS}
+
+    \raggedright
+    \textbf{HORAS TEORÍA/SEMANA:} 3.0
+
+    \textbf{HORAS PRÁCTICA/SEMANA:} 1.5
+    & 
+    \textbf{UNIDAD DE APRENDIZAJE DISEÑADA O REDISEÑADA POR: } Academia de Ingeniería de Software 
+    &
+    \textbf{APROBADO POR:} Comisión de Programas Académicos del Consejo General Consultivo del IPN. 2011
+    
+    \\
+    \textbf{HORAS TEORÍA/SEMESTRE:} 54
+    \raggedright
+    \textbf{HORAS PRÁCTICA/SEMESTRE:} 27
+    & 
+    \textbf{REVISADA POR:} Dr. Flavio Arturo Sánchez Garfias Subdirección Académica
+    &\\ 
+    \textbf{HORAS DE APRENDIZAJE AUTÓNOMO:} 54
+
+    \textbf{HORAS TOTALES/SEMESTRE:} 81
+    & 
+    \textbf{APROBADA POR:} Consejo Tecnico Consultivo Escolar.
+     & 
+    \textbf{AUTORIZADO Y VALIDADO POR}:\\& &\\ & \hline
+    %%%%%%%%%%%%%%% AQUI VA EL QUE APRUEBA %%%%%%%%%%%%%%%%%
+    \begin{center}Ing. Apolinar Francisco Cruz Lázaro Presidente del CTCE.\end{center} & \hline
+
+    %%%%%%%%%%%%%%% AQUI VA EL QUE AUTORIZA %%%%%%%%%%%%%%%%%
+    \begin{center}Ing. Rodrigo de Jesús Serrano Domínguez
+ Secretario Técnico de la Comisión de Programas Académicos\end{center}\\ 
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%% FIN TABLA TIEMPOS ASIGNADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% FIN PÁGINA 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 3: UNIDADES TEMATICAS Y CONTENIDOS
+%/////////////////////////////////////////////////////////////////
+
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}\ \\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{HOJA: } \thepage\
+\tab[0.25cm]
+\textbf{DE} \pageref{LastPage}\\
+
+%%%%%%%%%% INICIO TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+%%%%%%%%%% INICIO NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \textbf{N$^{\circ}$ UNIDAD TEMÁTICA:} S/I
+    \tab[1cm]
+    \textbf{NOMBRE:} S/I\\
+    \hline \Centering
+    \textbf{UNIDAD DE COMPETENCIA:} 
+
+    \RaggedRight
+    S/I
+    \\
+    \hline
+  \end{tabular}
+%%%%%%%%%% FIN NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{0.03\textwidth}|p{0.365\textwidth}|p{0.04\textwidth}|p{0.02\textwidth}|p{0.05\textwidth}|p{0.01\textwidth}|p{0.2\textwidth}|}
+  \multirow{2}{*}{\textbf{No.}}  & \multirow{2}{*}{\textbf{CONTENIDOS}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.078\textwidth}}HORAS CON DOCENTE\end{tabular}}}                             & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.12\textwidth}}HORAS DE APRENDIZAJE AUTÓNOMO\end{tabular}}}               & \multirow{2}{*}{\textbf{\begin{tabular}{p{0.06\textwidth}}CLAVE BIBLIOGRÁFICA
+  \end{tabular}}} \\ \cline{3-6}& & \textbf{T}
+  & \textbf{P} & \textbf{T} & \textbf{P}  &  \\ \hline
+%%%%%%%%%% FIN CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}[c]{@{}c@{}}
+%%%%%%%%%% AQUI VAN LOS NUMEROS DE LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{}
+
+%%%%%%%%%% AQUI VAN LAS CLAVES BIBLIOGRAFICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} \\ \hline
+  & 
+%%%%%%%% AQUI VAN LOS TOTALTES DE CADA HORA: TEORICA-DOCENTE, PRACTICA-DOCENTE, TEORICA-AU, PRACTICA-AU %%%%%%
+  Subtotales:   & S/I & S/I & S/I & S/I &\\ \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA ESTRATEGIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline \Centering
+    \textbf{ESTRATEGIAS DE APRENDIZAJE:}
+
+    \RaggedRight
+    S/I.  \\\hline
+  \end{tabular}
+%%%%%%%%%% FIN TABLA ESTRATEGIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \Centering
+    \textbf{EVALUACIÓN DE LOS APRENDIZAJES:}
+
+    \RaggedRight
+    S/I.\\\hline
+  \end{tabular}
+  %%%%%%%%%% FIN TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{table}
+
+%%%%%%%%%%% Utilizar esta pagina N veces para N unidades tematicas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% FIN PÁGINA 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 3: UNIDADES TEMATICAS Y CONTENIDOS
+%/////////////////////////////////////////////////////////////////
+
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}\ \\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{HOJA: } \thepage\
+\tab[0.25cm]
+\textbf{DE} \pageref{LastPage}\\
+
+%%%%%%%%%% INICIO TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+%%%%%%%%%% INICIO NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \textbf{N$^{\circ}$ UNIDAD TEMÁTICA:} S/I
+    \tab[1cm]
+    \textbf{NOMBRE:} S/I\\
+    \hline \Centering
+    \textbf{UNIDAD DE COMPETENCIA:} 
+
+    \RaggedRight
+    S/I
+    \\
+    \hline
+  \end{tabular}
+%%%%%%%%%% FIN NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{0.03\textwidth}|p{0.365\textwidth}|p{0.04\textwidth}|p{0.02\textwidth}|p{0.05\textwidth}|p{0.01\textwidth}|p{0.2\textwidth}|}
+  \multirow{2}{*}{\textbf{No.}}  & \multirow{2}{*}{\textbf{CONTENIDOS}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.078\textwidth}}HORAS CON DOCENTE\end{tabular}}}                             & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.12\textwidth}}HORAS DE APRENDIZAJE AUTÓNOMO\end{tabular}}}               & \multirow{2}{*}{\textbf{\begin{tabular}{p{0.06\textwidth}}CLAVE BIBLIOGRÁFICA
+  \end{tabular}}} \\ \cline{3-6}& & \textbf{T}
+  & \textbf{P} & \textbf{T} & \textbf{P}  &  \\ \hline
+%%%%%%%%%% FIN CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}[c]{@{}c@{}}
+%%%%%%%%%% AQUI VAN LOS NUMEROS DE LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{}
+
+%%%%%%%%%% AQUI VAN LAS CLAVES BIBLIOGRAFICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} \\ \hline
+  & 
+%%%%%%%% AQUI VAN LOS TOTALTES DE CADA HORA: TEORICA-DOCENTE, PRACTICA-DOCENTE, TEORICA-AU, PRACTICA-AU %%%%%%
+  Subtotales:   & S/I & S/I & S/I & S/I &\\ \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA ESTRATEGIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline \Centering
+    \textbf{ESTRATEGIAS DE APRENDIZAJE:}
+
+    \RaggedRight
+    S/I.  \\\hline
+  \end{tabular}
+%%%%%%%%%% FIN TABLA ESTRATEGIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \Centering
+    \textbf{EVALUACIÓN DE LOS APRENDIZAJES:}
+
+    \RaggedRight
+    S/I.\\\hline
+  \end{tabular}
+  %%%%%%%%%% FIN TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{table}
+
+%%%%%%%%%%% Utilizar esta pagina N veces para N unidades tematicas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% FIN PÁGINA 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 3: UNIDADES TEMATICAS Y CONTENIDOS
+%/////////////////////////////////////////////////////////////////
+
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}\ \\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{HOJA: } \thepage\
+\tab[0.25cm]
+\textbf{DE} \pageref{LastPage}\\
+
+%%%%%%%%%% INICIO TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+%%%%%%%%%% INICIO NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline
+    \textbf{N$^{\circ}$ UNIDAD TEMÁTICA:} S/I
+    \tab[1cm]
+    \textbf{NOMBRE:} S/I\\
+    \hline \Centering
+    \textbf{UNIDAD DE COMPETENCIA:} 
+
+    \RaggedRight
+    S/I
+    \\
+    \hline
+  \end{tabular}
+%%%%%%%%%% FIN NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{0.03\textwidth}|p{0.365\textwidth}|p{0.04\textwidth}|p{0.02\textwidth}|p{0.05\textwidth}|p{0.01\textwidth}|p{0.2\textwidth}|}
+  \multirow{2}{*}{\textbf{No.}}  & \multirow{2}{*}{\textbf{CONTENIDOS}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.078\textwidth}}HORAS CON DOCENTE\end{tabular}}}                             & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.12\textwidth}}HORAS DE APRENDIZAJE AUTÓNOMO\end{tabular}}}               & \multirow{2}{*}{\textbf{\begin{tabular}{p{0.06\textwidth}}CLAVE BIBLIOGRÁFICA
+  \end{tabular}}} \\ \cline{3-6}& & \textbf{T}
+  & \textbf{P} & \textbf{T} & \textbf{P}  &  \\ \hline
+%%%%%%%%%% FIN CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}[c]{@{}c@{}}
+%%%%%%%%%% AQUI VAN LOS NUMEROS DE LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+
+%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} & \begin{tabular}[c]{}
+
+%%%%%%%%%% AQUI VAN LAS CLAVES BIBLIOGRAFICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  S/I
+  \end{tabular} \\ \hline
+  & 
+%%%%%%%% AQUI VAN LOS TOTALTES DE CADA HORA: TEORICA-DOCENTE, PRACTICA-DOCENTE, TEORICA-AU, PRACTICA-AU %%%%%%
+  Subtotales:   & S/I & S/I & S/I & S/I &\\ \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA ESTRATEGIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \hline \Centering
+    \textbf{ESTRATEGIAS DE APRENDIZAJE:}
+
+    \RaggedRight
+    S/I.  \\\hline
+  \end{tabular}
+%%%%%%%%%% FIN TABLA ESTRATEGIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% INICIO TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \Centering
+    \textbf{EVALUACIÓN DE LOS APRENDIZAJES:}
+
+    \RaggedRight
+    S/I.\\\hline
+  \end{tabular}
+  %%%%%%%%%% FIN TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{table}
+
+%%%%%%%%%%% Utilizar esta pagina N veces para N unidades tematicas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% FIN PÁGINA 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 4: RELACION PRACTICAS
+%/////////////////////////////////////////////////////////////////
+
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}\ \\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{HOJA: } \thepage\
+\tab[0.25cm]
+\textbf{DE } \pageref{LastPage}\\
+\begin{center}
+\Centering{\Large\textbf{RELACIÓN DE PRÁCTICAS}}
+\end{center}
+%%%%%%%%%% INICIO TABLA PRACTICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{0.1\textwidth}|p{0.315\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.22\textwidth}|}
+    \hline
+    \Centering\textbf{PRÁCTICA No.} & \Centering\textbf{NOMBRE DE LA PRÁCTICA} & \Centering\textbf{UNIDADES TEMÁTICAS} & \Centering\textbf{DURACIÓN} & \Centering\textbf{LUGAR DE REALIZACIÓN}\\
+    \hline 
+%%%%%%%%%% NUM PRACTICA, NOMBRE, UNIDADES TEMATICAS, DURACION, LUGAR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    S/I
+%%%%%%%%%% TOTAL DE HRS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \hline &&\Centering\textbf{TOTAL DE HORAS}& S/I &\\\hline 
+  \end{tabular}
+%%%%%%%%%% FIN TABLA PRACTICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% INICIO TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{|p{1.045\textwidth}|}
+    \textbf{EVALUACIÓN Y ACREDITACIÓN:}
+
+    S/I.\\\hline
+  \end{tabular}
+%%%%%%%%%% FIN TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{table}
+
+
+%%%%%%%% FIN PÁGINA 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 5: EVALUACION
+%/////////////////////////////////////////////////////////////////
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}\\\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{HOJA: } \thepage\
+\tab[0.25cm]
+\textbf{DE } \pageref{LastPage}\\
+
+%%%%%%%%%% INICIO TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+
+  \begin{tabular}{|p{0.1\textwidth}|p{0.1\textwidth}|p{0.76\textwidth}|}
+    \hline
+
+    \textbf{PERIODO} & \textbf{UNIDAD} & \textbf{PROCEDIMIENTO DE EVALUACIÓN}\\\hline
+
+    %%%%%%%%%% PERIODO, UNIDAD, EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    S/I
+
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA EVALUACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% FIN PÁGINA 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 6: BIBLIOGRAFIA
+%/////////////////////////////////////////////////////////////////
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+\end{center}\ \\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software
+\tab[1cm]
+\textbf{HOJA: } \thepage
+\tab[0.25cm]
+\textbf{DE } \pageref{LastPage}\\
+
+%%%%%%%%%% INICIO TABLA BIBLIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \begin{tabular}{|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.62\textwidth}|}
+    \hline
+
+    \textbf{CLAVE} & \textbf{B} & \textbf{C} & \textbf{BIBLIOGRAFÍA}\\\hline
+%%%%%%%%%% CLAVE, B, X, BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    S/I
+
+    \hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%% FIN TABLA BIBLIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% FIN PÁGINA 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%/////////////////////////////////////////////////////////////////
+%            PAGINA 7: PERFIL DOCENTE
+%/////////////////////////////////////////////////////////////////
+\newpage
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{center}
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+%%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ \\ \ \\
+\Centering{\Large\textbf{PERFIL DOCENTE POR UNIDAD DE APRENDIZAJE}}\\
+\end{center}
+\\
+\begin{enumerate}
+  %%%%%%%%%% DATOS GENERALES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textbf{DATOS GENERALES}
+    \\ \ \\
+    \textbf{UNIDAD ACADÉMICA:} Escuela Superior de Cómputo\\ \ \\
+    \textbf{PROGRAMA ACADÉMICO:} Escuela Superior de Cómputo
+    \tab[1cm]
+    \textbf{SEMESTRE:} 6\\
+
+%%%%%%%%%% INICIO AREA DE FORMACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+      \hline
+      \textbf{ÁREA DE FORMACIÓN} & \textbf{Institucional} &\textbf{Científica}
+      \textbf{Básica} & \textbf{Profesional}  & \textbf{Terminal y de Integración}
+      \\\hline
+    \end{tabular}\\
+%%%%%%%%%% FIN AREA DE FORMACION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \textbf{ACADEMIA:} Academia
+    \tab[1cm]
+    \textbf{UNIDAD DE APRENDIZAJE:} Ingenieria de Software\\ \ \\
+    \textbf{ESPECIALIDAD Y NIVEL ACADÉMICO REQUERIDO:} S/I\\
+
+    \item \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE}
+    %%%%%%%%%% AQUI VA EL PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Elabora un sistema computacional de propósito específico con base en metodologías de Ingeniería de Software.
+    \item \textbf{PERFIL DOCENTE}\\
+    
+    %%%%%%%%%% INICIO TABLA CONOCIMIENTOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+      \hline
+      \textbf{CONOCIMIENTOS} & \textbf{EXPERIENCIA PROFESIONAL} &\textbf{COMPETENCIAS DOCENTES} & \textbf{ACTITUDES}
+      \\\hline
+      %%%%%%%%%% CONOCIMIENTOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      S/I. 
+      & 
+       %%%%%%%%%% EXPERIENCIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      S/I.  
+      &
+       %%%%%%%%%% COMPETENCIAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      S/I. 
+      & 
+       %%%%%%%%%% ACTITUDES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      S/I.
+      \\\hline
+    \end{tabular}
+    %%%%%%%%%% FIN TABLA CONOCIMIENTOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{enumerate}
+
+ %%%%%%%%%% INICIO TABLA DIRECTIVOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{tabular}{p{0.28\textwidth}p{0.28\textwidth}p{0.28\textwidth}}
+
+      \centering
+      \textbf{ELABORÓ} 
+      &
+      \centering
+      \textbf{REVISÓ} 
+      &
+      \centering
+      \textbf{AUTORIZÓ}\\
+      &&&\\
+
+      \centering
+      \hline 
+       %%%%%%%%%% ELABORO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      S/I.
+      &
+      \centering
+      \hline 
+       %%%%%%%%%% REVISO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      S/I.
+      &
+      \centering
+      \hline 
+       %%%%%%%%%% AUTORIZO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       S/I.
+  \end{tabular}
+   %%%%%%%%%% FIN TABLA DIRECTIVOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% FIN PÁGINA 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

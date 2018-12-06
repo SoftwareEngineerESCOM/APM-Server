@@ -20,7 +20,7 @@ public class AssignedTime {
 	@Column(nullable = false)
 	private double theoreticalHourWeek;
 	@Column(nullable = false)
-	private double PracticeHourWeek;
+	private double practiceHourWeek;
 	@Column(nullable = false)
 	private double theoreticalHourSemester;
 	@Column(nullable = false)
