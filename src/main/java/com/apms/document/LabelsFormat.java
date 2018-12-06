@@ -94,46 +94,46 @@ public class LabelsFormat {
 		TeachingProfile teachingProfile = extensiveProgram.getTeachingProfile();
 		
 		//SCHOOLING GRADE INFO
-		String schoolingGradeStr = "";
-		List<SchoolingGrade> schoolingGrades = teachingProfile.getSchoolingGrades();
-		for (int i = 0; i < schoolingGrades.size(); i++) {
-			schoolingGradeStr += schoolingGrades.get(i).getAcademicLevel().getName() + " en " +   schoolingGrades.get(i).getSpeciality();
-			if(i+1 < schoolingGrades.size()) {
-				if(i+2 < schoolingGrades.size())
-					schoolingGradeStr += ", ";
-				else
-					schoolingGradeStr += " o ";
-			}
-		}
-		dataLabels.put("specialty_and_academic_level_required", schoolingGradeStr);
+		// String schoolingGradeStr = "";
+		// List<SchoolingGrade> schoolingGrades = teachingProfile.getSchoolingGrades();
+		// for (int i = 0; i < schoolingGrades.size(); i++) {
+		// 	schoolingGradeStr += schoolingGrades.get(i).getAcademicLevel().getName() + " en " +   schoolingGrades.get(i).getSpeciality();
+		// 	if(i+1 < schoolingGrades.size()) {
+		// 		if(i+2 < schoolingGrades.size())
+		// 			schoolingGradeStr += ", ";
+		// 		else
+		// 			schoolingGradeStr += " o ";
+		// 	}
+		// }
+		// dataLabels.put("specialty_and_academic_level_required", schoolingGradeStr);
 		
 		//KNOWLEDGES
-		String knowledgesStr = "";
-		for (Knowledge knowledge : teachingProfile.getKnowledges()) {
-			knowledgesStr += knowledge.getName() + "\\\\";
-		}
-		dataLabels.put("teacher_profile_knowledge", knowledgesStr);
+		// String knowledgesStr = "";
+		// for (Knowledge knowledge : teachingProfile.getKnowledges()) {
+		// 	knowledgesStr += knowledge.getName() + "\\\\";
+		// }
+		// dataLabels.put("teacher_profile_knowledge", knowledgesStr);
 		
 		//EXPERIENCE PROFILE
-		String professionalExperienceStr = "";
-		for (ProfessionalExperience professionalExperience : teachingProfile.getProfessionalExperiences()) {
-			professionalExperienceStr += professionalExperience.getName() + "\\\\";
-		}
-		dataLabels.put("teacher_profile_experience", professionalExperienceStr);
+		// String professionalExperienceStr = "";
+		// for (ProfessionalExperience professionalExperience : teachingProfile.getProfessionalExperiences()) {
+		// 	professionalExperienceStr += professionalExperience.getName() + "\\\\";
+		// }
+		// dataLabels.put("teacher_profile_experience", professionalExperienceStr);
 		
 		//COMPETENCES PROFILE
-		String abilityStr = "";
-		for (Ability ability : teachingProfile.getAbility()) {
-			abilityStr += ability.getName() + "\\\\";
-		}
-		dataLabels.put("teacher_profile_competence", abilityStr);
+		// String abilityStr = "";
+		// for (Ability ability : teachingProfile.getAbility()) {
+		// 	abilityStr += ability.getName() + "\\\\";
+		// }
+		// dataLabels.put("teacher_profile_competence", abilityStr);
 		
 		//ATTITUDES PROFILE
-		String attitudeStr = "";
-		for (Attitude attitude : teachingProfile.getAttitude()) {
-			attitudeStr += attitude.getName() + "\\\\";
-		}
-		dataLabels.put("teacher_profile_attitudes", attitudeStr);
+		// String attitudeStr = "";
+		// for (Attitude attitude : teachingProfile.getAttitude()) {
+		// 	attitudeStr += attitude.getName() + "\\\\";
+		// }
+		// dataLabels.put("teacher_profile_attitudes", attitudeStr);
 		
 		return dataLabels;
 	}
