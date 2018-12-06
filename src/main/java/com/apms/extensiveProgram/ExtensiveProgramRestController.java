@@ -134,47 +134,20 @@ public class ExtensiveProgramRestController {
 		LearningUnit learningUnit = mapper.treeToValue(req.get("learningUnit"),LearningUnit.class);
 		Modality modality =  mapper.treeToValue(req.get("modality"),Modality.class);
 		Teaching teaching =  mapper.treeToValue(req.get("teaching"),Teaching.class);
-		
 		List<Type> types = new ArrayList<Type>();
 		for(JsonNode c :req.get("types")) {
 			types.add(mapper.treeToValue(c,Type.class));
 		}
 		/*atributos*/
-		AssignedTime assignedTime = assignedTimeService.add(mapper.treeToValue(req.get("assignedTime"),AssignedTime.class));  
 		int validity  = mapper.treeToValue(req.get("validity"),Integer.class);
 		String educationalIntention = mapper.treeToValue(req.get("educationalIntention"),String.class);
 		
-		/*Atributos de perfil docente*/
-		
-		List<Knowledge> knowledges = new ArrayList<Knowledge>();
-		List<Ability> ability = new ArrayList<Ability>();
-		List<Attitude> attitude = new ArrayList<Attitude>();
-		/*
-		List<ProfessionalExperience> professionalExperience = new ArrayList<ProfessionalExperience>();
-		List<SchoolingGrade> schoolingGrade = new ArrayList<SchoolingGrade>();
-
-		for(JsonNode c : req.get("teachingProfile").get("schoolingGrades")) {
-			AcademicLevel a = academicLevelService.add(mapper.treeToValue(c.get("academicLevel"),AcademicLevel.class));
-			String specialty = mapper.treeToValue(c.get("specialty"),String.class);
-			schoolingGrade.add(schoolingGradeService.add(new SchoolingGrade(a,specialty)));
-		}
-		for(JsonNode c : req.get("teachingProfile").get("knowledges")) {
-			knowledges.add(knowledgesService.add(mapper.treeToValue(c,Knowledge.class)));
-		}		
-		for(JsonNode c : req.get("teachingProfile").get("professionalExperiences")) {
-			professionalExperience.add(professionalExperienceService.add(mapper.treeToValue(c,ProfessionalExperience.class)));
-		}
-		for(JsonNode c : req.get("teachingProfile").get("ability")) {
-			ability.add(abilityService.add(mapper.treeToValue(c,Ability.class)));
-		}
-		for(JsonNode c : req.get("teachingProfile").get("attitude")) {
-			attitude.add(attitudeService.add(mapper.treeToValue(c,Attitude.class)));
-		}
-		TeachingProfile teachingProfile = teachingProfileService.add(new TeachingProfile(schoolingGrade, knowledges, ability, attitude, professionalExperience));
-		
-		/*Extensive program*/
 		try {
-			//extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching));
+			AssignedTime assignedTime = assignedTimeService.add(mapper.treeToValue(req.get("assignedTime"),AssignedTime.class));  
+			ExtensiveProgram e = extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,modality));
+			System.out.println(e.getId());
+			e.setTeachingProfile(teachingProfileService.getOne(e.getId()));
+			extensiveProgramService.update(e);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,

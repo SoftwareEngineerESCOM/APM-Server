@@ -23,8 +23,8 @@ public class ExtensiveProgramService {
 				: null;
 	}
 
-	public void add(ExtensiveProgram extensiveProgram) {
-		extensiveProgramRepository.save(extensiveProgram);
+	public ExtensiveProgram add(ExtensiveProgram extensiveProgram) {
+		return extensiveProgramRepository.save(extensiveProgram);
 	}
 
 	public void update(ExtensiveProgram extensiveProgram) {
