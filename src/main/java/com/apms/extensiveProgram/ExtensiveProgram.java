@@ -43,11 +43,11 @@ public class ExtensiveProgram {
 	private LearningUnit learningUnit;
 
 	@OneToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private AssignedTime assignedTime;
 
 	@OneToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private TeachingProfile teachingProfile;
 
 	@ManyToOne
