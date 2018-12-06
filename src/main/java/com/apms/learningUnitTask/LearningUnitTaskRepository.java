@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 @Repository
-public interface LearningUnitTaskRepository extends 
-JpaRepository<LearningUnitTask, Integer> {
+public interface LearningUnitTaskRepository extends JpaRepository<LearningUnitTask, Integer> {
 
+    @Query(value = "SELECT * FROM learning_unit_task t INNER JOIN learning_unit lu ON t.learning_unit_id = lu.id WHERE user_id = :id ORDER BY lu.learning_unit_status_id", nativeQuery = true)
+    List<LearningUnitTask> getLearningUnitTask(@Param("id") Integer id);
+    
 }

@@ -35,7 +35,7 @@ public class LearningUnit {
     private Semester semester;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     private LearningUnitStatus learningUnitStatus;
 
     @ManyToOne

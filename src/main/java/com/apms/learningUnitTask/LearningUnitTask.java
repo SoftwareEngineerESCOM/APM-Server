@@ -29,11 +29,10 @@ public class LearningUnitTask {
     @JoinColumn
     @ManyToOne
     private User user;
-    
     @Column(nullable = false)
     private String startDate;
-    @Column(nullable = false)
-    private String deadLine;
+    @Column(nullable = true)
+    private String deadline;
     
     
 
@@ -65,11 +64,11 @@ public class LearningUnitTask {
         this.startDate = startDate;
     }
     
-    public String getDeadLine(){
-        return deadLine;
+    public String getDeadline(){
+        return deadline;
     }
     
-    public void setDeadLine(String deadLine){
-        this.deadLine = deadLine;
+    public void setDeadLine(String dealLine){
+        this.deadline = deadline;
     }
 }
