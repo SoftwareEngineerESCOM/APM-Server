@@ -40,7 +40,7 @@ public class LearningUnit {
 	@JoinColumn(nullable = false)
 	private Semester semester;
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private Academy academy;
 	
 	public LearningUnit() {
