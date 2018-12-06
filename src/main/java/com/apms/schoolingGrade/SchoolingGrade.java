@@ -21,7 +21,7 @@ public class SchoolingGrade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
-	private String specialty;
+	private String speciality;
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private AcademicLevel academicLevel;

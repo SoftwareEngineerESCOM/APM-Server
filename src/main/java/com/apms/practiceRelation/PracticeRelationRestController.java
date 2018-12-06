@@ -74,7 +74,6 @@ public class PracticeRelationRestController {
     @PostMapping
     public RESTResponse<PracticeRelation> post(@RequestBody RESTRequest<PracticeRelation> req) {
         try {
-
             if (req.getPayload().getPractices() != null) {
                 for (int i = 0; i < req.getPayload().getPractices().size(); i++) {
                     req.getPayload().getPractices().get(i).setId(practiceService.add(req.getPayload().getPractices().get(i)).getId());
@@ -100,6 +99,16 @@ public class PracticeRelationRestController {
     @PatchMapping
     public RESTResponse<PracticeRelation> patch(@RequestBody RESTRequest<PracticeRelation> req) {
         try {
+            if (req.getPayload().getPractices() != null) {
+                for (int i = 0; i < req.getPayload().getPractices().size(); i++) {
+                    req.getPayload().getPractices().get(i).setId(practiceService.update(req.getPayload().getPractices().get(i)).getId());
+                }
+            }
+            if (req.getPayload().getPracticeRelationEvaluations() != null){
+                for (int i = 0; i < req.getPayload().getPracticeRelationEvaluations().size(); i++) {
+                    req.getPayload().getPracticeRelationEvaluations().get(i).setId(practiceRelationEvaluationService.update(req.getPayload().getPracticeRelationEvaluations().get(i)).getId());
+                }
+            }
             practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
             e.printStackTrace();

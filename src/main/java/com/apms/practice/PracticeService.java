@@ -26,9 +26,9 @@ public class PracticeService {
 		return practiceRepository.save(practice);
 	}
 
-	public void update(Practice practice) {
+	public Practice update(Practice practice) {
 		// if exists updates otherwise inserts
-		practiceRepository.save(practice);
+		return practiceRepository.save(practice);
 	}
 
 	public void delete(Integer id) {

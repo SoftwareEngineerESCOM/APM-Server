@@ -34,4 +34,8 @@ public class AccreditationTypeService {
 	public void delete(Integer id) {
 		accreditationRepository.deleteById(id);
 	}
+	
+	public AccreditationType getAccreditationTypeByName(String name) {
+		return accreditationRepository.getAccreditationTypeByName(name);
+	}
 }

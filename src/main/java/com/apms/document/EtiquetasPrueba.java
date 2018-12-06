@@ -31,7 +31,6 @@ public class EtiquetasPrueba {
             "•	Pressman, S. (2005). Ingeniería del software: Un enfoque Práctico. México: Mc Graw Hill. ISBN 9701054733\n" +
             "•	Sommerville, I. (2008) Ingeniería de Software. España: Addison Wesley.ISBN 9789702602064");
         etiquetas.put("type_learning_unit", "Teórico – práctica");
-        etiquetas.put("salida_lateral", "Analista Programador de Sistemas de Información");
         etiquetas.put("validity", "Agosto 2011");
         etiquetas.put("training_area", "Profesional");
         etiquetas.put("modality", "Presencial");
@@ -51,6 +50,7 @@ public class EtiquetasPrueba {
         etiquetas.put("second_approved_by_ch", "Comisión de Programas Académicos del Consejo General Consultivo del IPN. 2011");
         etiquetas.put("second_approved_date_ch", "");
         etiquetas.put("authorized_validated_by_ch", "Ing. Rodrigo de Jesús Serrano Domínguez\n Secretario Técnico de la Comisión de Programas Académicos");
+        
     }
 
     public HashMap<String, String> getEtiquetas() {

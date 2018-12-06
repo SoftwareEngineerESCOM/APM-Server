@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.apms.academy.Academy;
 import com.apms.formationArea.FormationArea;
 import com.apms.semester.Semester;
 import com.apms.learningUnitStatus.LearningUnitStatus;
@@ -39,11 +40,32 @@ public class LearningUnit {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Semester semester;
+<<<<<<< HEAD
         @ManyToOne
         @JoinColumn(nullable = false)
         private LearningUnitStatus learningUnitStatus;
 
+=======
+	@ManyToOne
+	@JoinColumn
+	private Academy academy;
+	
+>>>>>>> c9842e48771638c3dcae5db7b2749cd966fb8763
 	public LearningUnit() {
 	}
 
+	public LearningUnit(Integer id, String name, Double tEPICCredits, Double sATCACredits, Double theoryHoursPerWeek,
+			Double practiceHoursPerWeek, FormationArea formationArea, Semester semester, Academy academy) {
+		this.id = id;
+		this.name = name;
+		TEPICCredits = tEPICCredits;
+		SATCACredits = sATCACredits;
+		this.theoryHoursPerWeek = theoryHoursPerWeek;
+		this.practiceHoursPerWeek = practiceHoursPerWeek;
+		this.formationArea = formationArea;
+		this.semester = semester;
+		this.academy = academy;
+	}
+
+	
 }

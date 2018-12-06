@@ -8,6 +8,7 @@ import com.apms.bibliographyRelation.BibliographyRelation;
 import com.apms.content.Content;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.extensiveProgram.ExtensiveProgram;
+import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.studyPlan.StudyPlan;
 import com.apms.subtopic.Subtopic;
 import com.apms.syntheticProgram.SyntheticProgram;
@@ -43,6 +44,7 @@ public class LabelsFormat {
 		//TEPIC SATCA CREDITS
 		dataLabels.put("credits", syntheticProgram.getLearningUnit().getTEPICCredits() + " TEPIC - "
 				+ syntheticProgram.getLearningUnit().getSATCACredits() + " SATCA");
+		dataLabels.put("academy", syntheticProgram.getLearningUnit().getAcademy().getName());
 		
 		return dataLabels;
 	}
@@ -78,6 +80,10 @@ public class LabelsFormat {
 		dataLabels.put("total_semester_hours", extensiveProgram.getAssignedTime().getTotalSemsterHour() + "");
 		
 		
+		//TEACHER PROFILE DATA
+		//extensiveProgram.get
+		
+		
 		return dataLabels;
 	}
 	
@@ -86,8 +92,14 @@ public class LabelsFormat {
 		//BIBLIOGRAPHIES
 		String bibliographies = "";
 		//Revisar el limite de bibliografias de primera hoja y el tipo de bibliografias
-		for (BibliographyRelation bibliographyR : bibliographiesR)
-			bibliographies += bibliographyR.getBibliography().getBibliographyCitation() + "\\\\";
+		int limit = 0;
+		for (BibliographyRelation bibliographyR : bibliographiesR) {
+			if(bibliographyR.isClassic()) {
+				bibliographies += bibliographyR.getBibliography().getBibliographyCitation() + "\\\\";
+				if(++limit == 5) 	//5 bibliografias para la primera hoja
+					break;
+			}
+		}
 		dataLabels.put("bibliography", bibliographies);
 		
 		//BIBLIOGRAPHIES INFO 
@@ -213,7 +225,11 @@ public class LabelsFormat {
 			dataLabels.put("total_autonomous_practice_hours_" + unit, autonomousPracticeHours + "");
 			dataLabels.put("learning_strategies_" + unit, thematicUnit.getLearningStrategy());
 			//****** EVALUACION DE LOS APRENDIZAJES
-			dataLabels.put("evaluation_learning_" + unit, "FALTA LLENAR");
+			String learningEvaluationStr = "";
+			for (LearningEvaluation learningEvaluation : thematicUnit.getLearningEvaluations()) {
+				learningEvaluationStr += "\\\\" + learningEvaluation.getName() + " " + learningEvaluation.getPercentage() + "%";
+			}
+			dataLabels.put("evaluation_learning_" + unit, learningEvaluationStr);
 		}
 		return dataLabels;
 	}

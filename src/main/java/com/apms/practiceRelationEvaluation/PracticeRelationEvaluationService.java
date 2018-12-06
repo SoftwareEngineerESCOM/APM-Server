@@ -26,9 +26,9 @@ public class PracticeRelationEvaluationService {
         return practiceRelationEvaluationRepository.save(practiceRelationEvaluation);
     }
 
-    public void update(PracticeRelationEvaluation practiceRelationEvaluation) {
+    public PracticeRelationEvaluation update(PracticeRelationEvaluation practiceRelationEvaluation) {
         // if exists updates otherwise inserts
-        practiceRelationEvaluationRepository.save(practiceRelationEvaluation);
+        return practiceRelationEvaluationRepository.save(practiceRelationEvaluation);
     }
 
     public void delete(Integer id) {

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.apms.bibliography.Bibliography;
 import com.apms.content.Content;
 
 import com.apms.learningEvaluation.LearningEvaluation;
