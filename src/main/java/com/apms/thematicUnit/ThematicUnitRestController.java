@@ -85,25 +85,23 @@ public class ThematicUnitRestController {
     @PostMapping
     public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> req) {
         try {
-            if (thematicUnitService.getOne(req.getPayload().getId()) != null)
-                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "La Unidad tematica ya existe en el sistema.", null);
             if (req.getPayload().getTopics() != null) {
-                for (int i = 0; i < req.getPayload().getTopics().size() ; i++){
-                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++){
-                        //if (subtopicService.getSubtopicByName(req.getPayload().getTopics().get(i).getSubtopics().get(j).getName()) != null) {
-                            //return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
-                        //}
+                for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
+                    if (topicService.getTopicByThematicUnitIdAndName(req.getPayload().getTopics().get(i).getId(), req.getPayload().getTopics().get(i).getName()) != null) {
+                        return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El tema ya existe en el sistema.", null);
+                    }
+                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++) {
+                        if (subtopicService.getSubtopicByTopicIdAndName(req.getPayload().getTopics().get(i).getSubtopics().get(j).getId(), req.getPayload().getTopics().get(i).getSubtopics().get(j).getName()) != null) {
+                            return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
+                        }
                         req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.add(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
                     }
-                    //if (topicService.getTopicByName(req.getPayload().getTopics().get(i).getName()) != null){
-                        //return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El tema ya existe en el sistema.", null);
-                    //}
                     req.getPayload().getTopics().get(i).setId(topicService.add(req.getPayload().getTopics().get(i)).getId());
                 }
             }
             List<LearningEvaluation> learningEvaluations = req.getPayload().getLearningEvaluations();
-            if (learningEvaluations != null){
-                for (int i = 0; i < req.getPayload().getLearningEvaluations().size(); i++){
+            if (learningEvaluations != null) {
+                for (int i = 0; i < req.getPayload().getLearningEvaluations().size(); i++) {
                     req.getPayload().getLearningEvaluations().get(i).setId(learningEvaluationService.add(req.getPayload().getLearningEvaluations().get(i)).getId());
                 }
             }
@@ -125,16 +123,16 @@ public class ThematicUnitRestController {
     public RESTResponse<ThematicUnit> patch(@RequestBody RESTRequest<ThematicUnit> req) {
         try {
             if (req.getPayload().getTopics() != null) {
-                for (int i = 0; i < req.getPayload().getTopics().size() ; i++){
-                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++){
+                for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
+                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++) {
                         req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.update(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
                     }
                     req.getPayload().getTopics().get(i).setId(topicService.update(req.getPayload().getTopics().get(i)).getId());
                 }
             }
             List<LearningEvaluation> learningEvaluations = req.getPayload().getLearningEvaluations();
-            if (learningEvaluations != null){
-                for (int i = 0; i < req.getPayload().getLearningEvaluations().size(); i++){
+            if (learningEvaluations != null) {
+                for (int i = 0; i < req.getPayload().getLearningEvaluations().size(); i++) {
                     req.getPayload().getLearningEvaluations().get(i).setId(learningEvaluationService.update(req.getPayload().getLearningEvaluations().get(i)).getId());
                 }
             }
@@ -145,6 +143,9 @@ public class ThematicUnitRestController {
             e.printStackTrace();
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+        }
+        if (req.getPayload().isFinished()) {
+            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Unidad temática finalizada exitosamente.", null);
         }
         return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }

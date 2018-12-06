@@ -24,6 +24,7 @@ import com.apms.evaluationAccreditationUA.EvaluationAccreditationUAService;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.evaluationUA.EvaluationUAService;
 import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -46,6 +47,10 @@ public class SyntheticProgramRestController {
 	
 	@Autowired
 	private EvaluationUAService evaluationUAService;
+
+	
+	@Autowired
+	private LearningUnitService learningUnitService;
 
 
 
@@ -184,21 +189,32 @@ public class SyntheticProgramRestController {
 		}
 		return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
-	
-	@GetMapping("syntheticprogrambylearningunit/{id}")
-	public RESTResponse<SyntheticProgram> getSyntheticProgrambylearningunit(@PathVariable Integer id) {
-		SyntheticProgram res;
-		try {
-			res = syntheticProgramService.getSyntheticProgrambylearningunit(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
-		}
-		if (res != null) {
-			return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "Programa sintetico no registrado.", null);
-		}
-	}
+
+    @GetMapping("/syntheticProgramsByLearningUnitId/{id}")
+    public RESTResponse<SyntheticProgram> syntheticProgramsByLearningUnitId(@PathVariable Integer id) {
+        LearningUnit res;
+        try {
+            res = learningUnitService.getOne(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+        }
+        if (res != null) {
+            SyntheticProgram aux;
+            try {
+                aux = syntheticProgramService.getSyntheticProgramsByLearningUnitId(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+            }
+            if (aux != null) {
+                return new RESTResponse<SyntheticProgram>(RESTResponse.OK, "", aux);
+            } else {
+                return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "No hay Programa Sintético asociado a esta Unidad de Aprendizaje", null);
+            }
+        } else {
+            return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL, "Unidad de Aprendizaje no registrada.", null);
+        }
+    }
 
 }

@@ -82,9 +82,6 @@ public class StudyPlanRestController {
 	public RESTResponse<StudyPlan> post(@RequestBody RESTRequest<StudyPlan> req) {
 		if (req.getPayload().getTotalTEPICCredits() >= 350 && req.getPayload().getTotalTEPICCredits() <= 450) {
 			try {
-				if (studyPlanService.getOne(req.getPayload().getId()) != null)
-					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "El Plan de estudio ya existe en el sistema.",
-							null);
 				StudyPlan aux = studyPlanService.getNewStudyPlan(req.getPayload().getAcademicProgram().getId());
 				if (aux != null) {
 					return new RESTResponse<StudyPlan>(RESTResponse.FAIL, "Ya se encuentra un Plan de Estudios en proceso.", null);

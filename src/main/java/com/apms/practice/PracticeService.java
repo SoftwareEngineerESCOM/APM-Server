@@ -22,13 +22,13 @@ public class PracticeService {
 		return practiceRepository.findById(id).isPresent() ? practiceRepository.findById(id).get() : null;
 	}
 
-	public void add(Practice practice) {
-		practiceRepository.save(practice);
+	public Practice add(Practice practice) {
+		return practiceRepository.save(practice);
 	}
 
-	public void update(Practice practice) {
+	public Practice update(Practice practice) {
 		// if exists updates otherwise inserts
-		practiceRepository.save(practice);
+		return practiceRepository.save(practice);
 	}
 
 	public void delete(Integer id) {

@@ -180,14 +180,12 @@ public class LabelsFormat {
 				contents +=  topic.getName();
 				teacherTheoryHoursStr += topic.getTheoricHours();
 				teacherPracticeHoursStr += topic.getPracticalHours();
-				autonomousTheoryHoursStr += topic.getAutonomousTheoreticalHours();
-				autonomousPracticeHoursStr += topic.getAutonomousPracticalHours();
+				autonomousTheoryHoursStr += topic.getAutonomousHours();
 				bibliographicKeys += ""; //Busqueda de claves bibliografias por clave
 				//suma de las horas de aprendizaje
 				teacherTheoryHours += topic.getTheoricHours();
 				teacherPracticeHours += topic.getPracticalHours();
-				autonomousTheoryHours += topic.getAutonomousTheoreticalHours();
-				autonomousPracticeHours += topic.getAutonomousPracticalHours();
+				autonomousTheoryHours += topic.getAutonomousHours();
 				
 				//SUBTOPICS IN ORDER
 				if(topic.getSubtopics() != null) {

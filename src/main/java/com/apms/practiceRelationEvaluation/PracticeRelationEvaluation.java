@@ -1,4 +1,4 @@
-package com.apms.author;
+package com.apms.practiceRelationEvaluation;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,18 +12,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+public class PracticeRelationEvaluation {
 
-public class Author {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
-	private String parentalSurname;
-	@Column(nullable = true)
-	private String maternalSurname;
+	private double percentage;
 
-	public Author() {
-	}
+    public PracticeRelationEvaluation() {
+        
+    }
 }
