@@ -29,7 +29,7 @@ public class ExtensiveProgram {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 5000)
 	private String educationalIntention;
 	@Column(nullable = false)
 	private Integer validity;

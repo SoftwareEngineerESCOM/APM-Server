@@ -28,7 +28,7 @@ public class Practice {
 	@Column(nullable = false)
 	private int number;
 	@Column(nullable = false)
-	private double lenght;
+	private double length;
 	@Column(nullable = false)
 	private String placeOfPractice;
 	
