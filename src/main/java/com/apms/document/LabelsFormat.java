@@ -1,6 +1,7 @@
 package com.apms.document;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.apms.ability.Ability;
@@ -14,6 +15,7 @@ import com.apms.knowledge.Knowledge;
 import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.practice.Practice;
 import com.apms.practiceRelation.PracticeRelation;
+import com.apms.practiceRelationEvaluation.PracticeRelationEvaluation;
 import com.apms.professionalExperience.ProfessionalExperience;
 import com.apms.schoolingGrade.SchoolingGrade;
 import com.apms.studyPlan.StudyPlan;
@@ -117,7 +119,7 @@ public class LabelsFormat {
 		for (ProfessionalExperience professionalExperience : teachingProfile.getProfessionalExperiences()) {
 			professionalExperienceStr += professionalExperience.getName() + "\\\\";
 		}
-		dataLabels.put("teacher_profile_experience", knowledgesStr);
+		dataLabels.put("teacher_profile_experience", professionalExperienceStr);
 		
 		//COMPETENCES PROFILE
 		String abilityStr = "";
@@ -276,15 +278,51 @@ public class LabelsFormat {
 			//****** EVALUACION DE LOS APRENDIZAJES
 			String learningEvaluationStr = "";
 			for (LearningEvaluation learningEvaluation : thematicUnit.getLearningEvaluations()) {
-				learningEvaluationStr += "\\\\" + learningEvaluation.getName() + " " + learningEvaluation.getPercentage() + "%";
+				learningEvaluationStr += "\\\\" + learningEvaluation.getName() + "\\tab[0.5cm]" + learningEvaluation.getPercentage() + "\\%"; //Revisar tabulacion
 			}
 			dataLabels.put("evaluation_learning_" + unit, learningEvaluationStr);
 		}
+		
+		//EVALUATION PROCEDURE TABLE
+		String evaluationProcedureStr = "";
+		for (int period = 1; period <= 3; period++) { //Ajustar a numero de periodos
+			List<ThematicUnit> thematicUsPeriod = new ArrayList<>();
+			for(ThematicUnit thematicUnit : thematicUnits) {
+				if(thematicUnit.getEvaluationSystem().getPeriod() == period)
+					thematicUsPeriod.add(thematicUnit);
+			}
+			if(thematicUsPeriod.isEmpty()) {
+				//Periodo sin unidades tematicas
+				continue;
+			}
+			evaluationProcedureStr += period + "&";
+			List<Integer> units = new ArrayList<>();
+			for (ThematicUnit thematicUnit : thematicUsPeriod) {
+				if(!units.contains(thematicUnit.getContent().getNumber())) {
+					units.add(thematicUnit.getContent().getNumber());  //Talvez ordenar las unidades tematicas
+				}
+			}
+			for (int unit = 0; unit < units.size(); unit++) {
+				evaluationProcedureStr += unit;
+				if(unit+1 <= units.size())
+					evaluationProcedureStr += ",";
+				else
+					evaluationProcedureStr += "&";
+			}
+			for (ThematicUnit thematicUnit : thematicUsPeriod) {
+				evaluationProcedureStr += thematicUnit.getEvaluationSystem().getEvaluationProcedure() + "\\tab[0.5cm]" 
+						+ thematicUnit.getEvaluationSystem().getPercentage() + "\\%\n\n"; //Revisar si sirven los saltos de linea				
+			}
+			evaluationProcedureStr += "\\\\";
+		}
+		dataLabels.put("evaluation_procedure_by_period", evaluationProcedureStr);
+		
 		return dataLabels;
 	}
 	
 	public static HashMap<String,String> createPracticeRelationLabels(PracticeRelation practiceRelation){
 		HashMap<String,String> dataLabels = new HashMap<>();
+		//PRACTICES TABLE
 		String practicesTableStr = "";
 		List<Practice> practices = practiceRelation.getPractices();
 		for (int numPractice = 1; numPractice <= practices.size(); numPractice++) {
@@ -305,6 +343,16 @@ public class LabelsFormat {
 			practicesTableStr += practice.getPlaceOfPractice() + "\\\\"; //PRACTICE PLACE
 		}
 		dataLabels.put("practice_relationship", practicesTableStr);
+		
+		dataLabels.put("total_hours_practices", practiceRelation.getTotalHours() + "");
+		//EVALUATION AND ACCREDITATION PRACTICES
+		String practiceREStr = "";
+		for (PracticeRelationEvaluation practiceRE : practiceRelation.getPracticeRelationEvaluations()) {
+			practiceREStr += practiceRE.getName() + ": " + practiceRE.getPercentage() + "\\\\"; //Revisar formato de porcentajes y texto
+		}
+		dataLabels.put("evaluation_and_accreditation_practices", practiceREStr);
+		
+		
 		return dataLabels;
 	}
 	
