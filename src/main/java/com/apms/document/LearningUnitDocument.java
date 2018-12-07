@@ -51,11 +51,11 @@ public class LearningUnitDocument {
     private void fillDataLabels() {
     	this.dataLabels = new HashMap();
     	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
-    	//dataLabels.putAll(LabelsFormat.createStudyPlanLabels());
-    	//dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels());
-    	//dataLabels.putAll(LabelsFormat.createBibliographyLabels());
+    	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(syntheticProgram));
+    	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(syntheticProgram));
+    	dataLabels.putAll(LabelsFormat.createBibliographyLabels(syntheticProgram));
     	dataLabels.putAll(LabelsFormat.createThematicUnitLabels(syntheticProgram));
-    	//dataLabels.putAll(LabelsFormat.createPracticeRelationLabels());	
+    	dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(syntheticProgram));	
     }
 
     private void replaceLabelsInfo(File file) throws IOException {

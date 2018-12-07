@@ -13,5 +13,4 @@ public interface PracticeRelationRepository extends JpaRepository<PracticeRelati
 	@Nullable
 	@Query(value = "SELECT pr FROM PracticeRelation pr WHERE pr.learningUnit.id = :id")
 	PracticeRelation getPracticeRelationsByLearningUnitId(@Param("id") Integer id);
-
 }

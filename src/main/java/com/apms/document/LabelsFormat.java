@@ -33,7 +33,6 @@ import com.apms.topic.Topic;
 
 
 public class LabelsFormat {
-	//dataLabels.put("", );
 	
 	public static HashMap<String,String> createSyntheticProgramLabels(SyntheticProgram syntheticProgram){
 		HashMap<String,String> dataLabels = new HashMap<>();
@@ -83,9 +82,11 @@ public class LabelsFormat {
 	}
 	
 	
-	public static HashMap<String,String> createExtensiveProgramLabels(ExtensiveProgram extensiveProgram){
+	public static HashMap<String,String> createExtensiveProgramLabels(SyntheticProgram syntheticProgram){
 		ExtensiveProgramService extensiveProgramService = new ExtensiveProgramService();
-		//OBTENER PROGRAMA EN EXTENSO POR ID DE UNIDAD ACADEMICA
+		//GET EXTENSIVE PROGRAM
+		ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(
+					syntheticProgram.getLearningUnit().getId());
 		
 		HashMap<String,String> dataLabels = new HashMap<>();
 		//TYPE LEARNING UNIT
@@ -160,9 +161,11 @@ public class LabelsFormat {
 	}
 	
 	
-	public static HashMap<String,String> createBibliographyLabels(List<BibliographyRelation> bibliographiesR){
+	public static HashMap<String,String> createBibliographyLabels(SyntheticProgram syntheticProgram){
 		BibliographyRelationService bibliographyRelationService = new BibliographyRelationService();
-		//OBTENER LISTA DE RELACION BIOGRAFIAS POR ID DE UNIDAD ACADEMICA
+		//GET BIBLIOGRAPHY RELATION
+		List<BibliographyRelation> bibliographiesR = bibliographyRelationService.getBibliographyRelationByLearningUnitId(
+					syntheticProgram.getLearningUnit().getId());
 		
 		HashMap<String,String> dataLabels = new HashMap<>();
 		//BIBLIOGRAPHIES FIRST PAGE
