@@ -37,4 +37,8 @@ public class BibliographyRelationService {
     public void delete(Integer id) {
         bibliographyRelationRepository.deleteById(id);
     }
+    
+    public List<BibliographyRelation> getBibliographyRelationByLearningUnitId(Integer id){
+    	return bibliographyRelationRepository.getBibliographyRelationByLearningUnitId(id);
+    }
 }
