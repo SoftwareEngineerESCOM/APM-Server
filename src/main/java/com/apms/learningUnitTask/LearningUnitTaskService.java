@@ -37,8 +37,8 @@ public class LearningUnitTaskService {
     	//return null;
     }*/
     
-    public List<LearningUnitTask> existUserLearningUnitByUserId(Integer id){
-        return learningUnitTaskRepository.existUserLearningUnitByUserId(id);
+    public List<LearningUnitTask> existUserLearningUnitByUserId(Integer id, Integer idLU){
+        return learningUnitTaskRepository.existUserLearningUnitByUserId(id, idLU);
     }
 
     public void delete(Integer id) {
@@ -47,5 +47,6 @@ public class LearningUnitTaskService {
 
     public List<LearningUnitTask> getLearningUnitTasksByUserId(Integer id) {
         return learningUnitTaskRepository.getLearningUnitTasksByUserId(id);
+        //return learningUnitTaskRepository.getLearningUnitTasksByUserId(id);
     }
 }

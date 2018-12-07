@@ -19,9 +19,6 @@ public class EvaluationSystem {
 	private double percentage;
 	@Column(nullable = false)
 	private int period;
-	@OneToOne
-	@JoinColumn
-	private ThematicUnit thematicUnit;
 
 	public EvaluationSystem() {
 		

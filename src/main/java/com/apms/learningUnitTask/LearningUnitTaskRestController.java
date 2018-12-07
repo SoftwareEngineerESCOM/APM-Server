@@ -72,9 +72,9 @@ public class LearningUnitTaskRestController {
      */
     @PostMapping
     public RESTResponse<LearningUnitTask> post(@RequestBody RESTRequest<LearningUnitTask> learningUnitTask) {
-        List<LearningUnitTask> aux; //ESTA TAREA YA TE FUE ASIGNADA 
+        List<LearningUnitTask> aux;
         try {
-            if(!existUserLearningUnitByUserId(learningUnitTask.getPayload().getUser().getId())){
+            if(!existUserLearningUnitByUserId(learningUnitTask.getPayload().getUser().getId(),learningUnitTask.getPayload().getLearningUnit().getId())){
                 learningUnitTaskService.add(learningUnitTask.getPayload());
                 return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
             }
@@ -148,11 +148,11 @@ public class LearningUnitTaskRestController {
         }
     }
     
-    @GetMapping("/existUserLearningUnitByUserId/{id}")
-    public boolean existUserLearningUnitByUserId(@PathVariable Integer id){
+    @GetMapping("/existUserLearningUnitByUserId/{id}/{idLU}")
+    public boolean existUserLearningUnitByUserId(@PathVariable Integer id,@PathVariable Integer idLU){
        List<LearningUnitTask> aux;
        try{
-           aux = learningUnitTaskService.getLearningUnitTasksByUserId(id);
+           aux = learningUnitTaskService.existUserLearningUnitByUserId(id , idLU);
                 if(!aux.isEmpty()){
                 return true;
            }else
