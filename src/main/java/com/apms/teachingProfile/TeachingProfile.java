@@ -24,10 +24,8 @@ public class TeachingProfile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@ManyToMany
-	private List<SchoolingGrade> schoolingGrades;
 	
+	private String schoolingGrades;
 	private String knowledges;
 	private String professionalExperiences;
 	private String ability;
@@ -37,7 +35,7 @@ public class TeachingProfile {
 
 	}
 
-	public TeachingProfile(List<SchoolingGrade> schoolingGrades, String knowledges, String professionalExperiences,
+	public TeachingProfile(String schoolingGrades, String knowledges, String professionalExperiences,
 			String ability, String attitude) {
 		super();
 		this.schoolingGrades = schoolingGrades;
@@ -45,6 +43,7 @@ public class TeachingProfile {
 		this.professionalExperiences = professionalExperiences;
 		this.ability = ability;
 		this.attitude = attitude;
+		this.schoolingGrades = schoolingGrades;
 	}
 	
 }
