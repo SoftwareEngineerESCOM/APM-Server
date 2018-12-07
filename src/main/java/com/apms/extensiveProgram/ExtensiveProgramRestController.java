@@ -145,7 +145,7 @@ public class ExtensiveProgramRestController {
 		
 		/*Perfil docente*/
 		
-		TeachingProfile teachingProfile =  mapper.treeToValue(req.get("teachingProfile"),TeachingProfile.class);
+		TeachingProfile teachingProfile = teachingProfileService.add(mapper.treeToValue(req.get("teachingProfile"),TeachingProfile.class));
 		
 		/*Extensive program*/
 		try {
