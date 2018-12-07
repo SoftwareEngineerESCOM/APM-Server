@@ -18,7 +18,7 @@ public interface LearningUnitTaskRepository extends JpaRepository<LearningUnitTa
     @Query(value = "SELECT * FROM learning_unit_task t INNER JOIN learning_unit lu ON t.learning_unit_id = lu.id WHERE user_id = :id ORDER BY lu.learning_unit_status_id", nativeQuery = true)
     List<LearningUnitTask> getLearningUnitTasksByUserId(@Param("id") Integer id);
 
-    @Query(value = "SELECT * FROM learning_unit_task where learning_unit_id in (select learning_unit_id from learning_unit_task where id= :id) AND user_id = :id)", nativeQuery = true)
+    @Query(value = "SELECT * FROM learning_unit_task where learning_unit_id in (select learning_unit_id from learning_unit_task where user_id= :id) AND user_id = :id", nativeQuery = true)
     List<LearningUnitTask> existUserLearningUnitByUserId(@Param("id") Integer id);
     
     
