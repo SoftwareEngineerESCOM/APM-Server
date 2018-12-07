@@ -5,7 +5,17 @@ import com.apms.rest.RESTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.apms.syntheticProgram.SyntheticProgram;
+import com.apms.syntheticProgram.SyntheticProgramService;
+
 import java.util.List;
+
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/authorizations")
@@ -13,6 +23,9 @@ public class AuthorizationsRestController {
 	
     @Autowired
     private AuthorizationsService authorizationsService;
+
+    @Autowired
+    private SyntheticProgramService syntheticProgramService;
 
     /*
     **Return a listing of all the resources
@@ -57,10 +70,12 @@ public class AuthorizationsRestController {
     */
     @PostMapping
     public RESTResponse<Authorizations> post(@RequestBody RESTRequest<Authorizations> authorizations) {
+	    
         try {
             if(authorizationsService.getOne(authorizations.getPayload().getId()) != null)
                 return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Authorizations ya existe en el sistema.", null);
-            authorizationsService.add(authorizations.getPayload());
+            
+		authorizationsService.add(authorizations.getPayload());
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
