@@ -72,14 +72,20 @@ public class LearningUnitTaskRestController {
      */
     @PostMapping
     public RESTResponse<LearningUnitTask> post(@RequestBody RESTRequest<LearningUnitTask> learningUnitTask) {
-        List<LearningUnitTask> aux; //ESTA TAREA YA TE FUE ASIGNADA
+        List<LearningUnitTask> aux; //ESTA TAREA YA TE FUE ASIGNADA 
         try {
-            learningUnitTaskService.add(learningUnitTask.getPayload());
+            if(!existUserLearningUnitByUserId(learningUnitTask.getPayload().getUser().getId())){
+                learningUnitTaskService.add(learningUnitTask.getPayload());
+                return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+            }
+            else
+                return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Esta tarea ya te fue asignada.", null);
+            
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        
     }
 
     /*
@@ -140,5 +146,20 @@ public class LearningUnitTaskRestController {
             return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK,
                     "No cuentas con tareas asignadas.", aux);
         }
+    }
+    
+    @GetMapping("/existUserLearningUnitByUserId/{id}")
+    public boolean existUserLearningUnitByUserId(@PathVariable Integer id){
+       List<LearningUnitTask> aux;
+       try{
+           aux = learningUnitTaskService.getLearningUnitTasksByUserId(id);
+                if(!aux.isEmpty()){
+                return true;
+           }else
+                return false;
+       } catch (Exception e){
+           e.printStackTrace();
+           return false;
+       } 
     }
 }
