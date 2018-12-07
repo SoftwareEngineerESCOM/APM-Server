@@ -8,7 +8,7 @@ public class EtiquetasPrueba {
     public EtiquetasPrueba() {
         etiquetas = new HashMap<>();
         etiquetas.put("academic_unit", "Escuela Superior de Cómputo");
-        etiquetas.put("academic_program", "Escuela Superior de Cómputo");
+        etiquetas.put("academic_program", "Programa Academico");
         etiquetas.put("learning_unit", "Ingenieria de Software");
         etiquetas.put("semester", "6");
         etiquetas.put("purpose_learning_unit", "Elabora un sistema computacional de propósito específico con base en metodologías de Ingeniería de Software");
