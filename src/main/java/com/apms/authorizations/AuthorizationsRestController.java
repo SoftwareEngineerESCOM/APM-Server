@@ -1,5 +1,7 @@
 package com.apms.authorizations;
 
+import com.apms.academy.Academy;
+import com.apms.humanResource.HumanResource;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
@@ -12,6 +14,8 @@ import com.apms.syntheticProgram.SyntheticProgramService;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -71,16 +75,17 @@ public class AuthorizationsRestController {
     /*
     **Store a newly created resource in storage.
     */
+    @PostMapping
     public RESTResponse<Authorizations> post(@RequestBody Map<String,JsonNode> req) throws JsonProcessingException {
 	    ObjectMapper mapper = new ObjectMapper();
-		Authorizations authorizations = mapper.treeToValue(req.get("authorizations"),Authorizations.class);
-        SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(authorizations.getSyntheticProgram().getLearningUnit().getId());
-        authorizations.setSyntheticProgram(syntheticProgram);
+		Academy elaboratedBy = mapper.treeToValue(req.get("elaboratedBy"),Academy.class);
+		HumanResource revisedBy = 	mapper.treeToValue(req.get("revisedBy"),HumanResource.class);
+		HumanResource authorizedBy = mapper.treeToValue(req.get("authorizedBy"),HumanResource.class);
+		HumanResource approvedBy = mapper.treeToValue(req.get("approvedBy"),HumanResource.class);
+		SyntheticProgram s = mapper.treeToValue(req.get("syntheticProgram"),SyntheticProgram.class);
+		SyntheticProgram s1 = syntheticProgramService.getSyntheticProgramsByLearningUnitId(s.getLearningUnit().getId());
         try {
-            if(authorizationsService.getOne(authorizations.getId()) != null)
-                return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Authorizations ya existe en el sistema.", null);
-
-		authorizationsService.add(authorizations);
+        	authorizationsService.add(new Authorizations(elaboratedBy,revisedBy,authorizedBy,approvedBy,s1));
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
