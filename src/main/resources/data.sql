@@ -1,3 +1,17 @@
+-- add academy
+insert into academy values (DEFAULT, 'Ciencias Sociales', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Ciencias Básicas', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Algoritmia y Programación', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Sistemas Digitales', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Ingeniería de Software', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Sistemas Analógicos', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Redes y Sistemas Operativos', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Proyectos Estratégicos y Toma de Decisiones', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Ciencias de la Computación', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Fundamentos de Sistemas Electrónicos', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Sistemas Distribuidos', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+insert into academy values (DEFAULT, 'Trabajo Terminal', (SELECT id FROM workplace WHERE abbreviation = 'ESCOM'));
+
 -- add academic_program
 insert into academic_program (name, title_name, workplace_id) values ('Ingeniería en Sistemas Computacionales', 'Ingeniero', (select id from workplace where abbreviation like 'ESCOM'));
 insert into academic_program (name, title_name, workplace_id) values ('Ingeniería en Control y Automatización', 'Ingeniero', (select id from workplace where abbreviation like 'ESIME Zacatenco'));
@@ -40,44 +54,44 @@ insert into semester (semester_number, study_plan_id) (select 4, id from study_p
 -- add learning_unit --
 -----------------------
 -- Escuela Num 1
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.39, 7.5, (select id from formation_area where name like '%Profesional%'), 'Ingenieria de software', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 4 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.28, 7.5, (select id from formation_area where name like '%Profesional%'), 'Estructura de Datos', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (4.4, 7.5, (select id from formation_area where name like '%Profesional%'), 'Base de Datos', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit values (DEFAULT, 4.39, 7.5, 'Ingenieria de software', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 4 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit values (DEFAULT, 4.28, 7.5, 'Estructura de Datos', 1.5, 3.0, (select id from academy where name = 'Algoritmia y Programación'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizado'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit values (DEFAULT, 4.4, 7.5, 'Base de Datos', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
 
 -- Escuela Num 2
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Terminal y de Integración%'), 'Fisica Clasica', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Profesional%'), 'Ecuaciones Diferenciales', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Institucional%'), 'Ondas Mecanicas', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Fisica Clasica', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Ecuaciones Diferenciales', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'En proceso'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Ondas Mecanicas', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Finalizado'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
 
 -- Escuela Num 3
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Institucional%'), 'Comunicacion Oral y Escrita', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Profesional%'), 'Calidad', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Científica Básica%'), 'Administracion Estrategica', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Comunicacion Oral y Escrita', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Sin asignar'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Calidad', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Administracion Estrategica', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'En proceso'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
 
 -- Escuela Num 4
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (0, 9, (select id from formation_area where name like '%Profesional%'), 'Geometria Analitica', 0, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (0, 9, (select id from formation_area where name like '%Institucional%'), 'Analisis Vectorial', 0, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (0, 9, (select id from formation_area where name like '%Institucional%'), 'Fisica 3', 3.0, 6.0, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
+insert into learning_unit values (DEFAULT, 0, 9, 'Geometria Analitica', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'En proceso'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
+insert into learning_unit values (DEFAULT, 0, 9, 'Analisis Vectorial', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Finalizado'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
+insert into learning_unit values (DEFAULT, 0, 9, 'Fisica 3', 3.0, 6.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
 
 -- Escuela Num 5
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Profesional%'), 'Mecanica de la particula', 0, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Científica Básica%'), 'Circuitos Electricos', 1.5, 1.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Terminal y de Integración%'), 'Electricidad y Magnetismo', 0, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Mecanica de la particula', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizado'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Circuitos Electricos', 1.5, 1.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Electricidad y Magnetismo', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Sin asignar'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
 
 -- Escuela Num 6
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Profesional%'), 'Metodos Hilados', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Científica Básica%'), 'Quimica Textil', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Científica Básica%'), 'Higiene y seguridad industrial', 1.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Metodos Hilados', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Quimica Textil', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Sin asignar'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Higiene y seguridad industrial', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Finalizado'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
 
 -- Escuela Num 7
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Terminal y de Integración%'), 'Quimica General', 2, 5, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Científica Básica%'), 'Quimica de Soluciones', 2, 4, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.0, 7.5, (select id from formation_area where name like '%Institucional%'), 'Quimica Organica 1', 3, 3, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Quimica General', 2, 5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Sin asignar'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Quimica de Soluciones', 2, 4, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'En proceso'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Quimica Organica 1', 3, 3, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
 
 -- Escuela Num 8
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Científica Básica%'), 'Geologia', 1.5, 3.0, (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Profesional%'), 'Dinamica de la Particula', 0, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
-insert into learning_unit (satcacredits, tepiccredits, formation_area_id, name, practice_hours_per_week, theory_hours_per_week, semester_id) values (3.5, 7.0, (select id from formation_area where name like '%Terminal y de Integración%'), 'Topografia', 4.5, 4.5, (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Geologia', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Finalizado'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Dinamica de la Particula', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Sin asignar'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Topografia', 4.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Asignado'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
 
 -- add synthetic_program
 
@@ -145,10 +159,6 @@ insert into evaluationua (name, percentage, evaluationua_id) VALUES ('Evaluació
 insert into evaluationua (name, percentage, evaluationua_id) VALUES ('Sumativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
 insert into evaluationua (name, percentage, evaluationua_id) VALUES ('rubricas de autoevaluación y coevaluación', 0.4, (SELECT id FROM evaluationua WHERE id = 1));
 
--- insert into learning_unit_evaluation (name, percentage, evaluation_accreditationua_id) VALUES ('Evaluación formativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
--- insert into learning_unit_evaluation (name, percentage, evaluation_accreditationua_id) VALUES ('Sumativa', 0.3, (SELECT id FROM evaluationua WHERE id = 1));
--- insert into learning_unit_evaluation (name, percentage, evaluation_accreditationua_id) VALUES ('rubricas de autoevaluación y coevaluación', 0.4, (SELECT id FROM evaluationua WHERE id = 1));
-
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Saberes previos'));
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en unidad académica del IPN'));
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en extranjero'));
@@ -179,67 +189,29 @@ insert into bibliography_authors values ('9789702602064', (SELECT id FROM author
 --		Extensive Program 			--
 --									--
 
-insert into teaching_profile values (DEFAULT);
-
-insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
-
-insert into teaching_profile_schooling_grades values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM schooling_grade WHERE speciality LIKE 'Computación' AND academic_level_id = (SELECT id FROM academic_level WHERE name like 'Maestro')));
-
-insert into attitude (name) values ('Responsable');
-insert into attitude (name) values ('Honesto');
-insert into attitude (name) values ('Respetuoso');
-insert into attitude (name) values ('Tolerante');
-insert into attitude (name) values ('Asertivo');
-insert into attitude (name) values ('Colaborativo');
-insert into attitude (name) values ('Participativo');
-
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Responsable'));
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Honesto'));
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Respetuoso'));
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Tolerante'));
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Asertivo'));
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Colaborativo'));
-insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Participativo'));
-
-insert into knowledge (name) values ('Lenguaje de Modelado Unificado');
-insert into knowledge (name) values ('Ingeniería de Software');
-insert into knowledge (name) values ('Programación en un lenguaje de alto nivel.');
-insert into knowledge (name) values ('Modelos de Madurez y Mejora de Procesos');
-insert into knowledge (name) values ('Metodologías Ágiles');
-insert into knowledge (name) values ('Idioma Inglés');
-insert into knowledge (name) values ('MEI');
-
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Lenguaje de Modelado Unificado'));
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Ingeniería de Software'));
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Programación en un lenguaje de alto nivel.'));
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Modelos de Madurez y Mejora de Procesos'));
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Metodologías Ágiles'));
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Idioma Inglés'));
-insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'MEI'));
-
-insert into ability (name) values ('Capacidad para el manejo de grupos');
-insert into ability (name) values ('Fluidez verbal de ideas');
-insert into ability (name) values ('Capacidad de traspasar conocimientos');
-insert into ability (name) values ('Manejo de grupos y trabajo colaborativo');
-insert into ability (name) values ('Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno');
-insert into ability (name) values ('Manejo de estrategias didácticas centradas en el aprendizaje');
-insert into ability (name) values ('Aplicación del MEI');
-
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Capacidad para el manejo de grupos'));
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Fluidez verbal de ideas'));
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Capacidad de traspasar conocimientos'));
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de grupos y trabajo colaborativo'));
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno'));
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de estrategias didácticas centradas en el aprendizaje'));
-insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Aplicación del MEI'));
-
-insert into professional_experience (name) values ('Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)');
-insert into professional_experience (name) values ('Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.');
-insert into professional_experience (name) values ('Experiencia de un año como Docente de Nivel Superior.');
-
-insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)'));
-insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.'));
-insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de un año como Docente de Nivel Superior.'));
+insert into teaching_profile values (DEFAULT, 'Capacidad para el manejo de grupos
+Fluidez verbal de ideas
+Capacidad de traspasar conocimientos
+Manejo de grupos y trabajo colaborativo
+Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno
+Manejo de estrategias didácticas centradas en el aprendizaje
+Aplicación del MEI', 'Responsable
+Honesto
+Respetuoso
+Tolerante
+Asertivo
+Colaborativo
+Participativo', 'Capacidad para el manejo de grupos
+Fluidez verbal de ideas
+Capacidad de traspasar conocimientos
+Manejo de grupos y trabajo colaborativo
+Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno
+Manejo de estrategias didácticas centradas en el aprendizaje
+Aplicación del MEI', 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)
+Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.
+Experiencia de un año como Docente de Nivel Superior.', 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)
+Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.
+Experiencia de un año como Docente de Nivel Superior.');
 
 insert into assigned_time values (DEFAULT, 1.5, 54, 27, 54, 3, 81);
 
@@ -249,3 +221,72 @@ Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de 
 
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
+
+-- insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
+
+-- insert into teaching_profile_schooling_grades values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM schooling_grade WHERE speciality LIKE 'Computación' AND academic_level_id = (SELECT id FROM academic_level WHERE name like 'Maestro')));
+
+-- insert into attitude (name) values ('Responsable');
+-- insert into attitude (name) values ('Honesto');
+-- insert into attitude (name) values ('Respetuoso');
+-- insert into attitude (name) values ('Tolerante');
+-- insert into attitude (name) values ('Asertivo');
+-- insert into attitude (name) values ('Colaborativo');
+-- insert into attitude (name) values ('Participativo');
+
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Responsable'));
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Honesto'));
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Respetuoso'));
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Tolerante'));
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Asertivo'));
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Colaborativo'));
+-- insert into teaching_profile_attitude values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM attitude WHERE name LIKE 'Participativo'));
+
+-- insert into knowledge (name) values ('Lenguaje de Modelado Unificado');
+-- insert into knowledge (name) values ('Ingeniería de Software');
+-- insert into knowledge (name) values ('Programación en un lenguaje de alto nivel.');
+-- insert into knowledge (name) values ('Modelos de Madurez y Mejora de Procesos');
+-- insert into knowledge (name) values ('Metodologías Ágiles');
+-- insert into knowledge (name) values ('Idioma Inglés');
+-- insert into knowledge (name) values ('MEI');
+
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Lenguaje de Modelado Unificado'));
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Ingeniería de Software'));
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Programación en un lenguaje de alto nivel.'));
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Modelos de Madurez y Mejora de Procesos'));
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Metodologías Ágiles'));
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'Idioma Inglés'));
+-- insert into teaching_profile_knowledges values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM knowledge WHERE name LIKE 'MEI'));
+
+-- insert into ability (name) values ('Capacidad para el manejo de grupos');
+-- insert into ability (name) values ('Fluidez verbal de ideas');
+-- insert into ability (name) values ('Capacidad de traspasar conocimientos');
+-- insert into ability (name) values ('Manejo de grupos y trabajo colaborativo');
+-- insert into ability (name) values ('Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno');
+-- insert into ability (name) values ('Manejo de estrategias didácticas centradas en el aprendizaje');
+-- insert into ability (name) values ('Aplicación del MEI');
+
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Capacidad para el manejo de grupos'));
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Fluidez verbal de ideas'));
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Capacidad de traspasar conocimientos'));
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de grupos y trabajo colaborativo'));
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de estrategias para fomentar el aprendizaje autónomo en el alumno'));
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Manejo de estrategias didácticas centradas en el aprendizaje'));
+-- insert into teaching_profile_ability values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM ability WHERE name LIKE 'Aplicación del MEI'));
+
+-- insert into professional_experience (name) values ('Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)');
+-- insert into professional_experience (name) values ('Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.');
+-- insert into professional_experience (name) values ('Experiencia de un año como Docente de Nivel Superior.');
+
+-- insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en en el análisis de Sistemas de Información (Líder de Proyecto)'));
+-- insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de dos años en el manejo de grupos y en el trabajo colaborativo.'));
+-- insert into teaching_profile_professional_experiences values ((SELECT id FROM teaching_profile WHERE id = 1), (SELECT id FROM professional_experience WHERE name LIKE 'Experiencia de un año como Docente de Nivel Superior.'));
+
+-- insert into assigned_time values (DEFAULT, 1.5, 54, 27, 54, 3, 81);
+
+-- insert into extensive_program values (DEFAULT, 'Esta unidad de aprendizaje contribuye al perfil de egresado de Ingeniería en Sistemas Computacionales, al desarrollar las habilidades de análisis y diseño de proyectos haciendo uso de software de gestión de proyectos así como herramientas CASE, además de integrar los principios de gestión de la calidad regidos por los estándares establecidos para asegurar, gestionar, auditar y certificar la calidad de procesos y productos informáticos así como también planificar y proyectar es estratégicamente (Recursos Hardware y Software, Recursos Humanos, componentes reutilizables) el desarrollo de proyectos de software. Así mismo, se dinamizan las competencias de pensamiento creativo, comunicación asertiva, trabajo colaborativo y participativo.
+
+-- Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de Datos y Administración de Proyectos.', 2008, (SELECT id FROM assigned_time WHERE total_semster_hour = 81), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'), (SELECT id FROM modality WHERE name LIKE 'Escolarizado'), (SELECT id FROM teaching WHERE name LIKE 'Obligatoria'), (SELECT id FROM teaching_profile WHERE id = 1));
+
+-- insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
+-- insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));

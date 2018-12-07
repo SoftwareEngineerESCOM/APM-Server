@@ -32,9 +32,13 @@ public class LearningUnitTaskService {
         learningUnitTaskRepository.save(learningUnitTask);
     }
 
-    public List<LearningUnitTask> learningUnitTasksByUserId(Integer id) {
+    /*public List<LearningUnitTask> learningUnitTasksByUserId(Integer id) {
         return learningUnitTaskRepository.learningUnitTasksByUserId(id);
     	//return null;
+    }*/
+    
+    public List<LearningUnitTask> existUserLearningUnitByUserId(Integer id){
+        return learningUnitTaskRepository.existUserLearningUnitByUserId(id);
     }
 
     public void delete(Integer id) {
