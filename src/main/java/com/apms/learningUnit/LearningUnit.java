@@ -39,7 +39,7 @@ public class LearningUnit {
     private LearningUnitStatus learningUnitStatus;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Academy academy;
 
     public LearningUnit() {
