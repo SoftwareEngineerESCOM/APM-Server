@@ -40,36 +40,5 @@ public class LearningUnitTask {
     public LearningUnitTask() {
         
     }
-    
-    public LearningUnit getLearningUnit(){
-        return learningUnit;
-    }
-    
-    public void setLearningUnit(LearningUnit learningUnit){
-        this.learningUnit = learningUnit;
-    }
-    
-    public User getUser(){
-        return user;
-    }
-    
-    public void setUser(User user){
-        this.user = user;
-    }
-    
-    public String getStartDate(){
-        return startDate;
-    }
-    
-    public void setStartDate(String startDate){
-        this.startDate = startDate;
-    }
-    
-    public String getDeadline(){
-        return deadline;
-    }
-    
-    public void setDeadLine(String deadline){
-        this.deadline = deadline;
-    }
+
 }

@@ -1,0 +1,7 @@
+-- add academic_level
+insert into learning_unit_task (start_date,deadline, learning_unit_id,user_id) values ('10-12-2018', '24-12-2018', (SELECT id FROM learning_unit lu WHERE lu.name LIKE '%Base de Dato%'), (SELECT id FROM user_apms WHERE email LIKE '%test1@test.co%'));
+insert into learning_unit_task (start_date,deadline, learning_unit_id,user_id) values ('11-12-2018', '24-12-2018', (SELECT id FROM learning_unit lu WHERE lu.name LIKE '%Estructura de Dato%'), (SELECT id FROM user_apms WHERE email LIKE '%test2@test.co%'));
+insert into learning_unit_task (start_date,deadline, learning_unit_id,user_id) values ('12-12-2018', '20-12-2018', (SELECT id FROM learning_unit lu WHERE lu.name LIKE '%Comunicaci_n Oral y Escrit%'), (SELECT id FROM user_apms WHERE email LIKE '%test3@test.co%'));
+insert into learning_unit_task (start_date,deadline, learning_unit_id,user_id) values ('20-12-2018', '22-12-2018', (SELECT id FROM learning_unit lu WHERE lu.name LIKE '%Calida%'), (SELECT id FROM user_apms WHERE email LIKE '%test4@test.co%'));
+insert into learning_unit_task (start_date,deadline, learning_unit_id,user_id) values ('13-12-2018', '21-12-2018', (SELECT id FROM learning_unit lu WHERE lu.name LIKE 'Geolog_a%'), (SELECT id FROM user_apms WHERE email LIKE '%test5@test.co%'));
+insert into learning_unit_task (start_date,deadline, learning_unit_id,user_id) values ('11-12-2018', '19-12-2018', (SELECT id FROM learning_unit lu WHERE lu.name LIKE 'Topograf_a%'), (SELECT id FROM user_apms WHERE email LIKE '%admin1@test.co%'));

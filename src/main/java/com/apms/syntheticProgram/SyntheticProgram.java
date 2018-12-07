@@ -34,10 +34,12 @@ public class SyntheticProgram {
 	@JoinColumn
 	private LearningUnit learningUnit;
 
+	//
 	@OneToOne
 	@JoinColumn
 	private EvaluationAccreditationUA evaluationAccreditationUA;
-	
+
+	//
 	@OneToMany
 	@JoinColumn
 	private List<Content> content;

@@ -3,6 +3,7 @@ package com.apms.learningUnitTask;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.apms.learningUnit.LearningUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,9 @@ public class LearningUnitTaskService {
 
     public void delete(Integer id) {
         learningUnitTaskRepository.deleteById(id);
+    }
+
+    public List<LearningUnitTask> getLearningUnitTasksByUserId(Integer id) {
+        return learningUnitTaskRepository.getLearningUnitTasksByUserId(id);
     }
 }

@@ -2,6 +2,9 @@ package com.apms.learningUnitTask;
 
 import java.util.List;
 
+import com.apms.learningUnit.LearningUnit;
+import com.apms.user.User;
+import com.apms.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +25,9 @@ public class LearningUnitTaskRestController {
 	
     @Autowired
     private LearningUnitTaskService learningUnitTaskService;
+
+    @Autowired
+    private UserService userService;
 
     /*
     **Return a listing of all the resources
@@ -66,6 +72,7 @@ public class LearningUnitTaskRestController {
     */
     @PostMapping
     public RESTResponse<LearningUnitTask> post(@RequestBody RESTRequest<LearningUnitTask> learningUnitTask) {
+        List<LearningUnitTask> aux; //ESTA TAREA YA TE FUE ASIGNADA
         try {
             learningUnitTaskService.add(learningUnitTask.getPayload());
         } catch (Exception e) {
@@ -115,6 +122,24 @@ public class LearningUnitTaskRestController {
             return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "LearningUnitTask modificado.", null);
+    }
+
+    @GetMapping("/learningUnitTasksByUserId/{id}")
+    public RESTResponse<List<LearningUnitTask>> getLearningUnitTasksByUserId(@PathVariable Integer id) {
+            List<LearningUnitTask> aux;
+            try {
+                aux = learningUnitTaskService.getLearningUnitTasksByUserId(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+                        null);
+            }
+            if (!aux.isEmpty()) {
+                return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK, "", aux);
+            } else {
+                return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK,
+                        "No cuentas con tareas asignadas.", aux);
+            }
     }
 
 }
