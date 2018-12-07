@@ -34,4 +34,8 @@ public class ExtensiveProgramService {
 	public void delete(Integer id) {
 		extensiveProgramRepository.deleteById(id);
 	}
+	
+	public ExtensiveProgram getExtensiveProgramByLearningUnitId(Integer id) {
+		return extensiveProgramRepository.getExtensiveProgramByLearningUnitId(id);
+	}
 }
