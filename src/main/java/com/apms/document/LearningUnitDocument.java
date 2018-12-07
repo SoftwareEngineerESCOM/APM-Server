@@ -27,38 +27,21 @@ public class LearningUnitDocument {
     private final File thirdSection = new File("src/main/resources/document_latex/learning_unit_document/third_part_document.tex");
     private final Pattern regex = Pattern.compile("<(.*?)>");
     private HashMap<String,String> dataLabels;
-    private int numberUnits;
     private String content;
-    
-    //Services
-    private ExtensiveProgramService extensiveProgramService;
-    
-    private HashMap<String,String> fillDocumentLabels(){
-        return null;
-    }
+    private int numberUnits;
 
-    public LearningUnitDocument() {
-        this.dataLabels = new HashMap();
-        this.content = "";
-        EtiquetasPrueba ep = new EtiquetasPrueba();
-        this.dataLabels = ep.getEtiquetas();
-        numberUnits = 3;
-    }
-    
     public LearningUnitDocument(SyntheticProgram syntheticProgram) {
         this.syntheticProgram = syntheticProgram;
-    	this.dataLabels = new HashMap();
-        this.numberUnits = 0;
-        this.content = "";
     }
     
     public void createDocument() throws IOException{
-    	fillDataLabels();
-        EtiquetasPrueba ep = new EtiquetasPrueba();
-        this.dataLabels = ep.getEtiquetas();
-        createFirstSection();
-        createSecondSection();
-        createThirdSection();
+    	this.content = "";
+        this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
+    	//fillDataLabels();
+    	editSecondSectionTemplate();
+    	replaceLabelsInfo(firstSection); //Llenar datos primera seccion
+    	replaceLabelsInfo(secondSection); //Llenar datos segunda seccion
+    	replaceLabelsInfo(thirdSection); //Llenar datos tercera seccion
         FileWriter writer = new FileWriter("src/main/resources/document_latex/FormatoUnidadAcademica.tex"); //Salida del documento
         writer.write(content);
         writer.close();
@@ -66,54 +49,17 @@ public class LearningUnitDocument {
     }
     
     private void fillDataLabels() {
+    	this.dataLabels = new HashMap();
     	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
+    	//dataLabels.putAll(LabelsFormat.createStudyPlanLabels());
+    	//dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels());
+    	//dataLabels.putAll(LabelsFormat.createBibliographyLabels());
+    	dataLabels.putAll(LabelsFormat.createThematicUnitLabels(syntheticProgram));
+    	//dataLabels.putAll(LabelsFormat.createPracticeRelationLabels());	
     }
-    
-    private void ejecutarCMD(String cmd){
-        Process p;
-        try {
-            p = Runtime.getRuntime().exec(cmd);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line = "";
-            while ((line = reader.readLine())!= null) {
-                System.out.println(line);
-            }
-            reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    private void createFirstSection() throws FileNotFoundException, IOException{
-        BufferedReader reader = new BufferedReader(new FileReader(firstSection));
-        String line = reader.readLine();
-        Matcher regexMatcher;
-        while (line != null){
-            List<String> matchList = new ArrayList<>();
-            regexMatcher  = regex.matcher(line);
 
-            while (regexMatcher.find()) //Finds Matching Pattern in String
-                matchList.add(regexMatcher.group(1)); //Fetching Group from String
-
-            for (String match : matchList) {
-                System.out.println("Match: " + match);
-                if(dataLabels.get(match) != null)
-                	line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
-                else
-                	line = line.replaceFirst("<" + match + ">", "S/I");
-            }
-            this.content += line + System.lineSeparator();
-            line = reader.readLine();
-        }
-        reader.close();
-    }
-    
-    private void createSecondSection() throws FileNotFoundException, IOException{
-        editSecondSectionTemplate();
-        //Llenar los labels con los datos de las unidades
-        HashMap<String,String> dataUnitsLabels = new HashMap<>();
-        //agregar funcion fillUnitLabels conforme al formato de sus etiquetas
-        BufferedReader reader = new BufferedReader(new FileReader(secondSection));
+    private void replaceLabelsInfo(File file) throws IOException {
+    	BufferedReader reader = new BufferedReader(new FileReader(file));
         String line = reader.readLine();
         Matcher regexMatcher;
         while (line != null){
@@ -169,37 +115,18 @@ public class LearningUnitDocument {
         writer.close();
     }
     
-    private void createThirdSection() throws FileNotFoundException, IOException{
-        BufferedReader reader = new BufferedReader(new FileReader(thirdSection));
-        //Las etiquetas en esta parte se deberan crear con cierto formato
-        String line = reader.readLine();
-        Matcher regexMatcher;
-        while (line != null){
-            List<String> matchList = new ArrayList<>();
-            regexMatcher  = regex.matcher(line);
-
-            while (regexMatcher.find()) //Finds Matching Pattern in String
-                matchList.add(regexMatcher.group(1)); //Fetching Group from String
-
-            for (String match : matchList) {
-                System.out.println("Match: " + match);
-                if(dataLabels.get(match) != null)
-                	line = line.replaceFirst("<" + match + ">", dataLabels.get(match));
-                else
-                	line = line.replaceFirst("<" + match + ">", "S/I");
-            }
-            this.content += line + System.lineSeparator();
-            line = reader.readLine();
-        }
-        reader.close();
-    }
-    
-    public static void main(String[] args) {
-        LearningUnitDocument lum = new LearningUnitDocument();
+    private void ejecutarCMD(String cmd){
+        Process p;
         try {
-            lum.createDocument();
-        } catch (IOException ex) {
-            ex.toString();
+            p = Runtime.getRuntime().exec(cmd);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line = "";
+            while ((line = reader.readLine())!= null) {
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

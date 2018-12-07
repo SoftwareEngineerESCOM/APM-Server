@@ -200,7 +200,7 @@ public class ThematicUnitRestController {
             if (!aux.isEmpty()) {
                 return new RESTResponse<List<ThematicUnit>>(RESTResponse.OK, "", aux);
             } else {
-                return new RESTResponse<List<ThematicUnit>>(RESTResponse.FAIL, "No hay Unidades Temáticas asociadas a esta Unidad de Aprendizaje", null);
+                return new RESTResponse<List<ThematicUnit>>(RESTResponse.OK, "No hay Unidades Temáticas asociadas a esta Unidad de Aprendizaje", null);
             }
         } else {
             return new RESTResponse<List<ThematicUnit>>(RESTResponse.FAIL, "Unidad de Aprendizaje no registrada.", null);
