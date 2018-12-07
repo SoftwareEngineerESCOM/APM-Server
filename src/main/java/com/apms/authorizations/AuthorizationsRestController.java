@@ -1,5 +1,6 @@
 package com.apms.authorizations;
 
+import com.apms.learningUnit.LearningUnit;
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,11 @@ import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.syntheticProgram.SyntheticProgramService;
 
 import java.util.List;
+import java.util.Map;
 
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -68,14 +71,16 @@ public class AuthorizationsRestController {
     /*
     **Store a newly created resource in storage.
     */
-    @PostMapping
-    public RESTResponse<Authorizations> post(@RequestBody RESTRequest<Authorizations> authorizations) {
-	    
+    public RESTResponse<Authorizations> post(@RequestBody Map<String,JsonNode> req) throws JsonProcessingException {
+	    ObjectMapper mapper = new ObjectMapper();
+		Authorizations authorizations = mapper.treeToValue(req.get("authorizations"),Authorizations.class);
+        SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(authorizations.getSyntheticProgram().getLearningUnit().getId());
+        authorizations.setSyntheticProgram(syntheticProgram);
         try {
-            if(authorizationsService.getOne(authorizations.getPayload().getId()) != null)
+            if(authorizationsService.getOne(authorizations.getId()) != null)
                 return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Authorizations ya existe en el sistema.", null);
-            
-		authorizationsService.add(authorizations.getPayload());
+
+		authorizationsService.add(authorizations);
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
