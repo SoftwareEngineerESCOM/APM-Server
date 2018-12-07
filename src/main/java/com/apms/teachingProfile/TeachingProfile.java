@@ -24,32 +24,26 @@ public class TeachingProfile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@ManyToMany
-	private List<SchoolingGrade> schoolingGrades;
-	@ManyToMany
-	private List<Knowledge> knowledges;
-	@ManyToMany
-	private List<ProfessionalExperience> professionalExperiences;
-	@ManyToMany
-	private List<Ability> ability;
-	@ManyToMany
-	private List<Attitude> attitude;
+	
+	private String schoolingGrades;
+	private String knowledges;
+	private String professionalExperiences;
+	private String ability;
+	private String attitude;
 
 	public TeachingProfile() {
 
 	}
 
-
-	public TeachingProfile(List<SchoolingGrade> schoolingGrade, List<Knowledge> knowledge, List<Ability> ability,
-			List<Attitude> attitude, List<ProfessionalExperience> professionalExperience) {
+	public TeachingProfile(String schoolingGrades, String knowledges, String professionalExperiences,
+			String ability, String attitude) {
 		super();
-
-		this.schoolingGrades = schoolingGrade;
-		this.knowledges = knowledge;
-		this.professionalExperiences = professionalExperience;
+		this.schoolingGrades = schoolingGrades;
+		this.knowledges = knowledges;
+		this.professionalExperiences = professionalExperiences;
 		this.ability = ability;
 		this.attitude = attitude;
+		this.schoolingGrades = schoolingGrades;
 	}
 	
 }

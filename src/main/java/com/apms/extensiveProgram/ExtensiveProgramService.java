@@ -19,12 +19,11 @@ public class ExtensiveProgramService {
 	}
 
 	public ExtensiveProgram getOne(Integer id) {
-		return extensiveProgramRepository.findById(id).isPresent() ? extensiveProgramRepository.findById(id).get()
-				: null;
+		return extensiveProgramRepository.findById(id).isPresent() ? extensiveProgramRepository.findById(id).get() : null;
 	}
 
-	public void add(ExtensiveProgram extensiveProgram) {
-		extensiveProgramRepository.save(extensiveProgram);
+	public ExtensiveProgram add(ExtensiveProgram extensiveProgram) {
+		return extensiveProgramRepository.save(extensiveProgram);
 	}
 
 	public void update(ExtensiveProgram extensiveProgram) {

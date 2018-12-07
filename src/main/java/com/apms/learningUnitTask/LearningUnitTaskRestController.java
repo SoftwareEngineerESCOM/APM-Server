@@ -22,7 +22,7 @@ import com.apms.rest.RESTResponse;
 @RestController
 @RequestMapping("/learningUnitTask")
 public class LearningUnitTaskRestController {
-	
+
     @Autowired
     private LearningUnitTaskService learningUnitTaskService;
 
@@ -30,46 +30,46 @@ public class LearningUnitTaskRestController {
     private UserService userService;
 
     /*
-    **Return a listing of all the resources
-    */
+     **Return a listing of all the resources
+     */
     @GetMapping
-	public RESTResponse<List<LearningUnitTask>> getAll() {
-		List<LearningUnitTask> res;
-		try {
-			res = learningUnitTaskService.getAll();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
-		}
-		if (!res.isEmpty()) {
-			return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<List<LearningUnitTask>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
-		}
-	}
+    public RESTResponse<List<LearningUnitTask>> getAll() {
+        List<LearningUnitTask> res;
+        try {
+            res = learningUnitTaskService.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+        }
+        if (!res.isEmpty()) {
+            return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK, "", res);
+        } else {
+            return new RESTResponse<List<LearningUnitTask>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+        }
+    }
 
     /*
-    **Return one resource
-    */
+     **Return one resource
+     */
     @GetMapping("/{id}")
     public RESTResponse<LearningUnitTask> getOne(@PathVariable Integer id) {
         LearningUnitTask res;
-        try{
+        try {
             res = learningUnitTaskService.getOne(id);
         } catch (Exception e) {
             e.printStackTrace();
             return new RESTResponse<LearningUnitTask>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
-			return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "LearningUnitTask no registrado.", null);
-		}
+            return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "", res);
+        } else {
+            return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "LearningUnitTask no registrado.", null);
+        }
     }
 
     /*
-    **Store a newly created resource in storage.
-    */
+     **Store a newly created resource in storage.
+     */
     @PostMapping
     public RESTResponse<LearningUnitTask> post(@RequestBody RESTRequest<LearningUnitTask> learningUnitTask) {
         List<LearningUnitTask> aux; //ESTA TAREA YA TE FUE ASIGNADA
@@ -83,8 +83,8 @@ public class LearningUnitTaskRestController {
     }
 
     /*
-    **Update the specified resource in storage partially.
-    */
+     **Update the specified resource in storage partially.
+     */
     @PatchMapping
     public RESTResponse<LearningUnitTask> patch(@RequestBody RESTRequest<LearningUnitTask> learningUnitTask) {
         try {
@@ -97,8 +97,8 @@ public class LearningUnitTaskRestController {
     }
 
     /*
-    **Update the specified resource in storage.
-    */
+     **Update the specified resource in storage.
+     */
     @PutMapping
     public RESTResponse<LearningUnitTask> put(@RequestBody RESTRequest<LearningUnitTask> learningUnitTask) {
         try {
@@ -111,8 +111,8 @@ public class LearningUnitTaskRestController {
     }
 
     /*
-    **Remove the specified resource from storage.
-    */
+     **Remove the specified resource from storage.
+     */
     @DeleteMapping("/{id}")
     public RESTResponse<LearningUnitTask> delete(@PathVariable Integer id) {
         try {
@@ -126,20 +126,19 @@ public class LearningUnitTaskRestController {
 
     @GetMapping("/learningUnitTasksByUserId/{id}")
     public RESTResponse<List<LearningUnitTask>> getLearningUnitTasksByUserId(@PathVariable Integer id) {
-            List<LearningUnitTask> aux;
-            try {
-                aux = learningUnitTaskService.getLearningUnitTasksByUserId(id);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
-                        null);
-            }
-            if (!aux.isEmpty()) {
-                return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK, "", aux);
-            } else {
-                return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK,
-                        "No cuentas con tareas asignadas.", aux);
-            }
+        List<LearningUnitTask> aux;
+        try {
+            aux = learningUnitTaskService.getLearningUnitTasksByUserId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+                    null);
+        }
+        if (!aux.isEmpty()) {
+            return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK, "", aux);
+        } else {
+            return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK,
+                    "No cuentas con tareas asignadas.", aux);
+        }
     }
-
 }
