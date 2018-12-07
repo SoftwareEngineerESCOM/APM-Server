@@ -42,4 +42,16 @@ public class Authorizations {
     public Authorizations() {
         
     }
+
+	public Authorizations(Academy elaboratedBy, HumanResource revisedBy, HumanResource authorizedBy,
+			HumanResource approvedBy, SyntheticProgram syntheticProgram) {
+		super();
+		this.elaboratedBy = elaboratedBy;
+		this.revisedBy = revisedBy;
+		this.authorizedBy = authorizedBy;
+		this.approvedBy = approvedBy;
+		this.syntheticProgram = syntheticProgram;
+	}
+
+	
 }
