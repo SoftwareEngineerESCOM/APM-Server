@@ -69,9 +69,12 @@ public class LabelsFormat {
 	}
 	
 	
-	public static HashMap<String,String> createStudyPlanLabels(StudyPlan studyPlan){
+	public static HashMap<String,String> createStudyPlanLabels(SyntheticProgram syntheticProgram){
 		StudyPlanService studyPlanService = new StudyPlanService();
-		//OBTENER PLAN DE ESTUDIOS POR ID DE UNIDAD ACADEMICA
+		//GET STUDY PLAN
+		StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(
+					syntheticProgram.getLearningUnit().getId());
+		
 		
 		HashMap<String,String> dataLabels = new HashMap<>();
 		dataLabels.put("academic_unit", studyPlan.getAcademicProgram().getWorkplace().getName());

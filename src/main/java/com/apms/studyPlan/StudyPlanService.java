@@ -50,4 +50,9 @@ public class StudyPlanService {
 	public StudyPlan getNewStudyPlan(Integer academicProgram_id) {
 		return studyPlanRepository.getNewStudyPlan(academicProgram_id);
 	}
+	
+	public StudyPlan getStudyPlanByLearningUnitId(Integer id) {
+		return studyPlanRepository.getStudyPlanByLearningUnitId(id);
+	}
+	
 }

@@ -29,4 +29,7 @@ public interface StudyPlanRepository extends JpaRepository<StudyPlan, Integer> {
 	@Nullable
 	@Query(value = "SELECT * FROM study_plan WHERE status_study_plan_id IN (SELECT id FROM status_study_plan WHERE id = 1 OR id = 2 OR id = 3) AND academic_program_id = :id LIMIT 1", nativeQuery = true)
 	StudyPlan getNewStudyPlan(@Param("id") Integer id);
+	
+	@Query(value = "SELECT * FROM study_plan WHERE study_plan.id = (SELECT study_plan_id FROM semester WHERE semester.id = (SELECT semester_id FROM learning_unit WHERE learning_unit.id = :id)", nativeQuery = true)
+	StudyPlan getStudyPlanByLearningUnitId(@Param("id") Integer id);
 }
