@@ -22,8 +22,8 @@ public class AuthorizationsService {
 	return authorizationsRepository.findById(id).isPresent() ? authorizationsRepository.findById(id).get() : null;
     }
 
-    public void add(Authorizations authorizations) {
-        authorizationsRepository.save(authorizations);
+    public Authorizations add(Authorizations authorizations) {
+        return authorizationsRepository.save(authorizations);
     }
 
     public void update(Authorizations authorizations) {

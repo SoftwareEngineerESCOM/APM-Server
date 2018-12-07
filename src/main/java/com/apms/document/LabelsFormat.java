@@ -8,21 +8,26 @@ import com.apms.ability.Ability;
 import com.apms.accreditationType.AccreditationType;
 import com.apms.attitude.Attitude;
 import com.apms.bibliographyRelation.BibliographyRelation;
+import com.apms.bibliographyRelation.BibliographyRelationService;
 import com.apms.content.Content;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.extensiveProgram.ExtensiveProgram;
+import com.apms.extensiveProgram.ExtensiveProgramService;
 import com.apms.knowledge.Knowledge;
 import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.practice.Practice;
 import com.apms.practiceRelation.PracticeRelation;
+import com.apms.practiceRelation.PracticeRelationService;
 import com.apms.practiceRelationEvaluation.PracticeRelationEvaluation;
 import com.apms.professionalExperience.ProfessionalExperience;
 import com.apms.schoolingGrade.SchoolingGrade;
 import com.apms.studyPlan.StudyPlan;
+import com.apms.studyPlan.StudyPlanService;
 import com.apms.subtopic.Subtopic;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.teachingProfile.TeachingProfile;
 import com.apms.thematicUnit.ThematicUnit;
+import com.apms.thematicUnit.ThematicUnitService;
 import com.apms.topic.Topic;
 
 
@@ -34,7 +39,8 @@ public class LabelsFormat {
 		HashMap<String,String> dataLabels = new HashMap<>();
 		dataLabels.put("learning_unit", syntheticProgram.getLearningUnit().getName());
 		dataLabels.put("semester", syntheticProgram.getLearningUnit().getSemester().getSemesterNumber() + "");
-		dataLabels.put("purpose_learning_unit", syntheticProgram.getRegard()); //PURPOSE LEARNING UNIT
+		dataLabels.put("purpose_learning_unit", syntheticProgram.getRegard());
+		
 		//CONTENTS - TEMATIC UNITS
 		String contents = "";
 		for (Content content : syntheticProgram.getContent())
@@ -42,33 +48,42 @@ public class LabelsFormat {
 		dataLabels.put("contents", contents);
 		
 		dataLabels.put("didactic_orientation", syntheticProgram.getDidacticOrientation());
+		
 		//EVALUATION AND ACREDITATION
 		String evaluationAndAccreditation = "";
 		for (EvaluationUA evaluationUA : syntheticProgram.getEvaluationAccreditationUA().getEvaluationUA())
 			evaluationAndAccreditation += evaluationUA.getName() + "\\\\";
 		for (AccreditationType accreditationType : syntheticProgram.getEvaluationAccreditationUA().getAccreditationType())
 			evaluationAndAccreditation += accreditationType.getName() + "\\\\";
-		
 		dataLabels.put("evaluation_and_accreditation", evaluationAndAccreditation);
+		
 		dataLabels.put("training_area", syntheticProgram.getLearningUnit().getFormationArea().getName());
+		
 		//TEPIC SATCA CREDITS
 		dataLabels.put("credits", syntheticProgram.getLearningUnit().getTEPICCredits() + " TEPIC - "
 				+ syntheticProgram.getLearningUnit().getSATCACredits() + " SATCA");
+		
 		dataLabels.put("academy", syntheticProgram.getLearningUnit().getAcademy().getName());
 		
 		return dataLabels;
 	}
 	
+	
 	public static HashMap<String,String> createStudyPlanLabels(StudyPlan studyPlan){
+		StudyPlanService studyPlanService = new StudyPlanService();
+		//OBTENER PLAN DE ESTUDIOS POR ID DE UNIDAD ACADEMICA
+		
 		HashMap<String,String> dataLabels = new HashMap<>();
 		dataLabels.put("academic_unit", studyPlan.getAcademicProgram().getWorkplace().getName());
 		dataLabels.put("academic_program", studyPlan.getAcademicProgram().getName());
-		
-		
 		return dataLabels;
 	}
 	
+	
 	public static HashMap<String,String> createExtensiveProgramLabels(ExtensiveProgram extensiveProgram){
+		ExtensiveProgramService extensiveProgramService = new ExtensiveProgramService();
+		//OBTENER PROGRAMA EN EXTENSO POR ID DE UNIDAD ACADEMICA
+		
 		HashMap<String,String> dataLabels = new HashMap<>();
 		//TYPE LEARNING UNIT
 		String types = "";
@@ -77,8 +92,8 @@ public class LabelsFormat {
 			if(i+1 < extensiveProgram.getTypes().size())
 				types += "-";
 		}
-		
 		dataLabels.put("type_learning_unit", types);
+		
 		dataLabels.put("validity", extensiveProgram.getValidity() + "");
 		dataLabels.put("modality", extensiveProgram.getModality().getName());
 		dataLabels.put("educational_intention", extensiveProgram.getEducationalIntention());
@@ -89,80 +104,87 @@ public class LabelsFormat {
 		dataLabels.put("autonomous_learning_hours", extensiveProgram.getAssignedTime().getAutomaticTeaching() + "");
 		dataLabels.put("total_semester_hours", extensiveProgram.getAssignedTime().getTotalSemsterHour() + "");
 		
-		
-		//TEACHER PROFILE INFO
+		//**TEACHER PROFILE INFO**//
 		TeachingProfile teachingProfile = extensiveProgram.getTeachingProfile();
 		
 		//SCHOOLING GRADE INFO
-		// String schoolingGradeStr = "";
-		// List<SchoolingGrade> schoolingGrades = teachingProfile.getSchoolingGrades();
-		// for (int i = 0; i < schoolingGrades.size(); i++) {
-		// 	schoolingGradeStr += schoolingGrades.get(i).getAcademicLevel().getName() + " en " +   schoolingGrades.get(i).getSpeciality();
-		// 	if(i+1 < schoolingGrades.size()) {
-		// 		if(i+2 < schoolingGrades.size())
-		// 			schoolingGradeStr += ", ";
-		// 		else
-		// 			schoolingGradeStr += " o ";
-		// 	}
-		// }
-		// dataLabels.put("specialty_and_academic_level_required", schoolingGradeStr);
+		String schoolingGradeStr = "";
+		String[] schoolingGrades = teachingProfile.getSchoolingGrades().split("\n"); //Separar cadena por algun simbolo
+		for (int i = 0; i < schoolingGrades.length; i++) {
+			schoolingGradeStr += schoolingGrades[i];
+			if(i+1 < schoolingGrades.length) {
+				if(i+2 < schoolingGrades.length)
+					schoolingGradeStr += ", ";
+				else
+					schoolingGradeStr += " o ";
+			}
+		}
+		dataLabels.put("specialty_and_academic_level_required", schoolingGradeStr);
 		
 		//KNOWLEDGES
-		// String knowledgesStr = "";
-		// for (Knowledge knowledge : teachingProfile.getKnowledges()) {
-		// 	knowledgesStr += knowledge.getName() + "\\\\";
-		// }
-		// dataLabels.put("teacher_profile_knowledge", knowledgesStr);
+		String knowledgesStr = "";
+		String[] knowledges = teachingProfile.getKnowledges().split("\n"); //Separar cadena por algun simbolo
+		for (String knowledge : knowledges) {
+			knowledgesStr += knowledge + "\\\\"; //Checar formato de latex ************
+		}
+		dataLabels.put("teacher_profile_knowledge", knowledgesStr);
 		
 		//EXPERIENCE PROFILE
-		// String professionalExperienceStr = "";
-		// for (ProfessionalExperience professionalExperience : teachingProfile.getProfessionalExperiences()) {
-		// 	professionalExperienceStr += professionalExperience.getName() + "\\\\";
-		// }
-		// dataLabels.put("teacher_profile_experience", professionalExperienceStr);
+		String professionalExperienceStr = "";
+		String[] professionalExperiences = teachingProfile.getProfessionalExperiences().split("\n"); //Separar cadena por algun simbolo
+		for (String professionalExperience : professionalExperiences) {
+			professionalExperienceStr += professionalExperience + "\\\\"; //Checar formato de latex ************
+		}
+		dataLabels.put("teacher_profile_experience", professionalExperienceStr);
 		
 		//COMPETENCES PROFILE
-		// String abilityStr = "";
-		// for (Ability ability : teachingProfile.getAbility()) {
-		// 	abilityStr += ability.getName() + "\\\\";
-		// }
-		// dataLabels.put("teacher_profile_competence", abilityStr);
+		String abilityStr = "";
+		String[] abilities = teachingProfile.getAbility().split("\n"); //Separar cadena por algun simbolo
+		for (String ability : abilities) {
+			abilityStr += ability + "\\\\"; //Checar formato de latex ************
+		}
+		dataLabels.put("teacher_profile_competence", abilityStr);
 		
 		//ATTITUDES PROFILE
-		// String attitudeStr = "";
-		// for (Attitude attitude : teachingProfile.getAttitude()) {
-		// 	attitudeStr += attitude.getName() + "\\\\";
-		// }
-		// dataLabels.put("teacher_profile_attitudes", attitudeStr);
+		String attitudeStr = "";
+		String[] attitudes = teachingProfile.getAttitude().split("\n"); //Separar cadena por algun simbolo
+		for (String attitude : attitudes) {
+			attitudeStr += attitude + "\\\\"; //Checar formato de latex ************
+		}
+		dataLabels.put("teacher_profile_attitudes", attitudeStr);
 		
 		return dataLabels;
 	}
 	
+	
 	public static HashMap<String,String> createBibliographyLabels(List<BibliographyRelation> bibliographiesR){
+		BibliographyRelationService bibliographyRelationService = new BibliographyRelationService();
+		//OBTENER LISTA DE RELACION BIOGRAFIAS POR ID DE UNIDAD ACADEMICA
+		
 		HashMap<String,String> dataLabels = new HashMap<>();
-		//BIBLIOGRAPHIES
+		//BIBLIOGRAPHIES FIRST PAGE
 		String bibliographies = "";
-		//Revisar el limite de bibliografias de primera hoja y el tipo de bibliografias
+		//LIMIT OF BIBLIOGRAPHIES IN FIRST PAGE = 5
 		int limit = 0;
 		for (BibliographyRelation bibliographyR : bibliographiesR) {
 			if(bibliographyR.isClassic()) {
 				bibliographies += bibliographyR.getBibliography().getBibliographyCitation() + "\\\\";
-				if(++limit == 5) 	//5 bibliografias para la primera hoja
+				if(++limit == 5) 	//LIMIT
 					break;
 			}
 		}
 		dataLabels.put("bibliography", bibliographies);
 		
-		//BIBLIOGRAPHIES INFO 
+		//BIBLIOGRAPHIES INFO PAGE
 		String bibliographiesInfo = "";
 		for (BibliographyRelation bibliographyR : bibliographiesR) {
 			bibliographiesInfo += bibliographyR.getNumber() + "&";  //Revisar si se deben ordenar
-			//Revisar los tipos de bibliografia
+			//ABBREVIATION
 			if(bibliographyR.getBibliographyType().getAbbreviation().equals("B"))
 				bibliographiesInfo += "X &  &";
 			else
 				bibliographiesInfo += " & X &";
-			//Cita completa
+			//BIBLIOGRAPHIE CITATIONS
 			bibliographiesInfo += bibliographyR.getBibliography().getBibliographyCitation() + "\\\\";
 		}
 		dataLabels.put("bibliographies_info", bibliographiesInfo);
@@ -170,8 +192,15 @@ public class LabelsFormat {
 		return dataLabels;
 	}
 	
-	public static HashMap<String,String> createThematicUnitLabels(List<ThematicUnit> thematicUnits){
+	//****CLAVES BIBLIOGRAFICAS FALTANTES****
+	public static HashMap<String,String> createThematicUnitLabels(SyntheticProgram syntheticProgram){
+		ThematicUnitService thematicUnitService = new ThematicUnitService();
+		
 		HashMap<String,String> dataLabels = new HashMap<>();
+		//GET THEMATIC UNITS
+		List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(
+				syntheticProgram.getLearningUnit().getId());
+		
 		//THEMATIC UNITS IN ORDER
 		for (int unit = 1; unit <= thematicUnits.size(); unit++) {
 			ThematicUnit thematicUnit = null;
@@ -189,15 +218,15 @@ public class LabelsFormat {
 			dataLabels.put("thematic_unit_" + unit, thematicUnit.getContent().getName());
 			dataLabels.put("competence_unit_" + unit, thematicUnit.getCompetenceUnit());
 			
-			/* THEMATIC UNITS TABLE */
+			//***THEMATIC UNITS TABLE ***//
 			String contentNumbers = "";
 			String contents = "";
 			String teacherTheoryHoursStr = "";
 			String teacherPracticeHoursStr = "";
 			String autonomousTheoryHoursStr = "";
 			String autonomousPracticeHoursStr = "";
-			String bibliographicKeys = "";
-			//Variables para guardar las sumas de las horas de aprendizaje
+			String bibliographicKeys = ""; //FALTAN LLAVES BIBLIOGRAFICAS
+			//VARIABLES FOR THE TOTAL HOURS
 			Double teacherTheoryHours = 0.0;
 			Double teacherPracticeHours = 0.0;
 			Double autonomousTheoryHours = 0.0;
@@ -320,9 +349,15 @@ public class LabelsFormat {
 		return dataLabels;
 	}
 	
-	public static HashMap<String,String> createPracticeRelationLabels(PracticeRelation practiceRelation){
+	
+	public static HashMap<String,String> createPracticeRelationLabels(SyntheticProgram syntheticProgram){
+		PracticeRelationService practiceRelationService = new PracticeRelationService();
+		//GET PRACTICE RELATION
+		PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(
+				syntheticProgram.getLearningUnit().getId());
+		
 		HashMap<String,String> dataLabels = new HashMap<>();
-		//PRACTICES TABLE
+		//**PRACTICES TABLE**//
 		String practicesTableStr = "";
 		List<Practice> practices = practiceRelation.getPractices();
 		for (int numPractice = 1; numPractice <= practices.size(); numPractice++) {
@@ -345,13 +380,13 @@ public class LabelsFormat {
 		dataLabels.put("practice_relationship", practicesTableStr);
 		
 		dataLabels.put("total_hours_practices", practiceRelation.getTotalHours() + "");
+		
 		//EVALUATION AND ACCREDITATION PRACTICES
 		String practiceREStr = "";
 		for (PracticeRelationEvaluation practiceRE : practiceRelation.getPracticeRelationEvaluations()) {
 			practiceREStr += practiceRE.getName() + ": " + practiceRE.getPercentage() + "\\\\"; //Revisar formato de porcentajes y texto
 		}
 		dataLabels.put("evaluation_and_accreditation_practices", practiceREStr);
-		
 		
 		return dataLabels;
 	}

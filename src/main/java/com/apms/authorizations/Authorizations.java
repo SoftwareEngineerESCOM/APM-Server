@@ -34,8 +34,9 @@ public class Authorizations {
 	@OneToOne
 	@JoinColumn(nullable = false)
 	private HumanResource approvedBy;
-	@OneToOne
-	@JoinColumn(nullable = false)
+    
+    @OneToOne
+	@JoinColumn
 	private SyntheticProgram syntheticProgram;
 
     public Authorizations() {
