@@ -2,6 +2,7 @@ package com.apms.teachingProfile;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +25,15 @@ public class TeachingProfile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+    @Column(nullable = false, length=2000)
 	private String schoolingGrades;
+    @Column(nullable = false, length=2000)
 	private String knowledges;
+    @Column(nullable = false, length=2000)
 	private String professionalExperiences;
+    @Column(nullable = false, length=2000)
 	private String ability;
+    @Column(nullable = false, length=2000)
 	private String attitude;
 
 	public TeachingProfile() {
