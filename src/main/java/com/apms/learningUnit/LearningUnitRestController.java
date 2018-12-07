@@ -2,6 +2,7 @@ package com.apms.learningUnit;
 
 import java.util.List;
 
+import com.apms.learningUnitStatus.LearningUnitStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,9 @@ public class LearningUnitRestController {
 
 	@Autowired
 	private SemesterService semesterService;
+
+	@Autowired
+	private LearningUnitStatusService learningUnitStatusService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -77,6 +81,7 @@ public class LearningUnitRestController {
 					req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
 				return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
 						"Unidad de Aprendizaje ya existe en el sistema.", null);
+			req.getPayload().setLearningUnitStatus(learningUnitStatusService.getOne(req.getPayload().getLearningUnitStatus().getId()));
 			learningUnitService.add(req.getPayload());
 		} catch (Exception e) {
 			e.printStackTrace();

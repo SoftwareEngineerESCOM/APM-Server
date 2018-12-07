@@ -32,7 +32,7 @@ public class ThematicUnit {
 	@JoinColumn(nullable=false)
 	private Content content;
 	@OneToOne
-	@JoinColumn(nullable=false)
+	@JoinColumn
 	private EvaluationSystem evaluationSystem;
 	@OneToMany
 	@JoinColumn

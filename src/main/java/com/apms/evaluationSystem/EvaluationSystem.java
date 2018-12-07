@@ -1,11 +1,8 @@
 package com.apms.evaluationSystem;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import com.apms.thematicUnit.ThematicUnit;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,15 +19,11 @@ public class EvaluationSystem {
 	private double percentage;
 	@Column(nullable = false)
 	private int period;
+	@OneToOne
+	@JoinColumn
+	private ThematicUnit thematicUnit;
 
 	public EvaluationSystem() {
 		
-	}
-
-	public EvaluationSystem(Integer id, String evaluationProcedure, double percentage, int period) {
-		this.id = id;
-		this.evaluationProcedure = evaluationProcedure;
-		this.percentage = percentage;
-		this.period = period;
 	}
 }
