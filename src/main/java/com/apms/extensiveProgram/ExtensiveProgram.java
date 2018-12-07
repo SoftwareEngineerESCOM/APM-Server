@@ -58,11 +58,14 @@ public class ExtensiveProgram {
 	@JoinColumn(nullable = false)
 	private Teaching teaching;
 
+	@Column(nullable = false)
+	private int status; //0 para iniciar 1 para terminar
+	
 	public ExtensiveProgram() {
 	}
 
 	public ExtensiveProgram(String educationalIntention, Integer validity, List<Type> types, LearningUnit learningUnit,
-			AssignedTime assignedTime, TeachingProfile teachingProfile, Modality modality, Teaching teaching) {
+			AssignedTime assignedTime, TeachingProfile teachingProfile, Modality modality, Teaching teaching,int status) {
 		super();
 		this.educationalIntention = educationalIntention;
 		this.validity = validity;
@@ -72,6 +75,7 @@ public class ExtensiveProgram {
 		this.teachingProfile = teachingProfile;
 		this.modality = modality;
 		this.teaching = teaching;
+		this.status = status;
 	}
 	
 }

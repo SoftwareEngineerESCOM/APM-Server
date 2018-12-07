@@ -149,7 +149,7 @@ public class ExtensiveProgramRestController {
 		
 		/*Extensive program*/
 		try {
-			extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching));
+			extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching,0));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
