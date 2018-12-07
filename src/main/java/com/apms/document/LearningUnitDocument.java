@@ -37,7 +37,7 @@ public class LearningUnitDocument {
     public void createDocument() throws IOException{
     	this.content = "";
         this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
-    	//fillDataLabels();
+    	fillDataLabels();
     	editSecondSectionTemplate();
     	replaceLabelsInfo(firstSection); //Llenar datos primera seccion
     	replaceLabelsInfo(secondSection); //Llenar datos segunda seccion
@@ -49,7 +49,7 @@ public class LearningUnitDocument {
     }
     
     private void fillDataLabels() {
-    	this.dataLabels = new HashMap();
+    	this.dataLabels = new HashMap<>();
     	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
     	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(syntheticProgram));
     	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(syntheticProgram));
