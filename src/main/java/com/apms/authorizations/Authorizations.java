@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.apms.humanResource.HumanResource;
+import com.apms.academy.Academy;
 import com.apms.syntheticProgram.SyntheticProgram;
 
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class Authorizations {
     private Integer id;
     @OneToOne
     @JoinColumn(nullable = false)
-    private HumanResource elaboratedBy;
+    private Academy elaboratedBy;
     @OneToOne
     @JoinColumn(nullable = false)
 	private HumanResource revisedBy;
