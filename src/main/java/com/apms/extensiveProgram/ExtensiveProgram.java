@@ -60,16 +60,18 @@ public class ExtensiveProgram {
 
 	public ExtensiveProgram() {
 	}
-	
+
 	public ExtensiveProgram(String educationalIntention, Integer validity, List<Type> types, LearningUnit learningUnit,
-			AssignedTime assignedTime, Modality modality) {
+			AssignedTime assignedTime, TeachingProfile teachingProfile, Modality modality, Teaching teaching) {
 		super();
 		this.educationalIntention = educationalIntention;
 		this.validity = validity;
 		this.types = types;
 		this.learningUnit = learningUnit;
 		this.assignedTime = assignedTime;
+		this.teachingProfile = teachingProfile;
 		this.modality = modality;
+		this.teaching = teaching;
 	}
 	
 }

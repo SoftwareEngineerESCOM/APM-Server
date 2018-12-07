@@ -139,15 +139,17 @@ public class ExtensiveProgramRestController {
 			types.add(mapper.treeToValue(c,Type.class));
 		}
 		/*atributos*/
+		AssignedTime assignedTime = assignedTimeService.add(mapper.treeToValue(req.get("assignedTime"),AssignedTime.class));  
 		int validity  = mapper.treeToValue(req.get("validity"),Integer.class);
 		String educationalIntention = mapper.treeToValue(req.get("educationalIntention"),String.class);
 		
+		/*Perfil docente*/
+		
+		TeachingProfile teachingProfile =  mapper.treeToValue(req.get("teachingProfile"),TeachingProfile.class);
+		
+		/*Extensive program*/
 		try {
-			AssignedTime assignedTime = assignedTimeService.add(mapper.treeToValue(req.get("assignedTime"),AssignedTime.class));  
-			ExtensiveProgram e = extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,modality));
-			System.out.println(e.getId());
-			e.setTeachingProfile(teachingProfileService.getOne(e.getId()));
-			extensiveProgramService.update(e);
+			extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,

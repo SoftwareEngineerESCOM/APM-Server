@@ -116,5 +116,21 @@ public class LearningUnitTaskRestController {
         }
         return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "LearningUnitTask modificado.", null);
     }
-
+    
+    
+    @GetMapping("learningUnitTasksByUserId/{id}")
+    public RESTResponse<List<LearningUnitTask>> learningUnitTasksByUserId(@PathVariable Integer id) {
+        List<LearningUnitTask> res;
+        try{
+            res = learningUnitTaskService.learningUnitTasksByUserId(id);
+    	} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (!res.isEmpty()) {
+			return new RESTResponse<List<LearningUnitTask>>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<List<LearningUnitTask>>(RESTResponse.FAIL, "Los catalogos necesarios no se han cargado.", null);
+		}
+    }
 }

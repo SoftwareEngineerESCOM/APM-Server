@@ -19,7 +19,7 @@ public class LearningUnitTaskService {
     }
 
     public LearningUnitTask getOne(Integer id) {
-	return learningUnitTaskRepository.findById(id).isPresent() ? learningUnitTaskRepository.findById(id).get() : null;
+    	return learningUnitTaskRepository.findById(id).isPresent() ? learningUnitTaskRepository.findById(id).get() : null;
     }
 
     public void add(LearningUnitTask learningUnitTask) {
@@ -29,6 +29,11 @@ public class LearningUnitTaskService {
     public void update(LearningUnitTask learningUnitTask) {
         // if exists updates otherwise inserts
         learningUnitTaskRepository.save(learningUnitTask);
+    }
+
+    public List<LearningUnitTask> learningUnitTasksByUserId(Integer id) {
+        return learningUnitTaskRepository.learningUnitTasksByUserId(id);
+    	//return null;
     }
 
     public void delete(Integer id) {

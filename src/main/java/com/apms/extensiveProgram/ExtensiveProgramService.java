@@ -19,8 +19,7 @@ public class ExtensiveProgramService {
 	}
 
 	public ExtensiveProgram getOne(Integer id) {
-		return extensiveProgramRepository.findById(id).isPresent() ? extensiveProgramRepository.findById(id).get()
-				: null;
+		return extensiveProgramRepository.findById(id).isPresent() ? extensiveProgramRepository.findById(id).get() : null;
 	}
 
 	public ExtensiveProgram add(ExtensiveProgram extensiveProgram) {
