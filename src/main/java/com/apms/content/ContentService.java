@@ -38,7 +38,8 @@ public class ContentService {
 	public void delete(Integer id) {
 		contentRepository.deleteById(id);
 	}
-	public List<Content> getContentByLearningUnit(Integer id) {
-		return contentRepository.getContentByLearningUnit(id);
+	
+	public List<Content> getContentByLearningUnitId(Integer id) {
+		return contentRepository.getContentByLearningUnitId(id);
 	}
 }

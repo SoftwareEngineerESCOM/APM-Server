@@ -18,6 +18,8 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.syntheticProgram.SyntheticProgramService;
+import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
 
 @RestController
 @RequestMapping("/content")
@@ -28,6 +30,9 @@ public class ContentRestController {
 	
 	@Autowired
 	private SyntheticProgramService syntheticProgramService;
+	
+	@Autowired
+	private LearningUnitService learningUnitService;
 
 	/*
 	 ** Return a listing of all the resources
@@ -64,22 +69,6 @@ public class ContentRestController {
 			return new RESTResponse<Content>(RESTResponse.OK, "", res);
 		} else {
 			return new RESTResponse<Content>(RESTResponse.FAIL, "Contenido no registrado.", null);
-		}
-	}
-	@GetMapping("contentbylearningunit/{id}")
-	public RESTResponse<List<Content>>getContentByLearningUnit(@PathVariable Integer id) {
-		List<Content> res;
-		try {
-			res = contentService.getContentByLearningUnit(id);
-			//res = contentService.getContentByLearningUnit(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new RESTResponse<List<Content>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
-		}
-		if (!res.isEmpty()) {
-			return new RESTResponse<List<Content>>(RESTResponse.OK, "", res);
-		} else {
-			return new RESTResponse<List<Content>>(RESTResponse.FAIL, "No se encontraron contenidos.", null);
 		}
 	}
 
@@ -155,6 +144,34 @@ public class ContentRestController {
 			e.printStackTrace();
 			return new RESTResponse<List<Content>>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
+		}
+	}
+
+	@GetMapping("/contentByLearningUnitId/{id}")
+	public RESTResponse<List<Content>> contentByLearningUnitId(@PathVariable Integer id) {
+		LearningUnit res;
+		try {
+			res = learningUnitService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<List<Content>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
+					null);
+		}
+		if (res != null) {
+			List<Content> aux;
+			try {
+				aux = contentService.getContentByLearningUnitId(id);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new RESTResponse<List<Content>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+			}
+			if (!aux.isEmpty()) {
+				return new RESTResponse<List<Content>>(RESTResponse.OK, "", aux);
+			} else {
+				return new RESTResponse<List<Content>>(RESTResponse.FAIL, "La Unidad de Aprendizaje no cuenta con contenidos.", aux);
+			}
+		} else {
+			return new RESTResponse<List<Content>>(RESTResponse.FAIL, "Semestre no registrado.", null);
 		}
 	}
 }

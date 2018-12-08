@@ -13,7 +13,7 @@ import com.apms.syntheticProgram.SyntheticProgram;
 @Repository
 
 public interface ContentRepository extends JpaRepository<Content, Integer> {
-	@Query(value = "SELECT * FROM content WHERE content_id IN (SELECT content_id FROM synthetic_program WHERE learning_unit_id =:learningunit_id)", nativeQuery = true)
-	List<Content> getContentByLearningUnit(@Param("learningunit_id") Integer id);
+	@Query(value = "SELECT * FROM content WHERE content_id = (SELECT id FROM synthetic_program WHERE learning_unit_id = :id)", nativeQuery = true)
+	List<Content> getContentByLearningUnitId(@Param("id") Integer id);
 }
 
