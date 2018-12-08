@@ -344,10 +344,10 @@ public class LabelsFormat {
 				else
 					evaluationProcedureStr += "&";
 			}
-			for (ThematicUnit thematicUnit : thematicUsPeriod) {
+			/*for (ThematicUnit thematicUnit : thematicUsPeriod) {
 				evaluationProcedureStr += thematicUnit.getEvaluationSystem().getEvaluationProcedure() + "\\tab[0.5cm]" 
 						+ thematicUnit.getEvaluationSystem().getPercentage() + "\\%\n\n"; //Revisar si sirven los saltos de linea				
-			}
+			}*/
 			evaluationProcedureStr += "\\\\";
 		}
 		dataLabels.put("evaluation_procedure_by_period", evaluationProcedureStr);
