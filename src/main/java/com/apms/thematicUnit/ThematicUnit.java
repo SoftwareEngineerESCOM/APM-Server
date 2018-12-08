@@ -31,9 +31,6 @@ public class ThematicUnit {
 	@OneToOne
 	@JoinColumn(nullable=false)
 	private Content content;
-	@OneToOne
-	@JoinColumn
-	private EvaluationSystem evaluationSystem;
 	@OneToMany
 	@JoinColumn
 	private List<Topic> topics;
