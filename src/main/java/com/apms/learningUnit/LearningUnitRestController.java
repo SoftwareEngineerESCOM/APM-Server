@@ -309,6 +309,8 @@ public class LearningUnitRestController {
         }
     }
     
+    
+
         @GetMapping("/generatePDF/{learningUnitId}")
         public ResponseEntity<InputStreamResource> generatePDF (@PathVariable Integer learningUnitId) throws IOException
         {
