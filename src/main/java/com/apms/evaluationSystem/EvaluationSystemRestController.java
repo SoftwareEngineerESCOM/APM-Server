@@ -2,6 +2,7 @@ package com.apms.evaluationSystem;
 
 import java.util.List;
 
+import com.apms.thematicUnit.ThematicUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -123,5 +124,21 @@ public class EvaluationSystemRestController {
 					"Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+	}
+
+	@GetMapping("getEvaluationSystemByThematicUnitId/{id}")
+	public RESTResponse<EvaluationSystem> getEvaluationSystemByThematicUnitId(@PathVariable Integer id) {
+		EvaluationSystem res;
+		try {
+			res = evaluationSystemService.getEvaluationSystemByThematicUnitId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<EvaluationSystem>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res != null) {
+			return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "", res);
+		} else {
+			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "", null);
+		}
 	}
 }

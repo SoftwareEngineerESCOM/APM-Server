@@ -35,4 +35,8 @@ public class EvaluationSystemService {
 	public void delete(Integer id) {
 		evaluationSystemRepository.deleteById(id);
 	}
+
+	public EvaluationSystem getEvaluationSystemByThematicUnitId(Integer id){
+		return evaluationSystemRepository.getEvaluationSystemByThematicUnitId(id);
+	}
 }
