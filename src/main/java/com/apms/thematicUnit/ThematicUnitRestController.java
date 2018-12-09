@@ -90,11 +90,13 @@ public class ThematicUnitRestController {
                     if (topicService.getTopicByThematicUnitIdAndName(req.getPayload().getTopics().get(i).getId(), req.getPayload().getTopics().get(i).getName()) != null) {
                         return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El tema ya existe en el sistema.", null);
                     }
-                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++) {
-                        if (subtopicService.getSubtopicByTopicIdAndName(req.getPayload().getTopics().get(i).getSubtopics().get(j).getId(), req.getPayload().getTopics().get(i).getSubtopics().get(j).getName()) != null) {
-                            return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
+                    if (req.getPayload().getTopics().get(i).getSubtopics() != null) {
+                        for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++) {
+                            if (subtopicService.getSubtopicByTopicIdAndName(req.getPayload().getTopics().get(i).getSubtopics().get(j).getId(), req.getPayload().getTopics().get(i).getSubtopics().get(j).getName()) != null) {
+                                return new RESTResponse<ThematicUnit>(RESTResponse.FAIL, "El subtema ya existe en el sistema.", null);
+                            }
+                            req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.add(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
                         }
-                        req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.add(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
                     }
                     req.getPayload().getTopics().get(i).setId(topicService.add(req.getPayload().getTopics().get(i)).getId());
                 }

@@ -38,6 +38,7 @@ public class ThematicUnit {
 	@JoinColumn
 	private List<LearningEvaluation> learningEvaluations;
 
+
 	public ThematicUnit() {
 	}
 }

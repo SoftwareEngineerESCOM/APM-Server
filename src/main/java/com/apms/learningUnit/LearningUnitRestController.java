@@ -111,7 +111,6 @@ public class LearningUnitRestController {
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
-
 	}
 
 	/*
@@ -233,5 +232,35 @@ public class LearningUnitRestController {
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+	}
+
+	@PatchMapping("learningUnit/finish")
+	public RESTResponse<LearningUnit> learningUnitFinish(@RequestBody RESTRequest<LearningUnit> req){
+		try {
+			LearningUnit dbLearningUnit = learningUnitService.getOne(req.getPayload().getId());
+			dbLearningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
+			learningUnitService.update(req.getPayload());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
+	}
+
+	@GetMapping("learningUnit/isFinished/{id}")
+	public RESTResponse<Boolean> getFinished(@PathVariable Integer id) {
+		LearningUnit res;
+		try {
+			res = learningUnitService.getOne(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<Boolean>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+		}
+		if (res.getLearningUnitStatus().getId() == 4) {
+			return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de aprendizaje " + res.getLearningUnitStatus().getName(), true);
+		} else {
+			return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
+		}
 	}
 }
