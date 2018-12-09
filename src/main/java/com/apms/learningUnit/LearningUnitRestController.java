@@ -2,6 +2,7 @@ package com.apms.learningUnit;
 
 import java.util.List;
 
+import com.apms.document.LearningUnitDocument;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,8 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 import com.apms.semester.Semester;
 import com.apms.semester.SemesterService;
+import com.apms.syntheticProgram.SyntheticProgram;
+import com.apms.syntheticProgram.SyntheticProgramService;
 
 @RestController
 @RequestMapping("/learningUnit")
@@ -31,7 +34,8 @@ public class LearningUnitRestController {
 
 	@Autowired
 	private LearningUnitStatusService learningUnitStatusService;
-
+	@Autowired
+	private SyntheticProgramService syntheticProgramService;
 	/*
 	 ** Return a listing of all the resources
 	 */
@@ -233,5 +237,19 @@ public class LearningUnitRestController {
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+	}
+	
+	@GetMapping("/generatePDF/{id}")
+	public RESTResponse<LearningUnitDocument> generatePDF(@PathVariable Integer syntheticProgramId) {
+		try {
+			SyntheticProgram syntheticProgram = syntheticProgramService.getOne(syntheticProgramId);
+			LearningUnitDocument document = new LearningUnitDocument(syntheticProgram);
+			document.createDocument();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new RESTResponse<LearningUnitDocument>(RESTResponse.FAIL,
+					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+		}
+		return new RESTResponse<LearningUnitDocument>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
 }
