@@ -3,6 +3,8 @@ package com.apms.learningUnitTask;
 import java.util.List;
 
 import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnitStatus.LearningUnitStatus;
+import com.apms.learningUnitStatus.LearningUnitStatusService;
 import com.apms.user.User;
 import com.apms.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime; 
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
@@ -28,6 +32,12 @@ public class LearningUnitTaskRestController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private LearningUnit learningUnitService;
+    
+    @Autowired
+    private LearningUnitStatusService learningUnitStatusService;
 
     /*
      **Return a listing of all the resources
@@ -75,6 +85,14 @@ public class LearningUnitTaskRestController {
         List<LearningUnitTask> aux;
         try {
             if(!existUserLearningUnitByUserId(learningUnitTask.getPayload().getUser().getId(),learningUnitTask.getPayload().getLearningUnit().getId())){
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+                LocalDateTime now = LocalDateTime.now();
+                String startDate = String.valueOf(dtf.format(now));
+                LearningUnitStatus learningUnitStatus=learningUnitStatusService.getOne(2);
+                
+                learningUnitTask.getPayload().setStartDate(startDate);
+                learningUnitTask.getPayload().getLearningUnit().setLearningUnitStatus(learningUnitStatus);
+                
                 learningUnitTaskService.add(learningUnitTask.getPayload());
                 return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
             }

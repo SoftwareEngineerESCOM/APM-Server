@@ -278,7 +278,37 @@ public class LearningUnitRestController {
             return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
         }
     }
-
+    
+    @PatchMapping("learningUnit/inProcess")
+    public RESTResponse<LearningUnit> learningUnitInProcess(@RequestBody RESTRequest<LearningUnit> req) {
+        try {
+            LearningUnit learningUnit = learningUnitService.getOne(req.getPayload().getId());
+            learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(3));
+            learningUnitService.update(req.getPayload());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
+                    "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+        }
+        return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
+    }
+    
+    @GetMapping("learningUnit/inProcess/{id}")
+    public RESTResponse<Boolean> geInProcess(@PathVariable Integer id) {
+        LearningUnit res;
+        try {
+            res = learningUnitService.getOne(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new RESTResponse<Boolean>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
+        }
+        if (res.getLearningUnitStatus().getId() == 3) {
+            return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de aprendizaje " + res.getLearningUnitStatus().getName(), true);
+        } else {
+            return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
+        }
+    }
+    
         @GetMapping("/generatePDF/{learningUnitId}")
         public ResponseEntity<InputStreamResource> generatePDF (@PathVariable Integer learningUnitId) throws IOException
         {
