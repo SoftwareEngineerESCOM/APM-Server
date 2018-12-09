@@ -32,6 +32,8 @@ public class PracticeRelation {
 	private Double totalHours;
 	@Column(nullable = false)
 	private boolean isFinished;
+	@Column(nullable = false)
+	private String placeOfPractice;
 
 	@OneToOne
 	@JoinColumn(nullable = false)

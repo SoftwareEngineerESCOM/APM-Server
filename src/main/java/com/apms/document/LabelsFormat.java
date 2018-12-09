@@ -372,7 +372,7 @@ public class LabelsFormat {
 			practicesTableStr += practice.getNumber() + "&"; //PRACTICE NUMBER
 			practicesTableStr += practice.getThematicUnit().getContent().getNumber() + "&"; //PRACTICE THEMATIC UNIT NUMBER **pasar a numeros romanos 
 			practicesTableStr += practice.getLength() + "&"; //PRACTICE LENGHT
-			practicesTableStr += practice.getPlaceOfPractice() + "\\\\"; //PRACTICE PLACE
+			// practicesTableStr += practice.getPlaceOfPractice() + "\\\\"; //PRACTICE PLACE
 		}
 		dataLabels.put("practice_relationship", practicesTableStr);
 		
