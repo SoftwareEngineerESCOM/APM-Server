@@ -64,3 +64,4 @@ public class LearningUnit {
 				+ practiceHoursPerWeek + ", formationArea=" + formationArea + ", semester=" + semester
 				+ ", learningUnitStatus=" + learningUnitStatus + ", academy=" + academy + "]";
 	}
+}
