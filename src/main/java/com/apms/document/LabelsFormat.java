@@ -322,10 +322,12 @@ public class LabelsFormat {
 		String evaluationProcedureStr = "";
 		for (int period = 1; period <= 3; period++) { //Ajustar a numero de periodos
 			List<ThematicUnit> thematicUsPeriod = new ArrayList<>();
-			for(ThematicUnit thematicUnit : thematicUnits) {
+			// Unidad tematica ya no tiene como atributo ssistema de evaluacion, sistema de evaluacion
+			//tiene unidad tematica
+			/*for(ThematicUnit thematicUnit : thematicUnits) {
 				if(thematicUnit.getEvaluationSystem().getPeriod() == period)
 					thematicUsPeriod.add(thematicUnit);
-			}
+			}*/
 			if(thematicUsPeriod.isEmpty()) {
 				//Periodo sin unidades tematicas
 				continue;
