@@ -1,10 +1,17 @@
 package com.apms.learningUnit;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.apms.document.LearningUnitDocument;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -14,6 +21,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
@@ -36,6 +44,8 @@ public class LearningUnitRestController {
 	private LearningUnitStatusService learningUnitStatusService;
 	@Autowired
 	private SyntheticProgramService syntheticProgramService;
+	
+	
 	/*
 	 ** Return a listing of all the resources
 	 */
@@ -238,18 +248,27 @@ public class LearningUnitRestController {
 		}
 		return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
 	}
+
 	
-	@GetMapping("/generatePDF/{id}")
-	public RESTResponse<LearningUnitDocument> generatePDF(@PathVariable Integer syntheticProgramId) {
+	@GetMapping("/generatePDF/{learningUnitId}")
+	public ResponseEntity<InputStreamResource> generatePDF(@PathVariable Integer learningUnitId) throws IOException {
+		LearningUnitDocument document;
 		try {
-			SyntheticProgram syntheticProgram = syntheticProgramService.getOne(syntheticProgramId);
-			LearningUnitDocument document = new LearningUnitDocument(syntheticProgram);
-			document.createDocument();
+	        //SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
+	        //document = new LearningUnitDocument(syntheticProgram);
+			//document.createDocument();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new RESTResponse<LearningUnitDocument>(RESTResponse.FAIL,
-					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
+			return null;
 		}
-		return new RESTResponse<LearningUnitDocument>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+	
+		ClassPathResource pdfFile = new ClassPathResource("document_latex/FormatoUnidadAcademica.pdf");	
+		
+	    return ResponseEntity
+	            .ok()
+	            .contentLength(pdfFile.contentLength())
+	            .contentType(
+	                    MediaType.parseMediaType("application/pdf"))
+	            .body(new InputStreamResource(pdfFile.getInputStream()));
 	}
 }
