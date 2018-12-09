@@ -113,7 +113,12 @@ public class ThematicUnitRestController {
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
-        return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        if (req.getPayload().isFinished()) {
+            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        }
+        else {
+            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Avances guardados exitosamente.", null);
+        }
     }
 
     /*
@@ -145,9 +150,11 @@ public class ThematicUnitRestController {
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         if (req.getPayload().isFinished()) {
-            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Unidad temática finalizada exitosamente.", null);
+            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
         }
-        return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+        else {
+            return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Avances guardados exitosamente.", null);
+        }
     }
 
     /*
