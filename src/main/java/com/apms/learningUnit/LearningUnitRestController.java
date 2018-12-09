@@ -235,7 +235,7 @@ public class LearningUnitRestController {
 	}
 
 	@PatchMapping("learningUnit/finish")
-	public RESTResponse<LearningUnit> learningUnitFinish(@RequestBody RESTRequest<LearningUnit> req){
+	public RESTResponse<LearningUnit> learningUnitFinished(@RequestBody RESTRequest<LearningUnit> req){
 		try {
 			LearningUnit dbLearningUnit = learningUnitService.getOne(req.getPayload().getId());
 			dbLearningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
