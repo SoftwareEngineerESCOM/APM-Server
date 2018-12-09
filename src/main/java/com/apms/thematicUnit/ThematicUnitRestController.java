@@ -131,8 +131,10 @@ public class ThematicUnitRestController {
         try {
             if (req.getPayload().getTopics() != null) {
                 for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
-                    for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++) {
-                        req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.update(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
+                    if (req.getPayload().getTopics().get(i).getSubtopics() != null) {
+                        for (int j = 0; j < req.getPayload().getTopics().get(i).getSubtopics().size(); j++) {
+                            req.getPayload().getTopics().get(i).getSubtopics().get(j).setId(subtopicService.update(req.getPayload().getTopics().get(i).getSubtopics().get(j)).getId());
+                        }
                     }
                     req.getPayload().getTopics().get(i).setId(topicService.update(req.getPayload().getTopics().get(i)).getId());
                 }
