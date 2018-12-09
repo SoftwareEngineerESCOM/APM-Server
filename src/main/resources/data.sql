@@ -167,26 +167,7 @@ insert into evaluation_accreditationua_accreditation_type (evaluation_accreditat
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Equivalencia en extranjero'));
 insert into evaluation_accreditationua_accreditation_type (evaluation_accreditationua_id, accreditation_type_id) VALUES ((SELECT id FROM evaluation_accreditationua WHERE id = 1), (SELECT id FROM accreditation_type WHERE name like 'Inscripción normal'));
 
---									--
---			Bibliography 			--
---									--
 
-insert into bibliography VALUES ('788478978588', 'AlfaOmega', 2008, 'Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad.', (SELECT id FROM country WHERE name like 'M%xico'));
-insert into bibliography VALUES ('9701509870', 'AlfaOmega', 2004, 'Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software.', (SELECT id FROM country WHERE name like 'M%xico'));
-insert into bibliography VALUES ('9789701512678', 'AlfaOmega', 2005, 'Calidad de Sistemas Informáticos.', (SELECT id FROM country WHERE name like 'M_xico'));
-insert into bibliography VALUES ('9701054733', 'Mc Graw Hill', 2007, 'Ingeniería del software: Un enfoque Práctico.', (SELECT id FROM country WHERE name like 'M_xico'));
-insert into bibliography VALUES ('9789702602064', 'Addison Wesley', 2008, 'Ingeniería de Software.', (SELECT id FROM country WHERE name like 'Espa_a'));
-
-insert into author (name, parental_surname, maternal_surname) VALUES ('Félix Oscar', 'García', 'Rubio');
-insert into author (name, parental_surname, maternal_surname) VALUES ('Mario G.', 'Piattini', 'Velthuis');
-insert into author (name, parental_surname, maternal_surname) VALUES ('Roger S.', 'Pressman', '');
-insert into author (name, parental_surname, maternal_surname) VALUES ('Ian', 'Sommerville', '');
-
-insert into bibliography_authors values ('788478978588', (SELECT id FROM author WHERE name LIKE 'Félix Oscar'));
-insert into bibliography_authors values ('9701509870', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
-insert into bibliography_authors values ('9789701512678', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
-insert into bibliography_authors values ('9701054733', (SELECT id FROM author WHERE name LIKE 'Roger S.'));
-insert into bibliography_authors values ('9789702602064', (SELECT id FROM author WHERE name LIKE 'Ian'));
 
 --									--
 --		Extensive Program 			--
@@ -224,6 +205,75 @@ Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de 
 
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
+
+insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into evaluation_system values (DEFAULT, 0.15, 2, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into evaluation_system values (DEFAULT, 0.15, 2, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into evaluation_system values (DEFAULT, 0.2, 3, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into evaluation_system values (DEFAULT, 0.2, 3, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+
+insert into thematic_unit values (DEFAULT, 'Compara los diferentes modelos de proceso de un sistema software con base en sus características y el tipo de proyecto a desarrollar.', true, 'Encuadre del curso.
+La presente unidad se abordará a partir de la estrategia de aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: lluvia de ideas, ficha de trabajo, indagación documental, discusión dirigida, mapas conceptuales, resolución de problemas, exposición en equipo de temas complementarios, propuesta de proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
+
+
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.15);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Propuesta de Proyecto', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+
+insert into topic values (DEFAULT, 1, 'Conceptos básicos de Ingeniería de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into topic values (DEFAULT, 1.5, 'Atributos y características del software', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into topic values (DEFAULT, 1.5, 'Importancia y aplicación del software', '3', 0, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into topic values (DEFAULT, 1.5, 'Ciclo de vida del software', '4', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into topic values (DEFAULT, 3.5, 'Modelos de procesos', '5', 1, 1, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+
+insert into subtopic values (DEFAULT, 'Lineal secuencial', 1, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+insert into subtopic values (DEFAULT, 'Cascada', 2, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+insert into subtopic values (DEFAULT, 'Incremental', 3, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+insert into subtopic values (DEFAULT, 'Desarrollo Rápido de Aplicaciones', 4, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+insert into subtopic values (DEFAULT, 'Prototipos', 5, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+insert into subtopic values (DEFAULT, 'Espiral', 6, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+
+
+
+--									--
+--			Bibliography 			--
+--									--
+
+insert into bibliography VALUES ('788478978588', 'AlfaOmega', 2008, 'Medición y estimación del software: Técnicas y Métodos para mejorar la calidad y la productividad.', (SELECT id FROM country WHERE name like 'M%xico'));
+insert into bibliography VALUES ('9701509870', 'AlfaOmega', 2004, 'Análisis y diseño de aplicaciones informáticas de gestión. Una perspectiva de Ingeniería del Software.', (SELECT id FROM country WHERE name like 'M%xico'));
+insert into bibliography VALUES ('9789701512678', 'AlfaOmega', 2005, 'Calidad de Sistemas Informáticos.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('9701054733', 'Mc Graw Hill', 2007, 'Ingeniería del software: Un enfoque Práctico.', (SELECT id FROM country WHERE name like 'M_xico'));
+insert into bibliography VALUES ('9789702602064', 'Addison Wesley', 2008, 'Ingeniería de Software.', (SELECT id FROM country WHERE name like 'Espa_a'));
+
+insert into author (name, parental_surname, maternal_surname) VALUES ('Félix Oscar', 'García', 'Rubio');
+insert into author (name, parental_surname, maternal_surname) VALUES ('Mario G.', 'Piattini', 'Velthuis');
+insert into author (name, parental_surname, maternal_surname) VALUES ('Roger S.', 'Pressman', '');
+insert into author (name, parental_surname, maternal_surname) VALUES ('Ian', 'Sommerville', '');
+
+insert into bibliography_authors values ('788478978588', (SELECT id FROM author WHERE name LIKE 'Félix Oscar'));
+insert into bibliography_authors values ('9701509870', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
+insert into bibliography_authors values ('9789701512678', (SELECT id FROM author WHERE name LIKE 'Mario G.'));
+insert into bibliography_authors values ('9701054733', (SELECT id FROM author WHERE name LIKE 'Roger S.'));
+insert into bibliography_authors values ('9789702602064', (SELECT id FROM author WHERE name LIKE 'Ian'));
+
+insert into bibliography_relation values (DEFAULT, true, 1, '788478978588', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_relation values (DEFAULT, true, 1, '9701509870', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_relation values (DEFAULT, true, 1, '9789701512678', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_relation values (DEFAULT, true, 1, '9701054733', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_relation values (DEFAULT, true, 1, '9789702602064', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+
+--
+
+insert into bibliography_thematic_units values ('9701509870', (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_thematic_units values ('9701054733', (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_thematic_units values ('9789702602064', (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+
 
 -- insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
 
@@ -293,3 +343,4 @@ insert into extensive_program_types values ((SELECT id FROM extensive_program WH
 
 -- insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
 -- insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
+
