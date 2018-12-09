@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import com.apms.semester.Semester;
 import com.apms.semester.SemesterService;
@@ -56,7 +56,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -76,7 +76,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -99,7 +99,7 @@ public class LearningUnitRestController {
             req.getPayload().setLearningUnitStatus(learningUnitStatusService.getOne(req.getPayload().getLearningUnitStatus().getId()));
             learningUnitService.add(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
                     null);
         }
@@ -121,7 +121,7 @@ public class LearningUnitRestController {
             }
             learningUnitService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -143,7 +143,7 @@ public class LearningUnitRestController {
             }
             learningUnitService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -158,7 +158,7 @@ public class LearningUnitRestController {
         try {
             learningUnitService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
                     null);
         }
@@ -171,7 +171,7 @@ public class LearningUnitRestController {
         try {
             res = semesterService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -180,7 +180,7 @@ public class LearningUnitRestController {
             try {
                 aux = learningUnitService.getLearningUnitsBySemesterId(id);
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(null).log(null,"F: ",e);
                 return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                         null);
             }
@@ -202,7 +202,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getLearningUnitByNameAndSemesterId(name, id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -220,7 +220,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getLearningUnitByNameAndStudyPlanId(name, id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -242,7 +242,7 @@ public class LearningUnitRestController {
             res.setSemester(semester);
             learningUnitService.update(res);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -256,7 +256,7 @@ public class LearningUnitRestController {
             dbLearningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
             learningUnitService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -269,7 +269,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Boolean>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res.getLearningUnitStatus().getId() == 4) {
@@ -286,7 +286,7 @@ public class LearningUnitRestController {
             learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(3));
             learningUnitService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -299,7 +299,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Boolean>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res.getLearningUnitStatus().getId() == 3) {
@@ -320,7 +320,7 @@ public class LearningUnitRestController {
                 //document = new LearningUnitDocument(syntheticProgram);
                 //document.createDocument();
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(null).log(null,"F: ",e);
                 return null;
             }
 

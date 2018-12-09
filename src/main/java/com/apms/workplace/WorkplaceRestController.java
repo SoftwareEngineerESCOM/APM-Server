@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import com.apms.role.Role;
 import com.apms.role.RoleService;
@@ -43,7 +43,7 @@ public class WorkplaceRestController {
 		try {
 			res = workplaceService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -63,7 +63,7 @@ public class WorkplaceRestController {
 		try {
 			res = workplaceService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Workplace>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -83,7 +83,7 @@ public class WorkplaceRestController {
                 return new RESTResponse<Workplace>(RESTResponse.FAIL, "La Unidad ya existe en el sistema.", null);
 			workplaceService.add(workplace.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -98,7 +98,7 @@ public class WorkplaceRestController {
 		try {
 			workplaceService.update(workplace.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -113,7 +113,7 @@ public class WorkplaceRestController {
 		try {
 			workplaceService.update(workplace.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -128,7 +128,7 @@ public class WorkplaceRestController {
 		try {
 			workplaceService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Workplace>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -141,7 +141,7 @@ public class WorkplaceRestController {
 		try {
 			res = userService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -155,7 +155,7 @@ public class WorkplaceRestController {
 					aux.add(res.getHumanResource().getWorkplace());
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				Logger.getLogger(null).log(null,"F: ",e);
 				return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 			}
 			if (!aux.isEmpty()) {
@@ -174,7 +174,7 @@ public class WorkplaceRestController {
 		try {
 			res = userService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -188,7 +188,7 @@ public class WorkplaceRestController {
 					aux.add(res.getHumanResource().getWorkplace());
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				Logger.getLogger(null).log(null,"F: ",e);
 				return new RESTResponse<List<Workplace>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 			}
 			if (!aux.isEmpty()) {

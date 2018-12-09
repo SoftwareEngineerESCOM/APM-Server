@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class BibliographyRestController {
 		try {
 			res = bibliographyService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Bibliography>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
@@ -53,7 +53,7 @@ public class BibliographyRestController {
 		try {
 			res = bibliographyService.getOne(isbn);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Bibliography>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -74,7 +74,7 @@ public class BibliographyRestController {
                 return new RESTResponse<Bibliography>(RESTResponse.FAIL, "El libro con el ISBN " + biblio.getISBN().toString() + " ya existe.", null);
 			bibliographyService.add(bibliography.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -89,7 +89,7 @@ public class BibliographyRestController {
 		try {
 			bibliographyService.update(bibliography.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -104,7 +104,7 @@ public class BibliographyRestController {
 		try {
 			bibliographyService.update(bibliography.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -119,7 +119,7 @@ public class BibliographyRestController {
 		try {
 			bibliographyService.delete(isbn);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Bibliography>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

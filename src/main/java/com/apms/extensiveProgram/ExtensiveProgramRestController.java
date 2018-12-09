@@ -37,7 +37,7 @@ import com.apms.learningUnit.LearningUnit;
 import com.apms.modality.Modality;
 import com.apms.professionalExperience.ProfessionalExperience;
 import com.apms.professionalExperience.ProfessionalExperienceService;
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import com.apms.schoolingGrade.SchoolingGrade;
 import com.apms.schoolingGrade.SchoolingGradeService;
@@ -91,7 +91,7 @@ public class ExtensiveProgramRestController {
 		try {
 			res = extensiveProgramService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<ExtensiveProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
@@ -112,7 +112,7 @@ public class ExtensiveProgramRestController {
 		try {
 			res = extensiveProgramService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -151,7 +151,7 @@ public class ExtensiveProgramRestController {
 		try {
 			extensiveProgramService.add(new ExtensiveProgram(educationalIntention,validity,types,learningUnit,assignedTime,teachingProfile,modality,teaching,0));
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -165,7 +165,7 @@ public class ExtensiveProgramRestController {
 		try {
 			extensiveProgramService.update(extensiveProgram.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -180,7 +180,7 @@ public class ExtensiveProgramRestController {
 		try {
 			extensiveProgramService.update(extensiveProgram.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -195,7 +195,7 @@ public class ExtensiveProgramRestController {
 		try {
 			extensiveProgramService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ExtensiveProgram>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

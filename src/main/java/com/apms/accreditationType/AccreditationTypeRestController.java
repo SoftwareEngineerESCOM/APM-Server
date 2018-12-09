@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class AccreditationTypeRestController {
 		try {
 			res = accreditationService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<AccreditationType>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
@@ -53,7 +53,7 @@ public class AccreditationTypeRestController {
 		try {
 			res = accreditationService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<AccreditationType>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -73,7 +73,7 @@ public class AccreditationTypeRestController {
                 return new RESTResponse<AccreditationType>(RESTResponse.FAIL, "Acreditacion ya existe en el sistema.", null);
 			accreditationService.add(accreditation.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -88,7 +88,7 @@ public class AccreditationTypeRestController {
 		try {
 			accreditationService.update(accreditation.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -103,7 +103,7 @@ public class AccreditationTypeRestController {
 		try {
 			accreditationService.update(accreditation.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -118,7 +118,7 @@ public class AccreditationTypeRestController {
 		try {
 			accreditationService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<AccreditationType>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

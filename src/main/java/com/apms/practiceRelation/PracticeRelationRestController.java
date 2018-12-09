@@ -4,7 +4,7 @@ import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
 import com.apms.practice.PracticeService;
 import com.apms.practiceRelationEvaluation.PracticeRelationEvaluationService;
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +36,7 @@ public class PracticeRelationRestController {
         try {
             res = practiceRelationService.getAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<PracticeRelation>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -57,7 +57,7 @@ public class PracticeRelationRestController {
         try {
             res = practiceRelationService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -86,7 +86,7 @@ public class PracticeRelationRestController {
             }
             practiceRelationService.add(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -111,7 +111,7 @@ public class PracticeRelationRestController {
             }
             practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -126,7 +126,7 @@ public class PracticeRelationRestController {
         try {
             practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -141,7 +141,7 @@ public class PracticeRelationRestController {
         try {
             practiceRelationService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -154,7 +154,7 @@ public class PracticeRelationRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -162,7 +162,7 @@ public class PracticeRelationRestController {
             try {
                 aux = practiceRelationService.getPracticeRelationsByLearningUnitId(id);
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(null).log(null,"F: ",e);
                 return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
             }
             if (aux != null) {

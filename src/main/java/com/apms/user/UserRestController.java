@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apms.humanResource.HumanResourceService;
 import com.apms.humanResource.HumanResource;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -38,7 +38,7 @@ public class UserRestController {
 		try {
 			res = userService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -57,7 +57,7 @@ public class UserRestController {
 		try {
 			res = userService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -81,7 +81,7 @@ public class UserRestController {
 					.setId(humanResourceService.add(req.getPayload().getHumanResource()).getId());
 			userService.add(req.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<User>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
@@ -103,7 +103,7 @@ public class UserRestController {
 					.setId(humanResourceService.update(req.getPayload().getHumanResource()).getId());
 			userService.update(req.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -125,7 +125,7 @@ public class UserRestController {
 					.setId(humanResourceService.update(req.getPayload().getHumanResource()).getId());
 			userService.update(req.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -147,7 +147,7 @@ public class UserRestController {
 				return new RESTResponse<User>(RESTResponse.FAIL, "Usuario no registrado.", null);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
 		}
 		return new RESTResponse<User>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
@@ -170,7 +170,7 @@ public class UserRestController {
 		try {
 			res = userService.getUserByEmailAndPassword(req.getPayload().getEmail(), req.getPayload().getPassword());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -186,7 +186,7 @@ public class UserRestController {
 		try {
 			res = userService.getUsersByWorkplaceId(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -202,7 +202,7 @@ public class UserRestController {
 		try {
 			res = userService.getByEmail(email);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -220,7 +220,7 @@ public class UserRestController {
 		try {
 			res = userService.getOne(name, first_surname, second_surname);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<User>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -236,7 +236,7 @@ public class UserRestController {
 		try {
 			res = userService.getActiveUsers();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -252,7 +252,7 @@ public class UserRestController {
 		try {
 			res = userService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -265,7 +265,7 @@ public class UserRestController {
 				}
 				System.out.println(6);
 			} catch (Exception e) {
-				e.printStackTrace();
+				Logger.getLogger(null).log(null,"F: ",e);
 				return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 			}
 			if (!aux.isEmpty()) {
@@ -284,7 +284,7 @@ public class UserRestController {
 		try {
 			res = userService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -297,7 +297,7 @@ public class UserRestController {
 							id_role);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				Logger.getLogger(null).log(null,"F: ",e);
 				return new RESTResponse<List<User>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 			}
 			if (!aux.isEmpty()) {

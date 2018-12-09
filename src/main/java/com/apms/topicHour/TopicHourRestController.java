@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class TopicHourRestController {
 		try {
 			res = topicHourService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<TopicHour>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -52,7 +52,7 @@ public class TopicHourRestController {
 		try {
 			res = topicHourService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<TopicHour>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -72,7 +72,7 @@ public class TopicHourRestController {
                 return new RESTResponse<TopicHour>(RESTResponse.FAIL, "Las horas de tema ya existen en el sistema.", null);
 			topicHourService.add(topicHour.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -87,7 +87,7 @@ public class TopicHourRestController {
 		try {
 			topicHourService.update(topicHour.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -102,7 +102,7 @@ public class TopicHourRestController {
 		try {
 			topicHourService.update(topicHour.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -117,7 +117,7 @@ public class TopicHourRestController {
 		try {
 			topicHourService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<TopicHour>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

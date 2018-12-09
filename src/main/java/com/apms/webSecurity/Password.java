@@ -47,24 +47,24 @@ public class Password {
 	  * just the same.
 	  */
 	public static void main(String[] args) {
-		String test_passwd = "abcdefghijklmnopqrstuvwxyz";
+		String test_p = "abcdefghijklmnopqrstuvwxyz";
 		String test_hash = "$2a$06$.rCVZVOThsIa97pEDOxvGuRRgzG64bvtJ0938xuqzv18d3ZpQhstC";
 
 		System.out.println("Testing BCrypt Password hashing and verification");
-		System.out.println("Test password: " + test_passwd);
+		System.out.println("Test password: " + test_p);
 		System.out.println("Test stored hash: " + test_hash);
 		System.out.println("Hashing test password...");
 		System.out.println();
 
-		String computed_hash = hashPassword(test_passwd);
+		String computed_hash = hashPassword(test_p);
 		System.out.println("Test computed hash: " + computed_hash);
 		System.out.println();
 		System.out.println("Verifying that hash and stored hash both match for the test password...");
 		System.out.println();
 
-		String compare_test = checkPassword(test_passwd, test_hash)
+		String compare_test = checkPassword(test_p, test_hash)
 			? "Passwords Match" : "Passwords do not match";
-		String compare_computed = checkPassword(test_passwd, computed_hash)
+		String compare_computed = checkPassword(test_p, computed_hash)
 			? "Passwords Match" : "Passwords do not match";
 
 		System.out.println("Verify against stored hash:   " + compare_test);

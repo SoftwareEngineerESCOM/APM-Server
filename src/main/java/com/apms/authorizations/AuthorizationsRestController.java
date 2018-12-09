@@ -3,7 +3,7 @@ package com.apms.authorizations;
 import com.apms.academy.Academy;
 import com.apms.humanResource.HumanResource;
 import com.apms.learningUnit.LearningUnit;
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +43,7 @@ public class AuthorizationsRestController {
 		try {
 			res = authorizationsService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Authorizations>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -62,7 +62,7 @@ public class AuthorizationsRestController {
         try{
             res = authorizationsService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Authorizations>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -87,7 +87,7 @@ public class AuthorizationsRestController {
         try {
         	authorizationsService.add(new Authorizations(elaboratedBy,revisedBy,authorizedBy,approvedBy,s1));
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<Authorizations>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
@@ -101,7 +101,7 @@ public class AuthorizationsRestController {
         try {
             authorizationsService.update(authorizations.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<Authorizations>(RESTResponse.OK, "Authorizations modificado.", null);
@@ -115,7 +115,7 @@ public class AuthorizationsRestController {
         try {
             authorizationsService.update(authorizations.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<Authorizations>(RESTResponse.OK, "Authorizations modificado.", null);
@@ -129,7 +129,7 @@ public class AuthorizationsRestController {
         try {
             authorizationsService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<Authorizations>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<Authorizations>(RESTResponse.OK, "Authorizations modificado.", null);
