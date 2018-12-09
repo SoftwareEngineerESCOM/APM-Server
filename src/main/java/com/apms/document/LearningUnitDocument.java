@@ -26,6 +26,7 @@ public class LearningUnitDocument {
     private final File secondSection = new File("src/main/resources/document_latex/learning_unit_document/second_part_document.tex");
     private final File thirdSection = new File("src/main/resources/document_latex/learning_unit_document/third_part_document.tex");
     private final Pattern regex = Pattern.compile("<(.*?)>");
+    private final String url = "src/main/resources/document_latex/FormatoUnidadAcademica.pdf";
     private HashMap<String,String> dataLabels;
     private String content;
     private int numberUnits;
@@ -33,7 +34,9 @@ public class LearningUnitDocument {
     public LearningUnitDocument(SyntheticProgram syntheticProgram) {
         this.syntheticProgram = syntheticProgram;
     }
-    
+    public String getUrl() {
+    	return url;
+    }
     public void createDocument() throws IOException{
     	this.content = "";
         this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
