@@ -138,7 +138,7 @@ public class EvaluationSystemRestController {
 		if (res != null) {
 			return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "", res);
 		} else {
-			return new RESTResponse<EvaluationSystem>(RESTResponse.FAIL, "", null);
+			return new RESTResponse<EvaluationSystem>(RESTResponse.OK, "", null);
 		}
 	}
 }
