@@ -206,16 +206,16 @@ Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de 
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
 
-insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into evaluation_system values (DEFAULT, 0.15, 2, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into evaluation_system values (DEFAULT, 0.15, 2, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into evaluation_system values (DEFAULT, 0.2, 3, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into evaluation_system values (DEFAULT, 0.2, 3, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+
+
+--									--
+--		  I Thematic Unit 			--
+--									--
 
 insert into thematic_unit values (DEFAULT, 'Compara los diferentes modelos de proceso de un sistema software con base en sus características y el tipo de proyecto a desarrollar.', true, 'Encuadre del curso.
 La presente unidad se abordará a partir de la estrategia de aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: lluvia de ideas, ficha de trabajo, indagación documental, discusión dirigida, mapas conceptuales, resolución de problemas, exposición en equipo de temas complementarios, propuesta de proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
+insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 
 insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.5);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
@@ -226,19 +226,52 @@ insert into learning_evaluation values (DEFAULT, 'Continua', 'Propuesta de Proye
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
 
-insert into topic values (DEFAULT, 1, 'Conceptos básicos de Ingeniería de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into topic values (DEFAULT, 1.5, 'Atributos y características del software', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into topic values (DEFAULT, 1.5, 'Importancia y aplicación del software', '3', 0, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into topic values (DEFAULT, 1.5, 'Ciclo de vida del software', '4', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
-insert into topic values (DEFAULT, 3.5, 'Modelos de procesos', '5', 1, 1, (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software')));
+insert into topic values (DEFAULT, 1, 'Conceptos básicos de Ingeniería de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into topic values (DEFAULT, 1.5, 'Atributos y características del software', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into topic values (DEFAULT, 1.5, 'Importancia y aplicación del software', '3', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into topic values (DEFAULT, 1.5, 'Ciclo de vida del software', '4', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into topic values (DEFAULT, 3.5, 'Modelos de procesos', '5', 1, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 
-insert into subtopic values (DEFAULT, 'Lineal secuencial', 1, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
-insert into subtopic values (DEFAULT, 'Cascada', 2, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
-insert into subtopic values (DEFAULT, 'Incremental', 3, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
-insert into subtopic values (DEFAULT, 'Desarrollo Rápido de Aplicaciones', 4, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
-insert into subtopic values (DEFAULT, 'Prototipos', 5, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
-insert into subtopic values (DEFAULT, 'Espiral', 6, (SELECT id FROM topic WHERE topics_id IN (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'ngenieria de software'))));
+insert into subtopic values (DEFAULT, 'Lineal secuencial', 1, (SELECT id FROM topic WHERE name like 'Modelos de procesos'));
+insert into subtopic values (DEFAULT, 'Cascada', 2, (SELECT id FROM topic WHERE name like 'Modelos de procesos'));
+insert into subtopic values (DEFAULT, 'Incremental', 3, (SELECT id FROM topic WHERE name like 'Modelos de procesos'));
+insert into subtopic values (DEFAULT, 'Desarrollo Rápido de Aplicaciones', 4, (SELECT id FROM topic WHERE name like 'Modelos de procesos'));
+insert into subtopic values (DEFAULT, 'Prototipos', 5, (SELECT id FROM topic WHERE name like 'Modelos de procesos'));
+insert into subtopic values (DEFAULT, 'Espiral', 6, (SELECT id FROM topic WHERE name like 'Modelos de procesos'));
 
+
+
+--									--
+--		  II Thematic Unit 			--
+--									--
+
+insert into thematic_unit values (DEFAULT, 'Desarrolla el plan de proyecto de un sistema software con base en las técnicas de estimación aplicables en la gestión y control de los recursos, procesos y eventos.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones , líneas de tiempo, diagrama de Gantt y diagramas de pert, exposición en equipo de temas complementarios, avance del proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
+
+insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Diagramas elaborados', 0.1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.10);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+
+insert into topic values (DEFAULT, 1, 'Ámbito de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into topic values (DEFAULT, 0.5, 'Estudio de factibilidad', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into topic values (DEFAULT, 1, 'Análisis de riesgo', '3', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into topic values (DEFAULT, 0.5, 'Recursos', '4', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into topic values (DEFAULT, 2.5, 'Estimación', '5', 1.5, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into topic values (DEFAULT, 1, 'Planificación del proyecto', '6', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into topic values (DEFAULT, 1, 'Supervisión y control del plan de proyecto', '7', 0.5, 0, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+
+insert into subtopic values (DEFAULT, 'Métricas', 1, (SELECT id FROM topic WHERE name = 'Estimación'));
+insert into subtopic values (DEFAULT, 'Modelos de estimación', 2, (SELECT id FROM topic WHERE name = 'Estimación'));
+insert into subtopic values (DEFAULT, 'Calendario de actividades', 3, (SELECT id FROM topic WHERE name = 'Planificación del proyecto'));
+insert into subtopic values (DEFAULT, 'Diagrama de Gantt', 4, (SELECT id FROM topic WHERE name = 'Planificación del proyecto'));
+insert into subtopic values (DEFAULT, 'Diagrama de Pert', 5, (SELECT id FROM topic WHERE name = 'Planificación del proyecto'));
 
 
 --									--
@@ -262,17 +295,17 @@ insert into bibliography_authors values ('9789701512678', (SELECT id FROM author
 insert into bibliography_authors values ('9701054733', (SELECT id FROM author WHERE name LIKE 'Roger S.'));
 insert into bibliography_authors values ('9789702602064', (SELECT id FROM author WHERE name LIKE 'Ian'));
 
-insert into bibliography_relation values (DEFAULT, true, 1, '788478978588', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
-insert into bibliography_relation values (DEFAULT, true, 1, '9701509870', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
-insert into bibliography_relation values (DEFAULT, true, 1, '9789701512678', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
-insert into bibliography_relation values (DEFAULT, true, 1, '9701054733', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
-insert into bibliography_relation values (DEFAULT, true, 1, '9789702602064', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_relation values (DEFAULT, true, 1, '788478978588', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
+insert into bibliography_relation values (DEFAULT, true, 1, '9701509870', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
+insert into bibliography_relation values (DEFAULT, true, 1, '9789701512678', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
+insert into bibliography_relation values (DEFAULT, true, 1, '9701054733', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
+insert into bibliography_relation values (DEFAULT, true, 1, '9789702602064', (SELECT id FROM bibliography_type WHERE type LIKE 'Básica'), (SELECT id FROM learning_unit WHERE name like 'Ingenieria de software'));
 
 --
 
-insert into bibliography_thematic_units values ('9701509870', (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
-insert into bibliography_thematic_units values ('9701054733', (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
-insert into bibliography_thematic_units values ('9789702602064', (SELECT id FROM thematic_unit WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
+insert into bibliography_thematic_units values ('9701509870', (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into bibliography_thematic_units values ('9701054733', (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into bibliography_thematic_units values ('9789702602064', (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 
 
 -- insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
