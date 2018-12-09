@@ -58,4 +58,9 @@ public class SyntheticProgram {
 		this.content = content;
 	}
 
+	@Override
+	public String toString() {
+		return "SyntheticProgram [id=" + id + ", regard=" + regard + ", didacticOrientation=" + didacticOrientation
+				+ "]";
+	}
 }

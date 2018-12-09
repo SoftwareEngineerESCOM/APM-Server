@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.apms.document.LearningUnitDocument;
+import com.apms.extensiveProgram.ExtensiveProgram;
+import com.apms.extensiveProgram.ExtensiveProgramService;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +29,8 @@ import com.apms.rest.RESTRequest;
 import com.apms.rest.RESTResponse;
 import com.apms.semester.Semester;
 import com.apms.semester.SemesterService;
+import com.apms.studyPlan.StudyPlan;
+import com.apms.studyPlan.StudyPlanService;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.syntheticProgram.SyntheticProgramService;
 
@@ -45,8 +49,12 @@ public class LearningUnitRestController {
 
     @Autowired
     private SyntheticProgramService syntheticProgramService;
+    
+    @Autowired
+    private StudyPlanService studyPlanService;
 
-
+    @Autowired
+    private ExtensiveProgramService extensiveProgramService;
     /*
      ** Return a listing of all the resources
      */
@@ -284,9 +292,12 @@ public class LearningUnitRestController {
         {
             LearningUnitDocument document;
             try {
-                //SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
-                //document = new LearningUnitDocument(syntheticProgram);
-                //document.createDocument();
+            	LearningUnit learningUnit = learningUnitService.getOne(learningUnitId);
+            	SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
+            	StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
+            	ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
+                document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram,null,null,null);
+                document.createDocument();
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;

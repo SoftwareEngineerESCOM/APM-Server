@@ -26,6 +26,7 @@
 \usepackage{times}
 \usepackage{color}
 \usepackage{lastpage}
+\usepackage{enumerate}% http://ctan.org/pkg/enumerate
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
@@ -151,19 +152,22 @@ backgroundcolor=\color{gray75},
     \hline
     \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
 
-    <purpose_learning_unit>. \\
+    <purpose_learning_unit> \\
 
     \textbf{CONTENIDOS:}
-
-    <contents>. .\\ 
+    \begin{enumerate}[I]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    <contents>
+    \end{enumerate}
 
     \textbf{ORIENTACIÓN DIDÁCTICA:}
 
-    <didactic_orientation>. \\ 
+    <didactic_orientation> \\ 
 
     \textbf{EVALUACIÓN Y ACREDITACIÓN:}
 
-    <evaluation_and_accreditation> \\ 
+    <evaluation_and_accreditation>
 
     \textbf{BIBLIOGRAFÍA:}
 
@@ -221,7 +225,7 @@ backgroundcolor=\color{gray75},
     \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
 
     \RaggedRight
-    <purpose_learning_unit>.\\
+    <purpose_learning_unit>\\
 
     \hline
   \end{tabular}

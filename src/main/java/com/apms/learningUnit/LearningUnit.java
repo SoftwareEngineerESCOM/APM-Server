@@ -58,5 +58,11 @@ public class LearningUnit {
         this.academy = academy;
     }
 
-
+	@Override
+	public String toString() {
+		return "LearningUnit [id=" + id + ", name=" + name + ", TEPICCredits=" + TEPICCredits + ", SATCACredits="
+				+ SATCACredits + ", theoryHoursPerWeek=" + theoryHoursPerWeek + ", practiceHoursPerWeek="
+				+ practiceHoursPerWeek + ", formationArea=" + formationArea + ", semester=" + semester
+				+ ", learningUnitStatus=" + learningUnitStatus + ", academy=" + academy + "]";
+	}
 }
