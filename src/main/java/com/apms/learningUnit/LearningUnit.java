@@ -44,19 +44,4 @@ public class LearningUnit {
 
     public LearningUnit() {
     }
-
-    public LearningUnit(Integer id, String name, Double tEPICCredits, Double sATCACredits, Double theoryHoursPerWeek,
-                        Double practiceHoursPerWeek, FormationArea formationArea, Semester semester, Academy academy) {
-        this.id = id;
-        this.name = name;
-        TEPICCredits = tEPICCredits;
-        SATCACredits = sATCACredits;
-        this.theoryHoursPerWeek = theoryHoursPerWeek;
-        this.practiceHoursPerWeek = practiceHoursPerWeek;
-        this.formationArea = formationArea;
-        this.semester = semester;
-        this.academy = academy;
-    }
-
-
 }

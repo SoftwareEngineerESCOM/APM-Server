@@ -3,6 +3,7 @@ package com.apms.learningUnitTask;
 import java.util.List;
 
 import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
 import com.apms.learningUnitStatus.LearningUnitStatus;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import com.apms.user.User;
@@ -34,7 +35,7 @@ public class LearningUnitTaskRestController {
     private UserService userService;
     
     @Autowired
-    private LearningUnit learningUnitService;
+    private LearningUnitService learningUnitService;
     
     @Autowired
     private LearningUnitStatusService learningUnitStatusService;
