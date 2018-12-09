@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -37,7 +37,7 @@ public class SemesterRestController {
 		try {
 			res = semesterService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Semester>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -56,7 +56,7 @@ public class SemesterRestController {
 		try {
 			res = semesterService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Semester>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -94,7 +94,7 @@ public class SemesterRestController {
 			}
 			semesterService.add(semester.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -109,7 +109,7 @@ public class SemesterRestController {
 		try {
 			semesterService.update(semester.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -124,7 +124,7 @@ public class SemesterRestController {
 		try {
 			semesterService.update(semester.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -146,7 +146,7 @@ public class SemesterRestController {
 						"El semestre no se puede eliminar debido a que contiene unidades de aprendizaje.", null);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<Semester>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -159,7 +159,7 @@ public class SemesterRestController {
 		try {
 			res = semesterService.getSemestersByStudyPlanId(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<Semester>>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

@@ -44,7 +44,6 @@ public class LearningUnit {
 
     public LearningUnit() {
     }
-
     public LearningUnit(Integer id, String name, Double tEPICCredits, Double sATCACredits, Double theoryHoursPerWeek,
                         Double practiceHoursPerWeek, FormationArea formationArea, Semester semester, Academy academy) {
         this.id = id;
@@ -65,4 +64,3 @@ public class LearningUnit {
 				+ practiceHoursPerWeek + ", formationArea=" + formationArea + ", semester=" + semester
 				+ ", learningUnitStatus=" + learningUnitStatus + ", academy=" + academy + "]";
 	}
-}

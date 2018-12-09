@@ -1,5 +1,7 @@
 package com.apms.document;
 
+import java.util.logging.Logger;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,10 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import com.apms.bibliographyRelation.BibliographyRelation;
 import com.apms.extensiveProgram.ExtensiveProgram;
@@ -155,7 +153,7 @@ public class LearningUnitDocument {
             }
             reader.close();
         } catch (Exception e) {
-            e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);            
         }
     }
 }

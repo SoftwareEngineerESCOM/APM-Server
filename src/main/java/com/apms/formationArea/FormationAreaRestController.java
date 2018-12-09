@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class FormationAreaRestController {
 		try {
 			res = formationAreaService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<FormationArea>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -51,7 +51,7 @@ public class FormationAreaRestController {
         try{
             res = formationAreaService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<FormationArea>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -71,7 +71,7 @@ public class FormationAreaRestController {
                 return new RESTResponse<FormationArea>(RESTResponse.FAIL, "La area de formacion ya existe en el sistema.", null);
             formationAreaService.add(formationArea.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<FormationArea>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
@@ -85,7 +85,7 @@ public class FormationAreaRestController {
         try {
             formationAreaService.update(formationArea.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<FormationArea>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
@@ -99,7 +99,7 @@ public class FormationAreaRestController {
         try {
             formationAreaService.update(formationArea.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<FormationArea>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
@@ -113,7 +113,7 @@ public class FormationAreaRestController {
         try {
             formationAreaService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<FormationArea>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<FormationArea>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);

@@ -21,9 +21,9 @@ public class ThematicUnit {
 	private Integer id;
 	@Column
 	private boolean isFinished;
-	@Column
+	@Column(length = 2000)
 	private String competenceUnit;
-	@Column
+	@Column(length = 2000)
 	private String learningStrategy;
 	@ManyToOne
 	@JoinColumn(nullable=false)

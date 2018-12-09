@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class PracticeRelationEvaluationRestController {
 		try {
 			res = practiceRelationEvaluationService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<PracticeRelationEvaluation>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -51,7 +51,7 @@ public class PracticeRelationEvaluationRestController {
         try{
             res = practiceRelationEvaluationService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -71,7 +71,7 @@ public class PracticeRelationEvaluationRestController {
                 return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.FAIL, "PracticeRelationEvaluation ya existe en el sistema.", null);
             practiceRelationEvaluationService.add(practiceRelationEvaluation.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
@@ -85,7 +85,7 @@ public class PracticeRelationEvaluationRestController {
         try {
             practiceRelationEvaluationService.update(practiceRelationEvaluation.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.OK, "PracticeRelationEvaluation modificado.", null);
@@ -99,7 +99,7 @@ public class PracticeRelationEvaluationRestController {
         try {
             practiceRelationEvaluationService.update(practiceRelationEvaluation.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.OK, "PracticeRelationEvaluation modificado.", null);
@@ -113,7 +113,7 @@ public class PracticeRelationEvaluationRestController {
         try {
             practiceRelationEvaluationService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<PracticeRelationEvaluation>(RESTResponse.OK, "PracticeRelationEvaluation modificado.", null);
