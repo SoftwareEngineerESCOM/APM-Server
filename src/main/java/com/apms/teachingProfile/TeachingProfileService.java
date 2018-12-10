@@ -6,12 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.apms.ability.Ability;
-import com.apms.attitude.Attitude;
-import com.apms.knowledge.Knowledge;
-import com.apms.professionalExperience.ProfessionalExperience;
-import com.apms.schoolingGrade.SchoolingGrade;
-
 @Service
 public class TeachingProfileService {
 
@@ -39,11 +33,5 @@ public class TeachingProfileService {
 
 	public void delete(Integer id) {
 		teachingProfileRepository.deleteById(id);
-	}
-
-	public TeachingProfile add(SchoolingGrade schoolingGrade, List<Knowledge> knowledges, List<Ability> ability,
-			List<Attitude> attitude, List<ProfessionalExperience> professionalExperience) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

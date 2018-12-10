@@ -18,29 +18,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.ability.Ability;
-import com.apms.ability.AbilityService;
-import com.apms.academicLevel.AcademicLevel;
-import com.apms.academicLevel.AcademicLevelService;
 import com.apms.accreditationType.AccreditationType;
 import com.apms.assignedTime.AssignedTime;
 import com.apms.assignedTime.AssignedTimeService;
-import com.apms.attitude.Attitude;
-import com.apms.attitude.AttitudeService;
 import com.apms.bibliography.Bibliography;
 import com.apms.content.Content;
 import com.apms.evaluationAccreditationUA.EvaluationAccreditationUA;
 import com.apms.evaluationUA.EvaluationUA;
-import com.apms.knowledge.Knowledge;
-import com.apms.knowledge.KnowledgeService;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.modality.Modality;
-import com.apms.professionalExperience.ProfessionalExperience;
-import com.apms.professionalExperience.ProfessionalExperienceService;
-import com.apms.rest.RESTRequest;import java.util.logging.Logger;
+import com.apms.rest.RESTRequest;
+import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
-import com.apms.schoolingGrade.SchoolingGrade;
-import com.apms.schoolingGrade.SchoolingGradeService;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.teaching.Teaching;
 import com.apms.teachingProfile.TeachingProfile;
@@ -61,22 +50,6 @@ public class ExtensiveProgramRestController {
 	@Autowired
 	private AssignedTimeService assignedTimeService;
 	
-	
-	@Autowired
-	private AcademicLevelService academicLevelService;
-	
-	@Autowired
-	private SchoolingGradeService schoolingGradeService;
-	
-
-	@Autowired
-	private KnowledgeService knowledgesService;
-	@Autowired
-	private ProfessionalExperienceService professionalExperienceService;
-	@Autowired
-	private AttitudeService attitudeService;
-	@Autowired
-	private AbilityService abilityService;
 	@Autowired
 	private ExtensiveProgramService extensiveProgramService;
 	@Autowired

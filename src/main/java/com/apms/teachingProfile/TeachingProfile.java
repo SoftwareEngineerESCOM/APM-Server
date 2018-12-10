@@ -9,12 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.apms.ability.Ability;
-import com.apms.attitude.Attitude;
-import com.apms.knowledge.Knowledge;
-import com.apms.professionalExperience.ProfessionalExperience;
-import com.apms.schoolingGrade.SchoolingGrade;
-
 import lombok.Getter;
 import lombok.Setter;
 
