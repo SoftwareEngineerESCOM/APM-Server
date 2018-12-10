@@ -31,7 +31,7 @@ public class PracticeRelation {
 	@Column
 	private Double totalHours;
 	@Column(nullable = false)
-	private boolean isFinished;
+	private Boolean isFinished;
 	@Column
 	private String placeOfPractice;
 

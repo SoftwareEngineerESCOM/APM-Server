@@ -20,7 +20,7 @@ public class ThematicUnit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column
-	private boolean isFinished;
+	private Boolean isFinished;
 	@Column(length = 2000)
 	private String competenceUnit;
 	@Column(length = 2000)

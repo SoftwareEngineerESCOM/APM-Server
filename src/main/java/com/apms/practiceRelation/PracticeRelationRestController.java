@@ -90,7 +90,12 @@ public class PracticeRelationRestController {
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
-        return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        if (req.getPayload().getIsFinished()) {
+            return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        }
+        else {
+            return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Avances guardados exitosamente.", null);
+        }
     }
 
     /*
@@ -115,7 +120,12 @@ public class PracticeRelationRestController {
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
+        if (req.getPayload().getIsFinished()) {
+            return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        }
+        else {
+            return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Avances guardados exitosamente.", null);
+        }
     }
 
     /*
