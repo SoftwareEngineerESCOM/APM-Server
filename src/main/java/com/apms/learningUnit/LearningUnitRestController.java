@@ -257,7 +257,7 @@ public class LearningUnitRestController {
         return new RESTResponse<LearningUnit>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
     }
 
-    @PatchMapping("learningUnit/finish")
+    @PatchMapping("/finish")
     public RESTResponse<LearningUnit> learningUnitFinished(@RequestBody RESTRequest<LearningUnit> req) {
         try {
             LearningUnit dbLearningUnit = learningUnitService.getOne(req.getPayload().getId());
@@ -271,7 +271,7 @@ public class LearningUnitRestController {
         return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
     }
 
-    @GetMapping("learningUnit/isFinished/{id}")
+    @GetMapping("/isFinished/{id}")
     public RESTResponse<Boolean> getFinished(@PathVariable Integer id) {
         LearningUnit res;
         try {
@@ -287,7 +287,7 @@ public class LearningUnitRestController {
         }
     }
     
-    @PatchMapping("learningUnit/inProcess")
+    @PatchMapping("/inProcess")
     public RESTResponse<LearningUnit> learningUnitInProcess(@RequestBody RESTRequest<LearningUnit> req) {
         try {
             LearningUnit learningUnit = learningUnitService.getOne(req.getPayload().getId());
@@ -301,7 +301,7 @@ public class LearningUnitRestController {
         return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
     }
     
-    @GetMapping("learningUnit/inProcess/{id}")
+    @GetMapping("/inProcess/{id}")
     public RESTResponse<Boolean> geInProcess(@PathVariable Integer id) {
         LearningUnit res;
         try {
