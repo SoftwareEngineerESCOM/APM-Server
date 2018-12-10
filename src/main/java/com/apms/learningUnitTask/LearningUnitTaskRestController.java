@@ -30,14 +30,7 @@ public class LearningUnitTaskRestController {
 
     @Autowired
     private LearningUnitTaskService learningUnitTaskService;
-<<<<<<< HEAD
 
-    @Autowired
-    private UserService userService;
-     
-=======
-    
->>>>>>> fd5d35f46877eb2c6a8129a7d67d8ce46b83607e
     @Autowired
     private LearningUnitStatusService learningUnitStatusService;
 
