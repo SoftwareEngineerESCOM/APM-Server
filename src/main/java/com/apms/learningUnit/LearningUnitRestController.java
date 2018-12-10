@@ -3,10 +3,15 @@ package com.apms.learningUnit;
 import java.io.IOException;
 import java.util.List;
 
+import com.apms.bibliographyRelation.BibliographyRelation;
+import com.apms.bibliographyRelation.BibliographyRelationService;
 import com.apms.document.LearningUnitDocument;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.extensiveProgram.ExtensiveProgramService;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
+import com.apms.practiceRelation.PracticeRelation;
+import com.apms.practiceRelation.PracticeRelationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
@@ -33,6 +38,8 @@ import com.apms.studyPlan.StudyPlan;
 import com.apms.studyPlan.StudyPlanService;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.syntheticProgram.SyntheticProgramService;
+import com.apms.thematicUnit.ThematicUnit;
+import com.apms.thematicUnit.ThematicUnitService;
 
 @RestController
 @RequestMapping("/learningUnit")
@@ -55,6 +62,15 @@ public class LearningUnitRestController {
 
     @Autowired
     private ExtensiveProgramService extensiveProgramService;
+    
+    @Autowired
+    private BibliographyRelationService bibliographyRelationService;
+    
+    @Autowired
+    private PracticeRelationService practiceRelationService;
+    
+    @Autowired
+    private ThematicUnitService thematicUnitService;
     /*
      ** Return a listing of all the resources
      */
@@ -328,11 +344,14 @@ public class LearningUnitRestController {
             	SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
             	StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
             	ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
-                document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram,null,null,null);
+            	List<BibliographyRelation> bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
+            	List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
+            	PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
+                document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits,practiceRelation);
                 document.createDocument();
             } catch (Exception e) {
-                Logger.getLogger(null).log(null,"F: ",e);
-                return null;
+            	Logger.getLogger(null).log(null,"F: ",e);
+            	return null;
             }
 
             ClassPathResource pdfFile = new ClassPathResource("document_latex/FormatoUnidadAcademica.pdf");

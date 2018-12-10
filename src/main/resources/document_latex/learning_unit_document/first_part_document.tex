@@ -130,7 +130,7 @@ backgroundcolor=\color{gray75},
 \begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
 \begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
 \begin{center}
-{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL CHIROD}}\\
 {\Large\textbf{SECRETARIA ACADÉMICA}}\\
 {\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
 %%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,8 +147,8 @@ backgroundcolor=\color{gray75},
 
 
 %%%%%%%% INICIO TABLA PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[H]
-  \begin{tabular}{|p{1.045\textwidth}|}
+
+  \begin{longtable}{|p{1.045\textwidth}|}
     \hline
     \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}
 
@@ -166,14 +166,19 @@ backgroundcolor=\color{gray75},
     <didactic_orientation> \\ 
 
     \textbf{EVALUACIÓN Y ACREDITACIÓN:}
-
+    \begin{itemize}[leftmargin=*]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
     <evaluation_and_accreditation>
-
+    \end{itemize}
     \textbf{BIBLIOGRAFÍA:}
-
-    <bibliography>.\\ \hline
-  \end{tabular}
-\end{table}
+    \begin{itemize}[leftmargin=*]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    <bibliography> 
+    \end{itemize}
+    \\ \hline
+  \end{longtable}
 %%%%%%% FIN TABLA PROPOSITO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%% FIN PÁGINA 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -219,7 +224,7 @@ backgroundcolor=\color{gray75},
     \textbf{INTENCIÓN EDUCATIVA:}
 
     \RaggedRight
-    <educational_intention>.
+    <educational_intention>
 
     \Centering
     \textbf{PROPÓSITO DE LA UNIDAD DE APRENDIZAJE:}

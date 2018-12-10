@@ -80,9 +80,9 @@ public class LearningUnitDocument {
     	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
     	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(studyPlan));
     	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(extensiveProgram));
-    	//dataLabels.putAll(LabelsFormat.createBibliographyLabels(syntheticProgram));
-    	//dataLabels.putAll(LabelsFormat.createThematicUnitLabels(syntheticProgram));
-    	//dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(syntheticProgram));	
+    	dataLabels.putAll(LabelsFormat.createBibliographyLabels(bibliographysRelation));
+    	dataLabels.putAll(LabelsFormat.createThematicUnitLabels(thematicUnits));
+    	dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(practiceRelation));	
     }
 
     private void replaceLabelsInfo(File file) throws IOException {
@@ -152,6 +152,7 @@ public class LearningUnitDocument {
                 System.out.println(line);
             }
             reader.close();
+            p.waitFor();
         } catch (Exception e) {
 			Logger.getLogger(null).log(null,"F: ",e);            
         }

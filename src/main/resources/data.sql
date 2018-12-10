@@ -206,8 +206,6 @@ Se relaciona con las unidades de aprendizaje: Programación Orientada, Bases de 
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Teórica'));
 insert into extensive_program_types values ((SELECT id FROM extensive_program WHERE id = 1), (SELECT id FROM type WHERE name LIKE 'Práctica'));
 
-
-
 --									--
 --		  I Thematic Unit 			--
 --									--
