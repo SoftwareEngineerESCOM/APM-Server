@@ -43,7 +43,7 @@ public class LabelsFormat {
 		//CONTENTS - TEMATIC UNITS
 		String contents = "";
 		for (Content content : syntheticProgram.getContent())
-			contents += content.getName() + "\\\\";
+			contents += "\\\\item " + content.getName() + "\n";
 		dataLabels.put("contents", contents);
 		
 		dataLabels.put("didactic_orientation", syntheticProgram.getDidacticOrientation());
@@ -51,9 +51,9 @@ public class LabelsFormat {
 		//EVALUATION AND ACREDITATION
 		String evaluationAndAccreditation = "";
 		for (EvaluationUA evaluationUA : syntheticProgram.getEvaluationAccreditationUA().getEvaluationUA())
-			evaluationAndAccreditation += evaluationUA.getName() + "\\\\";
+			evaluationAndAccreditation += evaluationUA.getName() + "\\\\newline \n";
 		for (AccreditationType accreditationType : syntheticProgram.getEvaluationAccreditationUA().getAccreditationType())
-			evaluationAndAccreditation += accreditationType.getName() + "\\\\";
+			evaluationAndAccreditation += accreditationType.getName() + "\\\\newline \n";
 		dataLabels.put("evaluation_and_accreditation", evaluationAndAccreditation);
 		
 		dataLabels.put("training_area", syntheticProgram.getLearningUnit().getFormationArea().getName());
@@ -68,13 +68,7 @@ public class LabelsFormat {
 	}
 	
 	
-	public static HashMap<String,String> createStudyPlanLabels(SyntheticProgram syntheticProgram){
-		StudyPlanService studyPlanService = new StudyPlanService();
-		//GET STUDY PLAN
-		StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(
-					syntheticProgram.getLearningUnit().getId());
-		
-		
+	public static HashMap<String,String> createStudyPlanLabels(StudyPlan studyPlan){
 		HashMap<String,String> dataLabels = new HashMap<>();
 		dataLabels.put("academic_unit", studyPlan.getAcademicProgram().getWorkplace().getName());
 		dataLabels.put("academic_program", studyPlan.getAcademicProgram().getName());
@@ -82,12 +76,7 @@ public class LabelsFormat {
 	}
 	
 	
-	public static HashMap<String,String> createExtensiveProgramLabels(SyntheticProgram syntheticProgram){
-		ExtensiveProgramService extensiveProgramService = new ExtensiveProgramService();
-		//GET EXTENSIVE PROGRAM
-		ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(
-					syntheticProgram.getLearningUnit().getId());
-		
+	public static HashMap<String,String> createExtensiveProgramLabels(ExtensiveProgram extensiveProgram){		
 		HashMap<String,String> dataLabels = new HashMap<>();
 		//TYPE LEARNING UNIT
 		String types = "";
@@ -96,7 +85,7 @@ public class LabelsFormat {
 			if(i+1 < extensiveProgram.getTypes().size())
 				types += "-";
 		}
-		dataLabels.put("type_learning_unit", types);
+		//dataLabels.put("type_learning_unit", types);
 		
 		dataLabels.put("validity", extensiveProgram.getValidity() + "");
 		dataLabels.put("modality", extensiveProgram.getModality().getName());
@@ -109,7 +98,7 @@ public class LabelsFormat {
 		dataLabels.put("total_semester_hours", extensiveProgram.getAssignedTime().getTotalSemsterHour() + "");
 		
 		//**TEACHER PROFILE INFO**//
-		TeachingProfile teachingProfile = extensiveProgram.getTeachingProfile();
+		/*TeachingProfile teachingProfile = extensiveProgram.getTeachingProfile();
 		
 		//SCHOOLING GRADE INFO
 		String schoolingGradeStr = "";
@@ -156,7 +145,7 @@ public class LabelsFormat {
 			attitudeStr += attitude + "\\\\"; //Checar formato de latex ************
 		}
 		dataLabels.put("teacher_profile_attitudes", attitudeStr);
-		
+		*/
 		return dataLabels;
 	}
 	
@@ -383,7 +372,7 @@ public class LabelsFormat {
 			practicesTableStr += practice.getNumber() + "&"; //PRACTICE NUMBER
 			practicesTableStr += practice.getThematicUnit().getContent().getNumber() + "&"; //PRACTICE THEMATIC UNIT NUMBER **pasar a numeros romanos 
 			practicesTableStr += practice.getLength() + "&"; //PRACTICE LENGHT
-			practicesTableStr += practice.getPlaceOfPractice() + "\\\\"; //PRACTICE PLACE
+			// practicesTableStr += practice.getPlaceOfPractice() + "\\\\"; //PRACTICE PLACE
 		}
 		dataLabels.put("practice_relationship", practicesTableStr);
 		

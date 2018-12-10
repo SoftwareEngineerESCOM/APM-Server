@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class WorkplaceTypeRestController {
 		try {
 			res = workplaceTypeService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<WorkplaceType>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
@@ -53,7 +53,7 @@ public class WorkplaceTypeRestController {
 		try {
 			res = workplaceTypeService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<WorkplaceType>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -73,7 +73,7 @@ public class WorkplaceTypeRestController {
                 return new RESTResponse<WorkplaceType>(RESTResponse.FAIL, "El tipo de unidad ya existe en el sistema.", null);
 			workplaceTypeService.add(workplaceType.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -88,7 +88,7 @@ public class WorkplaceTypeRestController {
 		try {
 			workplaceTypeService.update(workplaceType.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -103,7 +103,7 @@ public class WorkplaceTypeRestController {
 		try {
 			workplaceTypeService.update(workplaceType.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -118,7 +118,7 @@ public class WorkplaceTypeRestController {
 		try {
 			workplaceTypeService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<WorkplaceType>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

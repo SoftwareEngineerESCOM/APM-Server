@@ -25,7 +25,7 @@ import com.apms.evaluationUA.EvaluationUA;
 import com.apms.evaluationUA.EvaluationUAService;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -63,7 +63,7 @@ public class SyntheticProgramRestController {
 		try {
 			res = syntheticProgramService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<SyntheticProgram>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
@@ -83,7 +83,7 @@ public class SyntheticProgramRestController {
 		try {
 			res = syntheticProgramService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (res != null) {
@@ -129,7 +129,7 @@ public class SyntheticProgramRestController {
 		try {
 			syntheticProgramService.add(new SyntheticProgram(regard,didacticOrientation,learningUnit,evaluationAccreditationUA,content));
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -144,7 +144,7 @@ public class SyntheticProgramRestController {
 		try {
 			syntheticProgramService.update(req.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -159,7 +159,7 @@ public class SyntheticProgramRestController {
 		try {
 			syntheticProgramService.update(req.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -174,7 +174,7 @@ public class SyntheticProgramRestController {
 		try {
 			syntheticProgramService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<SyntheticProgram>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -187,7 +187,7 @@ public class SyntheticProgramRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -195,7 +195,7 @@ public class SyntheticProgramRestController {
             try {
                 aux = syntheticProgramService.getSyntheticProgramsByLearningUnitId(id);
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(null).log(null,"F: ",e);
                 return new RESTResponse<SyntheticProgram>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
             }
             if (aux != null) {

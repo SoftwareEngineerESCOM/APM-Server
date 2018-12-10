@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class ProfessionalExperienceRestController {
 		try {
 			res = professionalExperienceService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<ProfessionalExperience>>(RESTResponse.DBFAIL,
 					"Inconsistencia en la base de datos.", null);
 		}
@@ -53,7 +53,7 @@ public class ProfessionalExperienceRestController {
 		try {
 			res = professionalExperienceService.getOne(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
 					null);
 		}
@@ -76,7 +76,7 @@ public class ProfessionalExperienceRestController {
                 return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL, "Experiencia profesional ya existe en el sistema.", null);
 			professionalExperienceService.add(professionalExperience.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}
@@ -92,7 +92,7 @@ public class ProfessionalExperienceRestController {
 		try {
 			professionalExperienceService.update(professionalExperience.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -108,7 +108,7 @@ public class ProfessionalExperienceRestController {
 		try {
 			professionalExperienceService.update(professionalExperience.getPayload());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
 		}
@@ -123,7 +123,7 @@ public class ProfessionalExperienceRestController {
 		try {
 			professionalExperienceService.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<ProfessionalExperience>(RESTResponse.FAIL,
 					"Por el momento no se puede realizar el registro.", null);
 		}

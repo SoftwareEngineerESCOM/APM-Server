@@ -5,7 +5,7 @@ import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.learningEvaluation.LearningEvaluationService;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import com.apms.subtopic.Subtopic;
 import com.apms.subtopic.SubtopicService;
@@ -48,7 +48,7 @@ public class ThematicUnitRestController {
         try {
             res = thematicUnitService.getAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<ThematicUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -69,7 +69,7 @@ public class ThematicUnitRestController {
         try {
             res = thematicUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<ThematicUnit>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -111,7 +111,7 @@ public class ThematicUnitRestController {
             req.getPayload().getContent().setId(contentService.add(req.getPayload().getContent()).getId());
             thematicUnitService.add(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -149,7 +149,7 @@ public class ThematicUnitRestController {
             req.getPayload().getContent().setId(contentService.update(req.getPayload().getContent()).getId());
             thematicUnitService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -169,7 +169,7 @@ public class ThematicUnitRestController {
         try {
             thematicUnitService.update(req.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -184,7 +184,7 @@ public class ThematicUnitRestController {
         try {
             thematicUnitService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<ThematicUnit>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -197,7 +197,7 @@ public class ThematicUnitRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<ThematicUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -205,7 +205,7 @@ public class ThematicUnitRestController {
             try {
                 aux = thematicUnitService.getThematicUnitByLearningUnitId(id);
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(null).log(null,"F: ",e);
                 return new RESTResponse<List<ThematicUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
             }
             if (!aux.isEmpty()) {

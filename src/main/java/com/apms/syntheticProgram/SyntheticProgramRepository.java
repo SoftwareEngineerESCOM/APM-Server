@@ -13,6 +13,4 @@ public interface SyntheticProgramRepository extends JpaRepository<SyntheticProgr
 	@Nullable
 	@Query(value = "SELECT sp FROM SyntheticProgram sp WHERE sp.learningUnit.id = :id")
 	SyntheticProgram getSyntheticProgramsByLearningUnitId(@Param("id") Integer id);
-	
-
 }

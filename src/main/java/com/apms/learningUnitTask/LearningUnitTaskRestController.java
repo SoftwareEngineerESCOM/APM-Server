@@ -3,6 +3,7 @@ package com.apms.learningUnitTask;
 import java.util.List;
 
 import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
 import com.apms.learningUnitStatus.LearningUnitStatus;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import com.apms.user.User;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime; 
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -29,10 +30,14 @@ public class LearningUnitTaskRestController {
 
     @Autowired
     private LearningUnitTaskService learningUnitTaskService;
+<<<<<<< HEAD
 
     @Autowired
     private UserService userService;
      
+=======
+    
+>>>>>>> fd5d35f46877eb2c6a8129a7d67d8ce46b83607e
     @Autowired
     private LearningUnitStatusService learningUnitStatusService;
 
@@ -45,7 +50,7 @@ public class LearningUnitTaskRestController {
         try {
             res = learningUnitTaskService.getAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (!res.isEmpty()) {
@@ -64,7 +69,7 @@ public class LearningUnitTaskRestController {
         try {
             res = learningUnitTaskService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnitTask>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -97,7 +102,7 @@ public class LearningUnitTaskRestController {
                 return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Esta tarea ya te fue asignada.", null);
             
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         
@@ -111,7 +116,7 @@ public class LearningUnitTaskRestController {
         try {
             learningUnitTaskService.update(learningUnitTask.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "LearningUnitTask modificado.", null);
@@ -125,7 +130,7 @@ public class LearningUnitTaskRestController {
         try {
             learningUnitTaskService.update(learningUnitTask.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "LearningUnitTask modificado.", null);
@@ -139,7 +144,7 @@ public class LearningUnitTaskRestController {
         try {
             learningUnitTaskService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnitTask>(RESTResponse.FAIL, "Hubo un error en el registro. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<LearningUnitTask>(RESTResponse.OK, "LearningUnitTask modificado.", null);
@@ -151,7 +156,7 @@ public class LearningUnitTaskRestController {
         try {
             aux = learningUnitTaskService.getLearningUnitTasksByUserId(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<LearningUnitTask>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -173,7 +178,7 @@ public class LearningUnitTaskRestController {
            }else
                 return false;
        } catch (Exception e){
-           e.printStackTrace();
+           Logger.getLogger(null).log(null,"F: ",e);
            return false;
        } 
     }

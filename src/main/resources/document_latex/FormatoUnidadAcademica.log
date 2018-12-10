@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.5)  7 DEC 2018 00:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.5)  9 DEC 2018 04:20
 entering extended mode
 **./src/main/resources/document_latex/FormatoUnidadAcademica.tex
 (src/main/resources/document_latex/FormatoUnidadAcademica.tex
@@ -476,10 +476,13 @@ Package: times 2005/04/12 PSNFSS-v9.2a (SPQR)
 sty"
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\ragged2e.sty"
+("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\enumerate.st
+y"
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks37
+) ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\ragged2e.sty"
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
-
-("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everysel.sty"
+ ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everysel.sty"
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
 \CenteringLeftskip=\skip92
@@ -657,7 +660,7 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LT@rows=\count134
 \c@LT@tables=\count135
 \c@LT@chunks=\count136
-\LT@p@ftn=\toks37
+\LT@p@ftn=\toks38
 )
 (D:\xXEdG\Documents\Github\APMS-Server\src\main\resources\document_latex\Format
 oUnidadAcademica.aux
@@ -666,20 +669,20 @@ LaTeX Info: Redefining \% on input line 6.
 )
 \openout1 = `FormatoUnidadAcademica.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Info: Redefining \. on input line 124.
-LaTeX Info: Redefining \% on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Info: Redefining \. on input line 125.
+LaTeX Info: Redefining \% on input line 125.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
@@ -699,12 +702,12 @@ ii"
 \scratchbox=\box65
 \nofMPsegments=\count138
 \nofMParguments=\count139
-\everyMPshowfont=\toks38
+\everyMPshowfont=\toks39
 \MPscratchCnt=\count140
 \MPscratchDim=\dimen154
 \MPnumerator=\count141
 \makeMPintoPDFobject=\count142
-\everyMPtoPDFconversion=\toks39
+\everyMPtoPDFconversion=\toks40
 )
 ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
 base.sty"
@@ -762,20 +765,20 @@ G,.JBIG2,.JB2,.eps]
 \c@lstlisting=\count143
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 124.
+(lastpage)             ! on input line 125.
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 124.
+LaTeX Info: Redefining \selectfont on input line 125.
 <Analisis/FormatoUA/ipn.png, id=1, 593.96906pt x 852.93657pt>
-File: Analisis/FormatoUA/ipn.png Graphic file (type png)
-<use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 129.
-(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
 Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 130.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 131.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--138
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
  []\OT1/cmbr/bx/n/14.4 PROGRAMA SINT[]ETI-CO 
  []
 
@@ -786,43 +789,162 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.141 \textbf
-             {UNIDAD ACADÉMICA:} Escuela Superior de Cómputo\\
+l.142 \textbf
+             {UNIDAD ACADÉMICA:} Escuela Superior de Cómputo (ESCOM)\\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--146
+Underfull \hbox (badness 10000) in paragraph at lines 142--147
 
  []
 
 LaTeX Font Info:    Try loading font information for OML+cmbrm on input line 15
-0.
+1.
 
 ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\omlcmbrm.
 fd"
 File: omlcmbrm.fd 2005/04/13 v8.1 (WaS)
 )
 LaTeX Font Info:    Try loading font information for OMS+cmbrs on input line 15
-0.
+1.
 
 ("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\omscmbrs.
 fd"
 File: omscmbrs.fd 2005/04/13 v8.1 (WaS)
 )
-LaTeX Font Info:    Try loading font information for OMS+cmbr on input line 175
-.
+! Undefined control sequence.
+\enit@endenumerate ->\enit@after 
+                                 \endlist \ifx \enit@series \relax \else \if...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-("C:\Users\xXEdG\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cmbright\omscmbr.f
-d"
-File: omscmbr.fd 2005/04/13 v8.1 (WaS)
-)
-LaTeX Font Info:    Font shape `OMS/cmbr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmbrs/m/n' tried instead on input line 175.
+! Undefined control sequence.
+\enit@endenumerate ...\else \ifnum \enit@resuming 
+                                                  =\@ne \enit@setresumekeys ...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.168     \end{enumerate}
+                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\enit@setresumekeys ...xpandafter {\enit@savekeys 
+                                                  }\xdef \enit@afterlist {#2...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\enit@setresumekeys ...it@toks }\ifnum \enit@type 
+                                                  =\z@ #3\def \enit@noexcs {...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.168     \end{enumerate}
+                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+<argument> enit@resume@series@\enit@series 
+                                           
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\enit@endenumerate ...t \fi \ifnum \enit@resuming 
+                                                  =\thr@@ \enit@setresumekey...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.168     \end{enumerate}
+                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\enit@setresumekeys ...xpandafter {\enit@savekeys 
+                                                  }\xdef \enit@afterlist {#2...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\enit@setresumekeys ...it@toks }\ifnum \enit@type 
+                                                  =\z@ #3\def \enit@noexcs {...
+l.168     \end{enumerate}
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.168     \end{enumerate}
+                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 150--186
+Underfull \hbox (badness 10000) in paragraph at lines 178--184
+
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 151--190
 [][] 
  []
 
@@ -833,83 +955,79 @@ cuments/Github/APMS-Server/src/main/resources/document_latex/Analisis/FormatoUA
 /ipn.png>]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 196.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 200.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 197.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 201.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Overfull \hbox (41.19997pt too wide) in paragraph at lines 207--221
+Overfull \hbox (41.19997pt too wide) in paragraph at lines 211--225
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
  []|\OT1/cmbr/bx/n/10 INTENCI[]ON EDU-CA-TI-VA: 
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 232--233
+Underfull \hbox (badness 1603) in paragraph at lines 236--237
 \OT1/cmbr/m/n/10 las ha-bi-li-da-des de anali-sis y di-se~no de pro-yec-tos ha
 -cien-do uso de soft-wa-re de ges-tion de pro-yec-tos as co-mo 
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 232--233
+Underfull \hbox (badness 1043) in paragraph at lines 236--237
 \OT1/cmbr/m/n/10 pla-ni-fi-car y pro-yec-tar es es-trategi-ca-men-te (Re-cur-s
 os Hard-wa-re y Soft-wa-re, Re-cur-sos Hu-ma-nos, com-po-nen-tes 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 1303) in paragraph at lines 238--239
+[]\OT1/cmbr/m/n/10 Se re-la-cio-na con las uni-da-des de apren-di-za-je: Pro-gr
+a-ma-cion Orien-ta-da, Ba-ses de Da-tos y Ad-mi-nis-tra-cion de 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
  []\OT1/cmbr/bx/n/10 PROP[]OSI-TO DE LA UNI-DAD DE APREN-DI-ZA-JE: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 226--242
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 230--248
 [][] 
  []
 
 
-Underfull \hbox (badness 6927) in paragraph at lines 257--258
+Underfull \hbox (badness 6927) in paragraph at lines 263--264
 []|\OT1/cmbr/bx/n/10 UNIDAD DE APREN-DI-ZA-JE
  []
 
 
-Underfull \hbox (badness 6078) in paragraph at lines 257--258
+Underfull \hbox (badness 6078) in paragraph at lines 263--264
 \OT1/cmbr/bx/n/10 DI-SE[]NADA O RE-DI-SE[]NADA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
-[]|\OT1/cmbr/bx/n/10 REVISADA POR: \OT1/cmbr/m/n/10 Dr. Fla-vio
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
-\OT1/cmbr/m/n/10 Ar-tu-ro Sanchez Gar-fias
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 []|\OT1/cmbr/bx/n/10 HORAS DE APREN-DI-ZA-JE
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-[]|\OT1/cmbr/bx/n/10 APROBADA POR: \OT1/cmbr/m/n/10 Con-se-jo
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+[]\OT1/cmbr/bx/n/10 HORAS TO-TA-LE-S/-SE-MES-TRE:
  []
 
 
-Underfull \hbox (badness 3954) in paragraph at lines 274--274
+Underfull \hbox (badness 3954) in paragraph at lines 280--280
 []|\OT1/cmbr/bx/n/10 AUTORIZADO Y VA-LI-DA-DO
  []
 
 ! Misplaced \noalign.
 <recently read> \noalign 
                          
-l.274 ...TORIZADO Y VALIDADO POR}:\\& &\\ & \hline
+l.280 ...TORIZADO Y VALIDADO POR}:\\& &\\ & \hline
                                                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -917,102 +1035,102 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \noalign.
 <recently read> \noalign 
                          
-l.276 ...Presidente del CTCE.\end{center} & \hline
-                                                  
+l.282     \begin{center}S/I\end{center} & \hline
+                                                
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (42.22743pt too wide) in paragraph at lines 247--283
+Overfull \hbox (42.22743pt too wide) in paragraph at lines 253--288
 [][] 
  []
 
 [2]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 293.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 298.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 294.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 299.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--301
+Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 302--307
+Underfull \hbox (badness 10000) in paragraph at lines 307--312
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--318
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
  []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 311--325
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 316--330
 [][] 
  []
 
 
-Overfull \hbox (1.9744pt too wide) in paragraph at lines 328--328
+Overfull \hbox (1.9744pt too wide) in paragraph at lines 333--333
 []|[]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--328
+Underfull \hbox (badness 10000) in paragraph at lines 333--333
 []|\OT1/cmbr/bx/n/10 HORAS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--328
+Underfull \hbox (badness 10000) in paragraph at lines 333--333
 \OT1/cmbr/bx/n/10 CON
  []
 
 
-Overfull \hbox (13.25829pt too wide) in paragraph at lines 328--328
+Overfull \hbox (13.25829pt too wide) in paragraph at lines 333--333
 \OT1/cmbr/bx/n/10 DO-CEN-TE| 
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 328--328
+Underfull \hbox (badness 1122) in paragraph at lines 333--333
 []|\OT1/cmbr/bx/n/10 HORAS DE
  []
 
 
-Overfull \hbox (14.56424pt too wide) in paragraph at lines 328--328
+Overfull \hbox (14.56424pt too wide) in paragraph at lines 333--333
 \OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
  []
 
 
-Overfull \hbox (5.4531pt too wide) in paragraph at lines 328--328
+Overfull \hbox (5.4531pt too wide) in paragraph at lines 333--333
 \OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
  []
 
 
-Overfull \hbox (3.64322pt too wide) in paragraph at lines 329--329
+Overfull \hbox (3.64322pt too wide) in paragraph at lines 334--334
 []|\OT1/cmbr/bx/n/10 CLAVE
  []
 
 
-Overfull \hbox (51.44899pt too wide) in paragraph at lines 329--329
+Overfull \hbox (51.44899pt too wide) in paragraph at lines 334--334
 \OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
  []
 
 
-Overfull \hbox (2.18839pt too wide) in paragraph at lines 330--330
+Overfull \hbox (2.18839pt too wide) in paragraph at lines 335--335
 []|\OT1/cmbr/bx/n/10 P| 
  []
 
 
-Overfull \hbox (4.0636pt too wide) in paragraph at lines 343--347
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 348--352
 []|[]| 
  []
 
 
-Overfull \hbox (8.91043pt too wide) in paragraph at lines 351--355
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 356--360
 []|[]| 
  []
 
@@ -1023,132 +1141,132 @@ See the array package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.355   \end{tabular} & \begin{tabular}[c]{}
+l.360   \end{tabular} & \begin{tabular}[c]{}
                                             
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (4.0636pt too wide) in paragraph at lines 362--362
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 367--367
 []|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
-Overfull \hbox (8.91043pt too wide) in paragraph at lines 362--362
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 367--367
 []|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
-Overfull \hbox (42.1681pt too wide) in paragraph at lines 327--364
+Overfull \hbox (42.1681pt too wide) in paragraph at lines 332--369
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
  []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 369--377
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 374--382
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
  []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 379--387
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 384--392
 [][] 
  []
 
 [3]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 397.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 402.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 398.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 403.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--405
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--411
+Underfull \hbox (badness 10000) in paragraph at lines 411--416
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
  []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 415--429
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 420--434
 [][] 
  []
 
 
-Overfull \hbox (1.9744pt too wide) in paragraph at lines 432--432
+Overfull \hbox (1.9744pt too wide) in paragraph at lines 437--437
 []|[]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--432
+Underfull \hbox (badness 10000) in paragraph at lines 437--437
 []|\OT1/cmbr/bx/n/10 HORAS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--432
+Underfull \hbox (badness 10000) in paragraph at lines 437--437
 \OT1/cmbr/bx/n/10 CON
  []
 
 
-Overfull \hbox (13.25829pt too wide) in paragraph at lines 432--432
+Overfull \hbox (13.25829pt too wide) in paragraph at lines 437--437
 \OT1/cmbr/bx/n/10 DO-CEN-TE| 
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 432--432
+Underfull \hbox (badness 1122) in paragraph at lines 437--437
 []|\OT1/cmbr/bx/n/10 HORAS DE
  []
 
 
-Overfull \hbox (14.56424pt too wide) in paragraph at lines 432--432
+Overfull \hbox (14.56424pt too wide) in paragraph at lines 437--437
 \OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
  []
 
 
-Overfull \hbox (5.4531pt too wide) in paragraph at lines 432--432
+Overfull \hbox (5.4531pt too wide) in paragraph at lines 437--437
 \OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
  []
 
 
-Overfull \hbox (3.64322pt too wide) in paragraph at lines 433--433
+Overfull \hbox (3.64322pt too wide) in paragraph at lines 438--438
 []|\OT1/cmbr/bx/n/10 CLAVE
  []
 
 
-Overfull \hbox (51.44899pt too wide) in paragraph at lines 433--433
+Overfull \hbox (51.44899pt too wide) in paragraph at lines 438--438
 \OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
  []
 
 
-Overfull \hbox (2.18839pt too wide) in paragraph at lines 434--434
+Overfull \hbox (2.18839pt too wide) in paragraph at lines 439--439
 []|\OT1/cmbr/bx/n/10 P| 
  []
 
 
-Overfull \hbox (4.0636pt too wide) in paragraph at lines 447--451
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 452--456
 []|[]| 
  []
 
 
-Overfull \hbox (8.91043pt too wide) in paragraph at lines 455--459
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 460--464
 []|[]| 
  []
 
@@ -1159,132 +1277,132 @@ See the array package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.459   \end{tabular} & \begin{tabular}[c]{}
+l.464   \end{tabular} & \begin{tabular}[c]{}
                                             
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (4.0636pt too wide) in paragraph at lines 466--466
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 471--471
 []|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
-Overfull \hbox (8.91043pt too wide) in paragraph at lines 466--466
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 471--471
 []|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
-Overfull \hbox (42.1681pt too wide) in paragraph at lines 431--468
+Overfull \hbox (42.1681pt too wide) in paragraph at lines 436--473
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--476
+Underfull \hbox (badness 10000) in paragraph at lines 480--481
  []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 473--481
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 478--486
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--486
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
  []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 483--491
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 488--496
 [][] 
  []
 
 [4]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 501.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 506.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 502.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 507.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 507--509
+Underfull \hbox (badness 10000) in paragraph at lines 512--514
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--515
+Underfull \hbox (badness 10000) in paragraph at lines 515--520
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--526
+Underfull \hbox (badness 10000) in paragraph at lines 530--531
  []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 519--533
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 524--538
 [][] 
  []
 
 
-Overfull \hbox (1.9744pt too wide) in paragraph at lines 536--536
+Overfull \hbox (1.9744pt too wide) in paragraph at lines 541--541
 []|[]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--536
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
 []|\OT1/cmbr/bx/n/10 HORAS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--536
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
 \OT1/cmbr/bx/n/10 CON
  []
 
 
-Overfull \hbox (13.25829pt too wide) in paragraph at lines 536--536
+Overfull \hbox (13.25829pt too wide) in paragraph at lines 541--541
 \OT1/cmbr/bx/n/10 DO-CEN-TE| 
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 536--536
+Underfull \hbox (badness 1122) in paragraph at lines 541--541
 []|\OT1/cmbr/bx/n/10 HORAS DE
  []
 
 
-Overfull \hbox (14.56424pt too wide) in paragraph at lines 536--536
+Overfull \hbox (14.56424pt too wide) in paragraph at lines 541--541
 \OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
  []
 
 
-Overfull \hbox (5.4531pt too wide) in paragraph at lines 536--536
+Overfull \hbox (5.4531pt too wide) in paragraph at lines 541--541
 \OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
  []
 
 
-Overfull \hbox (3.64322pt too wide) in paragraph at lines 537--537
+Overfull \hbox (3.64322pt too wide) in paragraph at lines 542--542
 []|\OT1/cmbr/bx/n/10 CLAVE
  []
 
 
-Overfull \hbox (51.44899pt too wide) in paragraph at lines 537--537
+Overfull \hbox (51.44899pt too wide) in paragraph at lines 542--542
 \OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
  []
 
 
-Overfull \hbox (2.18839pt too wide) in paragraph at lines 538--538
+Overfull \hbox (2.18839pt too wide) in paragraph at lines 543--543
 []|\OT1/cmbr/bx/n/10 P| 
  []
 
 
-Overfull \hbox (4.0636pt too wide) in paragraph at lines 551--555
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 556--560
 []|[]| 
  []
 
 
-Overfull \hbox (8.91043pt too wide) in paragraph at lines 559--563
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 564--568
 []|[]| 
  []
 
@@ -1295,106 +1413,514 @@ See the array package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.563   \end{tabular} & \begin{tabular}[c]{}
+l.568   \end{tabular} & \begin{tabular}[c]{}
                                             
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (4.0636pt too wide) in paragraph at lines 570--570
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 575--575
 []|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
-Overfull \hbox (8.91043pt too wide) in paragraph at lines 570--570
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 575--575
 []|\OT1/cmbr/m/n/10 S/I| 
  []
 
 
-Overfull \hbox (42.1681pt too wide) in paragraph at lines 535--572
+Overfull \hbox (42.1681pt too wide) in paragraph at lines 540--577
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 579--580
+Underfull \hbox (badness 10000) in paragraph at lines 584--585
  []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 577--585
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 582--590
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--590
+Underfull \hbox (badness 10000) in paragraph at lines 594--595
  []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 587--595
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 592--600
 [][] 
  []
 
 [5]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 605.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 610.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 606.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 611.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 611--613
+Underfull \hbox (badness 10000) in paragraph at lines 616--618
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 614--619
+Underfull \hbox (badness 10000) in paragraph at lines 619--624
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
+Underfull \hbox (badness 10000) in paragraph at lines 634--635
+ []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 628--642
+[][] 
+ []
+
+
+Overfull \hbox (1.9744pt too wide) in paragraph at lines 645--645
+[]|[]| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 645--645
+[]|\OT1/cmbr/bx/n/10 HORAS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 645--645
+\OT1/cmbr/bx/n/10 CON
+ []
+
+
+Overfull \hbox (13.25829pt too wide) in paragraph at lines 645--645
+\OT1/cmbr/bx/n/10 DO-CEN-TE| 
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 645--645
+[]|\OT1/cmbr/bx/n/10 HORAS DE
+ []
+
+
+Overfull \hbox (14.56424pt too wide) in paragraph at lines 645--645
+\OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
+ []
+
+
+Overfull \hbox (5.4531pt too wide) in paragraph at lines 645--645
+\OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
+ []
+
+
+Overfull \hbox (3.64322pt too wide) in paragraph at lines 646--646
+[]|\OT1/cmbr/bx/n/10 CLAVE
+ []
+
+
+Overfull \hbox (51.44899pt too wide) in paragraph at lines 646--646
+\OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
+ []
+
+
+Overfull \hbox (2.18839pt too wide) in paragraph at lines 647--647
+[]|\OT1/cmbr/bx/n/10 P| 
+ []
+
+
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 660--664
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 668--672
+[]|[]| 
+ []
+
+
+! Package array Error: Empty preamble: `l' used.
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.672   \end{tabular} & \begin{tabular}[c]{}
+                                            
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 679--679
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 679--679
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (42.1681pt too wide) in paragraph at lines 644--681
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--689
+ []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 686--694
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--699
+ []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 696--704
+[][] 
+ []
+
+[6]
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 714.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 715.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 720--722
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--728
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
+ []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 732--746
+[][] 
+ []
+
+
+Overfull \hbox (1.9744pt too wide) in paragraph at lines 749--749
+[]|[]| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--749
+[]|\OT1/cmbr/bx/n/10 HORAS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--749
+\OT1/cmbr/bx/n/10 CON
+ []
+
+
+Overfull \hbox (13.25829pt too wide) in paragraph at lines 749--749
+\OT1/cmbr/bx/n/10 DO-CEN-TE| 
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 749--749
+[]|\OT1/cmbr/bx/n/10 HORAS DE
+ []
+
+
+Overfull \hbox (14.56424pt too wide) in paragraph at lines 749--749
+\OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
+ []
+
+
+Overfull \hbox (5.4531pt too wide) in paragraph at lines 749--749
+\OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
+ []
+
+
+Overfull \hbox (3.64322pt too wide) in paragraph at lines 750--750
+[]|\OT1/cmbr/bx/n/10 CLAVE
+ []
+
+
+Overfull \hbox (51.44899pt too wide) in paragraph at lines 750--750
+\OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
+ []
+
+
+Overfull \hbox (2.18839pt too wide) in paragraph at lines 751--751
+[]|\OT1/cmbr/bx/n/10 P| 
+ []
+
+
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 764--768
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 772--776
+[]|[]| 
+ []
+
+
+! Package array Error: Empty preamble: `l' used.
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.776   \end{tabular} & \begin{tabular}[c]{}
+                                            
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 783--783
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 783--783
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (42.1681pt too wide) in paragraph at lines 748--785
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 792--793
+ []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 790--798
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 802--803
+ []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 800--808
+[][] 
+ []
+
+[7]
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 818.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 819.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 824--826
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 827--832
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 842--843
+ []|\OT1/cmbr/bx/n/10 UNIDAD DE COM-PE-TEN-CIA: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 836--850
+[][] 
+ []
+
+
+Overfull \hbox (1.9744pt too wide) in paragraph at lines 853--853
+[]|[]| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 853--853
+[]|\OT1/cmbr/bx/n/10 HORAS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 853--853
+\OT1/cmbr/bx/n/10 CON
+ []
+
+
+Overfull \hbox (13.25829pt too wide) in paragraph at lines 853--853
+\OT1/cmbr/bx/n/10 DO-CEN-TE| 
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 853--853
+[]|\OT1/cmbr/bx/n/10 HORAS DE
+ []
+
+
+Overfull \hbox (14.56424pt too wide) in paragraph at lines 853--853
+\OT1/cmbr/bx/n/10 APREN-DI-ZA-JE
+ []
+
+
+Overfull \hbox (5.4531pt too wide) in paragraph at lines 853--853
+\OT1/cmbr/bx/n/10 AUT[]ONO-MO| 
+ []
+
+
+Overfull \hbox (3.64322pt too wide) in paragraph at lines 854--854
+[]|\OT1/cmbr/bx/n/10 CLAVE
+ []
+
+
+Overfull \hbox (51.44899pt too wide) in paragraph at lines 854--854
+\OT1/cmbr/bx/n/10 BI-BLIOGR[]AFI-CA| 
+ []
+
+
+Overfull \hbox (2.18839pt too wide) in paragraph at lines 855--855
+[]|\OT1/cmbr/bx/n/10 P| 
+ []
+
+
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 868--872
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 876--880
+[]|[]| 
+ []
+
+
+! Package array Error: Empty preamble: `l' used.
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.880   \end{tabular} & \begin{tabular}[c]{}
+                                            
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (4.0636pt too wide) in paragraph at lines 887--887
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (8.91043pt too wide) in paragraph at lines 887--887
+[]|\OT1/cmbr/m/n/10 S/I| 
+ []
+
+
+Overfull \hbox (42.1681pt too wide) in paragraph at lines 852--889
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 896--897
+ []|\OT1/cmbr/bx/n/10 ESTRATEGIAS DE APREN-DI-ZA-JE: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 894--902
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 906--907
+ []|\OT1/cmbr/bx/n/10 EVALUACI[]ON DE LOS APREN-DI-ZA-JES: 
+ []
+
+
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 904--912
+[][] 
+ []
+
+[8]
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 922.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+File: Analisis/FormatoUA/ipn.png Graphic file (type png)
+<use Analisis/FormatoUA/ipn.png>
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 923.
+(pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 928--930
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 931--936
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 937--938
  []\OT1/cmbr/bx/n/14.4 RELACI[]ON DE PR[]ACTI-CAS 
  []
 
 
-Overfull \hbox (4.99301pt too wide) in paragraph at lines 626--626
+Overfull \hbox (4.99301pt too wide) in paragraph at lines 943--943
  []|\OT1/cmbr/bx/n/10 PR[]ACTI-CA 
  []
 
 
-Overfull \hbox (3.86974pt too wide) in paragraph at lines 626--626
+Overfull \hbox (3.86974pt too wide) in paragraph at lines 943--943
  \OT1/cmbr/bx/n/10 TEM[]ATI-CAS| 
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.631     \hline
+l.948     \hline
                  &&\Centering\textbf{TOTAL DE HORAS}& S/I &\\\hline
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (41.87369pt too wide) in paragraph at lines 624--641
+Overfull \hbox (41.87369pt too wide) in paragraph at lines 941--958
 [][]
  []
 
 
-Overfull \hbox (42.58853pt too wide) in paragraph at lines 624--641
+Overfull \hbox (42.58853pt too wide) in paragraph at lines 941--958
 [] 
  []
 
-[6]
+[9]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 651.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 968.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 652.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 969.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
 
@@ -1404,73 +1930,73 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.657 \end{center}\\\
+l.974 \end{center}\\\
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 660--665
+Underfull \hbox (badness 10000) in paragraph at lines 977--982
 
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.677     \hline
+l.994     \hline
                 
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (42.2348pt too wide) in paragraph at lines 669--679
+Overfull \hbox (42.2348pt too wide) in paragraph at lines 986--996
 [][] 
  []
 
-[7]
+[10]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 689.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 1006.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 690.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 1007.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 695--697
+Underfull \hbox (badness 10000) in paragraph at lines 1012--1014
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 698--703
+Underfull \hbox (badness 10000) in paragraph at lines 1015--1020
 
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.713     \hline
-                
+l.1030     \hline
+                 
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (43.26965pt too wide) in paragraph at lines 706--715
+Overfull \hbox (43.26965pt too wide) in paragraph at lines 1023--1032
 [][] 
  []
 
-[8]
+[11]
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 725.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 1042.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 File: Analisis/FormatoUA/ipn.png Graphic file (type png)
 <use Analisis/FormatoUA/ipn.png>
-Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 726.
+Package pdftex.def Info: Analisis/FormatoUA/ipn.png  used on input line 1043.
 (pdftex.def)             Requested size: 56.9055pt x 81.70657pt.
 
-Underfull \hbox (badness 2503) in paragraph at lines 733--733
+Underfull \hbox (badness 2503) in paragraph at lines 1050--1050
  []\OT1/cmbr/bx/n/14.4 PERFIL DO-CEN-TE POR UNI-DAD DE APREN-DI-ZA-JE 
  []
 
@@ -1481,87 +2007,211 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.736 \begin
-            {enumerate}
+l.1053 \begin
+             {enumerate}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--744
+Underfull \hbox (badness 10000) in paragraph at lines 1055--1061
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--744
+Underfull \hbox (badness 10000) in paragraph at lines 1055--1061
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--744
+Underfull \hbox (badness 10000) in paragraph at lines 1055--1061
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 748--748
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
 []|[]\OT1/cmbr/bx/n/10 AREA DE
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 748--749
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1066
 []|\OT1/cmbr/bx/n/10 Cientfi-ca
  []
 
 
-Underfull \hbox (badness 2393) in paragraph at lines 749--750
+Underfull \hbox (badness 2393) in paragraph at lines 1066--1067
 []|\OT1/cmbr/bx/n/10 Terminal y de
  []
 
 
-Overfull \hbox (6.33273pt too wide) in paragraph at lines 746--753
+Overfull \hbox (6.33273pt too wide) in paragraph at lines 1063--1070
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 746--753
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1070
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--758
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1075
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--758
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1075
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 762--763
+Underfull \hbox (badness 10000) in paragraph at lines 1079--1080
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--767
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1084
 []|\OT1/cmbr/bx/n/10 EXPERIENCIA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--767
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1084
 []|\OT1/cmbr/bx/n/10 COMPETENCIAS
  []
 
+! Undefined control sequence.
+\enit@endenumerate ->\enit@after 
+                                 \endlist \ifx \enit@series \relax \else \if...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Overfull \hbox (10.15205pt too wide) in paragraph at lines 765--783
+
+Overfull \hbox (10.15205pt too wide) in paragraph at lines 1082--1100
 [][] 
  []
+
+! Undefined control sequence.
+\enit@endenumerate ...\else \ifnum \enit@resuming 
+                                                  =\@ne \enit@setresumekeys ...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1100 \end{enumerate}
+                      
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\enit@setresumekeys ...xpandafter {\enit@savekeys 
+                                                  }\xdef \enit@afterlist {#2...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\enit@setresumekeys ...it@toks }\ifnum \enit@type 
+                                                  =\z@ #3\def \enit@noexcs {...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1100 \end{enumerate}
+                      
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+<argument> enit@resume@series@\enit@series 
+                                           
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\enit@endenumerate ...t \fi \ifnum \enit@resuming 
+                                                  =\thr@@ \enit@setresumekey...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1100 \end{enumerate}
+                      
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\enit@setresumekeys ...xpandafter {\enit@savekeys 
+                                                  }\xdef \enit@afterlist {#2...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\enit@setresumekeys ...it@toks }\ifnum \enit@type 
+                                                  =\z@ #3\def \enit@noexcs {...
+l.1100 \end{enumerate}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1100 \end{enumerate}
+                      
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
 
 ! Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.796       &
-             &&\\
+l.1113       &
+              &&\\
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
 So I'll assume that you meant to type \cr instead.
@@ -1569,55 +2219,53 @@ So I'll assume that you meant to type \cr instead.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.799       \hline
-                  
+l.1116       \hline
+                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.804       \hline
-                  
+l.1121       \hline
+                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.809       \hline
-                  
+l.1126       \hline
+                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
 AED: lastpage setting LastPage
-[9]
+[12]
 (D:\xXEdG\Documents\Github\APMS-Server\src\main\resources\document_latex\Format
 oUnidadAcademica.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 8665 strings out of 492970
- 130459 string characters out of 3126594
- 409687 words of memory out of 3000000
- 12347 multiletter control sequences out of 15000+200000
+ 8675 strings out of 492970
+ 130537 string characters out of 3126594
+ 409097 words of memory out of 3000000
+ 12358 multiletter control sequences out of 15000+200000
  9504 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,20n,56p,834b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dp
 i525\cmbrsy8.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\publi
-c\cmbright\dpi600\cmbrsy10.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\p
-k\ljfour\public\cmbright\dpi600\cmbr10.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX
-\2.9\fonts\pk\ljfour\public\cmbright\dpi600\cmbrbx10.pk> <C:\Users\xXEdG\AppDat
-a\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dpi720\cmbrbx10.pk> <C:\User
-s\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dpi864\cmbrbx1
-0.pk>
+c\cmbright\dpi600\cmbr10.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX\2.9\fonts\pk\
+ljfour\public\cmbright\dpi600\cmbrbx10.pk> <C:\Users\xXEdG\AppData\Local\MiKTeX
+\2.9\fonts\pk\ljfour\public\cmbright\dpi720\cmbrbx10.pk> <C:\Users\xXEdG\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\public\cmbright\dpi864\cmbrbx10.pk>
 Output written on D:\xXEdG\Documents\Github\APMS-Server\src\main\resources\docu
-ment_latex\FormatoUnidadAcademica.pdf (9 pages, 140914 bytes).
+ment_latex\FormatoUnidadAcademica.pdf (12 pages, 142890 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
+ 207 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 import com.apms.user.UserService;
@@ -37,7 +37,7 @@ public class HumanResourceRestController {
         try {
             res = humanResourceService.getAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<HumanResource>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -58,7 +58,7 @@ public class HumanResourceRestController {
         try {
             res = humanResourceService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<HumanResource>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -79,7 +79,7 @@ public class HumanResourceRestController {
                         null);
             humanResourceService.add(humanResource.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<HumanResource>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -94,7 +94,7 @@ public class HumanResourceRestController {
         try {
             humanResourceService.update(humanResource.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<HumanResource>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -109,7 +109,7 @@ public class HumanResourceRestController {
         try {
             humanResourceService.update(humanResource.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<HumanResource>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -132,7 +132,7 @@ public class HumanResourceRestController {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<HumanResource>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -146,7 +146,7 @@ public class HumanResourceRestController {
         try {
             res = humanResourceService.getHumanResourcesByWorkplaceIdAndPositionId(idW, idP);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<List<HumanResource>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (!res.isEmpty()) {
@@ -170,7 +170,7 @@ public class HumanResourceRestController {
         try {
             res = humanResourceService.getOne(name, first_surname, second_surname);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<HumanResource>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {

@@ -29,8 +29,6 @@ public class Practice {
 	private int number;
 	@Column(nullable = false)
 	private double length;
-	@Column(nullable = false)
-	private String placeOfPractice;
 	
 	@ManyToOne
 	@JoinColumn

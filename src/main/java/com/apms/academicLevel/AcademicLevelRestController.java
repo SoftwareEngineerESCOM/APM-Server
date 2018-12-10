@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apms.rest.RESTRequest;
+import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 
 @RestController
@@ -32,7 +32,7 @@ public class AcademicLevelRestController {
 		try {
 			res = academicLevelService.getAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);
 			return new RESTResponse<List<AcademicLevel>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
 		}
 		if (!res.isEmpty()) {
@@ -51,7 +51,7 @@ public class AcademicLevelRestController {
         try{
             res = academicLevelService.getOne(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<AcademicLevel>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -71,7 +71,7 @@ public class AcademicLevelRestController {
                 return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Nivel academico ya existe en el sistema.", null);
             academicLevelService.add(academicLevel.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
@@ -85,7 +85,7 @@ public class AcademicLevelRestController {
         try {
             academicLevelService.update(academicLevel.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
@@ -99,7 +99,7 @@ public class AcademicLevelRestController {
         try {
             academicLevelService.update(academicLevel.getPayload());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);
@@ -113,7 +113,7 @@ public class AcademicLevelRestController {
         try {
             academicLevelService.delete(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<AcademicLevel>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.", null);
         }
         return new RESTResponse<AcademicLevel>(RESTResponse.OK, "Los cambios se guardaron exitosamente.", null);

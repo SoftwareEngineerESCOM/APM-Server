@@ -1,13 +1,12 @@
 package com.apms.document;
 
+import java.util.logging.Logger;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,12 +14,23 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.apms.extensiveProgram.ExtensiveProgramService;
+import com.apms.bibliographyRelation.BibliographyRelation;
+import com.apms.extensiveProgram.ExtensiveProgram;
+import com.apms.learningUnit.LearningUnit;
+import com.apms.practiceRelation.PracticeRelation;
+import com.apms.studyPlan.StudyPlan;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.syntheticProgram.SyntheticProgramService;
+import com.apms.thematicUnit.ThematicUnit;
 
 public class LearningUnitDocument {
-	private SyntheticProgram syntheticProgram;
+	private LearningUnit learningUnit;
+	private SyntheticProgram syntheticProgram; 
+	private StudyPlan studyPlan; 
+	private ExtensiveProgram extensiveProgram; 
+	private List<BibliographyRelation> bibliographysRelation; 
+	private List<ThematicUnit> thematicUnits; 
+	private PracticeRelation practiceRelation;
 	private final File firstSection = new File("src/main/resources/document_latex/learning_unit_document/first_part_document.tex");
     private final File secondSectionTemplate = new File("src/main/resources/document_latex/learning_unit_document/second_part_document_template.tex");
     private final File secondSection = new File("src/main/resources/document_latex/learning_unit_document/second_part_document.tex");
@@ -31,15 +41,27 @@ public class LearningUnitDocument {
     private String content;
     private int numberUnits;
 
-    public LearningUnitDocument(SyntheticProgram syntheticProgram) {
-        this.syntheticProgram = syntheticProgram;
-    }
-    public String getUrl() {
+	private SyntheticProgramService syntheticProgramService;
+        
+    public LearningUnitDocument(LearningUnit learningUnit, SyntheticProgram syntheticProgram, StudyPlan studyPlan,
+			ExtensiveProgram extensiveProgram, List<BibliographyRelation> bibliographysRelation,
+			List<ThematicUnit> thematicUnits, PracticeRelation practiceRelation) {
+		this.learningUnit = learningUnit;
+		this.syntheticProgram = syntheticProgram;
+		this.studyPlan = studyPlan;
+		this.extensiveProgram = extensiveProgram;
+		this.bibliographysRelation = bibliographysRelation;
+		this.thematicUnits = thematicUnits;
+		this.practiceRelation = practiceRelation;
+		this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
+	}
+
+	public String getUrl() {
     	return url;
     }
+    
     public void createDocument() throws IOException{
     	this.content = "";
-        this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
     	fillDataLabels();
     	editSecondSectionTemplate();
     	replaceLabelsInfo(firstSection); //Llenar datos primera seccion
@@ -52,13 +74,15 @@ public class LearningUnitDocument {
     }
     
     private void fillDataLabels() {
-    	this.dataLabels = new HashMap<>();
+    	dataLabels = new HashMap<>();
+    	System.out.println("Aqui andamosh");
+    	
     	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
-    	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(syntheticProgram));
-    	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(syntheticProgram));
-    	dataLabels.putAll(LabelsFormat.createBibliographyLabels(syntheticProgram));
-    	dataLabels.putAll(LabelsFormat.createThematicUnitLabels(syntheticProgram));
-    	dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(syntheticProgram));	
+    	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(studyPlan));
+    	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(extensiveProgram));
+    	//dataLabels.putAll(LabelsFormat.createBibliographyLabels(syntheticProgram));
+    	//dataLabels.putAll(LabelsFormat.createThematicUnitLabels(syntheticProgram));
+    	//dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(syntheticProgram));	
     }
 
     private void replaceLabelsInfo(File file) throws IOException {
@@ -129,7 +153,7 @@ public class LearningUnitDocument {
             }
             reader.close();
         } catch (Exception e) {
-            e.printStackTrace();
+			Logger.getLogger(null).log(null,"F: ",e);            
         }
     }
 }
