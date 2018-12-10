@@ -260,9 +260,9 @@ public class LearningUnitRestController {
     @PatchMapping("/finish")
     public RESTResponse<LearningUnit> learningUnitFinished(@RequestBody RESTRequest<LearningUnit> req) {
         try {
-            LearningUnit dbLearningUnit = learningUnitService.getOne(req.getPayload().getId());
-            dbLearningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
-            learningUnitService.update(req.getPayload());
+            LearningUnit learningUnit = learningUnitService.getOne(req.getPayload().getId());
+            learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
+            learningUnitService.update(learningUnit);
         } catch (Exception e) {
             Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
@@ -292,7 +292,7 @@ public class LearningUnitRestController {
         try {
             LearningUnit learningUnit = learningUnitService.getOne(req.getPayload().getId());
             learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(3));
-            learningUnitService.update(req.getPayload());
+            learningUnitService.update(learningUnit);
         } catch (Exception e) {
             Logger.getLogger(null).log(null,"F: ",e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
