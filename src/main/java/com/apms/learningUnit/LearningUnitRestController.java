@@ -268,7 +268,7 @@ public class LearningUnitRestController {
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
+        return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
     }
 
     @GetMapping("/isFinished/{id}")
