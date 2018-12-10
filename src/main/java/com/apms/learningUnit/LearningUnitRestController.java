@@ -301,8 +301,8 @@ public class LearningUnitRestController {
         return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
     }
     
-    @GetMapping("/inProcess/{id}")
-    public RESTResponse<Boolean> geInProcess(@PathVariable Integer id) {
+    @GetMapping("learningUnit/inProcess/{id}")
+    public RESTResponse<Boolean> getInProcess(@PathVariable Integer id) {
         LearningUnit res;
         try {
             res = learningUnitService.getOne(id);
