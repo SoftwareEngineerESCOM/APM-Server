@@ -34,4 +34,6 @@ public class AuthorizationsService {
     public void delete(Integer id) {
         authorizationsRepository.deleteById(id);
     }
+
+    public Authorizations getAuthorizationsByLearningUnitId(Integer id){ return authorizationsRepository.getAuthorizationsByLearningUnitId(id);}
 }
