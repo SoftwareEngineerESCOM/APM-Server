@@ -279,16 +279,27 @@ public class LearningUnitRestController {
 
     @PatchMapping("/finish")
     public RESTResponse<LearningUnit> learningUnitFinished(@RequestBody RESTRequest<LearningUnit> req) {
+        LearningUnit learningUnit;
         try {
-            LearningUnit learningUnit = learningUnitService.getOne(req.getPayload().getId());
-            learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
-            learningUnitService.update(learningUnit);
+            learningUnit = learningUnitService.getOne(req.getPayload().getId());
+            if (learningUnit.isFinishSynteicProgram() &&
+                    learningUnit.isFinishExtensiveProgram() &&
+                    learningUnit.isFinishThematicUnit() &&
+                    learningUnit.isFinishPracticeRelation() &&
+                    learningUnit.isFinishEvaluationSystem() &&
+                    learningUnit.isFinishAuthorizations()){
+                learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
+                learningUnitService.update(learningUnit);
+            }
         } catch (Exception e) {
             Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
-        return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        if(learningUnit.getLearningUnitStatus().getId() == 4)
+            return new RESTResponse<LearningUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
+        else
+            return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Registro incompleto.", null);
     }
 
     @GetMapping("/isFinished/{id}")
@@ -303,7 +314,7 @@ public class LearningUnitRestController {
         if (res.getLearningUnitStatus().getId() == 4) {
             return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de aprendizaje " + res.getLearningUnitStatus().getName(), true);
         } else {
-            return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
+            return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje " + res.getLearningUnitStatus().getName(), false);
         }
     }
 
@@ -333,7 +344,7 @@ public class LearningUnitRestController {
         if (res.getLearningUnitStatus().getId() == 3) {
             return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de aprendizaje " + res.getLearningUnitStatus().getName(), true);
         } else {
-            return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
+            return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje " + res.getLearningUnitStatus().getName(), false);
         }
     }
 
