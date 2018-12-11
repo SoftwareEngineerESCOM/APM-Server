@@ -17,6 +17,8 @@ public class EvaluationSystem {
 	private double percentage;
 	@Column(nullable = false)
 	private int period;
+	@Column
+	private boolean isFinished;
 	@OneToOne
 	@JoinColumn
 	private ThematicUnit thematicUnit;

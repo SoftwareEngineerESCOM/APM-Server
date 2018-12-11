@@ -3,6 +3,7 @@ package com.apms.authorizations;
 import com.apms.academy.Academy;
 import com.apms.humanResource.HumanResource;
 import com.apms.learningUnit.LearningUnit;
+import com.apms.learningUnit.LearningUnitService;
 import com.apms.rest.RESTRequest;import java.util.logging.Logger;
 import com.apms.rest.RESTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class AuthorizationsRestController {
 
     @Autowired
     private SyntheticProgramService syntheticProgramService;
+
+    @Autowired
+    private LearningUnitService learningUnitService;
 
     /*
     **Return a listing of all the resources
@@ -77,14 +81,17 @@ public class AuthorizationsRestController {
     */
     @PostMapping
     public RESTResponse<Authorizations> post(@RequestBody Map<String,JsonNode> req) throws JsonProcessingException {
-	    ObjectMapper mapper = new ObjectMapper();
-		Academy elaboratedBy = mapper.treeToValue(req.get("elaboratedBy"),Academy.class);
-		HumanResource revisedBy = 	mapper.treeToValue(req.get("revisedBy"),HumanResource.class);
-		HumanResource authorizedBy = mapper.treeToValue(req.get("authorizedBy"),HumanResource.class);
-		HumanResource approvedBy = mapper.treeToValue(req.get("approvedBy"),HumanResource.class);
-		SyntheticProgram s = mapper.treeToValue(req.get("syntheticProgram"),SyntheticProgram.class);
-		SyntheticProgram s1 = syntheticProgramService.getSyntheticProgramsByLearningUnitId(s.getLearningUnit().getId());
         try {
+            ObjectMapper mapper = new ObjectMapper();
+            Academy elaboratedBy = mapper.treeToValue(req.get("elaboratedBy"),Academy.class);
+            HumanResource revisedBy = 	mapper.treeToValue(req.get("revisedBy"),HumanResource.class);
+            HumanResource authorizedBy = mapper.treeToValue(req.get("authorizedBy"),HumanResource.class);
+            HumanResource approvedBy = mapper.treeToValue(req.get("approvedBy"),HumanResource.class);
+            SyntheticProgram s = mapper.treeToValue(req.get("syntheticProgram"),SyntheticProgram.class);
+            LearningUnit learningUnit = learningUnitService.getOne(s.getLearningUnit().getId());
+            learningUnit.setFinishAuthorizations(true);
+            learningUnit = learningUnitService.update(learningUnit);
+            SyntheticProgram s1 = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnit.getId());
         	authorizationsService.add(new Authorizations(elaboratedBy,revisedBy,authorizedBy,approvedBy,s1));
         } catch (Exception e) {
             Logger.getLogger(null).log(null,"F: ",e);

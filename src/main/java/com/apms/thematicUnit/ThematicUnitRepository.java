@@ -12,4 +12,7 @@ public interface ThematicUnitRepository extends JpaRepository<ThematicUnit, Inte
 	@Query(value = "SELECT * FROM thematic_unit WHERE learning_unit_id = :id", nativeQuery = true)
 	List<ThematicUnit> getThematicUnitByLearningUnitId(@Param("id") Integer id);
 
+	@Query(value = "SELECT * FROM thematic_unit WHERE learning_unit_id = :id AND is_finished = :bool", nativeQuery = true)
+	List<ThematicUnit> getThematicUnitByLearningUnitIdAndIsFinished(@Param("id") Integer id, @Param("bool") Boolean bool);
+
 }

@@ -30,7 +30,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.apms.rest.RESTRequest;import java.util.logging.Logger;
+import com.apms.rest.RESTRequest;
+
+import java.util.logging.Logger;
+
 import com.apms.rest.RESTResponse;
 import com.apms.semester.Semester;
 import com.apms.semester.SemesterService;
@@ -56,21 +59,22 @@ public class LearningUnitRestController {
 
     @Autowired
     private SyntheticProgramService syntheticProgramService;
-    
+
     @Autowired
     private StudyPlanService studyPlanService;
 
     @Autowired
     private ExtensiveProgramService extensiveProgramService;
-    
+
     @Autowired
     private BibliographyRelationService bibliographyRelationService;
-    
+
     @Autowired
     private PracticeRelationService practiceRelationService;
-    
+
     @Autowired
     private ThematicUnitService thematicUnitService;
+
     /*
      ** Return a listing of all the resources
      */
@@ -80,7 +84,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getAll();
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -100,7 +104,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -123,7 +127,7 @@ public class LearningUnitRestController {
             req.getPayload().setLearningUnitStatus(learningUnitStatusService.getOne(req.getPayload().getLearningUnitStatus().getId()));
             learningUnitService.add(req.getPayload());
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
                     null);
         }
@@ -145,7 +149,7 @@ public class LearningUnitRestController {
             }
             learningUnitService.update(req.getPayload());
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -167,7 +171,7 @@ public class LearningUnitRestController {
             }
             learningUnitService.update(req.getPayload());
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -182,7 +186,7 @@ public class LearningUnitRestController {
         try {
             learningUnitService.delete(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL, "Por el momento no se puede realizar el registro.",
                     null);
         }
@@ -195,7 +199,7 @@ public class LearningUnitRestController {
         try {
             res = semesterService.getOne(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -204,7 +208,7 @@ public class LearningUnitRestController {
             try {
                 aux = learningUnitService.getLearningUnitsBySemesterId(id);
             } catch (Exception e) {
-                Logger.getLogger(null).log(null,"F: ",e);
+                Logger.getLogger(null).log(null, "F: ", e);
                 return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                         null);
             }
@@ -226,7 +230,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getLearningUnitByNameAndSemesterId(name, id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -244,7 +248,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getLearningUnitByNameAndStudyPlanId(name, id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<List<LearningUnit>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -266,7 +270,7 @@ public class LearningUnitRestController {
             res.setSemester(semester);
             learningUnitService.update(res);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -280,7 +284,7 @@ public class LearningUnitRestController {
             learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(4));
             learningUnitService.update(learningUnit);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -293,7 +297,7 @@ public class LearningUnitRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<Boolean>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res.getLearningUnitStatus().getId() == 4) {
@@ -302,7 +306,7 @@ public class LearningUnitRestController {
             return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
         }
     }
-    
+
     @PatchMapping("/inProcess")
     public RESTResponse<LearningUnit> learningUnitInProcess(@RequestBody RESTRequest<LearningUnit> req) {
         try {
@@ -310,20 +314,20 @@ public class LearningUnitRestController {
             learningUnit.setLearningUnitStatus(learningUnitStatusService.getOne(3));
             learningUnitService.update(learningUnit);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         return new RESTResponse<LearningUnit>(RESTResponse.OK, "", null);
     }
-    
+
     @GetMapping("learningUnit/inProcess/{id}")
     public RESTResponse<Boolean> getInProcess(@PathVariable Integer id) {
         LearningUnit res;
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<Boolean>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res.getLearningUnitStatus().getId() == 3) {
@@ -332,35 +336,32 @@ public class LearningUnitRestController {
             return new RESTResponse<Boolean>(RESTResponse.OK, "Unidad de apredizaje ", false);
         }
     }
-    
-    
 
-        @GetMapping("/generatePDF/{learningUnitId}")
-        public ResponseEntity<InputStreamResource> generatePDF (@PathVariable Integer learningUnitId) throws IOException
-        {
-            LearningUnitDocument document;
-            try {
-            	LearningUnit learningUnit = learningUnitService.getOne(learningUnitId);
-            	SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
-            	StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
-            	ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
-            	List<BibliographyRelation> bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
-            	List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
-            	PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
-                document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits,practiceRelation);
-                document.createDocument();
-            } catch (Exception e) {
-            	Logger.getLogger(null).log(null,"F: ",e);
-            	return null;
-            }
-
-            ClassPathResource pdfFile = new ClassPathResource("document_latex/FormatoUnidadAcademica.pdf");
-
-            return ResponseEntity
-                    .ok()
-                    .contentLength(pdfFile.contentLength())
-                    .contentType(
-                            MediaType.parseMediaType("application/pdf"))
-                    .body(new InputStreamResource(pdfFile.getInputStream()));
+    @GetMapping("/generatePDF/{learningUnitId}")
+    public ResponseEntity<InputStreamResource> generatePDF(@PathVariable Integer learningUnitId) throws IOException {
+        LearningUnitDocument document;
+        try {
+            LearningUnit learningUnit = learningUnitService.getOne(learningUnitId);
+            SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
+            StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
+            ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
+            List<BibliographyRelation> bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
+            List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
+            PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
+            document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, practiceRelation);
+            document.createDocument();
+        } catch (Exception e) {
+            Logger.getLogger(null).log(null, "F: ", e);
+            return null;
         }
+
+        ClassPathResource pdfFile = new ClassPathResource("document_latex/FormatoUnidadAcademica.pdf");
+
+        return ResponseEntity
+                .ok()
+                .contentLength(pdfFile.contentLength())
+                .contentType(
+                        MediaType.parseMediaType("application/pdf"))
+                .body(new InputStreamResource(pdfFile.getInputStream()));
+    }
 }

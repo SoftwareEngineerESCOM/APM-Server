@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.List;
 
 @Getter
 @Setter
@@ -42,19 +44,20 @@ public class LearningUnit {
     @JoinColumn(nullable = false)
     private Academy academy;
 
+    @Column
+    private boolean isFinishSynteicProgram;
+    @Column
+    private boolean isFinishExtensiveProgram;
+    @Column
+    private boolean isFinishThematicUnit;
+    @Column
+    private boolean isFinishPracticeRelation;
+    @Column
+    private boolean isFinishEvaluationSystem;
+    @Column
+    private boolean isFinishAuthorizations;
+
     public LearningUnit() {
-    }
-    public LearningUnit(Integer id, String name, Double tEPICCredits, Double sATCACredits, Double theoryHoursPerWeek,
-                        Double practiceHoursPerWeek, FormationArea formationArea, Semester semester, Academy academy) {
-        this.id = id;
-        this.name = name;
-        TEPICCredits = tEPICCredits;
-        SATCACredits = sATCACredits;
-        this.theoryHoursPerWeek = theoryHoursPerWeek;
-        this.practiceHoursPerWeek = practiceHoursPerWeek;
-        this.formationArea = formationArea;
-        this.semester = semester;
-        this.academy = academy;
     }
 
 	@Override

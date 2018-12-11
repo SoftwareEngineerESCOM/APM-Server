@@ -38,4 +38,8 @@ public class ThematicUnitService {
 	public List<ThematicUnit> getThematicUnitByLearningUnitId(Integer id) {
 		return thematicUnitRepository.getThematicUnitByLearningUnitId(id);
 	}
+
+	public List<ThematicUnit> getThematicUnitByLearningUnitIdAndIsFinished(Integer id, Boolean bool) {
+		return thematicUnitRepository.getThematicUnitByLearningUnitIdAndIsFinished(id, bool);
+	}
 }

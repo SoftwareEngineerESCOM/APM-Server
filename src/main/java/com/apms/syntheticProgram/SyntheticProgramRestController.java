@@ -47,7 +47,6 @@ public class SyntheticProgramRestController {
 	
 	@Autowired
 	private EvaluationUAService evaluationUAService;
-
 	
 	@Autowired
 	private LearningUnitService learningUnitService;
@@ -103,6 +102,7 @@ public class SyntheticProgramRestController {
 		List<AccreditationType> accreditationtype = new ArrayList<AccreditationType>();
 		List<EvaluationUA> evaluationUA = new ArrayList<EvaluationUA>();
 		LearningUnit learningUnit = mapper.treeToValue(req.get("learningUnit"),LearningUnit.class);
+		learningUnit.setFinishSynteicProgram(true);
 		String regard = mapper.treeToValue(req.get("regard"),String.class);
 		String didacticOrientation = mapper.treeToValue(req.get("didacticOrientation"),String.class);
 

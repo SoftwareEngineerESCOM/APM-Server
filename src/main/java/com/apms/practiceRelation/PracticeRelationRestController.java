@@ -4,7 +4,10 @@ import com.apms.learningUnit.LearningUnit;
 import com.apms.learningUnit.LearningUnitService;
 import com.apms.practice.PracticeService;
 import com.apms.practiceRelationEvaluation.PracticeRelationEvaluationService;
-import com.apms.rest.RESTRequest;import java.util.logging.Logger;
+import com.apms.rest.RESTRequest;
+
+import java.util.logging.Logger;
+
 import com.apms.rest.RESTResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +17,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/practiceRelation")
 public class PracticeRelationRestController {
-	
+
     @Autowired
     private PracticeRelationService practiceRelationService;
-	
+
     @Autowired
     private LearningUnitService learningUnitService;
 
@@ -36,7 +39,7 @@ public class PracticeRelationRestController {
         try {
             res = practiceRelationService.getAll();
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<List<PracticeRelation>>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -57,7 +60,7 @@ public class PracticeRelationRestController {
         try {
             res = practiceRelationService.getOne(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.",
                     null);
         }
@@ -73,27 +76,30 @@ public class PracticeRelationRestController {
      */
     @PostMapping
     public RESTResponse<PracticeRelation> post(@RequestBody RESTRequest<PracticeRelation> req) {
+        LearningUnit learningUnit;
         try {
             if (req.getPayload().getPractices() != null) {
                 for (int i = 0; i < req.getPayload().getPractices().size(); i++) {
                     req.getPayload().getPractices().get(i).setId(practiceService.add(req.getPayload().getPractices().get(i)).getId());
                 }
             }
-            if (req.getPayload().getPracticeRelationEvaluations() != null){
+            if (req.getPayload().getPracticeRelationEvaluations() != null) {
                 for (int i = 0; i < req.getPayload().getPracticeRelationEvaluations().size(); i++) {
                     req.getPayload().getPracticeRelationEvaluations().get(i).setId(practiceRelationEvaluationService.add(req.getPayload().getPracticeRelationEvaluations().get(i)).getId());
                 }
             }
+            learningUnit = learningUnitService.getOne(req.getPayload().getLearningUnit().getId());
             practiceRelationService.add(req.getPayload());
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
         if (req.getPayload().isFinished()) {
+            learningUnit.setFinishPracticeRelation(true);
+            learningUnitService.update(learningUnit);
             return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-        }
-        else {
+        } else {
             return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Avances guardados exitosamente.", null);
         }
     }
@@ -103,27 +109,30 @@ public class PracticeRelationRestController {
      */
     @PatchMapping
     public RESTResponse<PracticeRelation> patch(@RequestBody RESTRequest<PracticeRelation> req) {
+        LearningUnit learningUnit;
         try {
             if (req.getPayload().getPractices() != null) {
                 for (int i = 0; i < req.getPayload().getPractices().size(); i++) {
                     req.getPayload().getPractices().get(i).setId(practiceService.update(req.getPayload().getPractices().get(i)).getId());
                 }
             }
-            if (req.getPayload().getPracticeRelationEvaluations() != null){
+            if (req.getPayload().getPracticeRelationEvaluations() != null) {
                 for (int i = 0; i < req.getPayload().getPracticeRelationEvaluations().size(); i++) {
                     req.getPayload().getPracticeRelationEvaluations().get(i).setId(practiceRelationEvaluationService.update(req.getPayload().getPracticeRelationEvaluations().get(i)).getId());
                 }
             }
+            learningUnit = learningUnitService.getOne(req.getPayload().getLearningUnit().getId());
             practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
         if (req.getPayload().isFinished()) {
+            learningUnit.setFinishPracticeRelation(true);
+            learningUnitService.update(learningUnit);
             return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
-        }
-        else {
+        } else {
             return new RESTResponse<PracticeRelation>(RESTResponse.OK, "Avances guardados exitosamente.", null);
         }
     }
@@ -136,7 +145,7 @@ public class PracticeRelationRestController {
         try {
             practiceRelationService.update(req.getPayload());
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
@@ -151,7 +160,7 @@ public class PracticeRelationRestController {
         try {
             practiceRelationService.delete(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<PracticeRelation>(RESTResponse.FAIL,
                     "Por el momento no se puede realizar el registro.", null);
         }
@@ -164,7 +173,7 @@ public class PracticeRelationRestController {
         try {
             res = learningUnitService.getOne(id);
         } catch (Exception e) {
-            Logger.getLogger(null).log(null,"F: ",e);
+            Logger.getLogger(null).log(null, "F: ", e);
             return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
         }
         if (res != null) {
@@ -172,7 +181,7 @@ public class PracticeRelationRestController {
             try {
                 aux = practiceRelationService.getPracticeRelationsByLearningUnitId(id);
             } catch (Exception e) {
-                Logger.getLogger(null).log(null,"F: ",e);
+                Logger.getLogger(null).log(null, "F: ", e);
                 return new RESTResponse<PracticeRelation>(RESTResponse.DBFAIL, "Inconsistencia en la base de datos.", null);
             }
             if (aux != null) {

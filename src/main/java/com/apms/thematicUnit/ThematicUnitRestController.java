@@ -1,5 +1,6 @@
 package com.apms.thematicUnit;
 
+import com.apms.content.Content;
 import com.apms.content.ContentService;
 import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.learningEvaluation.LearningEvaluationService;
@@ -84,6 +85,9 @@ public class ThematicUnitRestController {
      */
     @PostMapping
     public RESTResponse<ThematicUnit> post(@RequestBody RESTRequest<ThematicUnit> req) {
+        LearningUnit learningUnit;
+        List<ThematicUnit> thematicUnitList;
+        List<Content> contentList;
         try {
             if (req.getPayload().getTopics() != null) {
                 for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
@@ -109,6 +113,9 @@ public class ThematicUnitRestController {
             }
             req.getPayload().getLearningUnit().setId(learningUnitService.add(req.getPayload().getLearningUnit()).getId());
             req.getPayload().getContent().setId(contentService.add(req.getPayload().getContent()).getId());
+            learningUnit = learningUnitService.getOne(req.getPayload().getLearningUnit().getId());
+            thematicUnitList = thematicUnitService.getThematicUnitByLearningUnitIdAndIsFinished(req.getPayload().getLearningUnit().getId(), true);
+            contentList = contentService.getContentByLearningUnitId(req.getPayload().getLearningUnit().getId());
             thematicUnitService.add(req.getPayload());
         } catch (Exception e) {
             Logger.getLogger(null).log(null,"F: ",e);
@@ -116,6 +123,10 @@ public class ThematicUnitRestController {
                     "Por el momento no se puede realizar el registro.", null);
         }
         if (req.getPayload().isFinished()) {
+            if(thematicUnitList.size() == contentList.size()){
+                learningUnit.setFinishThematicUnit(true);
+                learningUnitService.update(learningUnit);
+            }
             return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
         }
         else {
@@ -128,6 +139,9 @@ public class ThematicUnitRestController {
      */
     @PatchMapping
     public RESTResponse<ThematicUnit> patch(@RequestBody RESTRequest<ThematicUnit> req) {
+        LearningUnit learningUnit;
+        List<ThematicUnit> thematicUnitList;
+        List<Content> contentList;
         try {
             if (req.getPayload().getTopics() != null) {
                 for (int i = 0; i < req.getPayload().getTopics().size(); i++) {
@@ -147,6 +161,9 @@ public class ThematicUnitRestController {
             }
             req.getPayload().getLearningUnit().setId(learningUnitService.update(req.getPayload().getLearningUnit()).getId());
             req.getPayload().getContent().setId(contentService.update(req.getPayload().getContent()).getId());
+            learningUnit = learningUnitService.getOne(req.getPayload().getLearningUnit().getId());
+            thematicUnitList = thematicUnitService.getThematicUnitByLearningUnitIdAndIsFinished(req.getPayload().getLearningUnit().getId(), true);
+            contentList = contentService.getContentByLearningUnitId(req.getPayload().getLearningUnit().getId());
             thematicUnitService.update(req.getPayload());
         } catch (Exception e) {
             Logger.getLogger(null).log(null,"F: ",e);
@@ -154,6 +171,10 @@ public class ThematicUnitRestController {
                     "Hubo un error al modificar. Por favor, intentelo mas tarde.", null);
         }
          if (req.getPayload().isFinished()) {
+             if(thematicUnitList.size() == contentList.size()){
+                 learningUnit.setFinishThematicUnit(true);
+                 learningUnitService.update(learningUnit);
+             }
             return new RESTResponse<ThematicUnit>(RESTResponse.OK, "Registro finalizado exitosamente.", null);
         }
         else {

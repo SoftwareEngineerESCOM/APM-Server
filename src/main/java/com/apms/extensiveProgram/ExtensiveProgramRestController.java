@@ -132,6 +132,7 @@ public class ExtensiveProgramRestController {
 		/*Catalogos*/		
 		
 		LearningUnit learningUnit = mapper.treeToValue(req.get("learningUnit"),LearningUnit.class);
+		learningUnit.setFinishExtensiveProgram(true);
 		Modality modality =  mapper.treeToValue(req.get("modality"),Modality.class);
 		Teaching teaching =  mapper.treeToValue(req.get("teaching"),Teaching.class);
 		List<Type> types = new ArrayList<Type>();
