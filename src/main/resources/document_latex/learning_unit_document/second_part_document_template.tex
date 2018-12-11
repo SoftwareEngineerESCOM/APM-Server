@@ -4,12 +4,12 @@
 
 \newpage
 %%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{picture}(0,0) \put(-10,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
-\begin{picture}(0,0) \put(400,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(20,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
+\begin{picture}(0,0) \put(435,-60){\includegraphics[width=20mm]{Analisis/FormatoUA/ipn.png}} \end{picture}
 \begin{center}
-{\Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
-{\Large\textbf{SECRETARIA ACADÉMICA}}\\
-{\large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
+{\tab[1cm] \Large\textbf{INSTITUTO POLITÉCNICO NACIONAL}}\\
+{\tab[1cm] \Large\textbf{SECRETARIA ACADÉMICA}}\\
+{\tab[1cm] \large\textbf{DIRECCIÓN DE EDUCACIÓN SUPERIOR}}\\
 \end{center}\ \\
 %%%%%%%%%% Encabezado %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -21,59 +21,39 @@
 
 %%%%%%%%%% INICIO TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[H]
+    \renewcommand{\arraystretch}{1.4}
 %%%%%%%%%% INICIO NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{tabular}{|p{1.045\textwidth}|}
+  \begin{tabular}{|p{0.6cm}|p{6.1cm}|p{.7cm}|p{.7cm}|p{.7cm}|p{.7cm}|p{4cm}|}
     \hline
-    \textbf{N$^{\circ}$ UNIDAD TEMÁTICA:} <thematic_unit_no_#>
-    \tab[1cm]
-    \textbf{NOMBRE:} <thematic_unit_#>\\
-    \hline \Centering
-    \textbf{UNIDAD DE COMPETENCIA:} 
-
-    \RaggedRight
-    <competence_unit_#>
-    \\
+    \multicolumn{5}{|p{8cm}}{\textbf{N$^{\circ}$ UNIDAD TEMÁTICA:} <thematic_unit_no_#> } &
+    \multicolumn{2}{p{6cm}|}{\textbf{NOMBRE:} <thematic_unit_#> } \\
     \hline
-  \end{tabular}
-%%%%%%%%%% FIN NUM, NOMBRE Y COMPETENCIA DE LA UNIDAD TEMATICA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \multicolumn{7}{|c|}{\Centering \textbf{UNIDAD DE COMPETENCIA:}} \\
+    \multicolumn{7}{|l|}{\RaggedRight <competence_unit_#> } \\
+    \hline
+    \multirow{2}{*}{\textbf{No.}} & 
+    \multirow{2}{*}{\tab[1.5cm] \textbf{CONTENIDOS}} &
+    \multicolumn{2}{p{2.3cm}|}{\Centering \textbf{HORAS CON DOCENTE}} &
+    \multicolumn{2}{p{2.3cm}|}{\Centering \textbf{HORAS DE APRENDIZAJE AUTÓNOMO}} &
+    \multirow{2}{*}{\textbf{CLAVE BIBLIOGRÁFICA}}
+    \tabularnewline \cline{3-6} &&
+    \multicolumn{1}{p{.7cm}|}{\Centering \textbf{T}} &
+    \multicolumn{1}{p{.7cm}|}{\Centering \textbf{P}} &
+    \multicolumn{1}{p{.7cm}|}{\Centering \textbf{T}} &
+    \multicolumn{1}{p{.7cm}|}{\Centering \textbf{P}} &\\
+    \hline
+    %%%%%%%%%%%%% TEMAS %%%%%%%%%%%%%%%%%%
+    <unit_contents_#>
+    \hline
 
-%%%%%%%%%% INICIO CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{tabular}{|p{0.03\textwidth}|p{0.365\textwidth}|p{0.04\textwidth}|p{0.02\textwidth}|p{0.05\textwidth}|p{0.01\textwidth}|p{0.2\textwidth}|}
-  \multirow{2}{*}{\textbf{No.}}  & \multirow{2}{*}{\textbf{CONTENIDOS}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.078\textwidth}}HORAS CON DOCENTE\end{tabular}}}                             & \multicolumn{2}{c|}{\textbf{\begin{tabular}{p{0.12\textwidth}}HORAS DE APRENDIZAJE AUTÓNOMO\end{tabular}}}               & \multirow{2}{*}{\textbf{\begin{tabular}{p{0.06\textwidth}}CLAVE BIBLIOGRÁFICA
-  \end{tabular}}} \\ \cline{3-6}& & \textbf{T}
-  & \textbf{P} & \textbf{T} & \textbf{P}  &  \\ \hline
-%%%%%%%%%% FIN CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{tabular}[c]{@{}c@{}}
-%%%%%%%%%% AQUI VAN LOS NUMEROS DE LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <content_numbers_#>
-  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+    %%%%%%%%%%%%%% HORAS %%%%%%%%%%%%%%%
+    & \RaggedRight Subtotales: &
+    \Centering <total_theoretical_hours_with_teacher_#> &
+    \Centering <total_practical_hours_with_teacher_#> &
+    \Centering <total_autonomous_theoretical_hours_#> &
+    \Centering <total_autonomous_practice_hours_#> &\\ 
+    \hline
 
-%%%%%%%%%% AQUI VAN LOS CONTENIDOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <contents_#>
-  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-
-%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <theoretical_hours_with_teacher_#>
-  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-
-%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS CON DOCENTE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <practical_hours_with_teacher_#>
-  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-
-%%%%%%%%%% AQUI VAN LAS HORAS TEORICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <autonomous_theoretical_hours_#>
-  \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-
-%%%%%%%%%% AQUI VAN LAS HORAS PRACTICAS DE APRENDIZAJE AUTONOMO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <autonomous_practice_hours_#>
-  \end{tabular} & \begin{tabular}[c]{}
-
-%%%%%%%%%% AQUI VAN LAS CLAVES BIBLIOGRAFICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  <bibliographic_keys_#>
-  \end{tabular} \\ \hline
-  & 
-%%%%%%%% AQUI VAN LOS TOTALTES DE CADA HORA: TEORICA-DOCENTE, PRACTICA-DOCENTE, TEORICA-AU, PRACTICA-AU %%%%%%
-  Subtotales:   & <total_theoretical_hours_with_teacher_#> & <total_practical_hours_with_teacher_#> & <total_autonomous_theoretical_hours_#> & <total_autonomous_practice_hours_#> &\\ \hline
   \end{tabular}
 \end{table}
 %%%%%%%%%% FIN TABLA CONTENIDOS DE UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

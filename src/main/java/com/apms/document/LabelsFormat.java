@@ -198,13 +198,7 @@ public class LabelsFormat {
 			dataLabels.put("competence_unit_" + unit, thematicUnit.getCompetenceUnit());
 			
 			//***THEMATIC UNITS TABLE ***//
-			String contentNumbers = "";
-			String contents = "";
-			String teacherTheoryHoursStr = "";
-			String teacherPracticeHoursStr = "";
-			String autonomousTheoryHoursStr = "";
-			String autonomousPracticeHoursStr = "";
-			String bibliographicKeys = ""; //FALTAN LLAVES BIBLIOGRAFICAS
+			String unitContentStr = "";
 			//VARIABLES FOR THE TOTAL HOURS
 			Double teacherTheoryHours = 0.0;
 			Double teacherPracticeHours = 0.0;
@@ -213,16 +207,6 @@ public class LabelsFormat {
 			//TOPICS IN ORDER
 			List<Topic> topics = thematicUnit.getTopics();
 			for (int index = 1; index <= topics.size(); index++) {
-				if(index != 1) { //Marcar espacio en columna
-					contentNumbers += "\\\\\\\\ ";
-					contents +=  "\\\\\\\\ ";
-					teacherTheoryHoursStr += "\\\\\\\\ ";
-					teacherPracticeHoursStr += "\\\\\\\\ ";
-					autonomousTheoryHoursStr += "\\\\\\\\ ";
-					autonomousPracticeHoursStr += "\\\\\\\\ ";
-					bibliographicKeys += "\\\\\\\\ ";
-				}
-				
 				Topic topic = null;
 				for (Topic topicAux : topics) {
 					if(Integer.parseInt(topicAux.getNumber()) == index) { //Revisar oportunidad de cambio de topic.getNumber() de String a int
@@ -235,12 +219,12 @@ public class LabelsFormat {
 					continue;
 				}
 				
-				contentNumbers += unit + "." + index;
-				contents +=  topic.getName();
-				teacherTheoryHoursStr += topic.getTheoricHours();
-				teacherPracticeHoursStr += topic.getPracticalHours();
-				autonomousTheoryHoursStr += topic.getAutonomousHours();
-				bibliographicKeys += ""; //Busqueda de claves bibliografias por clave
+				unitContentStr += unit + "." + index + " & ";
+				unitContentStr +=  topic.getName() + " & ";
+				unitContentStr += topic.getTheoricHours() + " & ";
+				unitContentStr += topic.getPracticalHours() + " & ";
+				unitContentStr += topic.getAutonomousHours() + " & ";
+				unitContentStr += "Sin Clave"  + " \\\\\\\\ "; //Busqueda de claves bibliografias por clave
 				//suma de las horas de aprendizaje
 				teacherTheoryHours += topic.getTheoricHours();
 				teacherPracticeHours += topic.getPracticalHours();
@@ -261,23 +245,17 @@ public class LabelsFormat {
 							System.out.println("No se encontro el subtema: " + unit + "." + index + "." + subindex);
 							continue;
 						}
-						contentNumbers += "\\\\\\\\ " + unit + "." + index + "." + subindex;
-						contents +=  "\\\\\\\\ " + subtopic.getName();
-						teacherTheoryHoursStr += "\\\\\\\\ ";
-						teacherPracticeHoursStr += "\\\\\\\\ ";
-						autonomousTheoryHoursStr += "\\\\\\\\ ";
-						autonomousPracticeHoursStr += "\\\\\\\\ ";
-						bibliographicKeys += "\\\\\\\\ ";
+						unitContentStr += unit + "." + index + "." + subindex + " & ";
+						unitContentStr += subtopic.getName() + " & ";
+						unitContentStr += " & ";
+						unitContentStr += " & ";
+						unitContentStr += " & ";
+						unitContentStr += " & ";
+						unitContentStr += " \\\\\\\\ ";
 					}
 				}
 			}
-			dataLabels.put("content_numbers_" + unit, contentNumbers);
-			dataLabels.put("contents_" + unit, contents);
-			dataLabels.put("theoretical_hours_with_teacher_" + unit, teacherTheoryHoursStr);
-			dataLabels.put("practical_hours_with_teacher_" + unit, teacherPracticeHoursStr);
-			dataLabels.put("autonomous_theoretical_hours_" + unit, autonomousTheoryHoursStr);
-			dataLabels.put("autonomous_practice_hours_" + unit, autonomousPracticeHoursStr);
-			dataLabels.put("bibliographic_keys_" + unit, bibliographicKeys);
+			dataLabels.put("unit_contents_" + unit, unitContentStr);
 			dataLabels.put("total_theoretical_hours_with_teacher_" + unit, teacherTheoryHours + "");
 			dataLabels.put("total_practical_hours_with_teacher_" + unit, teacherPracticeHours + "");
 			dataLabels.put("total_autonomous_theoretical_hours_" + unit, autonomousTheoryHours + "");

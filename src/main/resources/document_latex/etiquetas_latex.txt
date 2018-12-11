@@ -42,11 +42,7 @@
 %%%%%%%%%% INICIO CABECERA DE TABLA UNIDADES TEMATICAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (AL FINAL AGREGAR \\ PARA DAR FORMATO)
 <content_numbers_#> : NUMERO DE CONTENIDO
 <contents_#> : CONTENIDOS
-<theoretical_hours_with_teacher_#> : HORAS TEORICAS CON DOCENTE
-<practical_hours_with_teacher_#> : HORAS PRACTICAS CON DOCENTE
-<autonomous_theoretical_hours_#> : HORAS TEORICAS DE APRENDIZAJE AUTONOMO
-<autonomous_practice_hours_#> : HORAS PRACTICAS DE APRENDIZAJE AUTONOMO
-<bibliographic_keys_#> : CLAVES BIBLIOGRAFICAS
+<unit_contents_#> : CONTENIDOS DE LAS UNIDADES TEMATICAS
 
 <total_theoretical_hours_with_teacher_#> : TOTAL HORAS TEORICAS CON DOCENTE
 <total_practical_hours_with_teacher_#> : TOTAL HORAS PRACTICAS CON DOCENTE
