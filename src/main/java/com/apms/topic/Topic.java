@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import com.apms.subtopic.Subtopic;
 import com.apms.thematicUnit.ThematicUnit;
-import com.apms.topicHour.TopicHour;
 
 import lombok.Getter;
 import lombok.Setter;
