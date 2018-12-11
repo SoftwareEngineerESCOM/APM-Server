@@ -99,13 +99,13 @@ insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, tru
 -- add synthetic_program
 
 -- add human resource
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Emiliano', 'Hinojosa', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Frías', 'Erika', 'Covarrubias', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Jiménez', 'Eduardo', 'Hernádez', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Rojas', 'Arturo', 'Rivas', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'UPIBI'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Daniela', 'Hernández', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Figueroa', 'Hugo', 'Bernal', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESIME Zacatenco'));
+insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Figueroa', 'Hugo', 'Bernal', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Castrejón', 'Miguel', 'Sánchez', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Castillo', 'Alejandra', 'Jiménez', (select id from title where abbreviation like '%Lic.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Guerra', 'David', 'Vargas', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'DES'));
@@ -128,15 +128,20 @@ insert into user_apms (is_account_blocked, password, token, human_resource_id, e
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test3', '4', (select id from human_resource where name like '%Miguel%'), 'test3@test.com');
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test4', '5', (select id from human_resource where name like '%Alejandra%'), 'test4@test.com');
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test5', '6', (select id from human_resource where name like '%David%'), 'test5@test.com');
+insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test6', '7', (select id from human_resource where name like '%Hugo%'), 'test6@test.com');
 
 -- add user_apms_roles
 insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Innovación Educativa%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Docente%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Analista%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de la División de Innovacion Académica%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test1@test.com%'), (select id from role where name like '%Docente%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Analista%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test3@test.com%'), (select id from role where name like '%Analista%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test4@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test5@test.com%'), (select id from role where name like '%Jefe de la División de Innovacion Académica%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%test6@test.com%'), (select id from role where name like '%Jefe de Innovación Educativa%'));
 
 insert into evaluation_accreditationua values (DEFAULT);
 
