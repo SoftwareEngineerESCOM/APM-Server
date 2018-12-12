@@ -1,22 +1,29 @@
 package com.apms.learningUnit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.apms.bibliographyRelation.BibliographyRelation;
 import com.apms.bibliographyRelation.BibliographyRelationService;
 import com.apms.document.LearningUnitDocument;
+import com.apms.evaluationSystem.EvaluationSystem;
+import com.apms.evaluationSystem.EvaluationSystemService;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.extensiveProgram.ExtensiveProgramService;
+import com.apms.learningEvaluation.LearningEvaluation;
+import com.apms.learningEvaluation.LearningEvaluationService;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import com.apms.practiceRelation.PracticeRelation;
 import com.apms.practiceRelation.PracticeRelationService;
 
+import org.apache.tomcat.jni.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -74,7 +81,8 @@ public class LearningUnitRestController {
 
     @Autowired
     private ThematicUnitService thematicUnitService;
-
+    
+    @Autowired EvaluationSystemService evaluationSystemService;
     /*
      ** Return a listing of all the resources
      */
@@ -352,24 +360,73 @@ public class LearningUnitRestController {
     public ResponseEntity<InputStreamResource> generatePDF(@PathVariable Integer learningUnitId) throws IOException {
         LearningUnitDocument document;
         try {
-            LearningUnit learningUnit = learningUnitService.getOne(learningUnitId);
-            SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
-            StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
-            ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
-            List<BibliographyRelation> bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
-            List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
-            PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
-            document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, practiceRelation);
+        	//ProgramaSintetico
+        	SyntheticProgram syntheticProgram = null;
+        	try {
+        		syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		syntheticProgram = null;
+        	}
+        	//PlanDeEstudios
+        	StudyPlan studyPlan = null;
+        	try {
+        		studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		studyPlan = null;
+        	}
+        	
+            ExtensiveProgram extensiveProgram = null;
+            try {
+            	extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		extensiveProgram = null;
+        	}
+            
+            List<BibliographyRelation> bibliographyRelations = null;
+            try {
+            	bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		bibliographyRelations = null;
+        	}
+            //Obtener Unidades Tematicas con sus evaluaciones
+            List<ThematicUnit> thematicUnits = null;
+            try {
+            	thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		thematicUnits = null;
+        	}
+            
+            List<EvaluationSystem> evaluationSystems = new ArrayList<>();
+            try {
+            	for (ThematicUnit thematicUnit : thematicUnits) {
+                	EvaluationSystem evaluationSystem = evaluationSystemService.getEvaluationSystemByThematicUnitId(thematicUnit.getId());
+                	if(evaluationSystem != null)
+                		evaluationSystems.add(evaluationSystem);
+                }
+            }catch(NullPointerException e) {
+            	evaluationSystems = null;
+        	}
+            
+            PracticeRelation practiceRelation = null;
+            try {
+            	practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		practiceRelation = null;
+        	}
+            document = new LearningUnitDocument(syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, evaluationSystems, practiceRelation);
             document.createDocument();
         } catch (Exception e) {
             Logger.getLogger(null).log(null, "F: ", e);
             return null;
         }
-
         ClassPathResource pdfFile = new ClassPathResource("document_latex/FormatoUnidadAcademica.pdf");
-
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
         return ResponseEntity
                 .ok()
+                .headers(headers)
                 .contentLength(pdfFile.contentLength())
                 .contentType(
                         MediaType.parseMediaType("application/pdf"))

@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.apms.bibliographyRelation.BibliographyRelation;
+import com.apms.evaluationSystem.EvaluationSystem;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.practiceRelation.PracticeRelation;
@@ -24,13 +25,13 @@ import com.apms.syntheticProgram.SyntheticProgramService;
 import com.apms.thematicUnit.ThematicUnit;
 
 public class LearningUnitDocument {
-	private LearningUnit learningUnit;
 	private SyntheticProgram syntheticProgram; 
 	private StudyPlan studyPlan; 
 	private ExtensiveProgram extensiveProgram; 
 	private List<BibliographyRelation> bibliographysRelation; 
 	private List<ThematicUnit> thematicUnits; 
 	private PracticeRelation practiceRelation;
+	private List<EvaluationSystem> evaluationSystems;
 	private final File firstSection = new File("src/main/resources/document_latex/learning_unit_document/first_part_document.tex");
     private final File secondSectionTemplate = new File("src/main/resources/document_latex/learning_unit_document/second_part_document_template.tex");
     private final File secondSection = new File("src/main/resources/document_latex/learning_unit_document/second_part_document.tex");
@@ -40,20 +41,21 @@ public class LearningUnitDocument {
     private HashMap<String,String> dataLabels;
     private String content;
     private int numberUnits;
-
-	private SyntheticProgramService syntheticProgramService;
         
-    public LearningUnitDocument(LearningUnit learningUnit, SyntheticProgram syntheticProgram, StudyPlan studyPlan,
+    public LearningUnitDocument( SyntheticProgram syntheticProgram, StudyPlan studyPlan,
 			ExtensiveProgram extensiveProgram, List<BibliographyRelation> bibliographysRelation,
-			List<ThematicUnit> thematicUnits, PracticeRelation practiceRelation) {
-		this.learningUnit = learningUnit;
+			List<ThematicUnit> thematicUnits, List<EvaluationSystem> evaluationSystems, PracticeRelation practiceRelation) {
 		this.syntheticProgram = syntheticProgram;
 		this.studyPlan = studyPlan;
 		this.extensiveProgram = extensiveProgram;
 		this.bibliographysRelation = bibliographysRelation;
 		this.thematicUnits = thematicUnits;
 		this.practiceRelation = practiceRelation;
-		this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
+		this.evaluationSystems = evaluationSystems;
+		if(syntheticProgram != null)
+			this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
+		else
+			this.numberUnits = 0;
 	}
 
 	public String getUrl() {
@@ -70,19 +72,25 @@ public class LearningUnitDocument {
         FileWriter writer = new FileWriter("src/main/resources/document_latex/FormatoUnidadAcademica.tex"); //Salida del documento
         writer.write(content);
         writer.close();
-        ejecutarCMD("pdflatex -interaction nonstopmode src/main/resources/document_latex/FormatoUnidadAcademica.tex --output-directory=src/main/resources/document_latex/");
+        ejecutarCMD("pdflatex -interaction nonstopmode src/main/resources/document_latex/FormatoUnidadAcademica.tex --output-directory=target/classes/document_latex/");
     }
     
     private void fillDataLabels() {
     	dataLabels = new HashMap<>();
-    	System.out.println("Aqui andamosh");
-    	
-    	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
-    	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(studyPlan));
-    	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(extensiveProgram));
-    	dataLabels.putAll(LabelsFormat.createBibliographyLabels(bibliographysRelation));
-    	dataLabels.putAll(LabelsFormat.createThematicUnitLabels(thematicUnits));
-    	dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(practiceRelation));	
+    	if(syntheticProgram != null)
+    		dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
+    	if(studyPlan != null)
+    		dataLabels.putAll(LabelsFormat.createStudyPlanLabels(studyPlan));
+    	if(extensiveProgram != null)
+    		dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(extensiveProgram));
+    	if(bibliographysRelation != null)
+    		dataLabels.putAll(LabelsFormat.createBibliographyLabels(bibliographysRelation));
+    	if(thematicUnits != null)
+    		dataLabels.putAll(LabelsFormat.createThematicUnitLabels(thematicUnits));
+    	if(evaluationSystems != null)
+    		dataLabels.putAll(LabelsFormat.createEvualuationSystemLabels(evaluationSystems));
+    	if(practiceRelation != null)
+    		dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(practiceRelation));	
     }
 
     private void replaceLabelsInfo(File file) throws IOException {

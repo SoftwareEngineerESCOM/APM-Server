@@ -54,44 +54,44 @@ insert into semester (semester_number, study_plan_id) (select 4, id from study_p
 -- add learning_unit --
 -----------------------
 -- Escuela Num 1
-insert into learning_unit values (DEFAULT, 7.76, 7.5, 'Ingenieria de software', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 4 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
-insert into learning_unit values (DEFAULT, 4.28, 7.5, 'Estructura de Datos', 1.5, 3.0, (select id from academy where name = 'Algoritmia y Programación'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
-insert into learning_unit values (DEFAULT, 4.4, 7.5, 'Base de Datos', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit values (DEFAULT, 7.76, 7.5, true, true, true, true, true, true, 'Ingenieria de software', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 4 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit values (DEFAULT, 4.28, 7.5, true, true, true, true, true, true, 'Estructura de Datos', 1.5, 3.0, (select id from academy where name = 'Algoritmia y Programación'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
+insert into learning_unit values (DEFAULT, 4.4, 7.5, true, true, true, true, true, true, 'Base de Datos', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Sistemas Computacionales%')));
 
 -- Escuela Num 2
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Fisica Clasica', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Ecuaciones Diferenciales', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Ondas Mecanicas', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Fisica Clasica', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Ecuaciones Diferenciales', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Ondas Mecanicas', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería en Control y Automatización%')));
 
 -- Escuela Num 3
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Comunicacion Oral y Escrita', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Calidad', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Administracion Estrategica', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Comunicacion Oral y Escrita', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Calidad', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Administracion Estrategica', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Comercio Internacional%')));
 
 -- Escuela Num 4
-insert into learning_unit values (DEFAULT, 0, 9, 'Geometria Analitica', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
-insert into learning_unit values (DEFAULT, 0, 9, 'Analisis Vectorial', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
-insert into learning_unit values (DEFAULT, 0, 9, 'Fisica 3', 3.0, 6.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
+insert into learning_unit values (DEFAULT, 0, 9, true, true, true, true, true, true, 'Geometria Analitica', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
+insert into learning_unit values (DEFAULT, 0, 9, true, true, true, true, true, true, 'Analisis Vectorial', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
+insert into learning_unit values (DEFAULT, 0, 9, true, true, true, true, true, true, 'Fisica 3', 3.0, 6.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Licenciatura en Física y Matemáticas%')));
 
 -- Escuela Num 5
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Mecanica de la particula', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Circuitos Electricos', 1.5, 1.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Electricidad y Magnetismo', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Mecanica de la particula', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Circuitos Electricos', 1.5, 1.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Electricidad y Magnetismo', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Mecatrónica%')));
 
 -- Escuela Num 6
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Metodos Hilados', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Quimica Textil', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Higiene y seguridad industrial', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Metodos Hilados', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Quimica Textil', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Higiene y seguridad industrial', 1.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Textil%')));
 
 -- Escuela Num 7
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Quimica General', 2, 5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Quimica de Soluciones', 2, 4, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'En proceso'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
-insert into learning_unit values (DEFAULT, 3.0, 7.5, 'Quimica Organica 1', 3, 3, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Quimica General', 2, 5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Quimica de Soluciones', 2, 4, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'En proceso'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
+insert into learning_unit values (DEFAULT, 3.0, 7.5, true, true, true, true, true, true, 'Quimica Organica 1', 3, 3, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Institucional%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Biotecnológica%')));
 
 -- Escuela Num 8
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Geologia', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Dinamica de la Particula', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
-insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Topografia', 4.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Geologia', 1.5, 3.0, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Científica Básica%'), (select id from learning_unit_status where name = 'Finalizada'), (select s.id from semester s, study_plan sp where s.semester_number = 1 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Dinamica de la Particula', 0, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Profesional%'), (select id from learning_unit_status where name = 'Creada'), (select s.id from semester s, study_plan sp where s.semester_number = 2 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
+insert into learning_unit values (DEFAULT, 3.5, 7.0, true, true, true, true, true, true, 'Topografia', 4.5, 4.5, (select id from academy where name = 'Ingeniería de Software'), (select id from formation_area where name like '%Terminal y de Integración%'), (select id from learning_unit_status where name = 'Asignada'), (select s.id from semester s, study_plan sp where s.semester_number = 3 and s.study_plan_id = sp.id and sp.academic_program_id = (select id from academic_program where name like '%Ingeniería Química Petrolera%')));
 
 --registros nuevos
 
@@ -99,13 +99,13 @@ insert into learning_unit values (DEFAULT, 3.5, 7.0, 'Topografia', 4.5, 4.5, (se
 -- add synthetic_program
 
 -- add human resource
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'ESCOM'));
+insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Chávez', 'Oscar', 'Barrera', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Emiliano', 'Hinojosa', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Frías', 'Erika', 'Covarrubias', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Jiménez', 'Eduardo', 'Hernádez', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'UPIITA'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Rojas', 'Arturo', 'Rivas', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'UPIBI'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('González', 'Daniela', 'Hernández', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
-insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Figueroa', 'Hugo', 'Bernal', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESIME Zacatenco'));
+insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Figueroa', 'Hugo', 'Bernal', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'ESCOM'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Castrejón', 'Miguel', 'Sánchez', (select id from title where abbreviation like '%Mtro.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Castillo', 'Alejandra', 'Jiménez', (select id from title where abbreviation like '%Lic.%'), (select id from workplace where abbreviation like 'DES'));
 insert into human_resource (second_surname, name, first_surname, title_id, workplace_id) values ('Guerra', 'David', 'Vargas', (select id from title where abbreviation like '%Dr.%'), (select id from workplace where abbreviation like 'DES'));
@@ -128,15 +128,20 @@ insert into user_apms (is_account_blocked, password, token, human_resource_id, e
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test3', '4', (select id from human_resource where name like '%Miguel%'), 'test3@test.com');
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test4', '5', (select id from human_resource where name like '%Alejandra%'), 'test4@test.com');
 insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test5', '6', (select id from human_resource where name like '%David%'), 'test5@test.com');
+insert into user_apms (is_account_blocked, password, token, human_resource_id, email) values (false, 'test6', '7', (select id from human_resource where name like '%Hugo%'), 'test6@test.com');
 
 -- add user_apms_roles
 insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Innovación Educativa%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Docente%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Analista%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%admin1@test.com%'), (select id from role where name like '%Jefe de la División de Innovacion Académica%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test1@test.com%'), (select id from role where name like '%Docente%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test2@test.com%'), (select id from role where name like '%Analista%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test3@test.com%'), (select id from role where name like '%Analista%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test4@test.com%'), (select id from role where name like '%Jefe de Departamento de Desarrollo e Innovación Curricular%'));
 insert into user_apms_roles values ((select id from user_apms where email like '%test5@test.com%'), (select id from role where name like '%Jefe de la División de Innovacion Académica%'));
+insert into user_apms_roles values ((select id from user_apms where email like '%test6@test.com%'), (select id from role where name like '%Jefe de Innovación Educativa%'));
 
 insert into evaluation_accreditationua values (DEFAULT);
 
@@ -213,16 +218,16 @@ insert into extensive_program_types values ((SELECT id FROM extensive_program WH
 insert into thematic_unit values (DEFAULT, 'Compara los diferentes modelos de proceso de un sistema software con base en sus características y el tipo de proyecto a desarrollar.', true, 'Encuadre del curso.
 La presente unidad se abordará a partir de la estrategia de aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: lluvia de ideas, ficha de trabajo, indagación documental, discusión dirigida, mapas conceptuales, resolución de problemas, exposición en equipo de temas complementarios, propuesta de proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
+insert into evaluation_system values (DEFAULT, true, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.5);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.15);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Propuesta de Proyecto', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.5, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.15, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Propuesta de Proyecto', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 1);
 
 insert into topic values (DEFAULT, 1, 'Conceptos básicos de Ingeniería de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 insert into topic values (DEFAULT, 1.5, 'Atributos y características del software', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
@@ -245,17 +250,17 @@ insert into subtopic values (DEFAULT, 'Espiral', 6, (SELECT id FROM topic WHERE 
 
 insert into thematic_unit values (DEFAULT, 'Desarrolla el plan de proyecto de un sistema software con base en las técnicas de estimación aplicables en la gestión y control de los recursos, procesos y eventos.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones , líneas de tiempo, diagrama de Gantt y diagramas de pert, exposición en equipo de temas complementarios, avance del proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into evaluation_system values (DEFAULT, true, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.3);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Diagramas elaborados', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.10);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.3, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Diagramas elaborados', 0.1, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.10, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 2);
 
 insert into topic values (DEFAULT, 1, 'Ámbito de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
 insert into topic values (DEFAULT, 0.5, 'Estudio de factibilidad', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
@@ -279,17 +284,17 @@ insert into subtopic values (DEFAULT, 'Diagrama de Pert', 3, (SELECT id FROM top
 
 insert into thematic_unit values (DEFAULT, 'Clasifica las diferentes metodologías con base en las etapas que las conforman y los resultados obtenidos en cada una de ellas.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones , mapas conceptuales, exposición en equipo de temas complementarios, avance del proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Metodologías'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into evaluation_system values (DEFAULT, true, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Metodologías')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.15);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.15, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 3);
 
 insert into topic values (DEFAULT, 2.5, 'Metodologías estructuradas', '1', 0.5, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Metodologías')));
 insert into topic values (DEFAULT, 3.5, 'Metodologías Orientadas a Objetos', '2', 0.5, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Metodologías')));
@@ -314,16 +319,16 @@ insert into subtopic values (DEFAULT, 'Crystal', 3, (SELECT id FROM topic WHERE 
 
 insert into thematic_unit values (DEFAULT, 'Realiza un sistema de información de calidad con base en las diferentes normas enfocadas a los productos software.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones, documentación del proyecto (diagramas UML, Pert y Gantt, estudio de factibilidad, análisis de riesgos, modelo relacional de la base datos y diccionario de datos), exposición en equipo de temas complementarios y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
+insert into evaluation_system values (DEFAULT, true, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Documentación del proyecto', 0.3);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Documentación del proyecto', 0.3, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 4);
 
 insert into topic values (DEFAULT, 1.5, 'Conceptos de la calidad', '1', 0, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
 insert into topic values (DEFAULT, 3, 'Calidad de sistemas de información', '2', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
@@ -343,16 +348,16 @@ insert into subtopic values (DEFAULT, 'ISO/IEC 15939', 4, (SELECT id FROM topic 
 
 insert into thematic_unit values (DEFAULT, 'Aplica los modelos de madurez, evaluación y mejora de procesos en el desarrollo de software con base en el control de calidad, los productos finales y los niveles definidos por dichos procesos.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones, programa de cómputo, exposición en equipo de temas complementarios, conclusión del proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, 0.2, 3, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
+insert into evaluation_system values (DEFAULT, true, 0.2, 3, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte del proyecto', 0.3);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte del proyecto', 0.3, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 5);
 
 insert into topic values (DEFAULT, 1, 'Introducción', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
 insert into topic values (DEFAULT, 1.5, 'Proceso de Software Personal (PSP)', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
@@ -369,15 +374,15 @@ insert into topic values (DEFAULT, 2.5, 'MoProSoft', '6', 0, 0.5, (SELECT id FRO
 
 insert into thematic_unit values (DEFAULT, 'Reestructura los proyectos software con base en nuevos requerimientos y los conceptos fundamentales de la Ingeniería de Software.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones, programa de cómputo, exposición en equipo de temas complementarios, proyecto reestructurado y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Temas selectos'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, 0.2, 3, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
+insert into evaluation_system values (DEFAULT, true, 0.2, 3, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
 
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte de la reestructuración del proyecto', 0.6);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte de la reestructuración del proyecto', 0.5, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 6);
 
 insert into topic values (DEFAULT, 3.5, 'Herramientas Case', '1', 0.5, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
 insert into topic values (DEFAULT, 2.5, 'Ingeniería Web', '2', 0, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
@@ -502,7 +507,7 @@ insert into practice values (DEFAULT, 4.5, 'Listas de verificación usados en la
 insert into practice values (DEFAULT, 4.5, 'Desarrollar un ejemplo para la demostración de una herramienta CASE', 5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')), (SELECT id FROM practice_relation WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
 insert into practice values (DEFAULT, 4.5, 'Realizar una demostración del proceso de Ingeniería inversa utilizando una herramienta CASE Específica', 6, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Temas selectos')), (SELECT id FROM practice_relation WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
 
-
+UPDATE extensive_program SET teaching_profile_id = 1 WHERE extensive_program.id = 1;
 
 -- insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
 
