@@ -8,6 +8,7 @@ import com.apms.accreditationType.AccreditationType;
 import com.apms.bibliographyRelation.BibliographyRelation;
 import com.apms.bibliographyRelation.BibliographyRelationService;
 import com.apms.content.Content;
+import com.apms.evaluationSystem.EvaluationSystem;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.extensiveProgram.ExtensiveProgramService;
@@ -45,11 +46,15 @@ public class LabelsFormat {
 		
 		//EVALUATION AND ACREDITATION
 		String evaluationAndAccreditation = "";
+		String accreditation = "";
 		for (EvaluationUA evaluationUA : syntheticProgram.getEvaluationAccreditationUA().getEvaluationUA())
 			evaluationAndAccreditation +=  "\\\\item " + evaluationUA.getName();
-		for (AccreditationType accreditationType : syntheticProgram.getEvaluationAccreditationUA().getAccreditationType())
+		for (AccreditationType accreditationType : syntheticProgram.getEvaluationAccreditationUA().getAccreditationType()) {
+			accreditation += "\\\\item " + accreditationType.getName();
 			evaluationAndAccreditation += "\\\\item " + accreditationType.getName();
+		}
 		dataLabels.put("evaluation_and_accreditation", evaluationAndAccreditation);
+		dataLabels.put("accreditation", accreditation);
 		
 		dataLabels.put("training_area", syntheticProgram.getLearningUnit().getFormationArea().getName());
 		
@@ -263,10 +268,27 @@ public class LabelsFormat {
 			dataLabels.put("learning_strategies_" + unit, thematicUnit.getLearningStrategy());
 			//****** EVALUACION DE LOS APRENDIZAJES
 			String learningEvaluationStr = "";
+			List<LearningEvaluation> learningEvaluationE = new ArrayList<>();
+			List<LearningEvaluation> learningEvaluationC = new ArrayList<>();
 			for (LearningEvaluation learningEvaluation : thematicUnit.getLearningEvaluations()) {
-				learningEvaluationStr += "\\\\" + learningEvaluation.getName() + "\\tab[0.5cm]" + learningEvaluation.getPercentage() + "\\%"; //Revisar tabulacion
+				if(learningEvaluation.getEvaluationType().equals("Escrita"))
+					learningEvaluationE.add(learningEvaluation);
+				else
+					learningEvaluationC.add(learningEvaluation);
+			}
+			for (int i = 0; i < learningEvaluationE.size(); i++) {
+				if(i == 0)
+					learningEvaluationStr += "Evaluación escrita:";
+				learningEvaluationStr += "\\\\newline " + learningEvaluationE.get(i).getName() + "\\\\tab[0.5cm] " + (learningEvaluationE.get(i).getPercentage()*100) + "\\\\% "; //Revisar tabulacion
+			}
+			for (int i = 0; i < learningEvaluationC.size(); i++) {
+				if(i == 0)
+					learningEvaluationStr += "\\\\newline Evaluación continua:";
+				learningEvaluationStr += "\\\\newline " + learningEvaluationC.get(i).getName() + "\\\\tab[0.5cm] " + (learningEvaluationC.get(i).getPercentage()*100) + "\\\\% "; //Revisar tabulacion
 			}
 			dataLabels.put("evaluation_learning_" + unit, learningEvaluationStr);
+			
+			
 		}
 		
 		//EVALUATION PROCEDURE TABLE
@@ -309,6 +331,65 @@ public class LabelsFormat {
 	}
 	
 	
+	public static HashMap<String,String> createEvualuationSystemLabels(List<EvaluationSystem> evaluationSystems){
+		HashMap<String,String> dataLabels = new HashMap<>();
+		String evaluationProcedureStr = "";
+		
+		//Llenar tabla Por Periodo y luego por unidades
+		int period = 0;
+		Double percentageP = 0.0;
+		for (int unit = 1; unit <= evaluationSystems.size(); unit++) {
+			//Encontrar unidades en orden
+			EvaluationSystem evaluationSystem = null;
+			for (EvaluationSystem evaluationSystemAux : evaluationSystems) {
+				if(evaluationSystemAux.getThematicUnit().getContent().getNumber() == unit) {
+					evaluationSystem = evaluationSystemAux;
+					break;
+				}
+			}
+			if(evaluationSystem == null) {
+				continue;
+			}
+			//Revisar si es nuevo periodo
+			if(evaluationSystem.getPeriod() != period) {
+				if(period == 1) {
+					dataLabels.put("period_percentage_1", String.format("%.0f" , (percentageP*100)));
+				}else if(period == 2) {
+					dataLabels.put("period_percentage_2", String.format("%.0f" , (percentageP*100)));
+				}
+				period++;
+				percentageP = 0.0;
+				evaluationProcedureStr += period + " & ";
+			} else {
+				evaluationProcedureStr += " & ";
+			}
+			
+			evaluationProcedureStr += " \\\\RNum{" + unit + "} & ";
+			
+			List<LearningEvaluation> learningEvaluations = evaluationSystem.getThematicUnit().getLearningEvaluations();
+			//Sumar porcentajes por unidad
+			Double escrita = 0.0, continua = 0.0;
+			for (LearningEvaluation learningEvaluation : learningEvaluations) {
+				if(learningEvaluation.getEvaluationType().equals("Escrita"))
+					escrita += learningEvaluation.getPercentage();
+				else
+					continua += learningEvaluation.getPercentage();
+			}
+			//Escribir porcentajes
+			if(continua != (0.0))
+				evaluationProcedureStr += "Evaluación Continua \\\\tab[1.15cm] " + String.format("%.0f" , (continua*100)) + "\\\\% \\\\newline ";
+			if(escrita != (0.0))
+				evaluationProcedureStr += "Evidencia de Aprendizaje \\\\tab[0.5cm] " + String.format("%.0f" , (escrita*100)) + "\\\\% ";
+			evaluationProcedureStr += "\\\\\\\\ ";
+			percentageP += evaluationSystem.getPercentage();
+		}
+		dataLabels.put("period_percentage_3", String.format("%.0f" , (percentageP*100)));
+		dataLabels.put("evaluation_procedure_by_period", evaluationProcedureStr);
+		return dataLabels;
+	}
+	
+	
+	
 	public static HashMap<String,String> createPracticeRelationLabels(PracticeRelation practiceRelation){
 
 		HashMap<String,String> dataLabels = new HashMap<>();
@@ -329,7 +410,7 @@ public class LabelsFormat {
 			}
 			practicesTableStr += practice.getNumber() + "&"; //PRACTICE NUMBER
 			practicesTableStr += practice.getName() + "&"; //PRACTICE NAME
-			practicesTableStr += practice.getThematicUnit().getContent().getNumber() + "&"; //PRACTICE THEMATIC UNIT NUMBER **pasar a numeros romanos 
+			practicesTableStr += "\\\\RNum{" + practice.getThematicUnit().getContent().getNumber() + "} &"; //PRACTICE THEMATIC UNIT NUMBER **pasar a numeros romanos 
 			practicesTableStr += practice.getLength() + "&"; //PRACTICE LENGHT
 			practicesTableStr += practiceRelation.getPlaceOfPractice() + "\\\\\\\\"; //PRACTICE PLACE
 		}

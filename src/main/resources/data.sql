@@ -220,7 +220,7 @@ La presente unidad se abordará a partir de la estrategia de aprendizaje orienta
 
 insert into evaluation_system values (DEFAULT, true, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia chidori de aprendizaje', 0.5, 1);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.5, 1);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 1);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05, 1);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 1);
@@ -284,7 +284,7 @@ insert into subtopic values (DEFAULT, 'Diagrama de Pert', 3, (SELECT id FROM top
 
 insert into thematic_unit values (DEFAULT, 'Clasifica las diferentes metodologías con base en las etapas que las conforman y los resultados obtenidos en cada una de ellas.', true, 'La presente unidad se abordará a partir de la estrategia aprendizaje orientada a proyectos y método heurístico, lo que permitirá la consolidación de las siguientes técnicas de aprendizaje: indagación documental, ficha de trabajo, discusión dirigida, cuadro de comparaciones , mapas conceptuales, exposición en equipo de temas complementarios, avance del proyecto y realización de prácticas.', (SELECT id FROM content WHERE name LIKE 'Metodologías'), (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software'));
 
-insert into evaluation_system values (DEFAULT, true, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
+insert into evaluation_system values (DEFAULT, true, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Metodologías')));
 
 insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 3);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 3);
@@ -380,7 +380,7 @@ insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo',
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 6);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 6);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 6);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte de la reestructuración del proyecto', 0.6, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte de la reestructuración del proyecto', 0.5, 6);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 6);
 insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 6);
 

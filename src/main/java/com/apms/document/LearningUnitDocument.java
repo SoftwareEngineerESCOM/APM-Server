@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.apms.bibliographyRelation.BibliographyRelation;
+import com.apms.evaluationSystem.EvaluationSystem;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.learningUnit.LearningUnit;
 import com.apms.practiceRelation.PracticeRelation;
@@ -31,6 +32,7 @@ public class LearningUnitDocument {
 	private List<BibliographyRelation> bibliographysRelation; 
 	private List<ThematicUnit> thematicUnits; 
 	private PracticeRelation practiceRelation;
+	private List<EvaluationSystem> evaluationSystems;
 	private final File firstSection = new File("src/main/resources/document_latex/learning_unit_document/first_part_document.tex");
     private final File secondSectionTemplate = new File("src/main/resources/document_latex/learning_unit_document/second_part_document_template.tex");
     private final File secondSection = new File("src/main/resources/document_latex/learning_unit_document/second_part_document.tex");
@@ -40,12 +42,10 @@ public class LearningUnitDocument {
     private HashMap<String,String> dataLabels;
     private String content;
     private int numberUnits;
-
-	private SyntheticProgramService syntheticProgramService;
         
     public LearningUnitDocument(LearningUnit learningUnit, SyntheticProgram syntheticProgram, StudyPlan studyPlan,
 			ExtensiveProgram extensiveProgram, List<BibliographyRelation> bibliographysRelation,
-			List<ThematicUnit> thematicUnits, PracticeRelation practiceRelation) {
+			List<ThematicUnit> thematicUnits, List<EvaluationSystem> evaluationSystems, PracticeRelation practiceRelation) {
 		this.learningUnit = learningUnit;
 		this.syntheticProgram = syntheticProgram;
 		this.studyPlan = studyPlan;
@@ -53,6 +53,7 @@ public class LearningUnitDocument {
 		this.bibliographysRelation = bibliographysRelation;
 		this.thematicUnits = thematicUnits;
 		this.practiceRelation = practiceRelation;
+		this.evaluationSystems = evaluationSystems;
 		this.numberUnits = syntheticProgram.getContent().size(); //Numero de unidades tematicas
 	}
 
@@ -81,6 +82,7 @@ public class LearningUnitDocument {
     	dataLabels.putAll(LabelsFormat.createExtensiveProgramLabels(extensiveProgram));
     	dataLabels.putAll(LabelsFormat.createBibliographyLabels(bibliographysRelation));
     	dataLabels.putAll(LabelsFormat.createThematicUnitLabels(thematicUnits));
+    	dataLabels.putAll(LabelsFormat.createEvualuationSystemLabels(evaluationSystems));
     	dataLabels.putAll(LabelsFormat.createPracticeRelationLabels(practiceRelation));	
     }
 

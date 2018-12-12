@@ -1,13 +1,18 @@
 package com.apms.learningUnit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.apms.bibliographyRelation.BibliographyRelation;
 import com.apms.bibliographyRelation.BibliographyRelationService;
 import com.apms.document.LearningUnitDocument;
+import com.apms.evaluationSystem.EvaluationSystem;
+import com.apms.evaluationSystem.EvaluationSystemService;
 import com.apms.extensiveProgram.ExtensiveProgram;
 import com.apms.extensiveProgram.ExtensiveProgramService;
+import com.apms.learningEvaluation.LearningEvaluation;
+import com.apms.learningEvaluation.LearningEvaluationService;
 import com.apms.learningUnitStatus.LearningUnitStatusService;
 import com.apms.practiceRelation.PracticeRelation;
 import com.apms.practiceRelation.PracticeRelationService;
@@ -76,7 +81,8 @@ public class LearningUnitRestController {
 
     @Autowired
     private ThematicUnitService thematicUnitService;
-
+    
+    @Autowired EvaluationSystemService evaluationSystemService;
     /*
      ** Return a listing of all the resources
      */
@@ -359,9 +365,17 @@ public class LearningUnitRestController {
             StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
             ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
             List<BibliographyRelation> bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
+            //Obtener Unidades Tematicas con sus evaluaciones
             List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
+            List<EvaluationSystem> evaluationSystems = new ArrayList<>();
+            for (ThematicUnit thematicUnit : thematicUnits) {
+            	EvaluationSystem evaluationSystem = evaluationSystemService.getEvaluationSystemByThematicUnitId(thematicUnit.getId());
+            	if(evaluationSystem != null)
+            		evaluationSystems.add(evaluationSystem);
+            }
+            
             PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
-            document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, practiceRelation);
+            document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, evaluationSystems, practiceRelation);
             document.createDocument();
         } catch (Exception e) {
             Logger.getLogger(null).log(null, "F: ", e);
