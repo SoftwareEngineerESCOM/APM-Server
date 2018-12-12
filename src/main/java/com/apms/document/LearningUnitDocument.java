@@ -70,12 +70,11 @@ public class LearningUnitDocument {
         FileWriter writer = new FileWriter("src/main/resources/document_latex/FormatoUnidadAcademica.tex"); //Salida del documento
         writer.write(content);
         writer.close();
-        ejecutarCMD("pdflatex -interaction nonstopmode src/main/resources/document_latex/FormatoUnidadAcademica.tex --output-directory=src/main/resources/document_latex/");
+        ejecutarCMD("pdflatex -interaction nonstopmode src/main/resources/document_latex/FormatoUnidadAcademica.tex --output-directory=target/classes/document_latex/");
     }
     
     private void fillDataLabels() {
     	dataLabels = new HashMap<>();
-    	System.out.println("Aqui andamosh");
     	
     	dataLabels.putAll(LabelsFormat.createSyntheticProgramLabels(syntheticProgram));
     	dataLabels.putAll(LabelsFormat.createStudyPlanLabels(studyPlan));

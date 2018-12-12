@@ -223,7 +223,7 @@ public class LabelsFormat {
 				unitContentStr +=  topic.getName() + " & ";
 				unitContentStr += topic.getTheoricHours() + " & ";
 				unitContentStr += topic.getPracticalHours() + " & ";
-				unitContentStr += topic.getAutonomousHours() + " & ";
+				unitContentStr += topic.getAutonomousHours() + " & 0.0 &";
 				unitContentStr += "Sin Clave"  + " \\\\\\\\ "; //Busqueda de claves bibliografias por clave
 				//suma de las horas de aprendizaje
 				teacherTheoryHours += topic.getTheoricHours();
