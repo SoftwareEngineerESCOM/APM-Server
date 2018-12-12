@@ -6,24 +6,18 @@ import java.util.HashMap;
 
 import com.apms.accreditationType.AccreditationType;
 import com.apms.bibliographyRelation.BibliographyRelation;
-import com.apms.bibliographyRelation.BibliographyRelationService;
 import com.apms.content.Content;
 import com.apms.evaluationSystem.EvaluationSystem;
 import com.apms.evaluationUA.EvaluationUA;
 import com.apms.extensiveProgram.ExtensiveProgram;
-import com.apms.extensiveProgram.ExtensiveProgramService;
 import com.apms.learningEvaluation.LearningEvaluation;
 import com.apms.practice.Practice;
 import com.apms.practiceRelation.PracticeRelation;
-import com.apms.practiceRelation.PracticeRelationService;
-import com.apms.practiceRelationEvaluation.PracticeRelationEvaluation;
 import com.apms.studyPlan.StudyPlan;
-import com.apms.studyPlan.StudyPlanService;
 import com.apms.subtopic.Subtopic;
 import com.apms.syntheticProgram.SyntheticProgram;
 import com.apms.teachingProfile.TeachingProfile;
 import com.apms.thematicUnit.ThematicUnit;
-import com.apms.thematicUnit.ThematicUnitService;
 import com.apms.topic.Topic;
 
 
