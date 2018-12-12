@@ -220,14 +220,14 @@ La presente unidad se abordará a partir de la estrategia de aprendizaje orienta
 
 insert into evaluation_system values (DEFAULT, true, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.5);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.15);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Propuesta de Proyecto', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia chidori de aprendizaje', 0.5, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.15, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Propuesta de Proyecto', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 1);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 1);
 
 insert into topic values (DEFAULT, 1, 'Conceptos básicos de Ingeniería de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
 insert into topic values (DEFAULT, 1.5, 'Atributos y características del software', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Ingeniería de Software')));
@@ -252,15 +252,15 @@ insert into thematic_unit values (DEFAULT, 'Desarrolla el plan de proyecto de un
 
 insert into evaluation_system values (DEFAULT, true, 0.15, 1, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.3);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Diagramas elaborados', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.10);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.3, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Diagramas elaborados', 0.1, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.10, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 2);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 2);
 
 insert into topic values (DEFAULT, 1, 'Ámbito de Software', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
 insert into topic values (DEFAULT, 0.5, 'Estudio de factibilidad', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
@@ -286,15 +286,15 @@ insert into thematic_unit values (DEFAULT, 'Clasifica las diferentes metodologí
 
 insert into evaluation_system values (DEFAULT, true, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Proceso de gestión de proyecto')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.15);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Mapa conceptual', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.15, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Avance de Proyecto', 0.2, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 3);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 3);
 
 insert into topic values (DEFAULT, 2.5, 'Metodologías estructuradas', '1', 0.5, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Metodologías')));
 insert into topic values (DEFAULT, 3.5, 'Metodologías Orientadas a Objetos', '2', 0.5, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Metodologías')));
@@ -321,14 +321,14 @@ insert into thematic_unit values (DEFAULT, 'Realiza un sistema de información d
 
 insert into evaluation_system values (DEFAULT, true, 0.15, 2, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Documentación del proyecto', 0.3);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Documentación del proyecto', 0.3, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 4);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 4);
 
 insert into topic values (DEFAULT, 1.5, 'Conceptos de la calidad', '1', 0, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
 insert into topic values (DEFAULT, 3, 'Calidad de sistemas de información', '2', 0.5, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Calidad y normas de calidad')));
@@ -350,14 +350,14 @@ insert into thematic_unit values (DEFAULT, 'Aplica los modelos de madurez, evalu
 
 insert into evaluation_system values (DEFAULT, true, 0.2, 3, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
 
-insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte del proyecto', 0.3);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Escrita', 'Evidencia de aprendizaje', 0.2, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte del proyecto', 0.3, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 5);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 5);
 
 insert into topic values (DEFAULT, 1, 'Introducción', '1', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
 insert into topic values (DEFAULT, 1.5, 'Proceso de Software Personal (PSP)', '2', 0, 0.5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')));
@@ -376,13 +376,13 @@ insert into thematic_unit values (DEFAULT, 'Reestructura los proyectos software 
 
 insert into evaluation_system values (DEFAULT, true, 0.2, 3, (SELECT id FROM thematic_unit WHERE content_id = (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
 
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte de la reestructuración del proyecto', 0.6);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05);
-insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Ficha de trabajo', 0.05, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Cuadro de Comparaciones', 0.05, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Exposición en equipo', 0.1, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reportes de práctica', 0.2, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Reporte de la reestructuración del proyecto', 0.6, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbricas de autoevaluación', 0.05, 6);
+insert into learning_evaluation values (DEFAULT, 'Continua', 'Rúbrica de coevaluación', 0.05, 6);
 
 insert into topic values (DEFAULT, 3.5, 'Herramientas Case', '1', 0.5, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
 insert into topic values (DEFAULT, 2.5, 'Ingeniería Web', '2', 0, 1, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Temas selectos')));
@@ -507,7 +507,7 @@ insert into practice values (DEFAULT, 4.5, 'Listas de verificación usados en la
 insert into practice values (DEFAULT, 4.5, 'Desarrollar un ejemplo para la demostración de una herramienta CASE', 5, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Modelos de Madurez')), (SELECT id FROM practice_relation WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
 insert into practice values (DEFAULT, 4.5, 'Realizar una demostración del proceso de Ingeniería inversa utilizando una herramienta CASE Específica', 6, (SELECT id FROM thematic_unit WHERE content_id IN (SELECT id FROM content WHERE name LIKE 'Temas selectos')), (SELECT id FROM practice_relation WHERE learning_unit_id = (SELECT id FROM learning_unit WHERE name LIKE 'Ingenieria de software')));
 
-
+UPDATE extensive_program SET teaching_profile_id = 1 WHERE extensive_program.id = 1;
 
 -- insert into schooling_grade (speciality, academic_level_id) values ('Computación', (SELECT id FROM academic_level WHERE name like 'Maestro'));
 
