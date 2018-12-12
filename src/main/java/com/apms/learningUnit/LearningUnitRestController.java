@@ -124,7 +124,7 @@ public class LearningUnitRestController {
                     req.getPayload().getSemester().getStudyPlan().getId()).isEmpty())
                 return new RESTResponse<LearningUnit>(RESTResponse.FAIL,
                         "Unidad de Aprendizaje ya existe en el sistema.", null);
-            req.getPayload().setLearningUnitStatus(learningUnitStatusService.getOne(req.getPayload().getLearningUnitStatus().getId()));
+            req.getPayload().setLearningUnitStatus(learningUnitStatusService.getOne(1));
             learningUnitService.add(req.getPayload());
         } catch (Exception e) {
             Logger.getLogger(null).log(null, "F: ", e);
