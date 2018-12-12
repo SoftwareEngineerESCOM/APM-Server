@@ -360,22 +360,60 @@ public class LearningUnitRestController {
     public ResponseEntity<InputStreamResource> generatePDF(@PathVariable Integer learningUnitId) throws IOException {
         LearningUnitDocument document;
         try {
-            LearningUnit learningUnit = learningUnitService.getOne(learningUnitId);
-            SyntheticProgram syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
-            StudyPlan studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
-            ExtensiveProgram extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
-            List<BibliographyRelation> bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
-            //Obtener Unidades Tematicas con sus evaluaciones
-            List<ThematicUnit> thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
-            List<EvaluationSystem> evaluationSystems = new ArrayList<>();
-            for (ThematicUnit thematicUnit : thematicUnits) {
-            	EvaluationSystem evaluationSystem = evaluationSystemService.getEvaluationSystemByThematicUnitId(thematicUnit.getId());
-            	if(evaluationSystem != null)
-            		evaluationSystems.add(evaluationSystem);
-            }
+        	//ProgramaSintetico
+        	SyntheticProgram syntheticProgram = null;
+        	try {
+        		syntheticProgram = syntheticProgramService.getSyntheticProgramsByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		syntheticProgram = null;
+        	}
+        	//PlanDeEstudios
+        	StudyPlan studyPlan = null;
+        	try {
+        		studyPlan = studyPlanService.getStudyPlanByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		studyPlan = null;
+        	}
+        	
+            ExtensiveProgram extensiveProgram = null;
+            try {
+            	extensiveProgram = extensiveProgramService.getExtensiveProgramByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		extensiveProgram = null;
+        	}
             
-            PracticeRelation practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
-            document = new LearningUnitDocument(learningUnit, syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, evaluationSystems, practiceRelation);
+            List<BibliographyRelation> bibliographyRelations = null;
+            try {
+            	bibliographyRelations = bibliographyRelationService.getBibliographyRelationByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		bibliographyRelations = null;
+        	}
+            //Obtener Unidades Tematicas con sus evaluaciones
+            List<ThematicUnit> thematicUnits = null;
+            try {
+            	thematicUnits = thematicUnitService.getThematicUnitByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		thematicUnits = null;
+        	}
+            
+            List<EvaluationSystem> evaluationSystems = new ArrayList<>();
+            try {
+            	for (ThematicUnit thematicUnit : thematicUnits) {
+                	EvaluationSystem evaluationSystem = evaluationSystemService.getEvaluationSystemByThematicUnitId(thematicUnit.getId());
+                	if(evaluationSystem != null)
+                		evaluationSystems.add(evaluationSystem);
+                }
+            }catch(NullPointerException e) {
+            	evaluationSystems = null;
+        	}
+            
+            PracticeRelation practiceRelation = null;
+            try {
+            	practiceRelation = practiceRelationService.getPracticeRelationsByLearningUnitId(learningUnitId);
+        	}catch(NullPointerException e) {
+        		practiceRelation = null;
+        	}
+            document = new LearningUnitDocument(syntheticProgram, studyPlan, extensiveProgram, bibliographyRelations, thematicUnits, evaluationSystems, practiceRelation);
             document.createDocument();
         } catch (Exception e) {
             Logger.getLogger(null).log(null, "F: ", e);
